@@ -46,10 +46,27 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 from __future__ import print_function
-import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
+# Configure API key authorization and region
+configuration = swagger_client.Configuration(api_key="YOUR_API_KEY")
+# configuration = swagger_client.Configuration(api_key="YOUR_API_KEY", region="eu")
+
+# create an instance of the API class
+api_instance = swagger_client.FingerprintApi(configuration)
+visitor_id = 'visitor_id_example'  # str |
+#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
+#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
+#limit = 56  # int | Limit scanned results (optional)
+#before = 56  # int | Used to paginate results (optional)
+
+try:
+    api_response = api_instance.visitors_visitor_id_get(visitor_id, request_id=request_id, linked_id=linked_id, limit=limit, before=before)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -58,7 +75,7 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**visitors_visitor_id_get**](docs/DefaultApi.md#visitors_visitor_id_get) | **GET** /visitors/{visitor_id} | 
+*FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | 
 
 ## Documentation For Models
 

@@ -1,3 +1,3 @@
-#/bin/sh
+#!/bin/sh
 
-swagger-codegen generate -t ./template -l python -i ./mock2.yaml -o ./sw_sdk
+swagger-codegen generate -t ./template -l python -i https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/schemes/fingerprint-server-api.yaml -o ./
