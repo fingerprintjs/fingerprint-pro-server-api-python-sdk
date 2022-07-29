@@ -28,14 +28,124 @@ class Response(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'visitor_id': 'str',
+        'visits': 'list[Visit]',
+        'last_timestamp': 'int',
+        'pagination_key': 'str'
     }
 
     attribute_map = {
+        'visitor_id': 'visitorId',
+        'visits': 'visits',
+        'last_timestamp': 'lastTimestamp',
+        'pagination_key': 'paginationKey'
     }
 
-    def __init__(self):  # noqa: E501
+    def __init__(self, visitor_id=None, visits=None, last_timestamp=None, pagination_key=None):  # noqa: E501
         """Response - a model defined in Swagger"""  # noqa: E501
+        self._visitor_id = None
+        self._visits = None
+        self._last_timestamp = None
+        self._pagination_key = None
         self.discriminator = None
+        self.visitor_id = visitor_id
+        self.visits = visits
+        if last_timestamp is not None:
+            self.last_timestamp = last_timestamp
+        if pagination_key is not None:
+            self.pagination_key = pagination_key
+
+    @property
+    def visitor_id(self):
+        """Gets the visitor_id of this Response.  # noqa: E501
+
+
+        :return: The visitor_id of this Response.  # noqa: E501
+        :rtype: str
+        """
+        return self._visitor_id
+
+    @visitor_id.setter
+    def visitor_id(self, visitor_id):
+        """Sets the visitor_id of this Response.
+
+
+        :param visitor_id: The visitor_id of this Response.  # noqa: E501
+        :type: str
+        """
+        if visitor_id is None:
+            raise ValueError("Invalid value for `visitor_id`, must not be `None`")  # noqa: E501
+
+        self._visitor_id = visitor_id
+
+    @property
+    def visits(self):
+        """Gets the visits of this Response.  # noqa: E501
+
+
+        :return: The visits of this Response.  # noqa: E501
+        :rtype: list[Visit]
+        """
+        return self._visits
+
+    @visits.setter
+    def visits(self, visits):
+        """Sets the visits of this Response.
+
+
+        :param visits: The visits of this Response.  # noqa: E501
+        :type: list[Visit]
+        """
+        if visits is None:
+            raise ValueError("Invalid value for `visits`, must not be `None`")  # noqa: E501
+
+        self._visits = visits
+
+    @property
+    def last_timestamp(self):
+        """Gets the last_timestamp of this Response.  # noqa: E501
+
+        When more results are available (e.g., you scanned 200 results using `limit` parameter, but a total of 600 results are available), a special `lastTimestamp` top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.  # noqa: E501
+
+        :return: The last_timestamp of this Response.  # noqa: E501
+        :rtype: int
+        """
+        return self._last_timestamp
+
+    @last_timestamp.setter
+    def last_timestamp(self, last_timestamp):
+        """Sets the last_timestamp of this Response.
+
+        When more results are available (e.g., you scanned 200 results using `limit` parameter, but a total of 600 results are available), a special `lastTimestamp` top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.  # noqa: E501
+
+        :param last_timestamp: The last_timestamp of this Response.  # noqa: E501
+        :type: int
+        """
+
+        self._last_timestamp = last_timestamp
+
+    @property
+    def pagination_key(self):
+        """Gets the pagination_key of this Response.  # noqa: E501
+
+        Visit's `requestId` of the last visit in the current page.  # noqa: E501
+
+        :return: The pagination_key of this Response.  # noqa: E501
+        :rtype: str
+        """
+        return self._pagination_key
+
+    @pagination_key.setter
+    def pagination_key(self, pagination_key):
+        """Sets the pagination_key of this Response.
+
+        Visit's `requestId` of the last visit in the current page.  # noqa: E501
+
+        :param pagination_key: The pagination_key of this Response.  # noqa: E501
+        :type: str
+        """
+
+        self._pagination_key = pagination_key
 
     def to_dict(self):
         """Returns the model properties as a dict"""

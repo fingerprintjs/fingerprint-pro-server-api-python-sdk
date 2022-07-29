@@ -20,15 +20,12 @@ from swagger_client.api.fingerprint_api import FingerprintApi
 from swagger_client.api_client import ApiClient
 from swagger_client.configuration import Configuration
 # import models into sdk package
-from swagger_client.models.base_response import BaseResponse
 from swagger_client.models.browser_details import BrowserDetails
 from swagger_client.models.confidence import Confidence
 from swagger_client.models.ip_location import IPLocation
 from swagger_client.models.ip_location_city import IPLocationCity
 from swagger_client.models.location import Location
 from swagger_client.models.many_requests_response import ManyRequestsResponse
-from swagger_client.models.one_of_response import OneOfResponse
-from swagger_client.models.paginated_response import PaginatedResponse
 from swagger_client.models.response import Response
 from swagger_client.models.st_seen_at import StSeenAt
 from swagger_client.models.subdivision import Subdivision

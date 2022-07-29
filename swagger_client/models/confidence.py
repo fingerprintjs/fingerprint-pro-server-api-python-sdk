@@ -45,6 +45,7 @@ class Confidence(object):
     def score(self):
         """Gets the score of this Confidence.  # noqa: E501
 
+        The confidence score is a floating-point number between 0 and 1 that represents the probability of accurate identification.  # noqa: E501
 
         :return: The score of this Confidence.  # noqa: E501
         :rtype: float
@@ -55,6 +56,7 @@ class Confidence(object):
     def score(self, score):
         """Sets the score of this Confidence.
 
+        The confidence score is a floating-point number between 0 and 1 that represents the probability of accurate identification.  # noqa: E501
 
         :param score: The score of this Confidence.  # noqa: E501
         :type: float

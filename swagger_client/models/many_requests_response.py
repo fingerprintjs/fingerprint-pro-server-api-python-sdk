@@ -45,6 +45,7 @@ class ManyRequestsResponse(object):
     def error(self):
         """Gets the error of this ManyRequestsResponse.  # noqa: E501
 
+        Error text.  # noqa: E501
 
         :return: The error of this ManyRequestsResponse.  # noqa: E501
         :rtype: str
@@ -55,6 +56,7 @@ class ManyRequestsResponse(object):
     def error(self, error):
         """Sets the error of this ManyRequestsResponse.
 
+        Error text.  # noqa: E501
 
         :param error: The error of this ManyRequestsResponse.  # noqa: E501
         :type: str

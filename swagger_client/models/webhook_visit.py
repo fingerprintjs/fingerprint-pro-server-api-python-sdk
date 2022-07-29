@@ -98,6 +98,7 @@ class WebhookVisit(object):
     def request_id(self):
         """Gets the request_id of this WebhookVisit.  # noqa: E501
 
+        Unique identifier of the user's identification request.  # noqa: E501
 
         :return: The request_id of this WebhookVisit.  # noqa: E501
         :rtype: str
@@ -108,6 +109,7 @@ class WebhookVisit(object):
     def request_id(self, request_id):
         """Sets the request_id of this WebhookVisit.
 
+        Unique identifier of the user's identification request.  # noqa: E501
 
         :param request_id: The request_id of this WebhookVisit.  # noqa: E501
         :type: str
@@ -144,6 +146,7 @@ class WebhookVisit(object):
     def incognito(self):
         """Gets the incognito of this WebhookVisit.  # noqa: E501
 
+        Flag if user used incognito session.  # noqa: E501
 
         :return: The incognito of this WebhookVisit.  # noqa: E501
         :rtype: bool
@@ -154,6 +157,7 @@ class WebhookVisit(object):
     def incognito(self, incognito):
         """Sets the incognito of this WebhookVisit.
 
+        Flag if user used incognito session.  # noqa: E501
 
         :param incognito: The incognito of this WebhookVisit.  # noqa: E501
         :type: bool
@@ -213,6 +217,7 @@ class WebhookVisit(object):
     def timestamp(self):
         """Gets the timestamp of this WebhookVisit.  # noqa: E501
 
+        Timestamp of the event with millisecond precision in Unix time.  # noqa: E501
 
         :return: The timestamp of this WebhookVisit.  # noqa: E501
         :rtype: int
@@ -223,6 +228,7 @@ class WebhookVisit(object):
     def timestamp(self, timestamp):
         """Sets the timestamp of this WebhookVisit.
 
+        Timestamp of the event with millisecond precision in Unix time.  # noqa: E501
 
         :param timestamp: The timestamp of this WebhookVisit.  # noqa: E501
         :type: int
@@ -236,6 +242,7 @@ class WebhookVisit(object):
     def time(self):
         """Gets the time of this WebhookVisit.  # noqa: E501
 
+        Time expressed according to ISO 8601 in UTC format.  # noqa: E501
 
         :return: The time of this WebhookVisit.  # noqa: E501
         :rtype: datetime
@@ -246,6 +253,7 @@ class WebhookVisit(object):
     def time(self, time):
         """Sets the time of this WebhookVisit.
 
+        Time expressed according to ISO 8601 in UTC format.  # noqa: E501
 
         :param time: The time of this WebhookVisit.  # noqa: E501
         :type: datetime
@@ -259,6 +267,7 @@ class WebhookVisit(object):
     def url(self):
         """Gets the url of this WebhookVisit.  # noqa: E501
 
+        Page URL from which identification request was sent.  # noqa: E501
 
         :return: The url of this WebhookVisit.  # noqa: E501
         :rtype: str
@@ -269,6 +278,7 @@ class WebhookVisit(object):
     def url(self, url):
         """Sets the url of this WebhookVisit.
 
+        Page URL from which identification request was sent.  # noqa: E501
 
         :param url: The url of this WebhookVisit.  # noqa: E501
         :type: str
@@ -282,6 +292,7 @@ class WebhookVisit(object):
     def tag(self):
         """Gets the tag of this WebhookVisit.  # noqa: E501
 
+        A customer-provided value or an object that was sent with identification request.  # noqa: E501
 
         :return: The tag of this WebhookVisit.  # noqa: E501
         :rtype: dict(str, object)
@@ -292,6 +303,7 @@ class WebhookVisit(object):
     def tag(self, tag):
         """Sets the tag of this WebhookVisit.
 
+        A customer-provided value or an object that was sent with identification request.  # noqa: E501
 
         :param tag: The tag of this WebhookVisit.  # noqa: E501
         :type: dict(str, object)
@@ -305,6 +317,7 @@ class WebhookVisit(object):
     def linked_id(self):
         """Gets the linked_id of this WebhookVisit.  # noqa: E501
 
+        A customer-provided id that was sent with identification request.  # noqa: E501
 
         :return: The linked_id of this WebhookVisit.  # noqa: E501
         :rtype: str
@@ -315,6 +328,7 @@ class WebhookVisit(object):
     def linked_id(self, linked_id):
         """Sets the linked_id of this WebhookVisit.
 
+        A customer-provided id that was sent with identification request.  # noqa: E501
 
         :param linked_id: The linked_id of this WebhookVisit.  # noqa: E501
         :type: str
@@ -349,6 +363,7 @@ class WebhookVisit(object):
     def visitor_found(self):
         """Gets the visitor_found of this WebhookVisit.  # noqa: E501
 
+        Attribute represents if a visitor had been identified before.  # noqa: E501
 
         :return: The visitor_found of this WebhookVisit.  # noqa: E501
         :rtype: bool
@@ -359,6 +374,7 @@ class WebhookVisit(object):
     def visitor_found(self, visitor_found):
         """Sets the visitor_found of this WebhookVisit.
 
+        Attribute represents if a visitor had been identified before.  # noqa: E501
 
         :param visitor_found: The visitor_found of this WebhookVisit.  # noqa: E501
         :type: bool

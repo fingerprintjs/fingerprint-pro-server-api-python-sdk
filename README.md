@@ -65,6 +65,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```python
 from __future__ import print_function
 import swagger_client
+from swagger_client import Response
 from swagger_client.rest import ApiException
 from pprint import pprint
 
@@ -81,7 +82,7 @@ limit = 10  # int | Limit scanned results (optional)
 #before = 56  # int | Used to paginate results (optional)
 
 try:
-    api_response = api_instance.visitors_visitor_id_get(visitor_id, limit=limit)
+    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
@@ -97,15 +98,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [BaseResponse](docs/BaseResponse.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [Confidence](docs/Confidence.md)
  - [IPLocation](docs/IPLocation.md)
  - [IPLocationCity](docs/IPLocationCity.md)
  - [Location](docs/Location.md)
  - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
- - [OneOfResponse](docs/OneOfResponse.md)
- - [PaginatedResponse](docs/PaginatedResponse.md)
  - [Response](docs/Response.md)
  - [StSeenAt](docs/StSeenAt.md)
  - [Subdivision](docs/Subdivision.md)

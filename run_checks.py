@@ -1,5 +1,6 @@
 from __future__ import print_function
 import swagger_client
+from swagger_client import Response
 from swagger_client.rest import ApiException
 from pprint import pprint
 import os
@@ -16,8 +17,8 @@ visitor_id = 'mcEozNgqhKgmfXx7ZaMW'  # str |
 # before = 56 # int | Used to paginate results (optional)
 
 try:
-    api_response = api_instance.get_visits(visitor_id, limit=2)
-    pprint(api_response['visitorId'])
+    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    pprint(api_response.visitor_id)
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
 
