@@ -1,4 +1,4 @@
-# swagger_client.FingerprintApi
+# fingerprint_pro_server_api_sdk.FingerprintApi
 
 All URIs are relative to *https://api.fpjs.io*
 
@@ -16,17 +16,17 @@ This endpoint allows you to get a history of visits with all available informati
 ### Example
 ```python
 from __future__ import print_function
-import swagger_client
-from swagger_client import Response
-from swagger_client.rest import ApiException
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization and region
-configuration = swagger_client.Configuration(api_key="YOUR_API_KEY")
-# configuration = swagger_client.Configuration(api_key="YOUR_API_KEY", region="eu")
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY", region="eu")
 
 # create an instance of the API class
-api_instance = swagger_client.FingerprintApi(configuration)
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 visitor_id = 'visitor_id_example'  # str |
 #request_id = 'request_id_example'  # str | Filter events by requestId (optional)
 #linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)

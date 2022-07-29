@@ -41,7 +41,7 @@ pip install git+https://github.com/fingerprintjs/fingerprint-pro-server-api-pyth
 
 Then import the package:
 ```python
-import swagger_client
+import fingerprint_pro_server_api_sdk
 ```
 
 ### Setuptools
@@ -55,7 +55,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import swagger_client
+import fingerprint_pro_server_api_sdk
 ```
 
 ## Getting Started
@@ -64,17 +64,17 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 from __future__ import print_function
-import swagger_client
-from swagger_client import Response
-from swagger_client.rest import ApiException
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization and region
-configuration = swagger_client.Configuration(api_key="YOUR_API_KEY")
-# configuration = swagger_client.Configuration(api_key="YOUR_API_KEY", region="eu")
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY", region="eu")
 
 # create an instance of the API class
-api_instance = swagger_client.FingerprintApi(configuration)
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 visitor_id = 'visitor_id_example'  # str |
 #request_id = 'request_id_example'  # str | Filter events by requestId (optional)
 #linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)

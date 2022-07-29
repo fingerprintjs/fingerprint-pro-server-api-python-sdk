@@ -57,7 +57,7 @@ class Configuration(object):
         self.password = ""
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("swagger_client")
+        self.logger["package_logger"] = logging.getLogger("fingerprint_pro_server_api_sdk")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
