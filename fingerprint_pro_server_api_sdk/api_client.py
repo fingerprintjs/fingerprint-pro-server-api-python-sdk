@@ -1,8 +1,8 @@
 # coding: utf-8
 """
-    Fingerprint server API
+    Fingerprint Pro Server API
 
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
 
     OpenAPI spec version: 3
     
@@ -22,9 +22,9 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from swagger_client.configuration import Configuration
-import swagger_client.models
-from swagger_client import rest
+from fingerprint_pro_server_api_sdk.configuration import Configuration
+import fingerprint_pro_server_api_sdk.models
+from fingerprint_pro_server_api_sdk import rest
 
 
 class ApiClient(object):
@@ -72,7 +72,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/1.0.0/python'
+        self.user_agent = 'Swagger-Codegen/0.0.1/python'
 
     def __del__(self):
         self.pool.close()
@@ -257,7 +257,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(swagger_client.models, klass)
+                klass = getattr(fingerprint_pro_server_api_sdk.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

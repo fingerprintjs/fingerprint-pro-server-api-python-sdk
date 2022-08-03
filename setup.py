@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Fingerprint server API
+    Fingerprint Pro Server API
 
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
 
     OpenAPI spec version: 3
     
@@ -12,8 +12,8 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "swagger-client"
-VERSION = "1.0.0"
+NAME = "fingerprint-pro-server-api-sdk"
+VERSION = "0.0.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -26,14 +26,14 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Fingerprint server API",
+    description="Fingerprint Pro Server API",
     author_email="",
     url="",
-    keywords=["Swagger", "Fingerprint server API"],
+    keywords=["Swagger", "Fingerprint Pro Server API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
     """
 )

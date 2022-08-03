@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Fingerprint server API
+    Fingerprint Pro Server API
 
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
 
     OpenAPI spec version: 3
     
@@ -17,7 +17,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from swagger_client.api_client import ApiClient
+from fingerprint_pro_server_api_sdk.api_client import ApiClient
 
 
 class FingerprintApi(object):

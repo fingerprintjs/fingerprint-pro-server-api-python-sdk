@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.st_seen_at import StSeenAt  # noqa: E501
-from swagger_client.rest import ApiException
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk.models.st_seen_at import StSeenAt  # noqa: E501
+from fingerprint_pro_server_api_sdk.rest import ApiException
 
 
 class TestStSeenAt(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestStSeenAt(unittest.TestCase):
     def testStSeenAt(self):
         """Test StSeenAt"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.st_seen_at.StSeenAt()  # noqa: E501
+        # model = fingerprint_pro_server_api_sdk.models.st_seen_at.StSeenAt()  # noqa: E501
         pass
 
 

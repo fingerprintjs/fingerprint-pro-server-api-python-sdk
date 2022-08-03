@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Fingerprint server API
+    Fingerprint Pro Server API
 
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
 
     OpenAPI spec version: 3
     
@@ -57,7 +57,7 @@ class Configuration(object):
         self.password = ""
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("swagger_client")
+        self.logger["package_logger"] = logging.getLogger("fingerprint_pro_server_api_sdk")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
@@ -263,5 +263,5 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 3\n"\
-               "SDK Package Version: 1.0.0".\
+               "SDK Package Version: 0.0.1".\
                format(env=sys.platform, pyversion=sys.version)
