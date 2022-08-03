@@ -2,9 +2,9 @@
 
 # flake8: noqa
 """
-    Fingerprint server API
+    Fingerprint Pro Server API
 
-    Schema describes Fingerprint public server API  # noqa: E501
+    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
 
     OpenAPI spec version: 3
     
