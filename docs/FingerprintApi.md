@@ -22,8 +22,8 @@ from fingerprint_pro_server_api_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization and region
-configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY")
-# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="YOUR_API_KEY", region="eu")
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY", region="eu")
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
