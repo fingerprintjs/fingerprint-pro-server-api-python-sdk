@@ -63,9 +63,7 @@ class TestFingerprintApi(unittest.TestCase):
     def setUp(self):
         configuration = Configuration(api_key=API_KEY, region="us")
         self.api = FingerprintApi(configuration)  # noqa: E501
-        with open('../config.json', 'r', encoding='utf-8') as config_file:
-            config = json.load(config_file)
-            package_version = config['packageVersion']
+        package_version = TestFingerprintApi.get_package_version()
         self.integration_info = ('ii', 'fingerprint-pro-server-python-sdk/%s' % package_version)
         self.request_headers = {
             'Content-Type': 'application/json',
@@ -76,6 +74,13 @@ class TestFingerprintApi(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+    @staticmethod
+    def get_package_version():
+        path = './config.json'
+        with open(path, 'r', encoding='utf-8') as config_file:
+            config = json.load(config_file)
+        return config['packageVersion']
 
     @staticmethod
     def get_get_visits_method_path(visitor_id: str, region='us'):
