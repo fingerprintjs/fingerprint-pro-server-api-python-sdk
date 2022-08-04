@@ -12,6 +12,7 @@
 
 from __future__ import absolute_import
 
+import io
 import json
 import unittest
 
@@ -34,7 +35,7 @@ class MockPoolManager(object):
         self._reqs.append((args, kwargs))
 
     @staticmethod
-    def get_visitor_id_from_path(path: str):
+    def get_visitor_id_from_path(path):
         return path.split('/')[-1]
 
     def request(self, *args, **kwargs):
@@ -49,11 +50,11 @@ class MockPoolManager(object):
         if mock_file_by_visitor_id == 'bad_json_data':
             return urllib3.HTTPResponse(status=200, body='{}')
         try:
-            with open('./mocks/' + mock_file_by_visitor_id, 'r', encoding='utf-8') as mock_file:
+            with io.open('./test/mocks/' + mock_file_by_visitor_id, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
                 mock_file.close()
             return urllib3.HTTPResponse(status=200, body=answer_mock)
-        except OSError:
+        except IOError:
             return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_visitor_id)
             pass
 
@@ -79,13 +80,13 @@ class TestFingerprintApi(unittest.TestCase):
     @staticmethod
     def get_package_version():
         path = './config.json'
-        with open(path, 'r', encoding='utf-8') as config_file:
+        with io.open(path, 'r', encoding='utf-8') as config_file:
             config = json.load(config_file)
             config_file.close()
         return config['packageVersion']
 
     @staticmethod
-    def get_get_visits_method_path(visitor_id: str, region='us'):
+    def get_get_visits_method_path(visitor_id, region='us'):
         domain = {
             "us": "api.fpjs.io",
             "eu": "eu.api.fpjs.io",
