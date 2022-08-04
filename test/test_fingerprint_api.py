@@ -51,6 +51,7 @@ class MockPoolManager(object):
         try:
             with open('./mocks/' + mock_file_by_visitor_id, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
+                mock_file.close()
             return urllib3.HTTPResponse(status=200, body=answer_mock)
         except OSError:
             return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_visitor_id)
@@ -80,6 +81,7 @@ class TestFingerprintApi(unittest.TestCase):
         path = './config.json'
         with open(path, 'r', encoding='utf-8') as config_file:
             config = json.load(config_file)
+            config_file.close()
         return config['packageVersion']
 
     @staticmethod
@@ -172,7 +174,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.api_client.rest_client.pool_manager = mock_pool
         mocked_id = 'empty_answer'
         mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_get_visits_method_path(visitor_id=mocked_id, region="eu"),
+                                 TestFingerprintApi.get_get_visits_method_path(visitor_id=mocked_id, region="ap"),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
         self.assertEqual(self.api.get_visits(mocked_id).visits, [])
