@@ -167,7 +167,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.api_client.rest_client.pool_manager = mock_pool
         mocked_id = 'empty_answer'
         mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_get_visits_method_path(visitor_id=mocked_id, region="ap"),
+                                 TestFingerprintApi.get_get_visits_method_path(visitor_id=mocked_id, region="eu"),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
         self.assertEqual(self.api.get_visits(mocked_id).visits, [])
