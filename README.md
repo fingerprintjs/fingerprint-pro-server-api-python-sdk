@@ -130,4 +130,4 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-
+support@fingerprint.com
