@@ -25,3 +25,4 @@
 .gitignore
 .travis.yml
 git_push.sh
+tox.ini
