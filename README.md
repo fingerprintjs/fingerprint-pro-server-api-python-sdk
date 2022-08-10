@@ -16,6 +16,8 @@
   </a>
 </p>
 
+> :warning: **Work in progress**: This is a beta version of the library
+
 # Fingerprint Pro Server Python SDK
 Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.
 
@@ -128,4 +130,4 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-
+support@fingerprint.com
