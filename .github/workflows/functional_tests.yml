@@ -1,0 +1,28 @@
+name: Functional tests
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+  schedule:
+    - cron:  '0 5 * * *'
+
+jobs:
+  functional_tests:
+    runs-on: "ubuntu-latest"
+    environment: test
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: "3.9"
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt   
+
+      - name: "Try to get data using SDK"
+        run: "python ./run_checks.py"
+        env:
+          PRIVATE_KEY: '${{ secrets.PRIVATE_KEY }}'
+          VISITOR_ID: '${{ secrets.VISITOR_ID }}'
