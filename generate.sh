@@ -1,6 +1,8 @@
 #!/bin/bash
 
-swagger-codegen generate -t ./template -l python -i https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/schemes/fingerprint-server-api.yaml -o ./ -c config.json
+VERSION='0.0.1'
+
+swagger-codegen generate -t ./template -l python -i https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/schemes/fingerprint-server-api.yaml -o ./ -c config.json -DpackageVersion=$VERSION
 
 examplesList=(
   'visits_limit_1.json'
