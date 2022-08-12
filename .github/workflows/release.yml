@@ -21,6 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install swagger-codegen
           pip install python-semantic-release
 
       - name: "Build and publish with semantic-release"
