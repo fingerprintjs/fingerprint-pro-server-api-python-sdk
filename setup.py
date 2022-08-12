@@ -35,7 +35,6 @@ setup(
     description="Fingerprint Pro Server API",
     long_description="file: README.md, CHANGELOG.md, LICENSE",
     license="MIT",
-    package_dir="fingerprint_pro_server_api_sdk",
     author_email="support@fingerprint.com",
     url="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
     keywords=["Swagger", "Fingerprint Pro Server API"],
