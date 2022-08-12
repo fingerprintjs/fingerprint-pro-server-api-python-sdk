@@ -3,8 +3,7 @@ name: release
 on:
   push:
     branches:
-      - semantic-release
-  workflow_dispatch:
+      - master
 
 jobs:
   publish:
@@ -31,12 +30,11 @@ jobs:
           pip install python-semantic-release
 
       - name: Generate code with new version
-        run: ./generate.sh -v $(semantic-release print-version --prerelease)
+        run: ./generate.sh -v $(semantic-release print-version)
 
       - name: Python Semantic Release
-        uses: relekang/python-semantic-release@master
+        uses: relekang/python-semantic-release@5f28b835b0dbaaeaf2d80c6caaac3d66d4f7d0b0
         with:
-          additional_options: '--prerelease'
           github_token: ${{ secrets.GITHUB_TOKEN }}
           repository_username: ${{ secrets.PYPI_USERNAME }}
           repository_password: ${{ secrets.PYPI_PASSWORD }}
