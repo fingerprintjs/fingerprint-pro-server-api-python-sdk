@@ -13,7 +13,6 @@
 from __future__ import absolute_import
 
 import io
-import json
 import unittest
 
 import urllib3
@@ -25,6 +24,7 @@ from fingerprint_pro_server_api_sdk.rest import ApiException
 
 API_KEY = 'private_key'
 
+VERSION = '0.0.1'
 
 class MockPoolManager(object):
     def __init__(self, tc):
@@ -65,25 +65,16 @@ class TestFingerprintApi(unittest.TestCase):
     def setUp(self):
         configuration = Configuration(api_key=API_KEY, region="us")
         self.api = FingerprintApi(configuration)  # noqa: E501
-        package_version = TestFingerprintApi.get_package_version()
-        self.integration_info = ('ii', 'fingerprint-pro-server-python-sdk/%s' % package_version)
+        self.integration_info = ('ii', 'fingerprint-pro-server-python-sdk/%s' % VERSION)
         self.request_headers = {
             'Content-Type': 'application/json',
             'Auth-API-Key': 'private_key',
             'Accept': 'application/json',
-            'User-Agent': 'Swagger-Codegen/0.0.1/python'
+            'User-Agent': 'Swagger-Codegen/%s/python' % VERSION
         }
 
     def tearDown(self):
         pass
-
-    @staticmethod
-    def get_package_version():
-        path = './config.json'
-        with io.open(path, 'r', encoding='utf-8') as config_file:
-            config = json.load(config_file)
-            config_file.close()
-        return config['packageVersion']
 
     @staticmethod
     def get_get_visits_method_path(visitor_id, region='us'):
