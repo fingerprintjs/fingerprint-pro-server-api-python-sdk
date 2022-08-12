@@ -15,7 +15,7 @@ import pathlib
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "fingerprint-pro-server-api-sdk"
-VERSION = "0.0.2-beta.6"
+VERSION = "0.0.2-beta.7"
 # To install the library, run the following
 #
 # python setup.py install
