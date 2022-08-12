@@ -21,19 +21,25 @@ VERSION = "0.0.2-beta.4"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+REQUIRES = [
+    "certifi>=2017.4.17",
+    "python-dateutil>=2.1",
+    "six>=1.10",
+    "urllib3>=1.23"
+]
+
 
 setup(
     name=NAME,
     version=VERSION,
     description="Fingerprint Pro Server API",
+    long_description="file: README.md, CHANGELOG.md, LICENSE",
+    license="MIT",
+    package_dir="fingerprint_pro_server_api_sdk",
     author_email="support@fingerprint.com",
     url="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
     keywords=["Swagger", "Fingerprint Pro Server API"],
     install_requires=REQUIRES,
     packages=find_packages(),
-    include_package_data=True,
-    long_description="""\
-    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
-    """
+    include_package_data=True
 )
