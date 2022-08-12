@@ -34,8 +34,8 @@ class IPLocation(object):
         'postal_code': 'str',
         'timezone': 'str',
         'city': 'IPLocationCity',
-        'country': 'object',
-        'continent': 'object',
+        'country': 'Location',
+        'continent': 'Location',
         'subdivisions': 'list[Subdivision]'
     }
 
@@ -216,7 +216,7 @@ class IPLocation(object):
 
 
         :return: The country of this IPLocation.  # noqa: E501
-        :rtype: object
+        :rtype: Location
         """
         return self._country
 
@@ -226,7 +226,7 @@ class IPLocation(object):
 
 
         :param country: The country of this IPLocation.  # noqa: E501
-        :type: object
+        :type: Location
         """
         if country is None:
             raise ValueError("Invalid value for `country`, must not be `None`")  # noqa: E501
@@ -239,7 +239,7 @@ class IPLocation(object):
 
 
         :return: The continent of this IPLocation.  # noqa: E501
-        :rtype: object
+        :rtype: Location
         """
         return self._continent
 
@@ -249,7 +249,7 @@ class IPLocation(object):
 
 
         :param continent: The continent of this IPLocation.  # noqa: E501
-        :type: object
+        :type: Location
         """
         if continent is None:
             raise ValueError("Invalid value for `continent`, must not be `None`")  # noqa: E501

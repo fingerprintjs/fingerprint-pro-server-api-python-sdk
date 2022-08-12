@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **postal_code** | **str** |  | [optional] 
 **timezone** | **str** |  | 
 **city** | [**IPLocationCity**](IPLocationCity.md) |  | [optional] 
-**country** | **object** |  | 
-**continent** | **object** |  | 
+**country** | [**Location**](Location.md) |  | 
+**continent** | [**Location**](Location.md) |  | 
 **subdivisions** | [**list[Subdivision]**](Subdivision.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
