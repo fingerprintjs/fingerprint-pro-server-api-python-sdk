@@ -30,6 +30,9 @@ jobs:
           pip install -r requirements.txt
           pip install python-semantic-release
 
+      - name: Generate code with new version
+        run: ./generate.sh -v $(semantic-release print-version --prerelease)
+
       - name: Python Semantic Release
         uses: relekang/python-semantic-release@master
         with:
