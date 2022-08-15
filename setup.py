@@ -39,7 +39,7 @@ long_description = re.sub("<source[^>]*>\n", '', long_description.replace("<pict
 setup(
     name=NAME,
     version=VERSION,
-    description="Fingerprint Pro Server API",
+    description="Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT",
