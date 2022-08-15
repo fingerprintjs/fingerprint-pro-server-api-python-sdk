@@ -44,6 +44,7 @@ setup(
     long_description_content_type='text/markdown',
     license="MIT",
     license_files=["LICENSE"],
+    author="Fingerprint",
     author_email="support@fingerprint.com",
     url="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
     keywords=["Swagger", "Fingerprint Pro Server API"],
