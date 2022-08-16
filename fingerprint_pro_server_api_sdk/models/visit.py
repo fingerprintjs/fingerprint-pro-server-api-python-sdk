@@ -40,8 +40,8 @@ class Visit(object):
         'linked_id': 'str',
         'confidence': 'Confidence',
         'visitor_found': 'bool',
-        'first_seen_at': 'object',
-        'last_seen_at': 'object'
+        'first_seen_at': 'StSeenAt',
+        'last_seen_at': 'StSeenAt'
     }
 
     attribute_map = {
@@ -390,7 +390,7 @@ class Visit(object):
 
 
         :return: The first_seen_at of this Visit.  # noqa: E501
-        :rtype: object
+        :rtype: StSeenAt
         """
         return self._first_seen_at
 
@@ -400,7 +400,7 @@ class Visit(object):
 
 
         :param first_seen_at: The first_seen_at of this Visit.  # noqa: E501
-        :type: object
+        :type: StSeenAt
         """
         if first_seen_at is None:
             raise ValueError("Invalid value for `first_seen_at`, must not be `None`")  # noqa: E501
@@ -413,7 +413,7 @@ class Visit(object):
 
 
         :return: The last_seen_at of this Visit.  # noqa: E501
-        :rtype: object
+        :rtype: StSeenAt
         """
         return self._last_seen_at
 
@@ -423,7 +423,7 @@ class Visit(object):
 
 
         :param last_seen_at: The last_seen_at of this Visit.  # noqa: E501
-        :type: object
+        :type: StSeenAt
         """
         if last_seen_at is None:
             raise ValueError("Invalid value for `last_seen_at`, must not be `None`")  # noqa: E501

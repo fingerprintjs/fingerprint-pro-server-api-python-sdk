@@ -1,0 +1,40 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    environment: production
+    name: Build and publish
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '11'
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install python-semantic-release
+
+      - name: Generate code with new version
+        run: ./generate.sh -v $(semantic-release print-version)
+
+      - name: Python Semantic Release
+        uses: relekang/python-semantic-release@5f28b835b0dbaaeaf2d80c6caaac3d66d4f7d0b0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository_username: ${{ secrets.PYPI_USERNAME }}
+          repository_password: ${{ secrets.PYPI_PASSWORD }}
