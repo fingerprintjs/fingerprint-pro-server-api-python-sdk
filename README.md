@@ -8,6 +8,15 @@
   </a>
 </p>
 <p align="center">
+  <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/release.yml">
+    <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" />
+  </a>
+  <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/test.yml">
+    <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/test.yml/badge.svg" alt="CI badge" />
+  </a>
+  <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/functional_tests.yml">
+    <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/functional_tests.yml/badge.svg" alt="CI badge" />
+  </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/:license-mit-blue.svg?style=flat"/>
   </a>
