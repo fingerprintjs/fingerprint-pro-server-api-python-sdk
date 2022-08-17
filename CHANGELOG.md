@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.3 (2022-08-17)
+### Fix
+* Sync version in generated code ([`0181453`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/0181453ea61341188c04bcad4bb81d8769bf5664))
+* Update release commit message to not trigger new release ([`9d079ca`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9d079ca4aa0c04b7e77c7f76fe8c3fee673bf9e9))
+
 ## v0.0.2 (2022-08-16)
 ### Documentation
 * Add pypi badge ([`af44bbb`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/af44bbb457f6d56e640b944c28ecd9d14e559f53))
