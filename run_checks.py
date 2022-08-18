@@ -1,8 +1,6 @@
-from __future__ import print_function
 import fingerprint_pro_server_api_sdk
 from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
-from pprint import pprint
 import os
 
 # configure
