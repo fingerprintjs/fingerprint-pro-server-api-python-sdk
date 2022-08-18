@@ -15,11 +15,9 @@ This endpoint allows you to get a history of visits with all available informati
 
 ### Example
 ```python
-from __future__ import print_function
 import fingerprint_pro_server_api_sdk
 from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
-from pprint import pprint
 
 # Configure API key authorization and region
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
@@ -35,7 +33,7 @@ limit = 10  # int | Limit scanned results (optional)
 
 try:
     api_response: Response = api_instance.get_visits(visitor_id, limit=2)
-    pprint(api_response)
+    print(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
 ```
