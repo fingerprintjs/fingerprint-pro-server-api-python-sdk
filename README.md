@@ -46,13 +46,13 @@ Python 2.7 and 3.4+
 ## Installation & Usage
 ### pip install
 
-You can install the package directly from Github
+You can install the package directly from the Github
 
 ```sh
 pip install git+https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk.git
 ```
 
-Or from PyPI
+Or from the PyPI
 
 ```sh
 pip install fingerprint_pro_server_api_sdk
