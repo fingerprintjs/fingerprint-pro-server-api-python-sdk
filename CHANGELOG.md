@@ -2,6 +2,15 @@
 
 <!--next-version-placeholder-->
 
+## v0.0.4 (2022-08-19)
+### Fix
+* Add correct links to documentation from PyPI ([`af8264f`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/af8264f6e9cabc7aa75c1e2b5269045884373600))
+
+### Documentation
+* Improve setup instruction ([`c95f794`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c95f79468050b332313f1bfcf803b249624bf493))
+* Remove extra imports, use print instead of pprint in example ([`9cccd53`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9cccd53a7fcf05d60cdab484a2aaf43c5a83038d))
+* Add keywords ([`93fc3a2`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/93fc3a2c3c993905a6133776e0dca531ff26e683))
+
 ## v0.0.3 (2022-08-17)
 ### Fix
 * Sync version in generated code ([`0181453`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/0181453ea61341188c04bcad4bb81d8769bf5664))
