@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.0 (2022-08-24)
+### Feature
+* Stable release ([`993a34a`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/993a34af407279b75b98d1b72e439e799c072cae))
+
+### Breaking
+* stable release  ([`993a34a`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/993a34af407279b75b98d1b72e439e799c072cae))
+
 ## v0.0.4 (2022-08-19)
 ### Fix
 * Add correct links to documentation from PyPI ([`af8264f`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/af8264f6e9cabc7aa75c1e2b5269045884373600))
