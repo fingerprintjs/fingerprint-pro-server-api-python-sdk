@@ -63,8 +63,6 @@ class StSeenAt(object):
         :param _global: The _global of this StSeenAt.  # noqa: E501
         :type: datetime
         """
-        if _global is None:
-            raise ValueError("Invalid value for `_global`, must not be `None`")  # noqa: E501
 
         self.__global = _global
 
@@ -86,8 +84,6 @@ class StSeenAt(object):
         :param subscription: The subscription of this StSeenAt.  # noqa: E501
         :type: datetime
         """
-        if subscription is None:
-            raise ValueError("Invalid value for `subscription`, must not be `None`")  # noqa: E501
 
         self._subscription = subscription
 
@@ -131,8 +127,11 @@ class StSeenAt(object):
         if not isinstance(other, StSeenAt):
             return False
 
-        return self.__dict__ == other.__dict__
+        return self.to_dict() == other.to_dict()
 
     def __ne__(self, other):
         """Returns true if both objects are not equal"""
-        return not self == other
+        if not isinstance(other, StSeenAt):
+            return True
+
+        return self.to_dict() != other.to_dict()

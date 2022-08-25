@@ -3033,6 +3033,7 @@ components:
       properties:
         global:
           type: string
+          nullable: true
           format: date-time
         subscription:
           type: string
@@ -3113,7 +3114,7 @@ components:
       required:
         - code
         - name
-      title: Continent
+      title: Location
     Subdivision:
       type: object
       additionalProperties: false
