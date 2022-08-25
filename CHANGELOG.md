@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v1.1.0 (2022-08-25)
+### Feature
+* Support nullable types ([`7ac3b07`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/7ac3b07a9622ddeb9e332a793f02f8112bcd3b7f))
+
+### Fix
+* Regenerate schema with nullable types support ([`9c05f3e`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9c05f3e9492c3a1374ef5a950b95420be9600af5))
+
 ## v1.0.0 (2022-08-24)
 ### Feature
 * Stable release ([`993a34a`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/993a34af407279b75b98d1b72e439e799c072cae))
