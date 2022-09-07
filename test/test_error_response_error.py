@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk.models.location import Location  # noqa: E501
+from fingerprint_pro_server_api_sdk.models.error_response_error import ErrorResponseError  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 
-class TestLocation(unittest.TestCase):
-    """Location unit test stubs"""
+class TestErrorResponseError(unittest.TestCase):
+    """ErrorResponseError unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestLocation(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testLocation(self):
-        """Test Location"""
+    def testErrorResponseError(self):
+        """Test ErrorResponseError"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = fingerprint_pro_server_api_sdk.models.location.Location()  # noqa: E501
+        # model = fingerprint_pro_server_api_sdk.models.error_response_error.ErrorResponseError()  # noqa: E501
         pass
 
 

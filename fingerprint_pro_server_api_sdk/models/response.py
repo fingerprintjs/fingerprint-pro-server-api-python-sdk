@@ -29,7 +29,7 @@ class Response(object):
     """
     swagger_types = {
         'visitor_id': 'str',
-        'visits': 'list[Visit]',
+        'visits': 'list[ResponseVisits]',
         'last_timestamp': 'int',
         'pagination_key': 'str'
     }
@@ -84,7 +84,7 @@ class Response(object):
 
 
         :return: The visits of this Response.  # noqa: E501
-        :rtype: list[Visit]
+        :rtype: list[ResponseVisits]
         """
         return self._visits
 
@@ -94,7 +94,7 @@ class Response(object):
 
 
         :param visits: The visits of this Response.  # noqa: E501
-        :type: list[Visit]
+        :type: list[ResponseVisits]
         """
         if visits is None:
             raise ValueError("Invalid value for `visits`, must not be `None`")  # noqa: E501

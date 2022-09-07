@@ -109,17 +109,28 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | 
 
 ## Documentation For Models
 
+ - [BotdDetectionResult](docs/BotdDetectionResult.md)
+ - [BotdResult](docs/BotdResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [Confidence](docs/Confidence.md)
+ - [ErrorResponse](docs/ErrorResponse.md)
+ - [ErrorResponseError](docs/ErrorResponseError.md)
+ - [EventResponse](docs/EventResponse.md)
  - [IPLocation](docs/IPLocation.md)
  - [IPLocationCity](docs/IPLocationCity.md)
  - [Location](docs/Location.md)
  - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
+ - [ProductsResponse](docs/ProductsResponse.md)
+ - [ProductsResponseBotd](docs/ProductsResponseBotd.md)
+ - [ProductsResponseIdentification](docs/ProductsResponseIdentification.md)
+ - [ProductsResponseIdentificationData](docs/ProductsResponseIdentificationData.md)
  - [Response](docs/Response.md)
+ - [ResponseVisits](docs/ResponseVisits.md)
  - [StSeenAt](docs/StSeenAt.md)
  - [Subdivision](docs/Subdivision.md)
  - [Visit](docs/Visit.md)
