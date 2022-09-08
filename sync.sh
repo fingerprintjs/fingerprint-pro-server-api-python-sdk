@@ -6,6 +6,7 @@ examplesList=(
   'visits_limit_1.json'
   'visits_limit_500.json'
   'webhook.json'
+  'get_event.json'
 )
 
 for example in ${examplesList[*]}; do

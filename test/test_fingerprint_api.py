@@ -35,7 +35,7 @@ class MockPoolManager(object):
         self._reqs.append((args, kwargs))
 
     @staticmethod
-    def get_visitor_id_from_path(path):
+    def get_mock_from_path(path):
         return path.split('/')[-1]
 
     def request(self, *args, **kwargs):
@@ -44,7 +44,10 @@ class MockPoolManager(object):
         self._tc.maxDiff = None
         self._tc.assertEqual(r[0], args)
         self._tc.assertEqual(r[1], kwargs)
-        mock_file_by_visitor_id = MockPoolManager.get_visitor_id_from_path(r[0][1])
+
+        # TODO Add support for more complex paths?
+        mock_file_by_visitor_id = MockPoolManager.get_mock_from_path(r[0][1])
+
         if mock_file_by_visitor_id == 'bad_text_data':
             return urllib3.HTTPResponse(status=200, body='really bad data')
         if mock_file_by_visitor_id == 'bad_json_data':
@@ -54,7 +57,8 @@ class MockPoolManager(object):
                 answer_mock = mock_file.read()
                 mock_file.close()
             return urllib3.HTTPResponse(status=200, body=answer_mock)
-        except IOError:
+        except IOError as e:
+            print(e)
             return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_visitor_id)
             pass
 
@@ -85,6 +89,15 @@ class TestFingerprintApi(unittest.TestCase):
         }.get(region, "api.fpjs.io")
         return 'https://%s/visitors/%s' % (domain, visitor_id)
 
+    @staticmethod
+    def get_get_event_method_path(request_id, region='us'):
+        domain = {
+            "us": "api.fpjs.io",
+            "eu": "eu.api.fpjs.io",
+            "ap": "ap.api.fpjs.io",
+        }.get(region, "api.fpjs.io")
+        return 'https://%s/events/%s' % (domain, request_id)
+
     def test_get_visits_correct_data(self):
         """Test checks correct code run result in default scenario"""
         mock_pool = MockPoolManager(self)
@@ -99,6 +112,29 @@ class TestFingerprintApi(unittest.TestCase):
                                  preload_content=True, timeout=None)
         self.api.get_visits(mock_file1)
         self.api.get_visits(mock_file2)
+
+    def test_get_event_correct_data(self):
+        """Test checks correct code run result in default scenario"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file1 = 'get_event.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file1),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        self.api.get_event(mock_file1)
+
+    def test_get_event_empty_data(self):
+        """Test checks correct code running in case of there is no events"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mocked_id = 'empty_answer'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mocked_id),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        response = self.api.get_event(mocked_id)
+        self.assertEqual(response.products, None)
 
     def test_get_visits_empty_answer(self):
         """Test checks correct code running in case of there is no visits"""
