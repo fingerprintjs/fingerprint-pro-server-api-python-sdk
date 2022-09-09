@@ -2980,61 +2980,61 @@ components:
           items:
             type: object
             properties:
-              requestId: &ref_0
+              requestId:
                 description: Unique identifier of the user's identification request.
                 type: string
                 example: 1654815516083.OX6kx8
-              browserDetails: &ref_1
+              browserDetails:
                 $ref: '#/components/schemas/BrowserDetails'
-              incognito: &ref_2
+              incognito:
                 description: Flag if user used incognito session.
                 type: boolean
-              ip: &ref_3
+              ip:
                 type: string
                 format: ipv4
                 example: 8.8.8.8
-              ipLocation: &ref_4
+              ipLocation:
                 $ref: '#/components/schemas/IPLocation'
-              timestamp: &ref_5
+              timestamp:
                 description: >-
                   Timestamp of the event with millisecond precision in Unix
                   time.
                 type: integer
                 format: int64
                 example: 1654815516086
-              time: &ref_6
+              time:
                 description: Time expressed according to ISO 8601 in UTC format.
                 type: string
                 format: date-time
                 example: '2022-06-09T22:58:36Z'
-              url: &ref_7
+              url:
                 description: Page URL from which identification request was sent.
                 type: string
                 format: uri
                 example: https://some.website/path?query=params
-              tag: &ref_8
+              tag:
                 description: >-
                   A customer-provided value or an object that was sent with
                   identification request.
                 type: object
                 additionalProperties: true
-              linkedId: &ref_9
+              linkedId:
                 description: >-
                   A customer-provided id that was sent with identification
                   request.
                 type: string
                 example: someID
-              confidence: &ref_10
+              confidence:
                 $ref: '#/components/schemas/Confidence'
-              visitorFound: &ref_11
+              visitorFound:
                 description: Attribute represents if a visitor had been identified before.
                 type: boolean
-              firstSeenAt: &ref_12
+              firstSeenAt:
                 $ref: '#/components/schemas/StSeenAt'
                 example:
                   global: '2022-05-05T18:28:54.535Z'
                   subscription: '2022-06-09T22:58:05.576Z'
-              lastSeenAt: &ref_13
+              lastSeenAt:
                 $ref: '#/components/schemas/StSeenAt'
                 example:
                   global: '2022-06-09T22:58:35.795Z'
@@ -3106,20 +3106,61 @@ components:
           type: string
         clientReferrer:
           type: string
-        requestId: *ref_0
-        browserDetails: *ref_1
-        incognito: *ref_2
-        ip: *ref_3
-        ipLocation: *ref_4
-        timestamp: *ref_5
-        time: *ref_6
-        url: *ref_7
-        tag: *ref_8
-        linkedId: *ref_9
-        confidence: *ref_10
-        visitorFound: *ref_11
-        firstSeenAt: *ref_12
-        lastSeenAt: *ref_13
+        requestId:
+          description: Unique identifier of the user's identification request.
+          type: string
+          example: 1654815516083.OX6kx8
+        browserDetails:
+          $ref: '#/components/schemas/BrowserDetails'
+        incognito:
+          description: Flag if user used incognito session.
+          type: boolean
+        ip:
+          type: string
+          format: ipv4
+          example: 8.8.8.8
+        ipLocation:
+          $ref: '#/components/schemas/IPLocation'
+        timestamp:
+          description: Timestamp of the event with millisecond precision in Unix time.
+          type: integer
+          format: int64
+          example: 1654815516086
+        time:
+          description: Time expressed according to ISO 8601 in UTC format.
+          type: string
+          format: date-time
+          example: '2022-06-09T22:58:36Z'
+        url:
+          description: Page URL from which identification request was sent.
+          type: string
+          format: uri
+          example: https://some.website/path?query=params
+        tag:
+          description: >-
+            A customer-provided value or an object that was sent with
+            identification request.
+          type: object
+          additionalProperties: true
+        linkedId:
+          description: A customer-provided id that was sent with identification request.
+          type: string
+          example: someID
+        confidence:
+          $ref: '#/components/schemas/Confidence'
+        visitorFound:
+          description: Attribute represents if a visitor had been identified before.
+          type: boolean
+        firstSeenAt:
+          $ref: '#/components/schemas/StSeenAt'
+          example:
+            global: '2022-05-05T18:28:54.535Z'
+            subscription: '2022-06-09T22:58:05.576Z'
+        lastSeenAt:
+          $ref: '#/components/schemas/StSeenAt'
+          example:
+            global: '2022-06-09T22:58:35.795Z'
+            subscription: null
       additionalProperties: false
       required:
         - visitorId
@@ -3139,20 +3180,61 @@ components:
       type: object
       additionalProperties: false
       properties:
-        requestId: *ref_0
-        browserDetails: *ref_1
-        incognito: *ref_2
-        ip: *ref_3
-        ipLocation: *ref_4
-        timestamp: *ref_5
-        time: *ref_6
-        url: *ref_7
-        tag: *ref_8
-        linkedId: *ref_9
-        confidence: *ref_10
-        visitorFound: *ref_11
-        firstSeenAt: *ref_12
-        lastSeenAt: *ref_13
+        requestId:
+          description: Unique identifier of the user's identification request.
+          type: string
+          example: 1654815516083.OX6kx8
+        browserDetails:
+          $ref: '#/components/schemas/BrowserDetails'
+        incognito:
+          description: Flag if user used incognito session.
+          type: boolean
+        ip:
+          type: string
+          format: ipv4
+          example: 8.8.8.8
+        ipLocation:
+          $ref: '#/components/schemas/IPLocation'
+        timestamp:
+          description: Timestamp of the event with millisecond precision in Unix time.
+          type: integer
+          format: int64
+          example: 1654815516086
+        time:
+          description: Time expressed according to ISO 8601 in UTC format.
+          type: string
+          format: date-time
+          example: '2022-06-09T22:58:36Z'
+        url:
+          description: Page URL from which identification request was sent.
+          type: string
+          format: uri
+          example: https://some.website/path?query=params
+        tag:
+          description: >-
+            A customer-provided value or an object that was sent with
+            identification request.
+          type: object
+          additionalProperties: true
+        linkedId:
+          description: A customer-provided id that was sent with identification request.
+          type: string
+          example: someID
+        confidence:
+          $ref: '#/components/schemas/Confidence'
+        visitorFound:
+          description: Attribute represents if a visitor had been identified before.
+          type: boolean
+        firstSeenAt:
+          $ref: '#/components/schemas/StSeenAt'
+          example:
+            global: '2022-05-05T18:28:54.535Z'
+            subscription: '2022-06-09T22:58:05.576Z'
+        lastSeenAt:
+          $ref: '#/components/schemas/StSeenAt'
+          example:
+            global: '2022-06-09T22:58:35.795Z'
+            subscription: null
       required:
         - browserDetails
         - confidence
@@ -3332,20 +3414,67 @@ components:
             data:
               type: object
               properties:
-                requestId: *ref_0
-                browserDetails: *ref_1
-                incognito: *ref_2
-                ip: *ref_3
-                ipLocation: *ref_4
-                timestamp: *ref_5
-                time: *ref_6
-                url: *ref_7
-                tag: *ref_8
-                linkedId: *ref_9
-                confidence: *ref_10
-                visitorFound: *ref_11
-                firstSeenAt: *ref_12
-                lastSeenAt: *ref_13
+                requestId:
+                  description: Unique identifier of the user's identification request.
+                  type: string
+                  example: 1654815516083.OX6kx8
+                browserDetails:
+                  $ref: '#/components/schemas/BrowserDetails'
+                incognito:
+                  description: Flag if user used incognito session.
+                  type: boolean
+                ip:
+                  type: string
+                  format: ipv4
+                  example: 8.8.8.8
+                ipLocation:
+                  $ref: '#/components/schemas/IPLocation'
+                timestamp:
+                  description: >-
+                    Timestamp of the event with millisecond precision in Unix
+                    time.
+                  type: integer
+                  format: int64
+                  example: 1654815516086
+                time:
+                  description: Time expressed according to ISO 8601 in UTC format.
+                  type: string
+                  format: date-time
+                  example: '2022-06-09T22:58:36Z'
+                url:
+                  description: Page URL from which identification request was sent.
+                  type: string
+                  format: uri
+                  example: https://some.website/path?query=params
+                tag:
+                  description: >-
+                    A customer-provided value or an object that was sent with
+                    identification request.
+                  type: object
+                  additionalProperties: true
+                linkedId:
+                  description: >-
+                    A customer-provided id that was sent with identification
+                    request.
+                  type: string
+                  example: someID
+                confidence:
+                  $ref: '#/components/schemas/Confidence'
+                visitorFound:
+                  description: >-
+                    Attribute represents if a visitor had been identified
+                    before.
+                  type: boolean
+                firstSeenAt:
+                  $ref: '#/components/schemas/StSeenAt'
+                  example:
+                    global: '2022-05-05T18:28:54.535Z'
+                    subscription: '2022-06-09T22:58:05.576Z'
+                lastSeenAt:
+                  $ref: '#/components/schemas/StSeenAt'
+                  example:
+                    global: '2022-06-09T22:58:35.795Z'
+                    subscription: null
                 visitorId:
                   type: string
               additionalProperties: false
