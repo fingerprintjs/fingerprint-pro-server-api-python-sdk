@@ -1,9 +1,9 @@
-import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
-from fingerprint_pro_server_api_sdk import EventResponse
-from fingerprint_pro_server_api_sdk.rest import ApiException
-from fingerprint_pro_server_api_sdk import ProductsResponse
 import os
+
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import EventResponse
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
 
 # configure
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key=os.environ["PRIVATE_KEY"], region="us")
@@ -21,7 +21,6 @@ try:
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
     exit(1)
-
 
 try:
     events_response: EventResponse = api_instance.get_event(request_id)
