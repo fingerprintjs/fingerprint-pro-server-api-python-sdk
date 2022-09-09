@@ -29,4 +29,6 @@ except ApiException as e:
     print("Exception when calling DefaultApi->get_event: %s\n" % e)
     exit(1)
 
+print("Checks passed!")
+
 exit(0)
