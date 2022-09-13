@@ -90,6 +90,19 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+```
+
+## Examples
+
+Fetching visits using visitorId:
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
 visitor_id = 'visitor_id_example'  # str |
 #request_id = 'request_id_example'  # str | Filter events by requestId (optional)
 #linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
@@ -101,6 +114,24 @@ try:
     print(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+```
+
+Fetching events for requestId:
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import EventResponse
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+request_id = 'request_id_example'  # str
+
+try:
+    events_response: EventResponse = api_instance.get_event(request_id)
+
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_event: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
