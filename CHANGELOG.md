@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v1.2.0 (2022-09-14)
+### Feature
+* Introduce /event/{request_id} endpoint ([`3e587d0`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/3e587d08b6b02532667c382daf27f05a80a98a4b))
+
+### Documentation
+* **README:** Add examples to readme ([`13256fd`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/13256fd34a1275c9c3a9ca8c01cd5beb1fafa668))
+
 ## v1.1.0 (2022-08-25)
 ### Feature
 * Support nullable types ([`7ac3b07`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/7ac3b07a9622ddeb9e332a793f02f8112bcd3b7f))
