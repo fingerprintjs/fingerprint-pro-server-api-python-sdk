@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**visitor_id** | **str** |  | 
+**client_referrer** | **str** |  | [optional] 
 **request_id** | **str** | Unique identifier of the user&#x27;s identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **incognito** | **bool** | Flag if user used incognito session. | 
@@ -11,7 +13,7 @@ Name | Type | Description | Notes
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which identification request was sent. | 
-**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | 
+**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | [optional] 
 **linked_id** | **str** | A customer-provided id that was sent with identification request. | [optional] 
 **confidence** | [**Confidence**](Confidence.md) |  | 
 **visitor_found** | **bool** | Attribute represents if a visitor had been identified before. | 

@@ -86,7 +86,8 @@ class Visit(object):
         self.timestamp = timestamp
         self.time = time
         self.url = url
-        self.tag = tag
+        if tag is not None:
+            self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
         self.confidence = confidence
@@ -308,8 +309,6 @@ class Visit(object):
         :param tag: The tag of this Visit.  # noqa: E501
         :type: dict(str, object)
         """
-        if tag is None:
-            raise ValueError("Invalid value for `tag`, must not be `None`")  # noqa: E501
 
         self._tag = tag
 

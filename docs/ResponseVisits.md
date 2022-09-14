@@ -1,4 +1,4 @@
-# Visit
+# ResponseVisits
 
 ## Properties
 Name | Type | Description | Notes
@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which identification request was sent. | 
-**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | [optional] 
+**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | 
 **linked_id** | **str** | A customer-provided id that was sent with identification request. | [optional] 
 **confidence** | [**Confidence**](Confidence.md) |  | 
 **visitor_found** | **bool** | Attribute represents if a visitor had been identified before. | 
