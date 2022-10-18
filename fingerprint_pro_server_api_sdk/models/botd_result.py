@@ -30,23 +30,27 @@ class BotdResult(object):
     swagger_types = {
         'ip': 'str',
         'time': 'datetime',
+        'url': 'str',
         'bot': 'BotdDetectionResult'
     }
 
     attribute_map = {
         'ip': 'ip',
         'time': 'time',
+        'url': 'url',
         'bot': 'bot'
     }
 
-    def __init__(self, ip=None, time=None, bot=None):  # noqa: E501
+    def __init__(self, ip=None, time=None, url=None, bot=None):  # noqa: E501
         """BotdResult - a model defined in Swagger"""  # noqa: E501
         self._ip = None
         self._time = None
+        self._url = None
         self._bot = None
         self.discriminator = None
         self.ip = ip
         self.time = time
+        self.url = url
         self.bot = bot
 
     @property
@@ -98,6 +102,31 @@ class BotdResult(object):
             raise ValueError("Invalid value for `time`, must not be `None`")  # noqa: E501
 
         self._time = time
+
+    @property
+    def url(self):
+        """Gets the url of this BotdResult.  # noqa: E501
+
+        Page URL from which identification request was sent.  # noqa: E501
+
+        :return: The url of this BotdResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._url
+
+    @url.setter
+    def url(self, url):
+        """Sets the url of this BotdResult.
+
+        Page URL from which identification request was sent.  # noqa: E501
+
+        :param url: The url of this BotdResult.  # noqa: E501
+        :type: str
+        """
+        if url is None:
+            raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
+
+        self._url = url
 
     @property
     def bot(self):
