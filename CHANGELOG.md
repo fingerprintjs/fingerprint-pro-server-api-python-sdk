@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v1.3.0 (2022-10-25)
+### Feature
+* Update schema to support url field for botd result ([`24bfdf0`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/24bfdf0339bf9965b7e5a31e0871304c87562c7e))
+
+### Fix
+* Restore some parts of api_doc.mustache template from swagger-codegen repository ([`5b6b531`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5b6b531244cebbf00b8f1d8bc580301ed5b7ac01))
+
 ## v1.2.0 (2022-09-14)
 ### Feature
 * Introduce /event/{request_id} endpoint ([`3e587d0`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/3e587d08b6b02532667c382daf27f05a80a98a4b))
