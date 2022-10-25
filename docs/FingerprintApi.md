@@ -41,6 +41,8 @@ except ApiException as e:
 
 ### Parameters
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **request_id** | **str**| Request ID | 
 
 ### Return type
@@ -92,6 +94,8 @@ except ApiException as e:
 
 ### Parameters
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **visitor_id** | **str**|  | 
  **request_id** | **str**| Filter events by requestId | [optional] 
  **linked_id** | **str**| Filter events by custom identifier | [optional] 
