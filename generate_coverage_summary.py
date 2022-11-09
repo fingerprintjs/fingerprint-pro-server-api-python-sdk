@@ -6,7 +6,7 @@ with open('coverage.json', 'r') as f:
 json_summary = {
     'total': {
         'statements': {
-            'pct': json_report['totals']['percent_covered']
+            'pct': round(json_report['totals']['percent_covered'], 2)
         }
     }
 }
