@@ -27,4 +27,4 @@ jobs:
           pip install -r test-requirements.txt        
 
       - name: "Run tests for ${{ matrix.python-version }}"
-        run: "nosetests"
+        run: "pytest"
