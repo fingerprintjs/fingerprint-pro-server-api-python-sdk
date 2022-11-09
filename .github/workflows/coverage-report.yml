@@ -5,6 +5,8 @@ on:
       - main
       - coverage # remove before merge to main
 
+permissions:
+  contents: write
 jobs:
   coverage-report:
     runs-on: ubuntu-latest
