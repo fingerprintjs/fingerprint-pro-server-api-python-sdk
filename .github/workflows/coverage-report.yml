@@ -33,6 +33,10 @@ jobs:
           source: coverage-summary.json
           output: htmlcov/badges.svg
 
+      - name: Debug
+        run: |
+          ls -la htmlcov
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@8817a56e5bfec6e2b08345c81f4d422db53a2cdc
         with:
