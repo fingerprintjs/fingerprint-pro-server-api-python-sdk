@@ -1,5 +1,5 @@
 coverage>=4.0.3
-pytest>=7.2.0
+pytest
 pluggy>=0.3.1
 py>=1.4.31
 randomize>=0.13
