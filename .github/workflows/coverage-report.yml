@@ -23,11 +23,12 @@ jobs:
           coverage run --source=fingerprint_pro_server_api_sdk -m pytest
           coverage html
           coverage json
+          python ./generate_coverage_summary.py
 
       - name: Create Coverage Badges
         uses: jaywcjlove/coverage-badges-cli@e07f25709cd25486855c1ba1b26da53576ff3620
         with:
-          source: coverage.json
+          source: coverage-summary.json
           output: coverage/htmlcov/badges.svg
 
       - name: Deploy 🚀

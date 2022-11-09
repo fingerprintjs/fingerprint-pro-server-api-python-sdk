@@ -43,6 +43,7 @@ htmlcov/
 nosetests.xml
 coverage.xml
 coverage.json
+coverage-summary.json
 *,cover
 .hypothesis/
 venv/
