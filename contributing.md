@@ -24,3 +24,21 @@ Project configuration is described in `config.json` file. To read about availabl
 ```shell
 java -jar ./bin/swagger-codegen-cli.jar config-help -l python
 ```
+
+### Testing
+
+#### Test environment
+
+You need to install `python` and `pip`.
+Then you can run:
+
+```shell
+pip install -r requirements.txt        
+pip install -r test-requirements.txt
+```
+
+#### Running tests
+
+```shell
+pytest
+```

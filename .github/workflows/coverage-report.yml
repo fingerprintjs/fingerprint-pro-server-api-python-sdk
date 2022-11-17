@@ -1,0 +1,41 @@
+name: 'coverage-report'
+on:
+  push:
+    branches:
+      - main
+      - coverage # remove before merge to main
+
+permissions:
+  contents: write
+jobs:
+  coverage-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt        
+          pip install -r test-requirements.txt
+      - name: "Generate coverage"
+        run: |
+          coverage run --source=fingerprint_pro_server_api_sdk -m pytest
+          coverage html
+          coverage json
+          python ./generate_coverage_summary.py
+          rm ./htmlcov/.gitignore
+
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@e07f25709cd25486855c1ba1b26da53576ff3620
+        with:
+          source: coverage-summary.json
+          output: htmlcov/badges.svg
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@8817a56e5bfec6e2b08345c81f4d422db53a2cdc
+        with:
+          branch: gh-pages
+          folder: htmlcov

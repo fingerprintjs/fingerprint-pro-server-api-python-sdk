@@ -11,6 +11,9 @@
   <a href="https://pypi.org/project/fingerprint-pro-server-api-sdk/">
     <img alt="PyPI" src="https://img.shields.io/pypi/v/fingerprint-pro-server-api-sdk">
   </a>
+  <a href="https://fingerprintjs.github.io/fingerprint-pro-server-api-python-sdk/">
+    <img src="https://fingerprintjs.github.io/fingerprint-pro-server-api-python-sdk/badges.svg" alt="coverage">
+  </a>
   <a href="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/release.yml">
     <img src="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/actions/workflows/release.yml/badge.svg" alt="CI badge" />
   </a>

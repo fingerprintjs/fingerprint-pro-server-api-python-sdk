@@ -1,0 +1,28 @@
+name: 'coverage-diff'
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+jobs:
+  coverage-diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt        
+          pip install -r test-requirements.txt
+      - name: "Generate coverage"
+        run: |
+          coverage run --source=fingerprint_pro_server_api_sdk -m pytest
+          coverage xml
+      - name: Get Cover
+        uses: orgoro/coverage@d77626a5fa35d39123e86d6c62907fabe2491496
+        with:
+          coverageFile: ./coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
