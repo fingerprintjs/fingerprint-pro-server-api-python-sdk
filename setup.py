@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -40,7 +40,7 @@ long_description = re.sub(r"(?P<prefix>\[[^]]*]\()(?P<postfix>docs/[^)]*\))", '\
 setup(
     name=NAME,
     version=VERSION,
-    description="Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.",
+    description="Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT",

@@ -5,7 +5,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -21,11 +21,14 @@ from fingerprint_pro_server_api_sdk.api_client import ApiClient
 from fingerprint_pro_server_api_sdk.configuration import Configuration
 # import models into sdk package
 from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
+from fingerprint_pro_server_api_sdk.models.botd_error import BotdError
 from fingerprint_pro_server_api_sdk.models.botd_result import BotdResult
 from fingerprint_pro_server_api_sdk.models.browser_details import BrowserDetails
 from fingerprint_pro_server_api_sdk.models.confidence import Confidence
-from fingerprint_pro_server_api_sdk.models.error_response import ErrorResponse
-from fingerprint_pro_server_api_sdk.models.error_response_error import ErrorResponseError
+from fingerprint_pro_server_api_sdk.models.error_event403_response import ErrorEvent403Response
+from fingerprint_pro_server_api_sdk.models.error_event403_response_error import ErrorEvent403ResponseError
+from fingerprint_pro_server_api_sdk.models.error_event404_response import ErrorEvent404Response
+from fingerprint_pro_server_api_sdk.models.error_event404_response_error import ErrorEvent404ResponseError
 from fingerprint_pro_server_api_sdk.models.event_response import EventResponse
 from fingerprint_pro_server_api_sdk.models.ip_location import IPLocation
 from fingerprint_pro_server_api_sdk.models.ip_location_city import IPLocationCity
@@ -37,7 +40,7 @@ from fingerprint_pro_server_api_sdk.models.products_response_identification impo
 from fingerprint_pro_server_api_sdk.models.products_response_identification_data import ProductsResponseIdentificationData
 from fingerprint_pro_server_api_sdk.models.response import Response
 from fingerprint_pro_server_api_sdk.models.response_visits import ResponseVisits
-from fingerprint_pro_server_api_sdk.models.st_seen_at import StSeenAt
+from fingerprint_pro_server_api_sdk.models.seen_at import SeenAt
 from fingerprint_pro_server_api_sdk.models.subdivision import Subdivision
 from fingerprint_pro_server_api_sdk.models.visit import Visit
 from fingerprint_pro_server_api_sdk.models.webhook_visit import WebhookVisit
