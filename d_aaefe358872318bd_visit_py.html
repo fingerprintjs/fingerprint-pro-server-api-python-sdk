@@ -64,8 +64,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="d_aaefe358872318bd_webhook_visit_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.5.0</a>,
-            created at 2022-11-17 19:09 +0000
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v7.0.5</a>,
+            created at 2023-01-16 13:43 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"/>
@@ -85,7 +85,7 @@
     <p class="run"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t"><span class="str">"""</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t"><span class="str">    Fingerprint Pro Server API</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="str">    Fingerprint Pro Server API provides a way for validating visitors&#8217; data issued by Fingerprint Pro.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="str">    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t"><span class="str">    OpenAPI spec version: 3</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="str">    Contact: support@fingerprint.com</span>&nbsp;</span><span class="r"></span></p>
@@ -122,8 +122,8 @@
     <p class="pln"><span class="n"><a id="t40" href="#t40">40</a></span><span class="t">        <span class="str">'linked_id'</span><span class="op">:</span> <span class="str">'str'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t41" href="#t41">41</a></span><span class="t">        <span class="str">'confidence'</span><span class="op">:</span> <span class="str">'Confidence'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t42" href="#t42">42</a></span><span class="t">        <span class="str">'visitor_found'</span><span class="op">:</span> <span class="str">'bool'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t43" href="#t43">43</a></span><span class="t">        <span class="str">'first_seen_at'</span><span class="op">:</span> <span class="str">'StSeenAt'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t44" href="#t44">44</a></span><span class="t">        <span class="str">'last_seen_at'</span><span class="op">:</span> <span class="str">'StSeenAt'</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t43" href="#t43">43</a></span><span class="t">        <span class="str">'first_seen_at'</span><span class="op">:</span> <span class="str">'SeenAt'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t44" href="#t44">44</a></span><span class="t">        <span class="str">'last_seen_at'</span><span class="op">:</span> <span class="str">'SeenAt'</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t45" href="#t45">45</a></span><span class="t">    <span class="op">}</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t46" href="#t46">46</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t47" href="#t47">47</a></span><span class="t">    <span class="nam">attribute_map</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
@@ -471,7 +471,7 @@
     <p class="pln"><span class="n"><a id="t389" href="#t389">389</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t390" href="#t390">390</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t391" href="#t391">391</a></span><span class="t"><span class="str">        :return: The first_seen_at of this Visit.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t392" href="#t392">392</a></span><span class="t"><span class="str">        :rtype: StSeenAt</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t392" href="#t392">392</a></span><span class="t"><span class="str">        :rtype: SeenAt</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t393" href="#t393">393</a></span><span class="t"><span class="str">        """</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t394" href="#t394">394</a></span><span class="t">        <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_first_seen_at</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t395" href="#t395">395</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
@@ -481,7 +481,7 @@
     <p class="pln"><span class="n"><a id="t399" href="#t399">399</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t400" href="#t400">400</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t401" href="#t401">401</a></span><span class="t"><span class="str">        :param first_seen_at: The first_seen_at of this Visit.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t402" href="#t402">402</a></span><span class="t"><span class="str">        :type: StSeenAt</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t402" href="#t402">402</a></span><span class="t"><span class="str">        :type: SeenAt</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t403" href="#t403">403</a></span><span class="t"><span class="str">        """</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t404" href="#t404">404</a></span><span class="t">        <span class="key">if</span> <span class="nam">first_seen_at</span> <span class="key">is</span> <span class="key">None</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t405" href="#t405">405</a></span><span class="t">            <span class="key">raise</span> <span class="nam">ValueError</span><span class="op">(</span><span class="str">"Invalid value for `first_seen_at`, must not be `None`"</span><span class="op">)</span>  <span class="com"># noqa: E501</span>&nbsp;</span><span class="r"></span></p>
@@ -494,7 +494,7 @@
     <p class="pln"><span class="n"><a id="t412" href="#t412">412</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t413" href="#t413">413</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t414" href="#t414">414</a></span><span class="t"><span class="str">        :return: The last_seen_at of this Visit.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t415" href="#t415">415</a></span><span class="t"><span class="str">        :rtype: StSeenAt</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t415" href="#t415">415</a></span><span class="t"><span class="str">        :rtype: SeenAt</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t416" href="#t416">416</a></span><span class="t"><span class="str">        """</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t417" href="#t417">417</a></span><span class="t">        <span class="key">return</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_last_seen_at</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t418" href="#t418">418</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
@@ -504,7 +504,7 @@
     <p class="pln"><span class="n"><a id="t422" href="#t422">422</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t423" href="#t423">423</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t424" href="#t424">424</a></span><span class="t"><span class="str">        :param last_seen_at: The last_seen_at of this Visit.  # noqa: E501</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t425" href="#t425">425</a></span><span class="t"><span class="str">        :type: StSeenAt</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t425" href="#t425">425</a></span><span class="t"><span class="str">        :type: SeenAt</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t426" href="#t426">426</a></span><span class="t"><span class="str">        """</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t427" href="#t427">427</a></span><span class="t">        <span class="key">if</span> <span class="nam">last_seen_at</span> <span class="key">is</span> <span class="key">None</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t428" href="#t428">428</a></span><span class="t">            <span class="key">raise</span> <span class="nam">ValueError</span><span class="op">(</span><span class="str">"Invalid value for `last_seen_at`, must not be `None`"</span><span class="op">)</span>  <span class="com"># noqa: E501</span>&nbsp;</span><span class="r"></span></p>
@@ -567,8 +567,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="d_aaefe358872318bd_webhook_visit_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.5.0</a>,
-            created at 2022-11-17 19:09 +0000
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v7.0.5</a>,
+            created at 2023-01-16 13:43 +0000
         </p>
     </div>
 </footer>
