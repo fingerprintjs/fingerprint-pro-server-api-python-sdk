@@ -2,6 +2,17 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.0 (2023-01-16)
+### Feature
+* Update schema ([`065f23c`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/065f23cd8afc3f87a9186927942b86a75981c6f8))
+
+### Breaking
+* `StSeenAt` type renamed to `SeenAt` ([`065f23c`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/065f23cd8afc3f87a9186927942b86a75981c6f8))
+
+### Documentation
+* Add coverage badge ([`f8c6236`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/f8c623687b3b41422606b763b81e0f4e98a97bc4))
+* Add instruction how to run tests ([`5eb8115`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5eb81158eba44968d40725d66da2dfa24d54c9cd))
+
 ## v1.3.0 (2022-10-25)
 ### Feature
 * Update schema to support url field for botd result ([`24bfdf0`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/24bfdf0339bf9965b7e5a31e0871304c87562c7e))
