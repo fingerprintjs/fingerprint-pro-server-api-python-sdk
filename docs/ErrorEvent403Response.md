@@ -1,10 +1,9 @@
-# ProductsResponseBotd
+# ErrorEvent403Response
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**BotdResult**](BotdResult.md) |  | [optional] 
-**error** | [**BotdError**](BotdError.md) |  | [optional] 
+**error** | [**ErrorEvent403ResponseError**](ErrorEvent403ResponseError.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

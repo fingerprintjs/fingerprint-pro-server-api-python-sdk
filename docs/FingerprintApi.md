@@ -4,15 +4,15 @@ All URIs are relative to *https://api.fpjs.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
-[**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | 
+[**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by requestId
+[**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
 
 # **get_event**
 > EventResponse get_event(request_id)
 
-Get event by request ID
+Get event by requestId
 
-This endpoint allows you to get events with all the information from each activated product - BOTD and Fingerprinting. Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.
+This endpoint allows you to get events with all the information from each activated product (Fingerprint Pro or Bot Detection). Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.
 
 ### Example
 ```python
@@ -43,7 +43,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_id** | **str**| Request ID | 
+ **request_id** | **str**| requestId is the unique identifier of each request | 
 
 ### Return type
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 # **get_visits**
 > Response get_visits(visitor_id, request_id=request_id, linked_id=linked_id, limit=limit, before=before)
 
-
+Get visits by visitorId
 
 This endpoint allows you to get a history of visits with all available information. Use the visitorId as a URL path parameter. This API method is scoped to a visitor, i.e. all returned information is by visitorId.
 
@@ -97,8 +97,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **visitor_id** | **str**|  | 
- **request_id** | **str**| Filter events by requestId | [optional] 
- **linked_id** | **str**| Filter events by custom identifier | [optional] 
+ **request_id** | **str**| Filter visits by requestId | [optional] 
+ **linked_id** | **str**| Filter visits by custom identifier | [optional] 
  **limit** | **int**| Limit scanned results | [optional] 
  **before** | **int**| Used to paginate results | [optional] 
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

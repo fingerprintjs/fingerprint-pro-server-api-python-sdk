@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -33,16 +33,16 @@ class FingerprintApi(object):
         self.api_client = ApiClient(configuration)
 
     def get_event(self, request_id, **kwargs):  # noqa: E501
-        """Get event by request ID  # noqa: E501
+        """Get event by requestId  # noqa: E501
 
-        This endpoint allows you to get events with all the information from each activated product - BOTD and Fingerprinting. Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.  # noqa: E501
+        This endpoint allows you to get events with all the information from each activated product (Fingerprint Pro or Bot Detection). Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_event(request_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str request_id: Request ID (required)
+        :param str request_id: requestId is the unique identifier of each request (required)
         :return: EventResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -55,16 +55,16 @@ class FingerprintApi(object):
             return data
 
     def get_event_with_http_info(self, request_id, **kwargs):  # noqa: E501
-        """Get event by request ID  # noqa: E501
+        """Get event by requestId  # noqa: E501
 
-        This endpoint allows you to get events with all the information from each activated product - BOTD and Fingerprinting. Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.  # noqa: E501
+        This endpoint allows you to get events with all the information from each activated product (Fingerprint Pro or Bot Detection). Use the requestId as a URL path :request_id parameter. This API method is scoped to a request, i.e. all returned information is by requestId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_event_with_http_info(request_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str request_id: Request ID (required)
+        :param str request_id: requestId is the unique identifier of each request (required)
         :return: EventResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -129,7 +129,7 @@ class FingerprintApi(object):
             collection_formats=collection_formats)
 
     def get_visits(self, visitor_id, **kwargs):  # noqa: E501
-        """get_visits  # noqa: E501
+        """Get visits by visitorId  # noqa: E501
 
         This endpoint allows you to get a history of visits with all available information. Use the visitorId as a URL path parameter. This API method is scoped to a visitor, i.e. all returned information is by visitorId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -139,8 +139,8 @@ class FingerprintApi(object):
 
         :param async_req bool
         :param str visitor_id: (required)
-        :param str request_id: Filter events by requestId
-        :param str linked_id: Filter events by custom identifier
+        :param str request_id: Filter visits by requestId
+        :param str linked_id: Filter visits by custom identifier
         :param int limit: Limit scanned results
         :param int before: Used to paginate results
         :return: Response
@@ -155,7 +155,7 @@ class FingerprintApi(object):
             return data
 
     def get_visits_with_http_info(self, visitor_id, **kwargs):  # noqa: E501
-        """get_visits  # noqa: E501
+        """Get visits by visitorId  # noqa: E501
 
         This endpoint allows you to get a history of visits with all available information. Use the visitorId as a URL path parameter. This API method is scoped to a visitor, i.e. all returned information is by visitorId.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -165,8 +165,8 @@ class FingerprintApi(object):
 
         :param async_req bool
         :param str visitor_id: (required)
-        :param str request_id: Filter events by requestId
-        :param str linked_id: Filter events by custom identifier
+        :param str request_id: Filter visits by requestId
+        :param str linked_id: Filter visits by custom identifier
         :param int limit: Limit scanned results
         :param int before: Used to paginate results
         :return: Response
@@ -219,7 +219,7 @@ class FingerprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'text/html'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501

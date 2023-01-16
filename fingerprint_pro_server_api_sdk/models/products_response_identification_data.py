@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API provides a way for validating visitors’ data issued by Fingerprint Pro.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -40,8 +40,8 @@ class ProductsResponseIdentificationData(object):
         'linked_id': 'str',
         'confidence': 'Confidence',
         'visitor_found': 'bool',
-        'first_seen_at': 'StSeenAt',
-        'last_seen_at': 'StSeenAt',
+        'first_seen_at': 'SeenAt',
+        'last_seen_at': 'SeenAt',
         'visitor_id': 'str'
     }
 
@@ -393,7 +393,7 @@ class ProductsResponseIdentificationData(object):
 
 
         :return: The first_seen_at of this ProductsResponseIdentificationData.  # noqa: E501
-        :rtype: StSeenAt
+        :rtype: SeenAt
         """
         return self._first_seen_at
 
@@ -403,7 +403,7 @@ class ProductsResponseIdentificationData(object):
 
 
         :param first_seen_at: The first_seen_at of this ProductsResponseIdentificationData.  # noqa: E501
-        :type: StSeenAt
+        :type: SeenAt
         """
         if first_seen_at is None:
             raise ValueError("Invalid value for `first_seen_at`, must not be `None`")  # noqa: E501
@@ -416,7 +416,7 @@ class ProductsResponseIdentificationData(object):
 
 
         :return: The last_seen_at of this ProductsResponseIdentificationData.  # noqa: E501
-        :rtype: StSeenAt
+        :rtype: SeenAt
         """
         return self._last_seen_at
 
@@ -426,7 +426,7 @@ class ProductsResponseIdentificationData(object):
 
 
         :param last_seen_at: The last_seen_at of this ProductsResponseIdentificationData.  # noqa: E501
-        :type: StSeenAt
+        :type: SeenAt
         """
         if last_seen_at is None:
             raise ValueError("Invalid value for `last_seen_at`, must not be `None`")  # noqa: E501
