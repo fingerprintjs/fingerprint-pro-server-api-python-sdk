@@ -142,7 +142,7 @@ class FingerprintApi(object):
         :param str request_id: Filter visits by requestId
         :param str linked_id: Filter visits by custom identifier
         :param int limit: Limit scanned results
-        :param int before: Used to paginate results
+        :param int before: Timestamp (in milliseconds since epoch) used to paginate results
         :return: Response
                  If the method is called asynchronously,
                  returns the request thread.
@@ -168,7 +168,7 @@ class FingerprintApi(object):
         :param str request_id: Filter visits by requestId
         :param str linked_id: Filter visits by custom identifier
         :param int limit: Limit scanned results
-        :param int before: Used to paginate results
+        :param int before: Timestamp (in milliseconds since epoch) used to paginate results
         :return: Response
                  If the method is called asynchronously,
                  returns the request thread.
@@ -219,7 +219,7 @@ class FingerprintApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'text/html'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
