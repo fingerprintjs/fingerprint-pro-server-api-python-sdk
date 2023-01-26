@@ -3004,8 +3004,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorVisits403'
               examples:
-                forbidden:
-                  value: '{"error": "Forbidden (HTTP 403)"}'
+                example:
+                  summary: Forbidden
+                  value:
+                    error: Forbidden (HTTP 403)
         '429':
           description: Too Many Requests
           headers:
@@ -3021,12 +3023,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManyRequestsResponse'
-          examples:
-            example:
-              summary: Example too many requests error response
-              value:
-                error:
-                  message: too many requests
+              examples:
+                example:
+                  summary: Example too many requests error response
+                  value:
+                    error: too many requests
   /webhook:
     trace:
       tags:

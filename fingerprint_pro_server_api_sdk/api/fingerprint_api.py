@@ -16,8 +16,10 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
+from fingerprint_pro_server_api_sdk import rest
 
 from fingerprint_pro_server_api_sdk.api_client import ApiClient
+from fingerprint_pro_server_api_sdk.rest import ApiException
 
 
 class FingerprintApi(object):
@@ -112,21 +114,30 @@ class FingerprintApi(object):
         # Authentication setting
         auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
 
-        return self.api_client.call_api(
-            '/events/{request_id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='EventResponse',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        try:
+            return self.api_client.call_api(
+                '/events/{request_id}', 'GET',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type='EventResponse',  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorEvent403Response', True)
+                raise rest.KnownApiException(e, error)
+            if e.status == 404:
+                error = self.api_client.deserialize(e, 'ErrorEvent404Response', True)
+                raise rest.KnownApiException(e, error)
+            raise e
 
     def get_visits(self, visitor_id, **kwargs):  # noqa: E501
         """Get visits by visitorId  # noqa: E501
@@ -224,18 +235,27 @@ class FingerprintApi(object):
         # Authentication setting
         auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
 
-        return self.api_client.call_api(
-            '/visitors/{visitor_id}', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Response',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
+        try:
+            return self.api_client.call_api(
+                '/visitors/{visitor_id}', 'GET',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type='Response',  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorVisits403', True)
+                raise rest.KnownApiException(e, error)
+            if e.status == 429:
+                error = self.api_client.deserialize(e, 'ManyRequestsResponse', True)
+                raise rest.KnownApiException(e, error)
+            raise e
