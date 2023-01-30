@@ -17,14 +17,15 @@ import unittest
 
 import urllib3
 
-import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Configuration
+from fingerprint_pro_server_api_sdk import Configuration, ManyRequestsResponse, ErrorVisits403, ErrorEvent403Response, \
+    ErrorEvent404Response
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
-from fingerprint_pro_server_api_sdk.rest import ApiException
+from fingerprint_pro_server_api_sdk.rest import KnownApiException
 
 API_KEY = 'private_key'
 
 VERSION = '2.0.0'
+
 
 class MockPoolManager(object):
     def __init__(self, tc):
@@ -41,6 +42,10 @@ class MockPoolManager(object):
     def request(self, *args, **kwargs):
         self._tc.assertTrue(len(self._reqs) > 0)
         r = self._reqs.pop(0)
+        status = 200
+        if r[1].get('status') is not None:
+            status = r[1].get('status')
+            r[1].pop('status')
         self._tc.maxDiff = None
         self._tc.assertEqual(r[0], args)
         self._tc.assertEqual(r[1], kwargs)
@@ -56,7 +61,11 @@ class MockPoolManager(object):
             with io.open('./test/mocks/' + mock_file_by_visitor_id, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
                 mock_file.close()
-            return urllib3.HTTPResponse(status=200, body=answer_mock)
+            headers = {}
+            if mock_file_by_visitor_id == 'visits_too_many_requests_error.json':
+                headers.update({'Retry-After': '4'})
+
+            return urllib3.HTTPResponse(status=status, body=answer_mock, headers=headers)
         except IOError as e:
             print(e)
             return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_visitor_id)
@@ -113,6 +122,34 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.get_visits(mock_file1)
         self.api.get_visits(mock_file2)
 
+    def test_get_visits_error_403(self):
+        """Test checks correct code run result in case of 403 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file = 'visits_403_error.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None, status=403)
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_visits(mock_file)
+        self.assertEqual(context.exception.status, 403)
+        structured_error = context.exception.structured_error
+        self.assertIsInstance(context.exception.structured_error, ErrorVisits403)
+
+    def test_get_visits_error_429(self):
+        """Test checks correct code run result in case of 429 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file = 'visits_too_many_requests_error.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None, status=429)
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_visits(mock_file)
+        self.assertEqual(context.exception.status, 429)
+        self.assertIsNotNone(context.exception.headers.get('retry-after'))
+        self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
+
     def test_get_event_correct_data(self):
         """Test checks correct code run result in default scenario"""
         mock_pool = MockPoolManager(self)
@@ -123,6 +160,60 @@ class TestFingerprintApi(unittest.TestCase):
                                  preload_content=True, timeout=None)
 
         self.api.get_event(mock_file1)
+
+    def test_get_event_errors_200(self):
+        """Test checks correct code run result in scenario of arrors in BotD or identification API"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file_botd_fail = 'get_event_botd_failed_error.json'
+        mock_file_botd_429 = 'get_event_botd_too_many_requests_error.json'
+        mock_file_identification_fail = 'get_event_identification_failed_error.json'
+        mock_file_identification_429 = 'get_event_identification_too_many_requests_error.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_fail),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_429),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_get_event_method_path(request_id=mock_file_identification_fail),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_get_event_method_path(request_id=mock_file_identification_429),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        self.api.get_event(mock_file_botd_fail)
+        self.api.get_event(mock_file_botd_429)
+        self.api.get_event(mock_file_identification_fail)
+        self.api.get_event(mock_file_identification_429)
+
+    def test_get_event_error_403(self):
+        """Test checks correct code run result in case of 403 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file = 'get_event_403_error.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None, status=403)
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_event(mock_file)
+        self.assertEqual(context.exception.status, 403)
+        self.assertIsInstance(context.exception.structured_error, ErrorEvent403Response)
+
+    def test_get_event_error_404(self):
+        """Test checks correct code run result in case of 403 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file = 'get_event_404_error.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None, status=404)
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_event(mock_file)
+        self.assertEqual(context.exception.status, 404)
+        self.assertIsInstance(context.exception.structured_error, ErrorEvent404Response)
 
     def test_get_event_empty_data(self):
         """Test checks correct code running in case of there is no events"""
