@@ -16,9 +16,9 @@ import re  # noqa: F401
 
 # python 2 and python 3 compatibility library
 import six
-from fingerprint_pro_server_api_sdk import rest
 
 from fingerprint_pro_server_api_sdk.api_client import ApiClient
+from fingerprint_pro_server_api_sdk.extend_exception import extend_exception
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 
@@ -133,10 +133,10 @@ class FingerprintApi(object):
         except ApiException as e:
             if e.status == 403:
                 error = self.api_client.deserialize(e, 'ErrorEvent403Response', True)
-                raise rest.KnownApiException(e, error)
+                raise extend_exception(e, error)
             if e.status == 404:
                 error = self.api_client.deserialize(e, 'ErrorEvent404Response', True)
-                raise rest.KnownApiException(e, error)
+                raise extend_exception(e, error)
             raise e
 
     def get_visits(self, visitor_id, **kwargs):  # noqa: E501
@@ -254,8 +254,8 @@ class FingerprintApi(object):
         except ApiException as e:
             if e.status == 403:
                 error = self.api_client.deserialize(e, 'ErrorVisits403', True)
-                raise rest.KnownApiException(e, error)
+                raise extend_exception(e, error)
             if e.status == 429:
                 error = self.api_client.deserialize(e, 'ManyRequestsResponse', True)
-                raise rest.KnownApiException(e, error)
+                raise extend_exception(e, error)
             raise e

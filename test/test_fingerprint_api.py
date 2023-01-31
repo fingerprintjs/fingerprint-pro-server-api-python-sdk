@@ -147,8 +147,8 @@ class TestFingerprintApi(unittest.TestCase):
         with self.assertRaises(KnownApiException) as context:
             self.api.get_visits(mock_file)
         self.assertEqual(context.exception.status, 429)
-        self.assertIsNotNone(context.exception.headers.get('retry-after'))
         self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
+        self.assertEqual(context.exception.structured_error.retry_after, 4)
 
     def test_get_event_correct_data(self):
         """Test checks correct code run result in default scenario"""
