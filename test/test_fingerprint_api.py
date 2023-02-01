@@ -150,6 +150,20 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
         self.assertEqual(context.exception.structured_error.retry_after, 4)
 
+    def test_get_visits_error_429_empty_retry_after(self):
+        """Test checks correct code run result in case of 429 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_file = 'visits_too_many_requests_error_empty_header.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None, status=429)
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_visits(mock_file)
+        self.assertEqual(context.exception.status, 429)
+        self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
+        self.assertEqual(context.exception.structured_error.retry_after, 1)
+
     def test_get_event_correct_data(self):
         """Test checks correct code run result in default scenario"""
         mock_pool = MockPoolManager(self)

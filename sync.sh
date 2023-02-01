@@ -21,4 +21,6 @@ for example in ${examplesList[*]}; do
   curl -o ./test/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/"$example"
 done
 
+cp ./test/mocks/visits_too_many_requests_error.json ./test/mocks/visits_too_many_requests_error_empty_header.json
+
 ./generate.sh
