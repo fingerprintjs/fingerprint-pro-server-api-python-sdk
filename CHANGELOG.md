@@ -2,6 +2,18 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.0 (2023-02-03)
+### Feature
+* Improve error reporting by adding `KnownApiException` class ([`f60625a`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/f60625a209525a3591b4e2f1f52c38550f6a303e))
+
+### Fix
+* Set `retry_after` to `1` in case of missed header ([`1d5b5b9`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/1d5b5b9ba91b0cf265f31130bc246275abf97f20))
+* Add `retry_after` value from header to `ManyRequestsResponse` error ([`25dc803`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/25dc8035626b9dff388cd94b74ecc8fc4f4782a3))
+* Update schema ([`c9be3d3`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c9be3d36266e065fa606591fef6c6357f14e8556))
+
+### Documentation
+* Extend example with new error reporting ([`d78d12b`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/d78d12bbe44116c75d1deb802cc386fd12b993eb))
+
 ## v2.0.0 (2023-01-16)
 ### Feature
 * Update schema ([`065f23c`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/065f23cd8afc3f87a9186927942b86a75981c6f8))
