@@ -1,10 +1,9 @@
-# ProductsResponseIdentification
+# ErrorVisits403
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ProductsResponseIdentificationData**](ProductsResponseIdentificationData.md) |  | [optional] 
-**error** | [**IdentificationError**](IdentificationError.md) |  | [optional] 
+**error** | **str** | Error text. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

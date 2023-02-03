@@ -92,8 +92,6 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 import {{packageName}}
-from {{packageName}} import Response
-from {{packageName}}.rest import ApiException
 
 # Configure API key authorization and region
 configuration = {{packageName}}.Configuration(api_key="SECRET_API_KEY")
@@ -109,7 +107,7 @@ Fetching visits using visitorId:
 ```python
 import {{packageName}}
 from {{packageName}} import Response
-from {{packageName}}.rest import ApiException
+from {{packageName}}.rest import ApiException, KnownApiException
 
 configuration = {{packageName}}.Configuration(api_key="SECRET_API_KEY")
 api_instance = {{packageName}}.FingerprintApi(configuration)
@@ -123,6 +121,9 @@ limit = 10  # int | Limit scanned results (optional)
 try:
     api_response: Response = api_instance.get_visits(visitor_id, limit=2)
     print(api_response)
+except KnownApiException as e:
+    structured_error = e.structured_error
+    print("Error: %s\n" % structured_error.error)
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
 ```
@@ -131,7 +132,7 @@ Fetching events for requestId:
 ```python
 import {{packageName}}
 from {{packageName}} import EventResponse
-from {{packageName}}.rest import ApiException
+from {{packageName}}.rest import ApiException, KnownApiException
 
 configuration = {{packageName}}.Configuration(api_key="SECRET_API_KEY")
 api_instance = {{packageName}}.FingerprintApi(configuration)
@@ -141,6 +142,9 @@ request_id = 'request_id_example'  # str
 try:
     events_response: EventResponse = api_instance.get_event(request_id)
 
+except KnownApiException as e:
+    structured_error = e.structured_error
+    print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
 except ApiException as e:
     print("Exception when calling DefaultApi->get_event: %s\n" % e)
 ```
