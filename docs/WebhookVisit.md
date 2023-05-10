@@ -5,9 +5,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **visitor_id** | **str** |  | 
 **client_referrer** | **str** |  | [optional] 
+**user_agent** | **str** |  | [optional] 
+**bot** | [**BotdDetectionResult**](BotdDetectionResult.md) |  | [optional] 
+**ip_info** | [**IpInfoResult**](IpInfoResult.md) |  | [optional] 
+**incognito** | **bool** | Flag if user used incognito session. | 
+**root_apps** | [**WebhookSignalResponseRootApps**](WebhookSignalResponseRootApps.md) |  | [optional] 
+**emulator** | [**WebhookSignalResponseEmulator**](WebhookSignalResponseEmulator.md) |  | [optional] 
+**ip_blocklist** | [**IpBlockListResult**](IpBlockListResult.md) |  | [optional] 
+**tor** | [**WebhookSignalResponseTor**](WebhookSignalResponseTor.md) |  | [optional] 
+**vpn** | [**VpnResult**](VpnResult.md) |  | [optional] 
+**proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  | [optional] 
+**tampering** | [**TamperingResult**](TamperingResult.md) |  | [optional] 
 **request_id** | **str** | Unique identifier of the user&#x27;s identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
-**incognito** | **bool** | Flag if user used incognito session. | 
 **ip** | **str** |  | 
 **ip_location** | [**IPLocation**](IPLocation.md) |  | 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 

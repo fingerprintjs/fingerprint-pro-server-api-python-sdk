@@ -5,6 +5,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identification** | [**ProductsResponseIdentification**](ProductsResponseIdentification.md) |  | [optional] 
 **botd** | [**ProductsResponseBotd**](ProductsResponseBotd.md) |  | [optional] 
+**ip_info** | [**SignalResponseIpInfo**](SignalResponseIpInfo.md) |  | [optional] 
+**incognito** | [**SignalResponseIncognito**](SignalResponseIncognito.md) |  | [optional] 
+**root_apps** | [**SignalResponseRootApps**](SignalResponseRootApps.md) |  | [optional] 
+**emulator** | [**SignalResponseEmulator**](SignalResponseEmulator.md) |  | [optional] 
+**ip_blocklist** | [**SignalResponseIpBlocklist**](SignalResponseIpBlocklist.md) |  | [optional] 
+**tor** | [**SignalResponseTor**](SignalResponseTor.md) |  | [optional] 
+**vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  | [optional] 
+**proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  | [optional] 
+**tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

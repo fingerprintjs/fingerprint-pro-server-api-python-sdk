@@ -30,9 +30,19 @@ class WebhookVisit(object):
     swagger_types = {
         'visitor_id': 'str',
         'client_referrer': 'str',
+        'user_agent': 'str',
+        'bot': 'BotdDetectionResult',
+        'ip_info': 'IpInfoResult',
+        'incognito': 'bool',
+        'root_apps': 'WebhookSignalResponseRootApps',
+        'emulator': 'WebhookSignalResponseEmulator',
+        'ip_blocklist': 'IpBlockListResult',
+        'tor': 'WebhookSignalResponseTor',
+        'vpn': 'VpnResult',
+        'proxy': 'WebhookSignalResponseProxy',
+        'tampering': 'TamperingResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
-        'incognito': 'bool',
         'ip': 'str',
         'ip_location': 'IPLocation',
         'timestamp': 'int',
@@ -49,9 +59,19 @@ class WebhookVisit(object):
     attribute_map = {
         'visitor_id': 'visitorId',
         'client_referrer': 'clientReferrer',
+        'user_agent': 'userAgent',
+        'bot': 'bot',
+        'ip_info': 'ipInfo',
+        'incognito': 'incognito',
+        'root_apps': 'rootApps',
+        'emulator': 'emulator',
+        'ip_blocklist': 'ipBlocklist',
+        'tor': 'tor',
+        'vpn': 'vpn',
+        'proxy': 'proxy',
+        'tampering': 'tampering',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
-        'incognito': 'incognito',
         'ip': 'ip',
         'ip_location': 'ipLocation',
         'timestamp': 'timestamp',
@@ -65,13 +85,23 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
+        self._user_agent = None
+        self._bot = None
+        self._ip_info = None
+        self._incognito = None
+        self._root_apps = None
+        self._emulator = None
+        self._ip_blocklist = None
+        self._tor = None
+        self._vpn = None
+        self._proxy = None
+        self._tampering = None
         self._request_id = None
         self._browser_details = None
-        self._incognito = None
         self._ip = None
         self._ip_location = None
         self._timestamp = None
@@ -87,9 +117,29 @@ class WebhookVisit(object):
         self.visitor_id = visitor_id
         if client_referrer is not None:
             self.client_referrer = client_referrer
+        if user_agent is not None:
+            self.user_agent = user_agent
+        if bot is not None:
+            self.bot = bot
+        if ip_info is not None:
+            self.ip_info = ip_info
+        self.incognito = incognito
+        if root_apps is not None:
+            self.root_apps = root_apps
+        if emulator is not None:
+            self.emulator = emulator
+        if ip_blocklist is not None:
+            self.ip_blocklist = ip_blocklist
+        if tor is not None:
+            self.tor = tor
+        if vpn is not None:
+            self.vpn = vpn
+        if proxy is not None:
+            self.proxy = proxy
+        if tampering is not None:
+            self.tampering = tampering
         self.request_id = request_id
         self.browser_details = browser_details
-        self.incognito = incognito
         self.ip = ip
         self.ip_location = ip_location
         self.timestamp = timestamp
@@ -149,6 +199,241 @@ class WebhookVisit(object):
         self._client_referrer = client_referrer
 
     @property
+    def user_agent(self):
+        """Gets the user_agent of this WebhookVisit.  # noqa: E501
+
+
+        :return: The user_agent of this WebhookVisit.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_agent
+
+    @user_agent.setter
+    def user_agent(self, user_agent):
+        """Sets the user_agent of this WebhookVisit.
+
+
+        :param user_agent: The user_agent of this WebhookVisit.  # noqa: E501
+        :type: str
+        """
+
+        self._user_agent = user_agent
+
+    @property
+    def bot(self):
+        """Gets the bot of this WebhookVisit.  # noqa: E501
+
+
+        :return: The bot of this WebhookVisit.  # noqa: E501
+        :rtype: BotdDetectionResult
+        """
+        return self._bot
+
+    @bot.setter
+    def bot(self, bot):
+        """Sets the bot of this WebhookVisit.
+
+
+        :param bot: The bot of this WebhookVisit.  # noqa: E501
+        :type: BotdDetectionResult
+        """
+
+        self._bot = bot
+
+    @property
+    def ip_info(self):
+        """Gets the ip_info of this WebhookVisit.  # noqa: E501
+
+
+        :return: The ip_info of this WebhookVisit.  # noqa: E501
+        :rtype: IpInfoResult
+        """
+        return self._ip_info
+
+    @ip_info.setter
+    def ip_info(self, ip_info):
+        """Sets the ip_info of this WebhookVisit.
+
+
+        :param ip_info: The ip_info of this WebhookVisit.  # noqa: E501
+        :type: IpInfoResult
+        """
+
+        self._ip_info = ip_info
+
+    @property
+    def incognito(self):
+        """Gets the incognito of this WebhookVisit.  # noqa: E501
+
+        Flag if user used incognito session.  # noqa: E501
+
+        :return: The incognito of this WebhookVisit.  # noqa: E501
+        :rtype: bool
+        """
+        return self._incognito
+
+    @incognito.setter
+    def incognito(self, incognito):
+        """Sets the incognito of this WebhookVisit.
+
+        Flag if user used incognito session.  # noqa: E501
+
+        :param incognito: The incognito of this WebhookVisit.  # noqa: E501
+        :type: bool
+        """
+        if incognito is None:
+            raise ValueError("Invalid value for `incognito`, must not be `None`")  # noqa: E501
+
+        self._incognito = incognito
+
+    @property
+    def root_apps(self):
+        """Gets the root_apps of this WebhookVisit.  # noqa: E501
+
+
+        :return: The root_apps of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseRootApps
+        """
+        return self._root_apps
+
+    @root_apps.setter
+    def root_apps(self, root_apps):
+        """Sets the root_apps of this WebhookVisit.
+
+
+        :param root_apps: The root_apps of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseRootApps
+        """
+
+        self._root_apps = root_apps
+
+    @property
+    def emulator(self):
+        """Gets the emulator of this WebhookVisit.  # noqa: E501
+
+
+        :return: The emulator of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseEmulator
+        """
+        return self._emulator
+
+    @emulator.setter
+    def emulator(self, emulator):
+        """Sets the emulator of this WebhookVisit.
+
+
+        :param emulator: The emulator of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseEmulator
+        """
+
+        self._emulator = emulator
+
+    @property
+    def ip_blocklist(self):
+        """Gets the ip_blocklist of this WebhookVisit.  # noqa: E501
+
+
+        :return: The ip_blocklist of this WebhookVisit.  # noqa: E501
+        :rtype: IpBlockListResult
+        """
+        return self._ip_blocklist
+
+    @ip_blocklist.setter
+    def ip_blocklist(self, ip_blocklist):
+        """Sets the ip_blocklist of this WebhookVisit.
+
+
+        :param ip_blocklist: The ip_blocklist of this WebhookVisit.  # noqa: E501
+        :type: IpBlockListResult
+        """
+
+        self._ip_blocklist = ip_blocklist
+
+    @property
+    def tor(self):
+        """Gets the tor of this WebhookVisit.  # noqa: E501
+
+
+        :return: The tor of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseTor
+        """
+        return self._tor
+
+    @tor.setter
+    def tor(self, tor):
+        """Sets the tor of this WebhookVisit.
+
+
+        :param tor: The tor of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseTor
+        """
+
+        self._tor = tor
+
+    @property
+    def vpn(self):
+        """Gets the vpn of this WebhookVisit.  # noqa: E501
+
+
+        :return: The vpn of this WebhookVisit.  # noqa: E501
+        :rtype: VpnResult
+        """
+        return self._vpn
+
+    @vpn.setter
+    def vpn(self, vpn):
+        """Sets the vpn of this WebhookVisit.
+
+
+        :param vpn: The vpn of this WebhookVisit.  # noqa: E501
+        :type: VpnResult
+        """
+
+        self._vpn = vpn
+
+    @property
+    def proxy(self):
+        """Gets the proxy of this WebhookVisit.  # noqa: E501
+
+
+        :return: The proxy of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseProxy
+        """
+        return self._proxy
+
+    @proxy.setter
+    def proxy(self, proxy):
+        """Sets the proxy of this WebhookVisit.
+
+
+        :param proxy: The proxy of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseProxy
+        """
+
+        self._proxy = proxy
+
+    @property
+    def tampering(self):
+        """Gets the tampering of this WebhookVisit.  # noqa: E501
+
+
+        :return: The tampering of this WebhookVisit.  # noqa: E501
+        :rtype: TamperingResult
+        """
+        return self._tampering
+
+    @tampering.setter
+    def tampering(self, tampering):
+        """Sets the tampering of this WebhookVisit.
+
+
+        :param tampering: The tampering of this WebhookVisit.  # noqa: E501
+        :type: TamperingResult
+        """
+
+        self._tampering = tampering
+
+    @property
     def request_id(self):
         """Gets the request_id of this WebhookVisit.  # noqa: E501
 
@@ -195,31 +480,6 @@ class WebhookVisit(object):
             raise ValueError("Invalid value for `browser_details`, must not be `None`")  # noqa: E501
 
         self._browser_details = browser_details
-
-    @property
-    def incognito(self):
-        """Gets the incognito of this WebhookVisit.  # noqa: E501
-
-        Flag if user used incognito session.  # noqa: E501
-
-        :return: The incognito of this WebhookVisit.  # noqa: E501
-        :rtype: bool
-        """
-        return self._incognito
-
-    @incognito.setter
-    def incognito(self, incognito):
-        """Sets the incognito of this WebhookVisit.
-
-        Flag if user used incognito session.  # noqa: E501
-
-        :param incognito: The incognito of this WebhookVisit.  # noqa: E501
-        :type: bool
-        """
-        if incognito is None:
-            raise ValueError("Invalid value for `incognito`, must not be `None`")  # noqa: E501
-
-        self._incognito = incognito
 
     @property
     def ip(self):

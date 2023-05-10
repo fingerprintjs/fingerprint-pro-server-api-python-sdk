@@ -29,23 +29,68 @@ class ProductsResponse(object):
     """
     swagger_types = {
         'identification': 'ProductsResponseIdentification',
-        'botd': 'ProductsResponseBotd'
+        'botd': 'ProductsResponseBotd',
+        'ip_info': 'SignalResponseIpInfo',
+        'incognito': 'SignalResponseIncognito',
+        'root_apps': 'SignalResponseRootApps',
+        'emulator': 'SignalResponseEmulator',
+        'ip_blocklist': 'SignalResponseIpBlocklist',
+        'tor': 'SignalResponseTor',
+        'vpn': 'SignalResponseVpn',
+        'proxy': 'SignalResponseProxy',
+        'tampering': 'SignalResponseTampering'
     }
 
     attribute_map = {
         'identification': 'identification',
-        'botd': 'botd'
+        'botd': 'botd',
+        'ip_info': 'ipInfo',
+        'incognito': 'incognito',
+        'root_apps': 'rootApps',
+        'emulator': 'emulator',
+        'ip_blocklist': 'ipBlocklist',
+        'tor': 'tor',
+        'vpn': 'vpn',
+        'proxy': 'proxy',
+        'tampering': 'tampering'
     }
 
-    def __init__(self, identification=None, botd=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
+        self._ip_info = None
+        self._incognito = None
+        self._root_apps = None
+        self._emulator = None
+        self._ip_blocklist = None
+        self._tor = None
+        self._vpn = None
+        self._proxy = None
+        self._tampering = None
         self.discriminator = None
         if identification is not None:
             self.identification = identification
         if botd is not None:
             self.botd = botd
+        if ip_info is not None:
+            self.ip_info = ip_info
+        if incognito is not None:
+            self.incognito = incognito
+        if root_apps is not None:
+            self.root_apps = root_apps
+        if emulator is not None:
+            self.emulator = emulator
+        if ip_blocklist is not None:
+            self.ip_blocklist = ip_blocklist
+        if tor is not None:
+            self.tor = tor
+        if vpn is not None:
+            self.vpn = vpn
+        if proxy is not None:
+            self.proxy = proxy
+        if tampering is not None:
+            self.tampering = tampering
 
     @property
     def identification(self):
@@ -88,6 +133,195 @@ class ProductsResponse(object):
         """
 
         self._botd = botd
+
+    @property
+    def ip_info(self):
+        """Gets the ip_info of this ProductsResponse.  # noqa: E501
+
+
+        :return: The ip_info of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseIpInfo
+        """
+        return self._ip_info
+
+    @ip_info.setter
+    def ip_info(self, ip_info):
+        """Sets the ip_info of this ProductsResponse.
+
+
+        :param ip_info: The ip_info of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseIpInfo
+        """
+
+        self._ip_info = ip_info
+
+    @property
+    def incognito(self):
+        """Gets the incognito of this ProductsResponse.  # noqa: E501
+
+
+        :return: The incognito of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseIncognito
+        """
+        return self._incognito
+
+    @incognito.setter
+    def incognito(self, incognito):
+        """Sets the incognito of this ProductsResponse.
+
+
+        :param incognito: The incognito of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseIncognito
+        """
+
+        self._incognito = incognito
+
+    @property
+    def root_apps(self):
+        """Gets the root_apps of this ProductsResponse.  # noqa: E501
+
+
+        :return: The root_apps of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseRootApps
+        """
+        return self._root_apps
+
+    @root_apps.setter
+    def root_apps(self, root_apps):
+        """Sets the root_apps of this ProductsResponse.
+
+
+        :param root_apps: The root_apps of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseRootApps
+        """
+
+        self._root_apps = root_apps
+
+    @property
+    def emulator(self):
+        """Gets the emulator of this ProductsResponse.  # noqa: E501
+
+
+        :return: The emulator of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseEmulator
+        """
+        return self._emulator
+
+    @emulator.setter
+    def emulator(self, emulator):
+        """Sets the emulator of this ProductsResponse.
+
+
+        :param emulator: The emulator of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseEmulator
+        """
+
+        self._emulator = emulator
+
+    @property
+    def ip_blocklist(self):
+        """Gets the ip_blocklist of this ProductsResponse.  # noqa: E501
+
+
+        :return: The ip_blocklist of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseIpBlocklist
+        """
+        return self._ip_blocklist
+
+    @ip_blocklist.setter
+    def ip_blocklist(self, ip_blocklist):
+        """Sets the ip_blocklist of this ProductsResponse.
+
+
+        :param ip_blocklist: The ip_blocklist of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseIpBlocklist
+        """
+
+        self._ip_blocklist = ip_blocklist
+
+    @property
+    def tor(self):
+        """Gets the tor of this ProductsResponse.  # noqa: E501
+
+
+        :return: The tor of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseTor
+        """
+        return self._tor
+
+    @tor.setter
+    def tor(self, tor):
+        """Sets the tor of this ProductsResponse.
+
+
+        :param tor: The tor of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseTor
+        """
+
+        self._tor = tor
+
+    @property
+    def vpn(self):
+        """Gets the vpn of this ProductsResponse.  # noqa: E501
+
+
+        :return: The vpn of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseVpn
+        """
+        return self._vpn
+
+    @vpn.setter
+    def vpn(self, vpn):
+        """Sets the vpn of this ProductsResponse.
+
+
+        :param vpn: The vpn of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseVpn
+        """
+
+        self._vpn = vpn
+
+    @property
+    def proxy(self):
+        """Gets the proxy of this ProductsResponse.  # noqa: E501
+
+
+        :return: The proxy of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseProxy
+        """
+        return self._proxy
+
+    @proxy.setter
+    def proxy(self, proxy):
+        """Sets the proxy of this ProductsResponse.
+
+
+        :param proxy: The proxy of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseProxy
+        """
+
+        self._proxy = proxy
+
+    @property
+    def tampering(self):
+        """Gets the tampering of this ProductsResponse.  # noqa: E501
+
+
+        :return: The tampering of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseTampering
+        """
+        return self._tampering
+
+    @tampering.setter
+    def tampering(self, tampering):
+        """Sets the tampering of this ProductsResponse.
+
+
+        :param tampering: The tampering of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseTampering
+        """
+
+        self._tampering = tampering
 
     def to_dict(self):
         """Returns the model properties as a dict"""
