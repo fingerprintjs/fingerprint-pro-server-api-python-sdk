@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.0 (2023-05-16)
+### Feature
+* Introduce additional signals ([`4e5fc79`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4e5fc79eebc0d67bd5b451636e60c461f08dd7ee))
+
 ## v2.1.0 (2023-02-03)
 ### Feature
 * Improve error reporting by adding `KnownApiException` class ([`f60625a`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/f60625a209525a3591b4e2f1f52c38550f6a303e))
