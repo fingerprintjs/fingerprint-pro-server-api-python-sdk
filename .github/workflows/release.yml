@@ -33,7 +33,7 @@ jobs:
         run: ./generate.sh -v $(semantic-release print-version)
 
       - name: Python Semantic Release
-        uses: relekang/python-semantic-release@5f28b835b0dbaaeaf2d80c6caaac3d66d4f7d0b0
+        uses: relekang/python-semantic-release@0b424c7823c4f2dfc3fec8bf2f22c23e52021196
         with:
           github_token: ${{ secrets.GH_RELEASE_TOKEN }}
           repository_username: ${{ secrets.PYPI_USERNAME }}
