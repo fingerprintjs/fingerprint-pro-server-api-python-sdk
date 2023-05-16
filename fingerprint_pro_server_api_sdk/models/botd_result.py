@@ -31,6 +31,8 @@ class BotdResult(object):
         'ip': 'str',
         'time': 'datetime',
         'url': 'str',
+        'user_agent': 'str',
+        'request_id': 'str',
         'bot': 'BotdDetectionResult'
     }
 
@@ -38,19 +40,27 @@ class BotdResult(object):
         'ip': 'ip',
         'time': 'time',
         'url': 'url',
+        'user_agent': 'userAgent',
+        'request_id': 'requestId',
         'bot': 'bot'
     }
 
-    def __init__(self, ip=None, time=None, url=None, bot=None):  # noqa: E501
+    def __init__(self, ip=None, time=None, url=None, user_agent=None, request_id=None, bot=None):  # noqa: E501
         """BotdResult - a model defined in Swagger"""  # noqa: E501
         self._ip = None
         self._time = None
         self._url = None
+        self._user_agent = None
+        self._request_id = None
         self._bot = None
         self.discriminator = None
         self.ip = ip
         self.time = time
         self.url = url
+        if user_agent is not None:
+            self.user_agent = user_agent
+        if request_id is not None:
+            self.request_id = request_id
         self.bot = bot
 
     @property
@@ -127,6 +137,48 @@ class BotdResult(object):
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
 
         self._url = url
+
+    @property
+    def user_agent(self):
+        """Gets the user_agent of this BotdResult.  # noqa: E501
+
+
+        :return: The user_agent of this BotdResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._user_agent
+
+    @user_agent.setter
+    def user_agent(self, user_agent):
+        """Sets the user_agent of this BotdResult.
+
+
+        :param user_agent: The user_agent of this BotdResult.  # noqa: E501
+        :type: str
+        """
+
+        self._user_agent = user_agent
+
+    @property
+    def request_id(self):
+        """Gets the request_id of this BotdResult.  # noqa: E501
+
+
+        :return: The request_id of this BotdResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._request_id
+
+    @request_id.setter
+    def request_id(self, request_id):
+        """Sets the request_id of this BotdResult.
+
+
+        :param request_id: The request_id of this BotdResult.  # noqa: E501
+        :type: str
+        """
+
+        self._request_id = request_id
 
     @property
     def bot(self):

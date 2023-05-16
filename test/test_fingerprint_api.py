@@ -113,10 +113,18 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file1 = 'visits_limit_1.json'
         mock_file2 = 'visits_limit_500.json'
+        mock_file3 = 'visits_limit_500.json'
+        mock_file4 = 'visits_limit_500.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file1),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file2),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file3),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file4),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
         self.api.get_visits(mock_file1)
