@@ -16,10 +16,10 @@ Name | Type | Description | Notes
 **vpn** | [**VpnResult**](VpnResult.md) |  | [optional] 
 **proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  | [optional] 
 **tampering** | [**TamperingResult**](TamperingResult.md) |  | [optional] 
-**request_id** | **str** | Unique identifier of the user&#x27;s identification request. | 
+**request_id** | **str** | Unique identifier of the user's identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **ip** | **str** |  | 
-**ip_location** | [**IPLocation**](IPLocation.md) |  | 
+**ip_location** | [**IPLocation**](IPLocation.md) |  | [optional] 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which identification request was sent. | 
