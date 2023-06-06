@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device.   # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -63,16 +63,22 @@ class IPLocation(object):
         self._continent = None
         self._subdivisions = None
         self.discriminator = None
-        self.accuracy_radius = accuracy_radius
-        self.latitude = latitude
-        self.longitude = longitude
+        if accuracy_radius is not None:
+            self.accuracy_radius = accuracy_radius
+        if latitude is not None:
+            self.latitude = latitude
+        if longitude is not None:
+            self.longitude = longitude
         if postal_code is not None:
             self.postal_code = postal_code
-        self.timezone = timezone
+        if timezone is not None:
+            self.timezone = timezone
         if city is not None:
             self.city = city
-        self.country = country
-        self.continent = continent
+        if country is not None:
+            self.country = country
+        if continent is not None:
+            self.continent = continent
         if subdivisions is not None:
             self.subdivisions = subdivisions
 
@@ -94,8 +100,6 @@ class IPLocation(object):
         :param accuracy_radius: The accuracy_radius of this IPLocation.  # noqa: E501
         :type: int
         """
-        if accuracy_radius is None:
-            raise ValueError("Invalid value for `accuracy_radius`, must not be `None`")  # noqa: E501
 
         self._accuracy_radius = accuracy_radius
 
@@ -117,8 +121,6 @@ class IPLocation(object):
         :param latitude: The latitude of this IPLocation.  # noqa: E501
         :type: float
         """
-        if latitude is None:
-            raise ValueError("Invalid value for `latitude`, must not be `None`")  # noqa: E501
 
         self._latitude = latitude
 
@@ -140,8 +142,6 @@ class IPLocation(object):
         :param longitude: The longitude of this IPLocation.  # noqa: E501
         :type: float
         """
-        if longitude is None:
-            raise ValueError("Invalid value for `longitude`, must not be `None`")  # noqa: E501
 
         self._longitude = longitude
 
@@ -184,8 +184,6 @@ class IPLocation(object):
         :param timezone: The timezone of this IPLocation.  # noqa: E501
         :type: str
         """
-        if timezone is None:
-            raise ValueError("Invalid value for `timezone`, must not be `None`")  # noqa: E501
 
         self._timezone = timezone
 
@@ -228,8 +226,6 @@ class IPLocation(object):
         :param country: The country of this IPLocation.  # noqa: E501
         :type: Location
         """
-        if country is None:
-            raise ValueError("Invalid value for `country`, must not be `None`")  # noqa: E501
 
         self._country = country
 
@@ -251,8 +247,6 @@ class IPLocation(object):
         :param continent: The continent of this IPLocation.  # noqa: E501
         :type: Location
         """
-        if continent is None:
-            raise ValueError("Invalid value for `continent`, must not be `None`")  # noqa: E501
 
         self._continent = continent
 

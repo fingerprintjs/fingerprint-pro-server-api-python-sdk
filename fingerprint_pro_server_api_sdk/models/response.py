@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device.   # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -105,7 +105,7 @@ class Response(object):
     def last_timestamp(self):
         """Gets the last_timestamp of this Response.  # noqa: E501
 
-        When more results are available (e.g., you scanned 200 results using `limit` parameter, but a total of 600 results are available), a special `lastTimestamp` top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.  # noqa: E501
+        ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
 
         :return: The last_timestamp of this Response.  # noqa: E501
         :rtype: int
@@ -116,7 +116,7 @@ class Response(object):
     def last_timestamp(self, last_timestamp):
         """Sets the last_timestamp of this Response.
 
-        When more results are available (e.g., you scanned 200 results using `limit` parameter, but a total of 600 results are available), a special `lastTimestamp` top-level attribute is added to the response. If you want to paginate the results further in the past, you should use the value of this attribute.  # noqa: E501
+        ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
 
         :param last_timestamp: The last_timestamp of this Response.  # noqa: E501
         :type: int
@@ -128,7 +128,7 @@ class Response(object):
     def pagination_key(self):
         """Gets the pagination_key of this Response.  # noqa: E501
 
-        Visit's `requestId` of the last visit in the current page.  # noqa: E501
+        Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501
 
         :return: The pagination_key of this Response.  # noqa: E501
         :rtype: str
@@ -139,7 +139,7 @@ class Response(object):
     def pagination_key(self, pagination_key):
         """Sets the pagination_key of this Response.
 
-        Visit's `requestId` of the last visit in the current page.  # noqa: E501
+        Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501
 
         :param pagination_key: The pagination_key of this Response.  # noqa: E501
         :type: str

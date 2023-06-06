@@ -15,8 +15,8 @@ request_id = os.environ["REQUEST_ID"]
 
 try:
     api_response: Response = api_instance.get_visits(visitor_id, limit=2)
-    first_response_last_timestamp = api_response.last_timestamp
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2, before=first_response_last_timestamp)
+    pagination_key = api_response.pagination_key
+    api_response: Response = api_instance.get_visits(visitor_id, limit=2, pagination_key=pagination_key)
 
 except ApiException as e:
     print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)

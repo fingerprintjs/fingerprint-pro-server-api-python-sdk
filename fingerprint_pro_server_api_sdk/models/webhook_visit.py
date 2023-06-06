@@ -3,7 +3,7 @@
 """
     Fingerprint Pro Server API
 
-    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
+    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device.   # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -141,7 +141,8 @@ class WebhookVisit(object):
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
-        self.ip_location = ip_location
+        if ip_location is not None:
+            self.ip_location = ip_location
         self.timestamp = timestamp
         self.time = time
         self.url = url
@@ -522,8 +523,6 @@ class WebhookVisit(object):
         :param ip_location: The ip_location of this WebhookVisit.  # noqa: E501
         :type: IPLocation
         """
-        if ip_location is None:
-            raise ValueError("Invalid value for `ip_location`, must not be `None`")  # noqa: E501
 
         self._ip_location = ip_location
 
