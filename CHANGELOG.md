@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.0 (2023-06-06)
+### Feature
+* Update schema with correct `IpLocation` format and doc updates ([`d501cfa`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/d501cfa13b585e881c0645eed6dd89c09ea46a78))
+
 ## v2.2.0 (2023-05-16)
 ### Feature
 * Introduce additional signals ([`4e5fc79`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4e5fc79eebc0d67bd5b451636e60c461f08dd7ee))
