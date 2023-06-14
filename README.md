@@ -108,7 +108,7 @@ visitor_id = 'visitor_id_example'  # str |
 #request_id = 'request_id_example'  # str | Filter events by requestId (optional)
 #linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
 limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+#pagination_key = '1685348417145.qylNNk'  # str | Used to paginate results (optional)
 
 try:
     api_response: Response = api_instance.get_visits(visitor_id, limit=2)
