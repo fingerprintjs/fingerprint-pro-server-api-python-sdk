@@ -36,8 +36,14 @@ class WebhookVisit(object):
         'incognito': 'bool',
         'root_apps': 'WebhookSignalResponseRootApps',
         'emulator': 'WebhookSignalResponseEmulator',
+        'cloned_app': 'WebhookSignalResponseClonedApp',
+        'factory_reset': 'WebhookSignalResponseFactoryReset',
+        'jailbroken': 'WebhookSignalResponseJailbroken',
+        'frida': 'WebhookSignalResponseFrida',
         'ip_blocklist': 'IpBlockListResult',
         'tor': 'WebhookSignalResponseTor',
+        'privacy_settings': 'WebhookSignalResponsePrivacySettings',
+        'virtual_machine': 'WebhookSignalResponseVirtualMachine',
         'vpn': 'VpnResult',
         'proxy': 'WebhookSignalResponseProxy',
         'tampering': 'TamperingResult',
@@ -65,8 +71,14 @@ class WebhookVisit(object):
         'incognito': 'incognito',
         'root_apps': 'rootApps',
         'emulator': 'emulator',
+        'cloned_app': 'clonedApp',
+        'factory_reset': 'factoryReset',
+        'jailbroken': 'jailbroken',
+        'frida': 'frida',
         'ip_blocklist': 'ipBlocklist',
         'tor': 'tor',
+        'privacy_settings': 'privacySettings',
+        'virtual_machine': 'virtualMachine',
         'vpn': 'vpn',
         'proxy': 'proxy',
         'tampering': 'tampering',
@@ -85,7 +97,7 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -95,8 +107,14 @@ class WebhookVisit(object):
         self._incognito = None
         self._root_apps = None
         self._emulator = None
+        self._cloned_app = None
+        self._factory_reset = None
+        self._jailbroken = None
+        self._frida = None
         self._ip_blocklist = None
         self._tor = None
+        self._privacy_settings = None
+        self._virtual_machine = None
         self._vpn = None
         self._proxy = None
         self._tampering = None
@@ -128,10 +146,22 @@ class WebhookVisit(object):
             self.root_apps = root_apps
         if emulator is not None:
             self.emulator = emulator
+        if cloned_app is not None:
+            self.cloned_app = cloned_app
+        if factory_reset is not None:
+            self.factory_reset = factory_reset
+        if jailbroken is not None:
+            self.jailbroken = jailbroken
+        if frida is not None:
+            self.frida = frida
         if ip_blocklist is not None:
             self.ip_blocklist = ip_blocklist
         if tor is not None:
             self.tor = tor
+        if privacy_settings is not None:
+            self.privacy_settings = privacy_settings
+        if virtual_machine is not None:
+            self.virtual_machine = virtual_machine
         if vpn is not None:
             self.vpn = vpn
         if proxy is not None:
@@ -330,6 +360,90 @@ class WebhookVisit(object):
         self._emulator = emulator
 
     @property
+    def cloned_app(self):
+        """Gets the cloned_app of this WebhookVisit.  # noqa: E501
+
+
+        :return: The cloned_app of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseClonedApp
+        """
+        return self._cloned_app
+
+    @cloned_app.setter
+    def cloned_app(self, cloned_app):
+        """Sets the cloned_app of this WebhookVisit.
+
+
+        :param cloned_app: The cloned_app of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseClonedApp
+        """
+
+        self._cloned_app = cloned_app
+
+    @property
+    def factory_reset(self):
+        """Gets the factory_reset of this WebhookVisit.  # noqa: E501
+
+
+        :return: The factory_reset of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseFactoryReset
+        """
+        return self._factory_reset
+
+    @factory_reset.setter
+    def factory_reset(self, factory_reset):
+        """Sets the factory_reset of this WebhookVisit.
+
+
+        :param factory_reset: The factory_reset of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseFactoryReset
+        """
+
+        self._factory_reset = factory_reset
+
+    @property
+    def jailbroken(self):
+        """Gets the jailbroken of this WebhookVisit.  # noqa: E501
+
+
+        :return: The jailbroken of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseJailbroken
+        """
+        return self._jailbroken
+
+    @jailbroken.setter
+    def jailbroken(self, jailbroken):
+        """Sets the jailbroken of this WebhookVisit.
+
+
+        :param jailbroken: The jailbroken of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseJailbroken
+        """
+
+        self._jailbroken = jailbroken
+
+    @property
+    def frida(self):
+        """Gets the frida of this WebhookVisit.  # noqa: E501
+
+
+        :return: The frida of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseFrida
+        """
+        return self._frida
+
+    @frida.setter
+    def frida(self, frida):
+        """Sets the frida of this WebhookVisit.
+
+
+        :param frida: The frida of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseFrida
+        """
+
+        self._frida = frida
+
+    @property
     def ip_blocklist(self):
         """Gets the ip_blocklist of this WebhookVisit.  # noqa: E501
 
@@ -370,6 +484,48 @@ class WebhookVisit(object):
         """
 
         self._tor = tor
+
+    @property
+    def privacy_settings(self):
+        """Gets the privacy_settings of this WebhookVisit.  # noqa: E501
+
+
+        :return: The privacy_settings of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponsePrivacySettings
+        """
+        return self._privacy_settings
+
+    @privacy_settings.setter
+    def privacy_settings(self, privacy_settings):
+        """Sets the privacy_settings of this WebhookVisit.
+
+
+        :param privacy_settings: The privacy_settings of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponsePrivacySettings
+        """
+
+        self._privacy_settings = privacy_settings
+
+    @property
+    def virtual_machine(self):
+        """Gets the virtual_machine of this WebhookVisit.  # noqa: E501
+
+
+        :return: The virtual_machine of this WebhookVisit.  # noqa: E501
+        :rtype: WebhookSignalResponseVirtualMachine
+        """
+        return self._virtual_machine
+
+    @virtual_machine.setter
+    def virtual_machine(self, virtual_machine):
+        """Sets the virtual_machine of this WebhookVisit.
+
+
+        :param virtual_machine: The virtual_machine of this WebhookVisit.  # noqa: E501
+        :type: WebhookSignalResponseVirtualMachine
+        """
+
+        self._virtual_machine = virtual_machine
 
     @property
     def vpn(self):

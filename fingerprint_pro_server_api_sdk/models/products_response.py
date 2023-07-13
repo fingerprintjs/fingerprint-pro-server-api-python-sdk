@@ -34,8 +34,14 @@ class ProductsResponse(object):
         'incognito': 'SignalResponseIncognito',
         'root_apps': 'SignalResponseRootApps',
         'emulator': 'SignalResponseEmulator',
+        'cloned_app': 'SignalResponseClonedApp',
+        'factory_reset': 'SignalResponseFactoryReset',
+        'jailbroken': 'SignalResponseJailbroken',
+        'frida': 'SignalResponseFrida',
         'ip_blocklist': 'SignalResponseIpBlocklist',
         'tor': 'SignalResponseTor',
+        'privacy_settings': 'SignalResponsePrivacySettings',
+        'virtual_machine': 'SignalResponseVirtualMachine',
         'vpn': 'SignalResponseVpn',
         'proxy': 'SignalResponseProxy',
         'tampering': 'SignalResponseTampering'
@@ -48,14 +54,20 @@ class ProductsResponse(object):
         'incognito': 'incognito',
         'root_apps': 'rootApps',
         'emulator': 'emulator',
+        'cloned_app': 'clonedApp',
+        'factory_reset': 'factoryReset',
+        'jailbroken': 'jailbroken',
+        'frida': 'frida',
         'ip_blocklist': 'ipBlocklist',
         'tor': 'tor',
+        'privacy_settings': 'privacySettings',
+        'virtual_machine': 'virtualMachine',
         'vpn': 'vpn',
         'proxy': 'proxy',
         'tampering': 'tampering'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -63,8 +75,14 @@ class ProductsResponse(object):
         self._incognito = None
         self._root_apps = None
         self._emulator = None
+        self._cloned_app = None
+        self._factory_reset = None
+        self._jailbroken = None
+        self._frida = None
         self._ip_blocklist = None
         self._tor = None
+        self._privacy_settings = None
+        self._virtual_machine = None
         self._vpn = None
         self._proxy = None
         self._tampering = None
@@ -81,10 +99,22 @@ class ProductsResponse(object):
             self.root_apps = root_apps
         if emulator is not None:
             self.emulator = emulator
+        if cloned_app is not None:
+            self.cloned_app = cloned_app
+        if factory_reset is not None:
+            self.factory_reset = factory_reset
+        if jailbroken is not None:
+            self.jailbroken = jailbroken
+        if frida is not None:
+            self.frida = frida
         if ip_blocklist is not None:
             self.ip_blocklist = ip_blocklist
         if tor is not None:
             self.tor = tor
+        if privacy_settings is not None:
+            self.privacy_settings = privacy_settings
+        if virtual_machine is not None:
+            self.virtual_machine = virtual_machine
         if vpn is not None:
             self.vpn = vpn
         if proxy is not None:
@@ -219,6 +249,90 @@ class ProductsResponse(object):
         self._emulator = emulator
 
     @property
+    def cloned_app(self):
+        """Gets the cloned_app of this ProductsResponse.  # noqa: E501
+
+
+        :return: The cloned_app of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseClonedApp
+        """
+        return self._cloned_app
+
+    @cloned_app.setter
+    def cloned_app(self, cloned_app):
+        """Sets the cloned_app of this ProductsResponse.
+
+
+        :param cloned_app: The cloned_app of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseClonedApp
+        """
+
+        self._cloned_app = cloned_app
+
+    @property
+    def factory_reset(self):
+        """Gets the factory_reset of this ProductsResponse.  # noqa: E501
+
+
+        :return: The factory_reset of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseFactoryReset
+        """
+        return self._factory_reset
+
+    @factory_reset.setter
+    def factory_reset(self, factory_reset):
+        """Sets the factory_reset of this ProductsResponse.
+
+
+        :param factory_reset: The factory_reset of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseFactoryReset
+        """
+
+        self._factory_reset = factory_reset
+
+    @property
+    def jailbroken(self):
+        """Gets the jailbroken of this ProductsResponse.  # noqa: E501
+
+
+        :return: The jailbroken of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseJailbroken
+        """
+        return self._jailbroken
+
+    @jailbroken.setter
+    def jailbroken(self, jailbroken):
+        """Sets the jailbroken of this ProductsResponse.
+
+
+        :param jailbroken: The jailbroken of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseJailbroken
+        """
+
+        self._jailbroken = jailbroken
+
+    @property
+    def frida(self):
+        """Gets the frida of this ProductsResponse.  # noqa: E501
+
+
+        :return: The frida of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseFrida
+        """
+        return self._frida
+
+    @frida.setter
+    def frida(self, frida):
+        """Sets the frida of this ProductsResponse.
+
+
+        :param frida: The frida of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseFrida
+        """
+
+        self._frida = frida
+
+    @property
     def ip_blocklist(self):
         """Gets the ip_blocklist of this ProductsResponse.  # noqa: E501
 
@@ -259,6 +373,48 @@ class ProductsResponse(object):
         """
 
         self._tor = tor
+
+    @property
+    def privacy_settings(self):
+        """Gets the privacy_settings of this ProductsResponse.  # noqa: E501
+
+
+        :return: The privacy_settings of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponsePrivacySettings
+        """
+        return self._privacy_settings
+
+    @privacy_settings.setter
+    def privacy_settings(self, privacy_settings):
+        """Sets the privacy_settings of this ProductsResponse.
+
+
+        :param privacy_settings: The privacy_settings of this ProductsResponse.  # noqa: E501
+        :type: SignalResponsePrivacySettings
+        """
+
+        self._privacy_settings = privacy_settings
+
+    @property
+    def virtual_machine(self):
+        """Gets the virtual_machine of this ProductsResponse.  # noqa: E501
+
+
+        :return: The virtual_machine of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseVirtualMachine
+        """
+        return self._virtual_machine
+
+    @virtual_machine.setter
+    def virtual_machine(self, virtual_machine):
+        """Sets the virtual_machine of this ProductsResponse.
+
+
+        :param virtual_machine: The virtual_machine of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseVirtualMachine
+        """
+
+        self._virtual_machine = virtual_machine
 
     @property
     def vpn(self):
