@@ -25,7 +25,17 @@ Project configuration is described in `config.json` file. To read about availabl
 java -jar ./bin/swagger-codegen-cli.jar config-help -l python
 ```
 
-### Testing
+### Testing the local source code of the SDK
+
+To make requests using the local source code of the SDK:
+
+1. Define your Secret API key, Visitor ID, Request ID and Region by creating a `.env` file at the root of the repository. (See [example](./.env.example)))
+2. Run the following commands:
+
+```shell
+pip install -r requirements.txt
+python run_checks.py
+```
 
 #### Test environment
 
@@ -33,7 +43,7 @@ You need to install `python` and `pip`.
 Then you can run:
 
 ```shell
-pip install -r requirements.txt        
+pip install -r requirements.txt
 pip install -r test-requirements.txt
 ```
 
