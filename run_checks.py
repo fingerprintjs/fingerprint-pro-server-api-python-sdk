@@ -10,7 +10,7 @@ load_dotenv()
 
 # configure
 configuration = fingerprint_pro_server_api_sdk.Configuration(
-    api_key=os.environ["PRIVATE_KEY"], region=os.environ["REGION"])
+    api_key=os.environ["PRIVATE_KEY"], region=os.environ.get(["REGION"], "us"))
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
