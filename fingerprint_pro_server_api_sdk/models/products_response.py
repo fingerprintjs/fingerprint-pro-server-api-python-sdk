@@ -44,7 +44,8 @@ class ProductsResponse(object):
         'virtual_machine': 'SignalResponseVirtualMachine',
         'vpn': 'SignalResponseVpn',
         'proxy': 'SignalResponseProxy',
-        'tampering': 'SignalResponseTampering'
+        'tampering': 'SignalResponseTampering',
+        'raw_device_attributes': 'SignalResponseRawDeviceAttributes'
     }
 
     attribute_map = {
@@ -64,10 +65,11 @@ class ProductsResponse(object):
         'virtual_machine': 'virtualMachine',
         'vpn': 'vpn',
         'proxy': 'proxy',
-        'tampering': 'tampering'
+        'tampering': 'tampering',
+        'raw_device_attributes': 'rawDeviceAttributes'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -86,6 +88,7 @@ class ProductsResponse(object):
         self._vpn = None
         self._proxy = None
         self._tampering = None
+        self._raw_device_attributes = None
         self.discriminator = None
         if identification is not None:
             self.identification = identification
@@ -121,6 +124,8 @@ class ProductsResponse(object):
             self.proxy = proxy
         if tampering is not None:
             self.tampering = tampering
+        if raw_device_attributes is not None:
+            self.raw_device_attributes = raw_device_attributes
 
     @property
     def identification(self):
@@ -478,6 +483,27 @@ class ProductsResponse(object):
         """
 
         self._tampering = tampering
+
+    @property
+    def raw_device_attributes(self):
+        """Gets the raw_device_attributes of this ProductsResponse.  # noqa: E501
+
+
+        :return: The raw_device_attributes of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseRawDeviceAttributes
+        """
+        return self._raw_device_attributes
+
+    @raw_device_attributes.setter
+    def raw_device_attributes(self, raw_device_attributes):
+        """Sets the raw_device_attributes of this ProductsResponse.
+
+
+        :param raw_device_attributes: The raw_device_attributes of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseRawDeviceAttributes
+        """
+
+        self._raw_device_attributes = raw_device_attributes
 
     def to_dict(self):
         """Returns the model properties as a dict"""

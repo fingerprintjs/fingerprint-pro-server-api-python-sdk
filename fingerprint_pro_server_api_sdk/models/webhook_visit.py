@@ -47,6 +47,7 @@ class WebhookVisit(object):
         'vpn': 'VpnResult',
         'proxy': 'WebhookSignalResponseProxy',
         'tampering': 'TamperingResult',
+        'raw_device_attributes': 'RawDeviceAttributesResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
@@ -82,6 +83,7 @@ class WebhookVisit(object):
         'vpn': 'vpn',
         'proxy': 'proxy',
         'tampering': 'tampering',
+        'raw_device_attributes': 'rawDeviceAttributes',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
         'ip': 'ip',
@@ -97,7 +99,7 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -118,6 +120,7 @@ class WebhookVisit(object):
         self._vpn = None
         self._proxy = None
         self._tampering = None
+        self._raw_device_attributes = None
         self._request_id = None
         self._browser_details = None
         self._ip = None
@@ -168,6 +171,8 @@ class WebhookVisit(object):
             self.proxy = proxy
         if tampering is not None:
             self.tampering = tampering
+        if raw_device_attributes is not None:
+            self.raw_device_attributes = raw_device_attributes
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
@@ -589,6 +594,27 @@ class WebhookVisit(object):
         """
 
         self._tampering = tampering
+
+    @property
+    def raw_device_attributes(self):
+        """Gets the raw_device_attributes of this WebhookVisit.  # noqa: E501
+
+
+        :return: The raw_device_attributes of this WebhookVisit.  # noqa: E501
+        :rtype: RawDeviceAttributesResult
+        """
+        return self._raw_device_attributes
+
+    @raw_device_attributes.setter
+    def raw_device_attributes(self, raw_device_attributes):
+        """Sets the raw_device_attributes of this WebhookVisit.
+
+
+        :param raw_device_attributes: The raw_device_attributes of this WebhookVisit.  # noqa: E501
+        :type: RawDeviceAttributesResult
+        """
+
+        self._raw_device_attributes = raw_device_attributes
 
     @property
     def request_id(self):
