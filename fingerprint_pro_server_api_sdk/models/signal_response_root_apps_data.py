@@ -46,7 +46,7 @@ class SignalResponseRootAppsData(object):
     def result(self):
         """Gets the result of this SignalResponseRootAppsData.  # noqa: E501
 
-        Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected Available only for events from Android client. The field will not be present for a browser or iOS event.   # noqa: E501
+        Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected or the client is not Android.   # noqa: E501
 
         :return: The result of this SignalResponseRootAppsData.  # noqa: E501
         :rtype: bool
@@ -57,7 +57,7 @@ class SignalResponseRootAppsData(object):
     def result(self, result):
         """Sets the result of this SignalResponseRootAppsData.
 
-        Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected Available only for events from Android client. The field will not be present for a browser or iOS event.   # noqa: E501
+        Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected or the client is not Android.   # noqa: E501
 
         :param result: The result of this SignalResponseRootAppsData.  # noqa: E501
         :type: bool

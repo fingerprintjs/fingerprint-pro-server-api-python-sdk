@@ -46,7 +46,7 @@ class SignalResponseEmulatorData(object):
     def result(self):
         """Gets the result of this SignalResponseEmulatorData.  # noqa: E501
 
-        Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected Available only for events from Android client. The field will not be present for a browser or iOS event.   # noqa: E501
+        Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android.   # noqa: E501
 
         :return: The result of this SignalResponseEmulatorData.  # noqa: E501
         :rtype: bool
@@ -57,7 +57,7 @@ class SignalResponseEmulatorData(object):
     def result(self, result):
         """Sets the result of this SignalResponseEmulatorData.
 
-        Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected Available only for events from Android client. The field will not be present for a browser or iOS event.   # noqa: E501
+        Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android.   # noqa: E501
 
         :param result: The result of this SignalResponseEmulatorData.  # noqa: E501
         :type: bool

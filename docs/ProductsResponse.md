@@ -1,4 +1,6 @@
 # ProductsResponse
+Contains all the information from each activated product - Fingerprint Pro or Bot Detection
+
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,11 +11,18 @@ Name | Type | Description | Notes
 **incognito** | [**SignalResponseIncognito**](SignalResponseIncognito.md) |  | [optional] 
 **root_apps** | [**SignalResponseRootApps**](SignalResponseRootApps.md) |  | [optional] 
 **emulator** | [**SignalResponseEmulator**](SignalResponseEmulator.md) |  | [optional] 
+**cloned_app** | [**SignalResponseClonedApp**](SignalResponseClonedApp.md) |  | [optional] 
+**factory_reset** | [**SignalResponseFactoryReset**](SignalResponseFactoryReset.md) |  | [optional] 
+**jailbroken** | [**SignalResponseJailbroken**](SignalResponseJailbroken.md) |  | [optional] 
+**frida** | [**SignalResponseFrida**](SignalResponseFrida.md) |  | [optional] 
 **ip_blocklist** | [**SignalResponseIpBlocklist**](SignalResponseIpBlocklist.md) |  | [optional] 
 **tor** | [**SignalResponseTor**](SignalResponseTor.md) |  | [optional] 
+**privacy_settings** | [**SignalResponsePrivacySettings**](SignalResponsePrivacySettings.md) |  | [optional] 
+**virtual_machine** | [**SignalResponseVirtualMachine**](SignalResponseVirtualMachine.md) |  | [optional] 
 **vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  | [optional] 
 **proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  | [optional] 
 **tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  | [optional] 
+**raw_device_attributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
