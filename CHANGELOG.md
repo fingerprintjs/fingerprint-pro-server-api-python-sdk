@@ -2,6 +2,18 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.0 (2023-07-31)
+
+### Feature
+
+* Add raw device attributes support ([`6b81649`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/6b81649005cdd336173dd33ae41143fc8aa4f5ef))
+* Add support for smart signals ([`28926b8`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/28926b87954f31f0bbaa917dc7b956217c61e5a6))
+
+### Documentation
+
+* Improve model documentation, add special fix for `RawDeviceAttributesResult` documentation ([`36ddc0d`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/36ddc0df68dc394640e01ad0fd060d353ef7eb63))
+* **README:** Use `pagination_key` in README example instead of deprecated `before` ([`5dd6e55`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5dd6e5528bbe710f54e3bd9c5660d15fe5aa548c))
+
 ## v2.3.0 (2023-06-06)
 ### Feature
 * Update schema with correct `IpLocation` format and doc updates ([`d501cfa`](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/d501cfa13b585e881c0645eed6dd89c09ea46a78))
