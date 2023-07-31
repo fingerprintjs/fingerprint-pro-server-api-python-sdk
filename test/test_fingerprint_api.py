@@ -191,6 +191,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_file_botd_429 = 'get_event_botd_too_many_requests_error.json'
         mock_file_identification_fail = 'get_event_identification_failed_error.json'
         mock_file_identification_429 = 'get_event_identification_too_many_requests_error.json'
+        mock_file_all_errors = 'get_event_all_errors.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_fail),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
@@ -205,11 +206,15 @@ class TestFingerprintApi(unittest.TestCase):
                                  TestFingerprintApi.get_get_event_method_path(request_id=mock_file_identification_429),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
+        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_all_errors),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
 
         self.api.get_event(mock_file_botd_fail)
         self.api.get_event(mock_file_botd_429)
         self.api.get_event(mock_file_identification_fail)
         self.api.get_event(mock_file_identification_429)
+        self.api.get_event(mock_file_all_errors)
 
     def test_get_event_error_403(self):
         """Test checks correct code run result in case of 403 error"""
