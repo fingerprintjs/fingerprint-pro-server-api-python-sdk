@@ -22,10 +22,10 @@ class {{classname}}(object):
     Ref: https://github.com/swagger-api/swagger-codegen
     """
 
-    def __init__(self, configuration=None):
+    def __init__(self, configuration=None, pool=None):
         if configuration is None:
             raise ValueError("Missing the required parameter `configuration` when calling `{{classname}}`")  # noqa: E501
-        self.api_client = ApiClient(configuration)
+        self.api_client = ApiClient(configuration, pool=pool)
 {{#operation}}
 
     def {{operationId}}(self, {{#sortParamsByRequiredFlag}}{{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}}{{/sortParamsByRequiredFlag}}**kwargs):  # noqa: E501

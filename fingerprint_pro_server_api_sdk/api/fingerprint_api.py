@@ -29,10 +29,10 @@ class FingerprintApi(object):
     Ref: https://github.com/swagger-api/swagger-codegen
     """
 
-    def __init__(self, configuration=None):
+    def __init__(self, configuration=None, pool=None):
         if configuration is None:
             raise ValueError("Missing the required parameter `configuration` when calling `FingerprintApi`")  # noqa: E501
-        self.api_client = ApiClient(configuration)
+        self.api_client = ApiClient(configuration, pool=pool)
 
     def get_event(self, request_id, **kwargs):  # noqa: E501
         """Get event by requestId  # noqa: E501
