@@ -34,3 +34,14 @@ platform=$(uname)
     sed -i "/^------------ |/c\\" "$readme_filename"
   fi
 )
+
+# Replace version in other files
+(
+  if [ "$platform" = "Darwin" ]; then
+    sed -i '' "s/^VERSION='[^']*'/VERSION='${VERSION}'/" "./generate.sh"
+    sed -i '' "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
+  else
+    sed -i "s/^VERSION='[^']*'/VERSION='${VERSION}'/" "./generate.sh"
+    sed -i "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
+  fi
+)

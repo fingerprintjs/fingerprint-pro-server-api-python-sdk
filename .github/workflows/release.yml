@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - test
 
 jobs:
   publish:
@@ -29,12 +30,13 @@ jobs:
           pip install -r requirements.txt
           pip install python-semantic-release
 
-      - name: Generate code with new version
-        run: ./generate.sh -v $(semantic-release print-version)
-
-      - name: Python Semantic Release
-        uses: python-semantic-release/python-semantic-release@c633414ae2a5518d21b852be66eac1cbc2dd8e87 # v7.34.6
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@91ab76a4a393a8d0c4739e9aea1818b56bc953ea
         with:
-          github_token: ${{ secrets.GH_RELEASE_TOKEN }}
-          repository_username: ${{ secrets.PYPI_USERNAME }}
-          repository_password: ${{ secrets.PYPI_PASSWORD }}
+          extra_plugins: |
+            @semantic-release/exec@6.0.3
+            conventional-changelog-conventionalcommits@5.0.0
+            semantic-release-pypi@2.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
