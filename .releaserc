@@ -100,13 +100,13 @@
       }
     ],
     "@semantic-release/changelog",
+    "semantic-release-pypi",
     [
       "@semantic-release/exec",
       {
         "prepareCmd": "./generate.sh -v \"${nextRelease.version}\""
       }
     ],
-    "semantic-release-pypi",
     [
       "@semantic-release/git",
       {
