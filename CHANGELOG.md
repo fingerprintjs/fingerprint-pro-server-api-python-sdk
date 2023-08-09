@@ -1,3 +1,10 @@
+## [2.5.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.4.0...v2.5.0-dev.1) (2023-08-09)
+
+
+### Features
+
+* make SDK more independent from environment ([1d017c1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/1d017c158849d9125ca6ba01f414ec0948458769)), closes [#31](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/issues/31)
+
 # Changelog
 
 <!--next-version-placeholder-->
@@ -111,4 +118,3 @@
 
 
 ## v0.0.2-beta.4 (2022-08-12)
-
