@@ -1,3 +1,10 @@
+## [2.5.0-dev.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.0-dev.1...v2.5.0-dev.2) (2023-08-09)
+
+
+### Bug Fixes
+
+* fix semantic-release plugins order ([4690961](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/46909615e2f5f13c786956f5baab30549d00a736))
+
 ## [2.5.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.4.0...v2.5.0-dev.1) (2023-08-09)
 
 
