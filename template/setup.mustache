@@ -39,7 +39,7 @@ long_description = re.sub(r"(?P<prefix>\[[^]]*]\()(?P<postfix>docs/[^)]*\))", '\
 
 setup(
     name=NAME,
-    description="{{appDescription}}",
+    description="{{{appDescription}}}",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT",
