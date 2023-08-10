@@ -24,7 +24,7 @@ from fingerprint_pro_server_api_sdk.rest import KnownApiException
 
 API_KEY = 'private_key'
 
-VERSION = '2.4.0'
+VERSION = '2.5.0'
 
 
 class MockPoolManager(object):
