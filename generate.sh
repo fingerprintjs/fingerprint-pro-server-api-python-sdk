@@ -10,6 +10,13 @@ while getopts "v:" arg; do
   esac
 done
 
+# Make prerelease version compatible with PEP 440
+if [[ $VERSION =~ (.*-dev\.)([0-9]+) ]]; then
+  BASE_VERSION=${BASH_REMATCH[1]}
+  DEV_NUMBER=${BASH_REMATCH[2]}
+  VERSION="${BASE_VERSION%-dev.}.dev${DEV_NUMBER}"
+fi
+
 # jar was downloaded from here https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/
 
 rm docs/*
@@ -32,5 +39,16 @@ platform=$(uname)
   else
     sed -i "s/^Name |.*/${replacement}/" "$readme_filename"
     sed -i "/^------------ |/c\\" "$readme_filename"
+  fi
+)
+
+# Replace version in other files
+(
+  if [ "$platform" = "Darwin" ]; then
+    sed -i '' "s/^VERSION='[^']*'/VERSION='${VERSION}'/" "./generate.sh"
+    sed -i '' "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
+  else
+    sed -i "s/^VERSION='[^']*'/VERSION='${VERSION}'/" "./generate.sh"
+    sed -i "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
   fi
 )

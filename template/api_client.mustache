@@ -63,7 +63,7 @@ class ApiClient(object):
             try:
                 from multiprocessing.pool import ThreadPool
                 self.pool = ThreadPool()
-            except ImportError:
+            except (ImportError, OSError):
                 from {{packageName}}.dummy_pool import DummyPool
                 self.pool = DummyPool()
         else:

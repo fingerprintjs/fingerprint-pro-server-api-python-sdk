@@ -68,7 +68,7 @@ class ApiClient(object):
             try:
                 from multiprocessing.pool import ThreadPool
                 self.pool = ThreadPool()
-            except ImportError:
+            except (ImportError, OSError):
                 from fingerprint_pro_server_api_sdk.dummy_pool import DummyPool
                 self.pool = DummyPool()
         else:

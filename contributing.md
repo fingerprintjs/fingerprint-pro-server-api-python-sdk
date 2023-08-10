@@ -52,3 +52,21 @@ pip install -r test-requirements.txt
 ```shell
 pytest
 ```
+
+### How to publish
+
+The library is automatically released and published to PyPi on every push to the main branch if there are relevant changes using [semantic-release](https://github.com/semantic-release/semantic-release) with following plugins:
+* [@semantic-release/commit-analyzer](https://github.com/semantic-release/commit-analyzer)
+* [@semantic-release/release-notes-generator](https://github.com/semantic-release/release-notes-generator)
+* [@semantic-release/changelog](https://github.com/semantic-release/changelog)
+* [@semantic-release/exec](https://github.com/semantic-release/exec)
+* [semantic-release-pypi](https://github.com/abichinger/semantic-release-pypi)
+* [@semantic-release/github](https://github.com/semantic-release/github)
+
+The workflow must be approved by one of the maintainers, first.
+
+#### Pre-release flow
+
+Pre-release will be created after merging pr to the `dev` branch and running the `release` workflow.
+
+Python uses PEP 440 for versions format, so we convert a pre-release version from semver to PEP 440 in the `./generate.sh`.

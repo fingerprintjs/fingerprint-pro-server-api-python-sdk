@@ -8,7 +8,6 @@ import re
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "{{{projectName}}}"
-VERSION = "{{packageVersion}}"
 {{#apiInfo}}
 {{#apis}}
 {{^hasMore}}
@@ -40,8 +39,7 @@ long_description = re.sub(r"(?P<prefix>\[[^]]*]\()(?P<postfix>docs/[^)]*\))", '\
 
 setup(
     name=NAME,
-    version=VERSION,
-    description="{{appDescription}}",
+    description="{{{appDescription}}}",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT",
