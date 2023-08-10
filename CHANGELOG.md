@@ -1,3 +1,10 @@
+## [2.5.0-dev.3](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.0-dev.2...v2.5.0-dev.3) (2023-08-10)
+
+
+### Bug Fixes
+
+* fix `multiprocessing.pool` detection fro Lambda ([9373a93](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9373a9360bc6111fe362ea39ea1eea1a86d9bfcf))
+
 ## [2.5.0-dev.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.0-dev.1...v2.5.0-dev.2) (2023-08-09)
 
 
