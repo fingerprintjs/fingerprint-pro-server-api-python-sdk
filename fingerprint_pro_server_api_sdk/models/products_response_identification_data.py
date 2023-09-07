@@ -436,6 +436,7 @@ class ProductsResponseIdentificationData(object):
     def visitor_id(self):
         """Gets the visitor_id of this ProductsResponseIdentificationData.  # noqa: E501
 
+        String of 20 characters that uniquely identifies the visitor's browser.  **Pro Plus:** If a bot is detected (`products.botd.bot.result != \"notDetected\"`), the `visitorId` value contains a placeholder string `BotDetected000000000`.   # noqa: E501
 
         :return: The visitor_id of this ProductsResponseIdentificationData.  # noqa: E501
         :rtype: str
@@ -446,6 +447,7 @@ class ProductsResponseIdentificationData(object):
     def visitor_id(self, visitor_id):
         """Sets the visitor_id of this ProductsResponseIdentificationData.
 
+        String of 20 characters that uniquely identifies the visitor's browser.  **Pro Plus:** If a bot is detected (`products.botd.bot.result != \"notDetected\"`), the `visitorId` value contains a placeholder string `BotDetected000000000`.   # noqa: E501
 
         :param visitor_id: The visitor_id of this ProductsResponseIdentificationData.  # noqa: E501
         :type: str

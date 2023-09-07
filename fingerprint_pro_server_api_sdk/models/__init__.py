@@ -14,10 +14,12 @@
 from __future__ import absolute_import
 
 # import models into model package
+from fingerprint_pro_server_api_sdk.models.asn import ASN
 from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
 from fingerprint_pro_server_api_sdk.models.botd_result import BotdResult
 from fingerprint_pro_server_api_sdk.models.browser_details import BrowserDetails
 from fingerprint_pro_server_api_sdk.models.confidence import Confidence
+from fingerprint_pro_server_api_sdk.models.data_center import DataCenter
 from fingerprint_pro_server_api_sdk.models.error_event403_response import ErrorEvent403Response
 from fingerprint_pro_server_api_sdk.models.error_event403_response_error import ErrorEvent403ResponseError
 from fingerprint_pro_server_api_sdk.models.error_event404_response import ErrorEvent404Response
