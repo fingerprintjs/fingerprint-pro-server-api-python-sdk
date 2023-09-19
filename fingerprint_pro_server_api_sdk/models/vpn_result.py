@@ -51,7 +51,7 @@ class VpnResult(object):
     def result(self):
         """Gets the result of this VpnResult.  # noqa: E501
 
-        VPN or other anonymising service has been used when sending the request.  # noqa: E501
+        VPN or other anonymizing service has been used when sending the request.  # noqa: E501
 
         :return: The result of this VpnResult.  # noqa: E501
         :rtype: bool
@@ -62,7 +62,7 @@ class VpnResult(object):
     def result(self, result):
         """Sets the result of this VpnResult.
 
-        VPN or other anonymising service has been used when sending the request.  # noqa: E501
+        VPN or other anonymizing service has been used when sending the request.  # noqa: E501
 
         :param result: The result of this VpnResult.  # noqa: E501
         :type: bool

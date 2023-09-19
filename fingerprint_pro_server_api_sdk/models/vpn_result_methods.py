@@ -29,23 +29,28 @@ class VpnResultMethods(object):
     """
     swagger_types = {
         'timezone_mismatch': 'bool',
-        'public_vpn': 'bool'
+        'public_vpn': 'bool',
+        'auxiliary_mobile': 'bool'
     }
 
     attribute_map = {
         'timezone_mismatch': 'timezoneMismatch',
-        'public_vpn': 'publicVPN'
+        'public_vpn': 'publicVPN',
+        'auxiliary_mobile': 'auxiliaryMobile'
     }
 
-    def __init__(self, timezone_mismatch=None, public_vpn=None):  # noqa: E501
+    def __init__(self, timezone_mismatch=None, public_vpn=None, auxiliary_mobile=None):  # noqa: E501
         """VpnResultMethods - a model defined in Swagger"""  # noqa: E501
         self._timezone_mismatch = None
         self._public_vpn = None
+        self._auxiliary_mobile = None
         self.discriminator = None
         if timezone_mismatch is not None:
             self.timezone_mismatch = timezone_mismatch
         if public_vpn is not None:
             self.public_vpn = public_vpn
+        if auxiliary_mobile is not None:
+            self.auxiliary_mobile = auxiliary_mobile
 
     @property
     def timezone_mismatch(self):
@@ -92,6 +97,29 @@ class VpnResultMethods(object):
         """
 
         self._public_vpn = public_vpn
+
+    @property
+    def auxiliary_mobile(self):
+        """Gets the auxiliary_mobile of this VpnResultMethods.  # noqa: E501
+
+        This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.  # noqa: E501
+
+        :return: The auxiliary_mobile of this VpnResultMethods.  # noqa: E501
+        :rtype: bool
+        """
+        return self._auxiliary_mobile
+
+    @auxiliary_mobile.setter
+    def auxiliary_mobile(self, auxiliary_mobile):
+        """Sets the auxiliary_mobile of this VpnResultMethods.
+
+        This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.  # noqa: E501
+
+        :param auxiliary_mobile: The auxiliary_mobile of this VpnResultMethods.  # noqa: E501
+        :type: bool
+        """
+
+        self._auxiliary_mobile = auxiliary_mobile
 
     def to_dict(self):
         """Returns the model properties as a dict"""
