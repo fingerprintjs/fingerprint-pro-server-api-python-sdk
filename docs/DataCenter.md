@@ -1,10 +1,10 @@
-# VpnResult
+# DataCenter
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | **bool** | VPN or other anonymizing service has been used when sending the request. | [optional] 
-**methods** | [**VpnResultMethods**](VpnResultMethods.md) |  | [optional] 
+**result** | **bool** |  | 
+**name** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
