@@ -1,3 +1,11 @@
+## [2.5.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.0...v2.5.1) (2023-09-20)
+
+
+### Bug Fixes
+
+* update OpenAPI Schema with `asn` and `dataCenter` signals ([4684316](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4684316e153d1782fd0980e08488a8d7d78d695e))
+* update OpenAPI Schema with `auxiliaryMobile` method for VPN signal ([5422741](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5422741d3250c63884eeb5b6f8365e2e4210c47a))
+
 ## [2.5.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.4.0...v2.5.0) (2023-08-10)
 
 
