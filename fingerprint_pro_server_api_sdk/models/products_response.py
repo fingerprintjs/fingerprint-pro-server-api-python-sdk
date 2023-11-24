@@ -45,6 +45,8 @@ class ProductsResponse(object):
         'vpn': 'SignalResponseVpn',
         'proxy': 'SignalResponseProxy',
         'tampering': 'SignalResponseTampering',
+        'high_activity': 'SignalResponseHighActivity',
+        'location_spoofing': 'SignalResponseLocationSpoofing',
         'raw_device_attributes': 'SignalResponseRawDeviceAttributes'
     }
 
@@ -66,10 +68,12 @@ class ProductsResponse(object):
         'vpn': 'vpn',
         'proxy': 'proxy',
         'tampering': 'tampering',
+        'high_activity': 'highActivity',
+        'location_spoofing': 'locationSpoofing',
         'raw_device_attributes': 'rawDeviceAttributes'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, raw_device_attributes=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -88,6 +92,8 @@ class ProductsResponse(object):
         self._vpn = None
         self._proxy = None
         self._tampering = None
+        self._high_activity = None
+        self._location_spoofing = None
         self._raw_device_attributes = None
         self.discriminator = None
         if identification is not None:
@@ -124,6 +130,10 @@ class ProductsResponse(object):
             self.proxy = proxy
         if tampering is not None:
             self.tampering = tampering
+        if high_activity is not None:
+            self.high_activity = high_activity
+        if location_spoofing is not None:
+            self.location_spoofing = location_spoofing
         if raw_device_attributes is not None:
             self.raw_device_attributes = raw_device_attributes
 
@@ -483,6 +493,48 @@ class ProductsResponse(object):
         """
 
         self._tampering = tampering
+
+    @property
+    def high_activity(self):
+        """Gets the high_activity of this ProductsResponse.  # noqa: E501
+
+
+        :return: The high_activity of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseHighActivity
+        """
+        return self._high_activity
+
+    @high_activity.setter
+    def high_activity(self, high_activity):
+        """Sets the high_activity of this ProductsResponse.
+
+
+        :param high_activity: The high_activity of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseHighActivity
+        """
+
+        self._high_activity = high_activity
+
+    @property
+    def location_spoofing(self):
+        """Gets the location_spoofing of this ProductsResponse.  # noqa: E501
+
+
+        :return: The location_spoofing of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseLocationSpoofing
+        """
+        return self._location_spoofing
+
+    @location_spoofing.setter
+    def location_spoofing(self, location_spoofing):
+        """Sets the location_spoofing of this ProductsResponse.
+
+
+        :param location_spoofing: The location_spoofing of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseLocationSpoofing
+        """
+
+        self._location_spoofing = location_spoofing
 
     @property
     def raw_device_attributes(self):
