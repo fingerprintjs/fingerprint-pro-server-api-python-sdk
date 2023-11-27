@@ -1,3 +1,10 @@
+## [2.6.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.1...v2.6.0) (2023-11-27)
+
+
+### Features
+
+* add `highActivity` and `locationSpoofing` signals, support `originTimezone` for `vpn` signal ([36793fe](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/36793feab226c6cfc65c6c156995c7d1f46b5b6d))
+
 ## [2.5.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.0...v2.5.1) (2023-09-20)
 
 
