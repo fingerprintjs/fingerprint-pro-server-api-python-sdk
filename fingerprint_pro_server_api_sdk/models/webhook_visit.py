@@ -48,6 +48,8 @@ class WebhookVisit(object):
         'proxy': 'WebhookSignalResponseProxy',
         'tampering': 'TamperingResult',
         'raw_device_attributes': 'RawDeviceAttributesResult',
+        'high_activity': 'HighActivityResult',
+        'location_spoofing': 'LocationSpoofingResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
@@ -84,6 +86,8 @@ class WebhookVisit(object):
         'proxy': 'proxy',
         'tampering': 'tampering',
         'raw_device_attributes': 'rawDeviceAttributes',
+        'high_activity': 'highActivity',
+        'location_spoofing': 'locationSpoofing',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
         'ip': 'ip',
@@ -99,7 +103,7 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -121,6 +125,8 @@ class WebhookVisit(object):
         self._proxy = None
         self._tampering = None
         self._raw_device_attributes = None
+        self._high_activity = None
+        self._location_spoofing = None
         self._request_id = None
         self._browser_details = None
         self._ip = None
@@ -173,6 +179,10 @@ class WebhookVisit(object):
             self.tampering = tampering
         if raw_device_attributes is not None:
             self.raw_device_attributes = raw_device_attributes
+        if high_activity is not None:
+            self.high_activity = high_activity
+        if location_spoofing is not None:
+            self.location_spoofing = location_spoofing
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
@@ -615,6 +625,48 @@ class WebhookVisit(object):
         """
 
         self._raw_device_attributes = raw_device_attributes
+
+    @property
+    def high_activity(self):
+        """Gets the high_activity of this WebhookVisit.  # noqa: E501
+
+
+        :return: The high_activity of this WebhookVisit.  # noqa: E501
+        :rtype: HighActivityResult
+        """
+        return self._high_activity
+
+    @high_activity.setter
+    def high_activity(self, high_activity):
+        """Sets the high_activity of this WebhookVisit.
+
+
+        :param high_activity: The high_activity of this WebhookVisit.  # noqa: E501
+        :type: HighActivityResult
+        """
+
+        self._high_activity = high_activity
+
+    @property
+    def location_spoofing(self):
+        """Gets the location_spoofing of this WebhookVisit.  # noqa: E501
+
+
+        :return: The location_spoofing of this WebhookVisit.  # noqa: E501
+        :rtype: LocationSpoofingResult
+        """
+        return self._location_spoofing
+
+    @location_spoofing.setter
+    def location_spoofing(self, location_spoofing):
+        """Sets the location_spoofing of this WebhookVisit.
+
+
+        :param location_spoofing: The location_spoofing of this WebhookVisit.  # noqa: E501
+        :type: LocationSpoofingResult
+        """
+
+        self._location_spoofing = location_spoofing
 
     @property
     def request_id(self):

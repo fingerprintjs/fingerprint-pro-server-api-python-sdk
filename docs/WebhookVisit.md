@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **proxy** | [**WebhookSignalResponseProxy**](WebhookSignalResponseProxy.md) |  | [optional] 
 **tampering** | [**TamperingResult**](TamperingResult.md) |  | [optional] 
 **raw_device_attributes** | [**RawDeviceAttributesResult**](RawDeviceAttributesResult.md) |  | [optional] 
+**high_activity** | [**HighActivityResult**](HighActivityResult.md) |  | [optional] 
+**location_spoofing** | [**LocationSpoofingResult**](LocationSpoofingResult.md) |  | [optional] 
 **request_id** | **str** | Unique identifier of the user's identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **ip** | **str** |  | 

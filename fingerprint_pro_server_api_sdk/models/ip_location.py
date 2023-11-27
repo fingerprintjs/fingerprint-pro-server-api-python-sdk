@@ -86,6 +86,7 @@ class IPLocation(object):
     def accuracy_radius(self):
         """Gets the accuracy_radius of this IPLocation.  # noqa: E501
 
+        The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
 
         :return: The accuracy_radius of this IPLocation.  # noqa: E501
         :rtype: int
@@ -96,6 +97,7 @@ class IPLocation(object):
     def accuracy_radius(self, accuracy_radius):
         """Sets the accuracy_radius of this IPLocation.
 
+        The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
 
         :param accuracy_radius: The accuracy_radius of this IPLocation.  # noqa: E501
         :type: int

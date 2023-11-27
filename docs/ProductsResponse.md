@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **vpn** | [**SignalResponseVpn**](SignalResponseVpn.md) |  | [optional] 
 **proxy** | [**SignalResponseProxy**](SignalResponseProxy.md) |  | [optional] 
 **tampering** | [**SignalResponseTampering**](SignalResponseTampering.md) |  | [optional] 
+**high_activity** | [**SignalResponseHighActivity**](SignalResponseHighActivity.md) |  | [optional] 
+**location_spoofing** | [**SignalResponseLocationSpoofing**](SignalResponseLocationSpoofing.md) |  | [optional] 
 **raw_device_attributes** | [**SignalResponseRawDeviceAttributes**](SignalResponseRawDeviceAttributes.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
