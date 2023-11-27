@@ -31,6 +31,7 @@ class IpInfoResultV6(object):
         'address': 'str',
         'geolocation': 'IPLocation',
         'asn': 'ASN',
+        'datacenter': 'DataCenterInfo',
         'data_center': 'DataCenter'
     }
 
@@ -38,14 +39,16 @@ class IpInfoResultV6(object):
         'address': 'address',
         'geolocation': 'geolocation',
         'asn': 'asn',
+        'datacenter': 'datacenter',
         'data_center': 'dataCenter'
     }
 
-    def __init__(self, address=None, geolocation=None, asn=None, data_center=None):  # noqa: E501
+    def __init__(self, address=None, geolocation=None, asn=None, datacenter=None, data_center=None):  # noqa: E501
         """IpInfoResultV6 - a model defined in Swagger"""  # noqa: E501
         self._address = None
         self._geolocation = None
         self._asn = None
+        self._datacenter = None
         self._data_center = None
         self.discriminator = None
         if address is not None:
@@ -54,6 +57,8 @@ class IpInfoResultV6(object):
             self.geolocation = geolocation
         if asn is not None:
             self.asn = asn
+        if datacenter is not None:
+            self.datacenter = datacenter
         if data_center is not None:
             self.data_center = data_center
 
@@ -119,6 +124,27 @@ class IpInfoResultV6(object):
         """
 
         self._asn = asn
+
+    @property
+    def datacenter(self):
+        """Gets the datacenter of this IpInfoResultV6.  # noqa: E501
+
+
+        :return: The datacenter of this IpInfoResultV6.  # noqa: E501
+        :rtype: DataCenterInfo
+        """
+        return self._datacenter
+
+    @datacenter.setter
+    def datacenter(self, datacenter):
+        """Sets the datacenter of this IpInfoResultV6.
+
+
+        :param datacenter: The datacenter of this IpInfoResultV6.  # noqa: E501
+        :type: DataCenterInfo
+        """
+
+        self._datacenter = datacenter
 
     @property
     def data_center(self):
