@@ -1,3 +1,15 @@
+## [3.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.6.0...v3.0.0) (2024-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* `IpInfo` field `data_center` renamed to `datacenter`
+
+### Features
+
+* deprecate `IPLocation` ([b39189b](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/b39189b8a2cee94ab277729033f82460c72c8b38))
+* use `datacenter` field instead of the wrong `dataCenter` ([53bcda2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/53bcda26729b7e7a793c61f7292fa474536ef652))
+
 ## [2.6.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.5.1...v2.6.0) (2023-11-27)
 
 
