@@ -31,22 +31,22 @@ class IpInfoResultV4(object):
         'address': 'str',
         'geolocation': 'IPLocation',
         'asn': 'ASN',
-        'data_center': 'DataCenter'
+        'datacenter': 'DataCenter'
     }
 
     attribute_map = {
         'address': 'address',
         'geolocation': 'geolocation',
         'asn': 'asn',
-        'data_center': 'dataCenter'
+        'datacenter': 'datacenter'
     }
 
-    def __init__(self, address=None, geolocation=None, asn=None, data_center=None):  # noqa: E501
+    def __init__(self, address=None, geolocation=None, asn=None, datacenter=None):  # noqa: E501
         """IpInfoResultV4 - a model defined in Swagger"""  # noqa: E501
         self._address = None
         self._geolocation = None
         self._asn = None
-        self._data_center = None
+        self._datacenter = None
         self.discriminator = None
         if address is not None:
             self.address = address
@@ -54,8 +54,8 @@ class IpInfoResultV4(object):
             self.geolocation = geolocation
         if asn is not None:
             self.asn = asn
-        if data_center is not None:
-            self.data_center = data_center
+        if datacenter is not None:
+            self.datacenter = datacenter
 
     @property
     def address(self):
@@ -121,25 +121,25 @@ class IpInfoResultV4(object):
         self._asn = asn
 
     @property
-    def data_center(self):
-        """Gets the data_center of this IpInfoResultV4.  # noqa: E501
+    def datacenter(self):
+        """Gets the datacenter of this IpInfoResultV4.  # noqa: E501
 
 
-        :return: The data_center of this IpInfoResultV4.  # noqa: E501
+        :return: The datacenter of this IpInfoResultV4.  # noqa: E501
         :rtype: DataCenter
         """
-        return self._data_center
+        return self._datacenter
 
-    @data_center.setter
-    def data_center(self, data_center):
-        """Sets the data_center of this IpInfoResultV4.
+    @datacenter.setter
+    def datacenter(self, datacenter):
+        """Sets the datacenter of this IpInfoResultV4.
 
 
-        :param data_center: The data_center of this IpInfoResultV4.  # noqa: E501
+        :param datacenter: The datacenter of this IpInfoResultV4.  # noqa: E501
         :type: DataCenter
         """
 
-        self._data_center = data_center
+        self._datacenter = datacenter
 
     def to_dict(self):
         """Returns the model properties as a dict"""
