@@ -19,7 +19,7 @@ fi
 
 # jar was downloaded from here https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/
 
-rm docs/*
+find ./docs -type f ! -name "DecryptionKey.md" ! -name "SealedResults.md" -exec rm {} +
 cd fingerprint_pro_server_api_sdk/models
 shopt -s extglob
 rm !("many_requests_response.py")
