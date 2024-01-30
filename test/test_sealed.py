@@ -90,3 +90,19 @@ class TestSealed(unittest.TestCase):
                 DecryptionKey(self.invalid_key, DecryptionAlgorithm['Aes256Gcm']),
                 DecryptionKey(self.valid_key, DecryptionAlgorithm['Aes256Gcm']),
             ])
+
+    def test_unseal_invalid_nonce(self):
+        sealed_data = bytes([0x9E, 0x85, 0xDC, 0xED, 0xAA, 0xBB, 0xCC])
+
+        with self.assertRaisesRegex(Exception, 'Unable to decrypt sealed data') as context:
+            unseal_events_response(sealed_data, [
+                DecryptionKey(self.invalid_key, DecryptionAlgorithm['Aes256Gcm']),
+                DecryptionKey(self.valid_key, DecryptionAlgorithm['Aes256Gcm']),
+            ])
+
+        exception: UnsealAggregateError = context.exception
+        error: UnsealError = exception.errors[1]
+
+        self.assertEqual(str(error.exception), 'initialization_vector must be between 8 and 128 bytes (64 and 1024 bits).')
+
+
