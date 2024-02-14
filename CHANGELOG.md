@@ -1,3 +1,15 @@
+## [4.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v3.0.0...v4.0.0) (2024-02-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* now only Python >= 3.6 is supported
+
+### Features
+
+* add method for decoding sealed results ([1acdeea](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/1acdeea7003c599261ae61e5f0a678c88899d85a))
+* drop support for python < 3.6 ([82d5213](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/82d5213e95af4a142f0ca49051f270046c972eb5))
+
 ## [3.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v2.6.0...v3.0.0) (2024-01-12)
 
 
