@@ -53,8 +53,7 @@ For more information, please visit [{{{infoUrl}}}]({{{infoUrl}}})
 
 The following Python versions are supported:
 
-- Python 2.7
-- Python 3.4+
+- Python >= 3.6
 
 ## Installation & Usage
 ### pip install
@@ -153,6 +152,36 @@ except ApiException as e:
     print("Exception when calling DefaultApi->get_event: %s\n" % e)
 ```
 
+## Sealed results
+
+This SDK provides utility methods for decoding [sealed results](https://dev.fingerprint.com/docs/sealed-client-results).
+```python
+import base64
+import os
+
+from dotenv import load_dotenv
+
+from fingerprint_pro_server_api_sdk import EventResponse
+from fingerprint_pro_server_api_sdk.sealed import unseal_events_response, DecryptionKey, DecryptionAlgorithm
+
+load_dotenv()
+
+sealed_result = base64.b64decode(os.environ["BASE64_SEALED_RESULT"])
+key = base64.b64decode(os.environ["BASE64_KEY"])
+
+try:
+    events_response: EventResponse = unseal_events_response(sealed_result, [DecryptionKey(key, DecryptionAlgorithm['Aes256Gcm'])])
+    print("\n\n\nEvent response: \n", events_response.products)
+except Exception as e:
+    print("Exception when calling unsealing events response: %s\n" % e)
+    exit(1)
+
+print("Unseal successful!")
+
+exit(0)
+```
+To learn more, refer to example located in [sealed_results_example.py](sealed_results_example.py).
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *{{basePath}}*
@@ -188,6 +217,11 @@ Class | Method | HTTP request | Description
 {{/isOAuth}}
 
 {{/authMethods}}
+
+## Documentation for sealed results
+
+- [SealedResults](docs/SealedResults.md)
+- [DecryptionKey](docs/DecryptionKey.md)
 
 ## Support
 
