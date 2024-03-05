@@ -71,4 +71,4 @@ Pre-release will be created after merging pr to the `dev` branch and running the
 
 Python uses PEP 440 for versions format, so we convert a pre-release version from semver to PEP 440 in the `./generate.sh`.
 
-This is a version for testing a new release flow
+This is a version for testing a new release flow 2nd time
