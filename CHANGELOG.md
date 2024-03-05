@@ -1,3 +1,10 @@
+## [4.1.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v4.0.0...v4.1.0-dev.1) (2024-03-05)
+
+
+### Features
+
+* check a new release flow ([71dda27](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/71dda279b531105ae54534a6391b0ff23ac43524))
+
 ## [4.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v3.0.0...v4.0.0) (2024-02-14)
 
 
