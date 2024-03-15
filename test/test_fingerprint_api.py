@@ -62,7 +62,7 @@ class MockPoolManager(object):
                 answer_mock = mock_file.read()
                 mock_file.close()
             headers = {}
-            if mock_file_by_visitor_id == 'visits_too_many_requests_error.json':
+            if mock_file_by_visitor_id == 'get_visits_429_too_many_requests_error.json':
                 headers.update({'Retry-After': '4'})
 
             return urllib3.HTTPResponse(status=status, body=answer_mock, headers=headers)
@@ -148,7 +148,7 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in case of 429 error"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file = 'visits_too_many_requests_error.json'
+        mock_file = 'get_visits_429_too_many_requests_error.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=429)
@@ -162,7 +162,7 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in case of 429 error"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file = 'visits_too_many_requests_error_empty_header.json'
+        mock_file = 'get_visits_429_too_many_requests_error_empty_header.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=429)
@@ -187,11 +187,11 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in scenario of arrors in BotD or identification API"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file_botd_fail = 'get_event_botd_failed_error.json'
-        mock_file_botd_429 = 'get_event_botd_too_many_requests_error.json'
-        mock_file_identification_fail = 'get_event_identification_failed_error.json'
-        mock_file_identification_429 = 'get_event_identification_too_many_requests_error.json'
-        mock_file_all_errors = 'get_event_all_errors.json'
+        mock_file_botd_fail = 'get_event_200_botd_failed_error.json'
+        mock_file_botd_429 = 'get_event_200_botd_too_many_requests_error.json'
+        mock_file_identification_fail = 'get_event_200_identification_failed_error.json'
+        mock_file_identification_429 = 'get_event_200_identification_too_many_requests_error.json'
+        mock_file_all_errors = 'get_event_200_all_errors.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_fail),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
