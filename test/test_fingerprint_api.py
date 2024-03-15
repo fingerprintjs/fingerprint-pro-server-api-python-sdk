@@ -111,10 +111,10 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in default scenario"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file1 = 'visits_limit_1.json'
-        mock_file2 = 'visits_limit_500.json'
-        mock_file3 = 'visits_limit_500.json'
-        mock_file4 = 'visits_limit_500.json'
+        mock_file1 = 'get_visits_200_limit_1.json'
+        mock_file2 = 'get_visits_200_limit_500.json'
+        mock_file3 = 'get_visits_200_limit_500.json'
+        mock_file4 = 'get_visits_200_limit_500.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file1),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
@@ -134,7 +134,7 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in case of 403 error"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file = 'visits_403_error.json'
+        mock_file = 'get_visits_403_error.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_visits_method_path(visitor_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=403)
@@ -176,7 +176,7 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code run result in default scenario"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file1 = 'get_event.json'
+        mock_file1 = 'get_event_200.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file1),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
