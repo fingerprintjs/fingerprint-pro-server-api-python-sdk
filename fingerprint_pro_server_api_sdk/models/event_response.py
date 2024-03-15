@@ -31,19 +31,23 @@ class EventResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'products': 'ProductsResponse'
+        'products': 'ProductsResponse',
+        'error': 'ProductError'
     }
 
     attribute_map = {
-        'products': 'products'
+        'products': 'products',
+        'error': 'error'
     }
 
-    def __init__(self, products=None):  # noqa: E501
+    def __init__(self, products=None, error=None):  # noqa: E501
         """EventResponse - a model defined in Swagger"""  # noqa: E501
         self._products = None
+        self._error = None
         self.discriminator = None
-        if products is not None:
-            self.products = products
+        self.products = products
+        if error is not None:
+            self.error = error
 
     @property
     def products(self):
@@ -63,8 +67,31 @@ class EventResponse(object):
         :param products: The products of this EventResponse.  # noqa: E501
         :type: ProductsResponse
         """
+        if products is None:
+            raise ValueError("Invalid value for `products`, must not be `None`")  # noqa: E501
 
         self._products = products
+
+    @property
+    def error(self):
+        """Gets the error of this EventResponse.  # noqa: E501
+
+
+        :return: The error of this EventResponse.  # noqa: E501
+        :rtype: ProductError
+        """
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        """Sets the error of this EventResponse.
+
+
+        :param error: The error of this EventResponse.  # noqa: E501
+        :type: ProductError
+        """
+
+        self._error = error
 
     def to_dict(self):
         """Returns the model properties as a dict"""

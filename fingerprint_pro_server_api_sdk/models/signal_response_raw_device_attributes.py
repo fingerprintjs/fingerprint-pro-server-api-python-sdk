@@ -28,19 +28,24 @@ class SignalResponseRawDeviceAttributes(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'RawDeviceAttributesResult'
+        'data': 'RawDeviceAttributesResult',
+        'error': 'ProductError'
     }
 
     attribute_map = {
-        'data': 'data'
+        'data': 'data',
+        'error': 'error'
     }
 
-    def __init__(self, data=None):  # noqa: E501
+    def __init__(self, data=None, error=None):  # noqa: E501
         """SignalResponseRawDeviceAttributes - a model defined in Swagger"""  # noqa: E501
         self._data = None
+        self._error = None
         self.discriminator = None
         if data is not None:
             self.data = data
+        if error is not None:
+            self.error = error
 
     @property
     def data(self):
@@ -62,6 +67,27 @@ class SignalResponseRawDeviceAttributes(object):
         """
 
         self._data = data
+
+    @property
+    def error(self):
+        """Gets the error of this SignalResponseRawDeviceAttributes.  # noqa: E501
+
+
+        :return: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
+        :rtype: ProductError
+        """
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        """Sets the error of this SignalResponseRawDeviceAttributes.
+
+
+        :param error: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
+        :type: ProductError
+        """
+
+        self._error = error
 
     def to_dict(self):
         """Returns the model properties as a dict"""

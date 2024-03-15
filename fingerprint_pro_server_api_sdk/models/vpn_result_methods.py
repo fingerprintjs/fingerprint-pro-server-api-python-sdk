@@ -45,12 +45,9 @@ class VpnResultMethods(object):
         self._public_vpn = None
         self._auxiliary_mobile = None
         self.discriminator = None
-        if timezone_mismatch is not None:
-            self.timezone_mismatch = timezone_mismatch
-        if public_vpn is not None:
-            self.public_vpn = public_vpn
-        if auxiliary_mobile is not None:
-            self.auxiliary_mobile = auxiliary_mobile
+        self.timezone_mismatch = timezone_mismatch
+        self.public_vpn = public_vpn
+        self.auxiliary_mobile = auxiliary_mobile
 
     @property
     def timezone_mismatch(self):
@@ -72,6 +69,8 @@ class VpnResultMethods(object):
         :param timezone_mismatch: The timezone_mismatch of this VpnResultMethods.  # noqa: E501
         :type: bool
         """
+        if timezone_mismatch is None:
+            raise ValueError("Invalid value for `timezone_mismatch`, must not be `None`")  # noqa: E501
 
         self._timezone_mismatch = timezone_mismatch
 
@@ -95,6 +94,8 @@ class VpnResultMethods(object):
         :param public_vpn: The public_vpn of this VpnResultMethods.  # noqa: E501
         :type: bool
         """
+        if public_vpn is None:
+            raise ValueError("Invalid value for `public_vpn`, must not be `None`")  # noqa: E501
 
         self._public_vpn = public_vpn
 
@@ -118,6 +119,8 @@ class VpnResultMethods(object):
         :param auxiliary_mobile: The auxiliary_mobile of this VpnResultMethods.  # noqa: E501
         :type: bool
         """
+        if auxiliary_mobile is None:
+            raise ValueError("Invalid value for `auxiliary_mobile`, must not be `None`")  # noqa: E501
 
         self._auxiliary_mobile = auxiliary_mobile
 

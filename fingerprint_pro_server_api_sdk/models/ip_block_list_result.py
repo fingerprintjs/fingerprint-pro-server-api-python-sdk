@@ -42,10 +42,8 @@ class IpBlockListResult(object):
         self._result = None
         self._details = None
         self.discriminator = None
-        if result is not None:
-            self.result = result
-        if details is not None:
-            self.details = details
+        self.result = result
+        self.details = details
 
     @property
     def result(self):
@@ -67,6 +65,8 @@ class IpBlockListResult(object):
         :param result: The result of this IpBlockListResult.  # noqa: E501
         :type: bool
         """
+        if result is None:
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 
@@ -88,6 +88,8 @@ class IpBlockListResult(object):
         :param details: The details of this IpBlockListResult.  # noqa: E501
         :type: IpBlockListResultDetails
         """
+        if details is None:
+            raise ValueError("Invalid value for `details`, must not be `None`")  # noqa: E501
 
         self._details = details
 

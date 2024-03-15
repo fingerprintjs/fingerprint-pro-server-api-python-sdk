@@ -48,10 +48,8 @@ class IpInfoResultV6(object):
         self._asn = None
         self._datacenter = None
         self.discriminator = None
-        if address is not None:
-            self.address = address
-        if geolocation is not None:
-            self.geolocation = geolocation
+        self.address = address
+        self.geolocation = geolocation
         if asn is not None:
             self.asn = asn
         if datacenter is not None:
@@ -75,6 +73,8 @@ class IpInfoResultV6(object):
         :param address: The address of this IpInfoResultV6.  # noqa: E501
         :type: str
         """
+        if address is None:
+            raise ValueError("Invalid value for `address`, must not be `None`")  # noqa: E501
 
         self._address = address
 
@@ -96,6 +96,8 @@ class IpInfoResultV6(object):
         :param geolocation: The geolocation of this IpInfoResultV6.  # noqa: E501
         :type: IPLocation
         """
+        if geolocation is None:
+            raise ValueError("Invalid value for `geolocation`, must not be `None`")  # noqa: E501
 
         self._geolocation = geolocation
 

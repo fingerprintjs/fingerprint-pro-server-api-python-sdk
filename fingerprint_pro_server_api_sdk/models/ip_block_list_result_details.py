@@ -42,10 +42,8 @@ class IpBlockListResultDetails(object):
         self._email_spam = None
         self._attack_source = None
         self.discriminator = None
-        if email_spam is not None:
-            self.email_spam = email_spam
-        if attack_source is not None:
-            self.attack_source = attack_source
+        self.email_spam = email_spam
+        self.attack_source = attack_source
 
     @property
     def email_spam(self):
@@ -67,6 +65,8 @@ class IpBlockListResultDetails(object):
         :param email_spam: The email_spam of this IpBlockListResultDetails.  # noqa: E501
         :type: bool
         """
+        if email_spam is None:
+            raise ValueError("Invalid value for `email_spam`, must not be `None`")  # noqa: E501
 
         self._email_spam = email_spam
 
@@ -90,6 +90,8 @@ class IpBlockListResultDetails(object):
         :param attack_source: The attack_source of this IpBlockListResultDetails.  # noqa: E501
         :type: bool
         """
+        if attack_source is None:
+            raise ValueError("Invalid value for `attack_source`, must not be `None`")  # noqa: E501
 
         self._attack_source = attack_source
 

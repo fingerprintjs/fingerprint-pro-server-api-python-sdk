@@ -42,8 +42,7 @@ class HighActivityResult(object):
         self._result = None
         self._daily_requests = None
         self.discriminator = None
-        if result is not None:
-            self.result = result
+        self.result = result
         if daily_requests is not None:
             self.daily_requests = daily_requests
 
@@ -67,6 +66,8 @@ class HighActivityResult(object):
         :param result: The result of this HighActivityResult.  # noqa: E501
         :type: bool
         """
+        if result is None:
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 
