@@ -54,7 +54,7 @@ class WebhookVisit(object):
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
-        'ip_location': 'IPLocation',
+        'ip_location': 'DeprecatedIPLocation',
         'timestamp': 'int',
         'time': 'datetime',
         'url': 'str',

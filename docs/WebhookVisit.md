@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **request_id** | **str** | Unique identifier of the user's identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **ip** | **str** |  | 
-**ip_location** | [**IPLocation**](IPLocation.md) |  | [optional] 
+**ip_location** | [**DeprecatedIPLocation**](DeprecatedIPLocation.md) |  | [optional] 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which identification request was sent. | 

@@ -32,7 +32,7 @@ class ResponseVisits(object):
         'browser_details': 'BrowserDetails',
         'incognito': 'bool',
         'ip': 'str',
-        'ip_location': 'IPLocation',
+        'ip_location': 'DeprecatedIPLocation',
         'timestamp': 'int',
         'time': 'datetime',
         'url': 'str',
@@ -197,7 +197,7 @@ class ResponseVisits(object):
 
 
         :return: The ip_location of this ResponseVisits.  # noqa: E501
-        :rtype: IPLocation
+        :rtype: DeprecatedIPLocation
         """
         return self._ip_location
 
@@ -207,7 +207,7 @@ class ResponseVisits(object):
 
 
         :param ip_location: The ip_location of this ResponseVisits.  # noqa: E501
-        :type: IPLocation
+        :type: DeprecatedIPLocation
         """
 
         self._ip_location = ip_location

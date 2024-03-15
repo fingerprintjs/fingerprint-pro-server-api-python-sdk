@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **incognito** | **bool** | Flag if user used incognito session. | 
 **ip** | **str** |  | 
-**ip_location** | [**IPLocation**](IPLocation.md) |  | [optional] 
+**ip_location** | [**DeprecatedIPLocation**](DeprecatedIPLocation.md) |  | [optional] 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which identification request was sent. | 
