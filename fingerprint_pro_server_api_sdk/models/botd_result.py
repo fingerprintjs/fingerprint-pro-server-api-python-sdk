@@ -36,6 +36,7 @@ class BotdResult(object):
         'url': 'str',
         'user_agent': 'str',
         'request_id': 'str',
+        'linked_id': 'str',
         'bot': 'BotdDetectionResult'
     }
 
@@ -45,25 +46,27 @@ class BotdResult(object):
         'url': 'url',
         'user_agent': 'userAgent',
         'request_id': 'requestId',
+        'linked_id': 'linkedId',
         'bot': 'bot'
     }
 
-    def __init__(self, ip=None, time=None, url=None, user_agent=None, request_id=None, bot=None):  # noqa: E501
+    def __init__(self, ip=None, time=None, url=None, user_agent=None, request_id=None, linked_id=None, bot=None):  # noqa: E501
         """BotdResult - a model defined in Swagger"""  # noqa: E501
         self._ip = None
         self._time = None
         self._url = None
         self._user_agent = None
         self._request_id = None
+        self._linked_id = None
         self._bot = None
         self.discriminator = None
         self.ip = ip
         self.time = time
         self.url = url
-        if user_agent is not None:
-            self.user_agent = user_agent
-        if request_id is not None:
-            self.request_id = request_id
+        self.user_agent = user_agent
+        self.request_id = request_id
+        if linked_id is not None:
+            self.linked_id = linked_id
         self.bot = bot
 
     @property
@@ -159,6 +162,8 @@ class BotdResult(object):
         :param user_agent: The user_agent of this BotdResult.  # noqa: E501
         :type: str
         """
+        if user_agent is None:
+            raise ValueError("Invalid value for `user_agent`, must not be `None`")  # noqa: E501
 
         self._user_agent = user_agent
 
@@ -180,8 +185,31 @@ class BotdResult(object):
         :param request_id: The request_id of this BotdResult.  # noqa: E501
         :type: str
         """
+        if request_id is None:
+            raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
 
         self._request_id = request_id
+
+    @property
+    def linked_id(self):
+        """Gets the linked_id of this BotdResult.  # noqa: E501
+
+
+        :return: The linked_id of this BotdResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._linked_id
+
+    @linked_id.setter
+    def linked_id(self, linked_id):
+        """Sets the linked_id of this BotdResult.
+
+
+        :param linked_id: The linked_id of this BotdResult.  # noqa: E501
+        :type: str
+        """
+
+        self._linked_id = linked_id
 
     @property
     def bot(self):
