@@ -196,11 +196,11 @@ class WebhookVisit(object):
         self.timestamp = timestamp
         self.time = time
         self.url = url
-        if tag is not None:
-            self.tag = tag
+        self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
-        self.confidence = confidence
+        if confidence is not None:
+            self.confidence = confidence
         self.visitor_found = visitor_found
         self.first_seen_at = first_seen_at
         self.last_seen_at = last_seen_at
@@ -840,7 +840,7 @@ class WebhookVisit(object):
     def url(self):
         """Gets the url of this WebhookVisit.  # noqa: E501
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :return: The url of this WebhookVisit.  # noqa: E501
         :rtype: str
@@ -851,7 +851,7 @@ class WebhookVisit(object):
     def url(self, url):
         """Sets the url of this WebhookVisit.
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :param url: The url of this WebhookVisit.  # noqa: E501
         :type: str
@@ -881,6 +881,8 @@ class WebhookVisit(object):
         :param tag: The tag of this WebhookVisit.  # noqa: E501
         :type: dict(str, object)
         """
+        if tag is None:
+            raise ValueError("Invalid value for `tag`, must not be `None`")  # noqa: E501
 
         self._tag = tag
 
@@ -925,8 +927,6 @@ class WebhookVisit(object):
         :param confidence: The confidence of this WebhookVisit.  # noqa: E501
         :type: Confidence
         """
-        if confidence is None:
-            raise ValueError("Invalid value for `confidence`, must not be `None`")  # noqa: E501
 
         self._confidence = confidence
 

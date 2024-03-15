@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **ip_location** | [**DeprecatedIPLocation**](DeprecatedIPLocation.md) |  | [optional] 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
-**url** | **str** | Page URL from which identification request was sent. | 
-**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | [optional] 
+**url** | **str** | Page URL from which the identification request was sent. | 
+**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | 
 **linked_id** | **str** | A customer-provided id that was sent with identification request. | [optional] 
-**confidence** | [**Confidence**](Confidence.md) |  | 
+**confidence** | [**Confidence**](Confidence.md) |  | [optional] 
 **visitor_found** | **bool** | Attribute represents if a visitor had been identified before. | 
 **first_seen_at** | [**SeenAt**](SeenAt.md) |  | 
 **last_seen_at** | [**SeenAt**](SeenAt.md) |  | 
