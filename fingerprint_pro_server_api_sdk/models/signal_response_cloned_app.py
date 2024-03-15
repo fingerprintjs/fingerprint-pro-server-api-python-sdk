@@ -28,7 +28,7 @@ class SignalResponseClonedApp(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseClonedAppData',
+        'data': 'ClonedAppResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseClonedApp(object):
 
 
         :return: The data of this SignalResponseClonedApp.  # noqa: E501
-        :rtype: SignalResponseClonedAppData
+        :rtype: ClonedAppResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseClonedApp(object):
 
 
         :param data: The data of this SignalResponseClonedApp.  # noqa: E501
-        :type: SignalResponseClonedAppData
+        :type: ClonedAppResult
         """
 
         self._data = data

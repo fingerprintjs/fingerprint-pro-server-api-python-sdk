@@ -28,7 +28,7 @@ class SignalResponseEmulator(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseEmulatorData',
+        'data': 'EmulatorResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseEmulator(object):
 
 
         :return: The data of this SignalResponseEmulator.  # noqa: E501
-        :rtype: SignalResponseEmulatorData
+        :rtype: EmulatorResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseEmulator(object):
 
 
         :param data: The data of this SignalResponseEmulator.  # noqa: E501
-        :type: SignalResponseEmulatorData
+        :type: EmulatorResult
         """
 
         self._data = data

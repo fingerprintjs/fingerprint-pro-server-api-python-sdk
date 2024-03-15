@@ -34,18 +34,18 @@ class WebhookVisit(object):
         'bot': 'BotdDetectionResult',
         'ip_info': 'IpInfoResult',
         'incognito': 'bool',
-        'root_apps': 'WebhookSignalResponseRootApps',
-        'emulator': 'WebhookSignalResponseEmulator',
-        'cloned_app': 'WebhookSignalResponseClonedApp',
-        'factory_reset': 'WebhookSignalResponseFactoryReset',
-        'jailbroken': 'WebhookSignalResponseJailbroken',
-        'frida': 'WebhookSignalResponseFrida',
+        'root_apps': 'RootAppsResult',
+        'emulator': 'EmulatorResult',
+        'cloned_app': 'ClonedAppResult',
+        'factory_reset': 'FactoryResetResult',
+        'jailbroken': 'JailbrokenResult',
+        'frida': 'FridaResult',
         'ip_blocklist': 'IpBlockListResult',
-        'tor': 'WebhookSignalResponseTor',
-        'privacy_settings': 'WebhookSignalResponsePrivacySettings',
-        'virtual_machine': 'WebhookSignalResponseVirtualMachine',
+        'tor': 'TorResult',
+        'privacy_settings': 'PrivacySettingsResult',
+        'virtual_machine': 'VirtualMachineResult',
         'vpn': 'VpnResult',
-        'proxy': 'WebhookSignalResponseProxy',
+        'proxy': 'ProxyResult',
         'tampering': 'TamperingResult',
         'raw_device_attributes': 'RawDeviceAttributesResult',
         'high_activity': 'HighActivityResult',
@@ -338,7 +338,7 @@ class WebhookVisit(object):
 
 
         :return: The root_apps of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseRootApps
+        :rtype: RootAppsResult
         """
         return self._root_apps
 
@@ -348,7 +348,7 @@ class WebhookVisit(object):
 
 
         :param root_apps: The root_apps of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseRootApps
+        :type: RootAppsResult
         """
 
         self._root_apps = root_apps
@@ -359,7 +359,7 @@ class WebhookVisit(object):
 
 
         :return: The emulator of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseEmulator
+        :rtype: EmulatorResult
         """
         return self._emulator
 
@@ -369,7 +369,7 @@ class WebhookVisit(object):
 
 
         :param emulator: The emulator of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseEmulator
+        :type: EmulatorResult
         """
 
         self._emulator = emulator
@@ -380,7 +380,7 @@ class WebhookVisit(object):
 
 
         :return: The cloned_app of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseClonedApp
+        :rtype: ClonedAppResult
         """
         return self._cloned_app
 
@@ -390,7 +390,7 @@ class WebhookVisit(object):
 
 
         :param cloned_app: The cloned_app of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseClonedApp
+        :type: ClonedAppResult
         """
 
         self._cloned_app = cloned_app
@@ -401,7 +401,7 @@ class WebhookVisit(object):
 
 
         :return: The factory_reset of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseFactoryReset
+        :rtype: FactoryResetResult
         """
         return self._factory_reset
 
@@ -411,7 +411,7 @@ class WebhookVisit(object):
 
 
         :param factory_reset: The factory_reset of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseFactoryReset
+        :type: FactoryResetResult
         """
 
         self._factory_reset = factory_reset
@@ -422,7 +422,7 @@ class WebhookVisit(object):
 
 
         :return: The jailbroken of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseJailbroken
+        :rtype: JailbrokenResult
         """
         return self._jailbroken
 
@@ -432,7 +432,7 @@ class WebhookVisit(object):
 
 
         :param jailbroken: The jailbroken of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseJailbroken
+        :type: JailbrokenResult
         """
 
         self._jailbroken = jailbroken
@@ -443,7 +443,7 @@ class WebhookVisit(object):
 
 
         :return: The frida of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseFrida
+        :rtype: FridaResult
         """
         return self._frida
 
@@ -453,7 +453,7 @@ class WebhookVisit(object):
 
 
         :param frida: The frida of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseFrida
+        :type: FridaResult
         """
 
         self._frida = frida
@@ -485,7 +485,7 @@ class WebhookVisit(object):
 
 
         :return: The tor of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseTor
+        :rtype: TorResult
         """
         return self._tor
 
@@ -495,7 +495,7 @@ class WebhookVisit(object):
 
 
         :param tor: The tor of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseTor
+        :type: TorResult
         """
 
         self._tor = tor
@@ -506,7 +506,7 @@ class WebhookVisit(object):
 
 
         :return: The privacy_settings of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponsePrivacySettings
+        :rtype: PrivacySettingsResult
         """
         return self._privacy_settings
 
@@ -516,7 +516,7 @@ class WebhookVisit(object):
 
 
         :param privacy_settings: The privacy_settings of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponsePrivacySettings
+        :type: PrivacySettingsResult
         """
 
         self._privacy_settings = privacy_settings
@@ -527,7 +527,7 @@ class WebhookVisit(object):
 
 
         :return: The virtual_machine of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseVirtualMachine
+        :rtype: VirtualMachineResult
         """
         return self._virtual_machine
 
@@ -537,7 +537,7 @@ class WebhookVisit(object):
 
 
         :param virtual_machine: The virtual_machine of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseVirtualMachine
+        :type: VirtualMachineResult
         """
 
         self._virtual_machine = virtual_machine
@@ -569,7 +569,7 @@ class WebhookVisit(object):
 
 
         :return: The proxy of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseProxy
+        :rtype: ProxyResult
         """
         return self._proxy
 
@@ -579,7 +579,7 @@ class WebhookVisit(object):
 
 
         :param proxy: The proxy of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseProxy
+        :type: ProxyResult
         """
 
         self._proxy = proxy
@@ -745,7 +745,7 @@ class WebhookVisit(object):
 
 
         :return: The ip_location of this WebhookVisit.  # noqa: E501
-        :rtype: IPLocation
+        :rtype: DeprecatedIPLocation
         """
         return self._ip_location
 
@@ -755,7 +755,7 @@ class WebhookVisit(object):
 
 
         :param ip_location: The ip_location of this WebhookVisit.  # noqa: E501
-        :type: IPLocation
+        :type: DeprecatedIPLocation
         """
 
         self._ip_location = ip_location

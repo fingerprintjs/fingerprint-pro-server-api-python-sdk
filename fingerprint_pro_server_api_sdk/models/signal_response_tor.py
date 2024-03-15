@@ -28,7 +28,7 @@ class SignalResponseTor(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseTorData',
+        'data': 'TorResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseTor(object):
 
 
         :return: The data of this SignalResponseTor.  # noqa: E501
-        :rtype: SignalResponseTorData
+        :rtype: TorResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseTor(object):
 
 
         :param data: The data of this SignalResponseTor.  # noqa: E501
-        :type: SignalResponseTorData
+        :type: TorResult
         """
 
         self._data = data

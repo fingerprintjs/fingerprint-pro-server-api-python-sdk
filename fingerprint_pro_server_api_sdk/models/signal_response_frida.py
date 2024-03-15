@@ -28,7 +28,7 @@ class SignalResponseFrida(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseFridaData',
+        'data': 'FridaResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseFrida(object):
 
 
         :return: The data of this SignalResponseFrida.  # noqa: E501
-        :rtype: SignalResponseFridaData
+        :rtype: FridaResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseFrida(object):
 
 
         :param data: The data of this SignalResponseFrida.  # noqa: E501
-        :type: SignalResponseFridaData
+        :type: FridaResult
         """
 
         self._data = data
