@@ -51,24 +51,26 @@ class MockPoolManager(object):
         self._tc.assertEqual(r[1], kwargs)
 
         # TODO Add support for more complex paths?
-        mock_file_by_visitor_id = MockPoolManager.get_mock_from_path(r[0][1])
+        mock_file_by_first_argument = MockPoolManager.get_mock_from_path(r[0][1])
 
-        if mock_file_by_visitor_id == 'bad_text_data':
+        if mock_file_by_first_argument == 'bad_text_data':
             return urllib3.HTTPResponse(status=200, body='really bad data')
-        if mock_file_by_visitor_id == 'bad_json_data':
+        if mock_file_by_first_argument == 'bad_json_data':
             return urllib3.HTTPResponse(status=200, body='{}')
+        if mock_file_by_first_argument == 'empty_event_answer':
+            return urllib3.HTTPResponse(status=200, body='{"products": {}}')
         try:
-            with io.open('./test/mocks/' + mock_file_by_visitor_id, 'r', encoding='utf-8') as mock_file:
+            with io.open('./test/mocks/' + mock_file_by_first_argument, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
                 mock_file.close()
             headers = {}
-            if mock_file_by_visitor_id == 'get_visits_429_too_many_requests_error.json':
+            if mock_file_by_first_argument == 'get_visits_429_too_many_requests_error.json':
                 headers.update({'Retry-After': '4'})
 
             return urllib3.HTTPResponse(status=status, body=answer_mock, headers=headers)
         except IOError as e:
             print(e)
-            return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_visitor_id)
+            return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_first_argument)
             pass
 
 
@@ -246,13 +248,17 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks correct code running in case of there is no events"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
+        mocked_id = 'empty_event_answer'
         mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mocked_id),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
         response = self.api.get_event(mocked_id)
-        self.assertEqual(response.products, None)
+        self.assertIsNotNone(response.products)
+        for field in response.products.attribute_map.keys():
+            value = getattr(response.products, field)
+            self.assertIsNone(value, f"Signal '{field}' is not empty")
+
 
     def test_get_visits_empty_answer(self):
         """Test checks correct code running in case of there is no visits"""
