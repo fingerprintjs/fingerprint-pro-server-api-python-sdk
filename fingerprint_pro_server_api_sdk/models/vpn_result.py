@@ -30,27 +30,29 @@ class VpnResult(object):
     swagger_types = {
         'result': 'bool',
         'origin_timezone': 'str',
+        'origin_country': 'str',
         'methods': 'VpnResultMethods'
     }
 
     attribute_map = {
         'result': 'result',
         'origin_timezone': 'originTimezone',
+        'origin_country': 'originCountry',
         'methods': 'methods'
     }
 
-    def __init__(self, result=None, origin_timezone=None, methods=None):  # noqa: E501
+    def __init__(self, result=None, origin_timezone=None, origin_country=None, methods=None):  # noqa: E501
         """VpnResult - a model defined in Swagger"""  # noqa: E501
         self._result = None
         self._origin_timezone = None
+        self._origin_country = None
         self._methods = None
         self.discriminator = None
-        if result is not None:
-            self.result = result
-        if origin_timezone is not None:
-            self.origin_timezone = origin_timezone
-        if methods is not None:
-            self.methods = methods
+        self.result = result
+        self.origin_timezone = origin_timezone
+        if origin_country is not None:
+            self.origin_country = origin_country
+        self.methods = methods
 
     @property
     def result(self):
@@ -72,6 +74,8 @@ class VpnResult(object):
         :param result: The result of this VpnResult.  # noqa: E501
         :type: bool
         """
+        if result is None:
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 
@@ -95,8 +99,33 @@ class VpnResult(object):
         :param origin_timezone: The origin_timezone of this VpnResult.  # noqa: E501
         :type: str
         """
+        if origin_timezone is None:
+            raise ValueError("Invalid value for `origin_timezone`, must not be `None`")  # noqa: E501
 
         self._origin_timezone = origin_timezone
+
+    @property
+    def origin_country(self):
+        """Gets the origin_country of this VpnResult.  # noqa: E501
+
+        Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501
+
+        :return: The origin_country of this VpnResult.  # noqa: E501
+        :rtype: str
+        """
+        return self._origin_country
+
+    @origin_country.setter
+    def origin_country(self, origin_country):
+        """Sets the origin_country of this VpnResult.
+
+        Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501
+
+        :param origin_country: The origin_country of this VpnResult.  # noqa: E501
+        :type: str
+        """
+
+        self._origin_country = origin_country
 
     @property
     def methods(self):
@@ -116,6 +145,8 @@ class VpnResult(object):
         :param methods: The methods of this VpnResult.  # noqa: E501
         :type: VpnResultMethods
         """
+        if methods is None:
+            raise ValueError("Invalid value for `methods`, must not be `None`")  # noqa: E501
 
         self._methods = methods
 
