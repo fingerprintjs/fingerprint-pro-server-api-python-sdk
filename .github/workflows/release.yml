@@ -10,6 +10,7 @@ jobs:
     name: 'Publish new version'
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-server-sdk.yml@v1
     with:
+      appId: ${{ vars.APP_ID }}
       language: python
       language-version: '3.9'
       semantic-release-extra-plugins: |
@@ -20,5 +21,5 @@ jobs:
         pip install wheel
         pip install twine
     secrets:
-      GH_RELEASE_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
       PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
