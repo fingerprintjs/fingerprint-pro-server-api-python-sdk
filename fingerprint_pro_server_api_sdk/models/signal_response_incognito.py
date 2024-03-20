@@ -28,7 +28,7 @@ class SignalResponseIncognito(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseIncognitoData',
+        'data': 'IncognitoResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseIncognito(object):
 
 
         :return: The data of this SignalResponseIncognito.  # noqa: E501
-        :rtype: SignalResponseIncognitoData
+        :rtype: IncognitoResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseIncognito(object):
 
 
         :param data: The data of this SignalResponseIncognito.  # noqa: E501
-        :type: SignalResponseIncognitoData
+        :type: IncognitoResult
         """
 
         self._data = data

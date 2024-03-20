@@ -39,14 +39,13 @@ class LocationSpoofingResult(object):
         """LocationSpoofingResult - a model defined in Swagger"""  # noqa: E501
         self._result = None
         self.discriminator = None
-        if result is not None:
-            self.result = result
+        self.result = result
 
     @property
     def result(self):
         """Gets the result of this LocationSpoofingResult.  # noqa: E501
 
-        Flag indicating whether the request came from a device with location spoofing enabled.  # noqa: E501
+        Flag indicating whether the request came from a mobile device with location spoofing enabled.  # noqa: E501
 
         :return: The result of this LocationSpoofingResult.  # noqa: E501
         :rtype: bool
@@ -57,11 +56,13 @@ class LocationSpoofingResult(object):
     def result(self, result):
         """Sets the result of this LocationSpoofingResult.
 
-        Flag indicating whether the request came from a device with location spoofing enabled.  # noqa: E501
+        Flag indicating whether the request came from a mobile device with location spoofing enabled.  # noqa: E501
 
         :param result: The result of this LocationSpoofingResult.  # noqa: E501
         :type: bool
         """
+        if result is None:
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 

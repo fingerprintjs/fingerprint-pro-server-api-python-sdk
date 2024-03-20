@@ -28,7 +28,7 @@ class SignalResponseFactoryReset(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseFactoryResetData',
+        'data': 'FactoryResetResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseFactoryReset(object):
 
 
         :return: The data of this SignalResponseFactoryReset.  # noqa: E501
-        :rtype: SignalResponseFactoryResetData
+        :rtype: FactoryResetResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseFactoryReset(object):
 
 
         :param data: The data of this SignalResponseFactoryReset.  # noqa: E501
-        :type: SignalResponseFactoryResetData
+        :type: FactoryResetResult
         """
 
         self._data = data

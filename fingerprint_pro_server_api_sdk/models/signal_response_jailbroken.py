@@ -28,7 +28,7 @@ class SignalResponseJailbroken(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseJailbrokenData',
+        'data': 'JailbrokenResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseJailbroken(object):
 
 
         :return: The data of this SignalResponseJailbroken.  # noqa: E501
-        :rtype: SignalResponseJailbrokenData
+        :rtype: JailbrokenResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseJailbroken(object):
 
 
         :param data: The data of this SignalResponseJailbroken.  # noqa: E501
-        :type: SignalResponseJailbrokenData
+        :type: JailbrokenResult
         """
 
         self._data = data

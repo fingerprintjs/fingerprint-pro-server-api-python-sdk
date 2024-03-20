@@ -28,7 +28,7 @@ class SignalResponsePrivacySettings(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponsePrivacySettingsData',
+        'data': 'PrivacySettingsResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponsePrivacySettings(object):
 
 
         :return: The data of this SignalResponsePrivacySettings.  # noqa: E501
-        :rtype: SignalResponsePrivacySettingsData
+        :rtype: PrivacySettingsResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponsePrivacySettings(object):
 
 
         :param data: The data of this SignalResponsePrivacySettings.  # noqa: E501
-        :type: SignalResponsePrivacySettingsData
+        :type: PrivacySettingsResult
         """
 
         self._data = data

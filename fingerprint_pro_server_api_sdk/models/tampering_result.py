@@ -42,10 +42,8 @@ class TamperingResult(object):
         self._result = None
         self._anomaly_score = None
         self.discriminator = None
-        if result is not None:
-            self.result = result
-        if anomaly_score is not None:
-            self.anomaly_score = anomaly_score
+        self.result = result
+        self.anomaly_score = anomaly_score
 
     @property
     def result(self):
@@ -67,6 +65,8 @@ class TamperingResult(object):
         :param result: The result of this TamperingResult.  # noqa: E501
         :type: bool
         """
+        if result is None:
+            raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
 
@@ -90,6 +90,8 @@ class TamperingResult(object):
         :param anomaly_score: The anomaly_score of this TamperingResult.  # noqa: E501
         :type: float
         """
+        if anomaly_score is None:
+            raise ValueError("Invalid value for `anomaly_score`, must not be `None`")  # noqa: E501
 
         self._anomaly_score = anomaly_score
 

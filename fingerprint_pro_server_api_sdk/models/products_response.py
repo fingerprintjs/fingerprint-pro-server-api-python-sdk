@@ -50,6 +50,7 @@ class ProductsResponse(object):
         'tampering': 'SignalResponseTampering',
         'high_activity': 'SignalResponseHighActivity',
         'location_spoofing': 'SignalResponseLocationSpoofing',
+        'suspect_score': 'SignalResponseSuspectScore',
         'raw_device_attributes': 'SignalResponseRawDeviceAttributes'
     }
 
@@ -73,10 +74,11 @@ class ProductsResponse(object):
         'tampering': 'tampering',
         'high_activity': 'highActivity',
         'location_spoofing': 'locationSpoofing',
+        'suspect_score': 'suspectScore',
         'raw_device_attributes': 'rawDeviceAttributes'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, raw_device_attributes=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, suspect_score=None, raw_device_attributes=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -97,6 +99,7 @@ class ProductsResponse(object):
         self._tampering = None
         self._high_activity = None
         self._location_spoofing = None
+        self._suspect_score = None
         self._raw_device_attributes = None
         self.discriminator = None
         if identification is not None:
@@ -137,6 +140,8 @@ class ProductsResponse(object):
             self.high_activity = high_activity
         if location_spoofing is not None:
             self.location_spoofing = location_spoofing
+        if suspect_score is not None:
+            self.suspect_score = suspect_score
         if raw_device_attributes is not None:
             self.raw_device_attributes = raw_device_attributes
 
@@ -538,6 +543,27 @@ class ProductsResponse(object):
         """
 
         self._location_spoofing = location_spoofing
+
+    @property
+    def suspect_score(self):
+        """Gets the suspect_score of this ProductsResponse.  # noqa: E501
+
+
+        :return: The suspect_score of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseSuspectScore
+        """
+        return self._suspect_score
+
+    @suspect_score.setter
+    def suspect_score(self, suspect_score):
+        """Sets the suspect_score of this ProductsResponse.
+
+
+        :param suspect_score: The suspect_score of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseSuspectScore
+        """
+
+        self._suspect_score = suspect_score
 
     @property
     def raw_device_attributes(self):

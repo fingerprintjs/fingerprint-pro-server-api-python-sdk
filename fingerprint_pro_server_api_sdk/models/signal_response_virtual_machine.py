@@ -28,7 +28,7 @@ class SignalResponseVirtualMachine(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseVirtualMachineData',
+        'data': 'VirtualMachineResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseVirtualMachine(object):
 
 
         :return: The data of this SignalResponseVirtualMachine.  # noqa: E501
-        :rtype: SignalResponseVirtualMachineData
+        :rtype: VirtualMachineResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseVirtualMachine(object):
 
 
         :param data: The data of this SignalResponseVirtualMachine.  # noqa: E501
-        :type: SignalResponseVirtualMachineData
+        :type: VirtualMachineResult
         """
 
         self._data = data

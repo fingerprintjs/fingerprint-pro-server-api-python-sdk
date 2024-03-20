@@ -34,26 +34,27 @@ class WebhookVisit(object):
         'bot': 'BotdDetectionResult',
         'ip_info': 'IpInfoResult',
         'incognito': 'bool',
-        'root_apps': 'WebhookSignalResponseRootApps',
-        'emulator': 'WebhookSignalResponseEmulator',
-        'cloned_app': 'WebhookSignalResponseClonedApp',
-        'factory_reset': 'WebhookSignalResponseFactoryReset',
-        'jailbroken': 'WebhookSignalResponseJailbroken',
-        'frida': 'WebhookSignalResponseFrida',
+        'root_apps': 'RootAppsResult',
+        'emulator': 'EmulatorResult',
+        'cloned_app': 'ClonedAppResult',
+        'factory_reset': 'FactoryResetResult',
+        'jailbroken': 'JailbrokenResult',
+        'frida': 'FridaResult',
         'ip_blocklist': 'IpBlockListResult',
-        'tor': 'WebhookSignalResponseTor',
-        'privacy_settings': 'WebhookSignalResponsePrivacySettings',
-        'virtual_machine': 'WebhookSignalResponseVirtualMachine',
+        'tor': 'TorResult',
+        'privacy_settings': 'PrivacySettingsResult',
+        'virtual_machine': 'VirtualMachineResult',
         'vpn': 'VpnResult',
-        'proxy': 'WebhookSignalResponseProxy',
+        'proxy': 'ProxyResult',
         'tampering': 'TamperingResult',
         'raw_device_attributes': 'RawDeviceAttributesResult',
         'high_activity': 'HighActivityResult',
         'location_spoofing': 'LocationSpoofingResult',
+        'suspect_score': 'SuspectScoreResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
-        'ip_location': 'IPLocation',
+        'ip_location': 'DeprecatedIPLocation',
         'timestamp': 'int',
         'time': 'datetime',
         'url': 'str',
@@ -88,6 +89,7 @@ class WebhookVisit(object):
         'raw_device_attributes': 'rawDeviceAttributes',
         'high_activity': 'highActivity',
         'location_spoofing': 'locationSpoofing',
+        'suspect_score': 'suspectScore',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
         'ip': 'ip',
@@ -103,7 +105,7 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -127,6 +129,7 @@ class WebhookVisit(object):
         self._raw_device_attributes = None
         self._high_activity = None
         self._location_spoofing = None
+        self._suspect_score = None
         self._request_id = None
         self._browser_details = None
         self._ip = None
@@ -183,6 +186,8 @@ class WebhookVisit(object):
             self.high_activity = high_activity
         if location_spoofing is not None:
             self.location_spoofing = location_spoofing
+        if suspect_score is not None:
+            self.suspect_score = suspect_score
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
@@ -191,11 +196,11 @@ class WebhookVisit(object):
         self.timestamp = timestamp
         self.time = time
         self.url = url
-        if tag is not None:
-            self.tag = tag
+        self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
-        self.confidence = confidence
+        if confidence is not None:
+            self.confidence = confidence
         self.visitor_found = visitor_found
         self.first_seen_at = first_seen_at
         self.last_seen_at = last_seen_at
@@ -338,7 +343,7 @@ class WebhookVisit(object):
 
 
         :return: The root_apps of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseRootApps
+        :rtype: RootAppsResult
         """
         return self._root_apps
 
@@ -348,7 +353,7 @@ class WebhookVisit(object):
 
 
         :param root_apps: The root_apps of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseRootApps
+        :type: RootAppsResult
         """
 
         self._root_apps = root_apps
@@ -359,7 +364,7 @@ class WebhookVisit(object):
 
 
         :return: The emulator of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseEmulator
+        :rtype: EmulatorResult
         """
         return self._emulator
 
@@ -369,7 +374,7 @@ class WebhookVisit(object):
 
 
         :param emulator: The emulator of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseEmulator
+        :type: EmulatorResult
         """
 
         self._emulator = emulator
@@ -380,7 +385,7 @@ class WebhookVisit(object):
 
 
         :return: The cloned_app of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseClonedApp
+        :rtype: ClonedAppResult
         """
         return self._cloned_app
 
@@ -390,7 +395,7 @@ class WebhookVisit(object):
 
 
         :param cloned_app: The cloned_app of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseClonedApp
+        :type: ClonedAppResult
         """
 
         self._cloned_app = cloned_app
@@ -401,7 +406,7 @@ class WebhookVisit(object):
 
 
         :return: The factory_reset of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseFactoryReset
+        :rtype: FactoryResetResult
         """
         return self._factory_reset
 
@@ -411,7 +416,7 @@ class WebhookVisit(object):
 
 
         :param factory_reset: The factory_reset of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseFactoryReset
+        :type: FactoryResetResult
         """
 
         self._factory_reset = factory_reset
@@ -422,7 +427,7 @@ class WebhookVisit(object):
 
 
         :return: The jailbroken of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseJailbroken
+        :rtype: JailbrokenResult
         """
         return self._jailbroken
 
@@ -432,7 +437,7 @@ class WebhookVisit(object):
 
 
         :param jailbroken: The jailbroken of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseJailbroken
+        :type: JailbrokenResult
         """
 
         self._jailbroken = jailbroken
@@ -443,7 +448,7 @@ class WebhookVisit(object):
 
 
         :return: The frida of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseFrida
+        :rtype: FridaResult
         """
         return self._frida
 
@@ -453,7 +458,7 @@ class WebhookVisit(object):
 
 
         :param frida: The frida of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseFrida
+        :type: FridaResult
         """
 
         self._frida = frida
@@ -485,7 +490,7 @@ class WebhookVisit(object):
 
 
         :return: The tor of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseTor
+        :rtype: TorResult
         """
         return self._tor
 
@@ -495,7 +500,7 @@ class WebhookVisit(object):
 
 
         :param tor: The tor of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseTor
+        :type: TorResult
         """
 
         self._tor = tor
@@ -506,7 +511,7 @@ class WebhookVisit(object):
 
 
         :return: The privacy_settings of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponsePrivacySettings
+        :rtype: PrivacySettingsResult
         """
         return self._privacy_settings
 
@@ -516,7 +521,7 @@ class WebhookVisit(object):
 
 
         :param privacy_settings: The privacy_settings of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponsePrivacySettings
+        :type: PrivacySettingsResult
         """
 
         self._privacy_settings = privacy_settings
@@ -527,7 +532,7 @@ class WebhookVisit(object):
 
 
         :return: The virtual_machine of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseVirtualMachine
+        :rtype: VirtualMachineResult
         """
         return self._virtual_machine
 
@@ -537,7 +542,7 @@ class WebhookVisit(object):
 
 
         :param virtual_machine: The virtual_machine of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseVirtualMachine
+        :type: VirtualMachineResult
         """
 
         self._virtual_machine = virtual_machine
@@ -569,7 +574,7 @@ class WebhookVisit(object):
 
 
         :return: The proxy of this WebhookVisit.  # noqa: E501
-        :rtype: WebhookSignalResponseProxy
+        :rtype: ProxyResult
         """
         return self._proxy
 
@@ -579,7 +584,7 @@ class WebhookVisit(object):
 
 
         :param proxy: The proxy of this WebhookVisit.  # noqa: E501
-        :type: WebhookSignalResponseProxy
+        :type: ProxyResult
         """
 
         self._proxy = proxy
@@ -669,6 +674,27 @@ class WebhookVisit(object):
         self._location_spoofing = location_spoofing
 
     @property
+    def suspect_score(self):
+        """Gets the suspect_score of this WebhookVisit.  # noqa: E501
+
+
+        :return: The suspect_score of this WebhookVisit.  # noqa: E501
+        :rtype: SuspectScoreResult
+        """
+        return self._suspect_score
+
+    @suspect_score.setter
+    def suspect_score(self, suspect_score):
+        """Sets the suspect_score of this WebhookVisit.
+
+
+        :param suspect_score: The suspect_score of this WebhookVisit.  # noqa: E501
+        :type: SuspectScoreResult
+        """
+
+        self._suspect_score = suspect_score
+
+    @property
     def request_id(self):
         """Gets the request_id of this WebhookVisit.  # noqa: E501
 
@@ -745,7 +771,7 @@ class WebhookVisit(object):
 
 
         :return: The ip_location of this WebhookVisit.  # noqa: E501
-        :rtype: IPLocation
+        :rtype: DeprecatedIPLocation
         """
         return self._ip_location
 
@@ -755,7 +781,7 @@ class WebhookVisit(object):
 
 
         :param ip_location: The ip_location of this WebhookVisit.  # noqa: E501
-        :type: IPLocation
+        :type: DeprecatedIPLocation
         """
 
         self._ip_location = ip_location
@@ -814,7 +840,7 @@ class WebhookVisit(object):
     def url(self):
         """Gets the url of this WebhookVisit.  # noqa: E501
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :return: The url of this WebhookVisit.  # noqa: E501
         :rtype: str
@@ -825,7 +851,7 @@ class WebhookVisit(object):
     def url(self, url):
         """Sets the url of this WebhookVisit.
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :param url: The url of this WebhookVisit.  # noqa: E501
         :type: str
@@ -855,6 +881,8 @@ class WebhookVisit(object):
         :param tag: The tag of this WebhookVisit.  # noqa: E501
         :type: dict(str, object)
         """
+        if tag is None:
+            raise ValueError("Invalid value for `tag`, must not be `None`")  # noqa: E501
 
         self._tag = tag
 
@@ -899,8 +927,6 @@ class WebhookVisit(object):
         :param confidence: The confidence of this WebhookVisit.  # noqa: E501
         :type: Confidence
         """
-        if confidence is None:
-            raise ValueError("Invalid value for `confidence`, must not be `None`")  # noqa: E501
 
         self._confidence = confidence
 

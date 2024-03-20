@@ -28,7 +28,7 @@ class SignalResponseRootApps(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseRootAppsData',
+        'data': 'RootAppsResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseRootApps(object):
 
 
         :return: The data of this SignalResponseRootApps.  # noqa: E501
-        :rtype: SignalResponseRootAppsData
+        :rtype: RootAppsResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseRootApps(object):
 
 
         :param data: The data of this SignalResponseRootApps.  # noqa: E501
-        :type: SignalResponseRootAppsData
+        :type: RootAppsResult
         """
 
         self._data = data

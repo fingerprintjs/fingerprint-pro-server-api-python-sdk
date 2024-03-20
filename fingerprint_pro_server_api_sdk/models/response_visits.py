@@ -32,7 +32,7 @@ class ResponseVisits(object):
         'browser_details': 'BrowserDetails',
         'incognito': 'bool',
         'ip': 'str',
-        'ip_location': 'IPLocation',
+        'ip_location': 'DeprecatedIPLocation',
         'timestamp': 'int',
         'time': 'datetime',
         'url': 'str',
@@ -90,7 +90,8 @@ class ResponseVisits(object):
         self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
-        self.confidence = confidence
+        if confidence is not None:
+            self.confidence = confidence
         self.visitor_found = visitor_found
         self.first_seen_at = first_seen_at
         self.last_seen_at = last_seen_at
@@ -197,7 +198,7 @@ class ResponseVisits(object):
 
 
         :return: The ip_location of this ResponseVisits.  # noqa: E501
-        :rtype: IPLocation
+        :rtype: DeprecatedIPLocation
         """
         return self._ip_location
 
@@ -207,7 +208,7 @@ class ResponseVisits(object):
 
 
         :param ip_location: The ip_location of this ResponseVisits.  # noqa: E501
-        :type: IPLocation
+        :type: DeprecatedIPLocation
         """
 
         self._ip_location = ip_location
@@ -266,7 +267,7 @@ class ResponseVisits(object):
     def url(self):
         """Gets the url of this ResponseVisits.  # noqa: E501
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :return: The url of this ResponseVisits.  # noqa: E501
         :rtype: str
@@ -277,7 +278,7 @@ class ResponseVisits(object):
     def url(self, url):
         """Sets the url of this ResponseVisits.
 
-        Page URL from which identification request was sent.  # noqa: E501
+        Page URL from which the identification request was sent.  # noqa: E501
 
         :param url: The url of this ResponseVisits.  # noqa: E501
         :type: str
@@ -353,8 +354,6 @@ class ResponseVisits(object):
         :param confidence: The confidence of this ResponseVisits.  # noqa: E501
         :type: Confidence
         """
-        if confidence is None:
-            raise ValueError("Invalid value for `confidence`, must not be `None`")  # noqa: E501
 
         self._confidence = confidence
 

@@ -28,7 +28,7 @@ class SignalResponseProxy(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'SignalResponseProxyData',
+        'data': 'ProxyResult',
         'error': 'ProductError'
     }
 
@@ -53,7 +53,7 @@ class SignalResponseProxy(object):
 
 
         :return: The data of this SignalResponseProxy.  # noqa: E501
-        :rtype: SignalResponseProxyData
+        :rtype: ProxyResult
         """
         return self._data
 
@@ -63,7 +63,7 @@ class SignalResponseProxy(object):
 
 
         :param data: The data of this SignalResponseProxy.  # noqa: E501
-        :type: SignalResponseProxyData
+        :type: ProxyResult
         """
 
         self._data = data
