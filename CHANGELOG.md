@@ -1,3 +1,26 @@
+## [5.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v4.0.0...v5.0.0) (2024-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* make identification field `confidence` optional
+* deprecated `ipLocation` field uses `DeprecatedIpLocation` model
+* change models for the most smart signals
+
+### Features
+
+* add `linked_id` field to the `BotdResult` type ([3aba5d0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/3aba5d0c4782696d1974f650ae22ff30deeedd20))
+* add `origin_country` field to the `vpn` signal ([27f7c58](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/27f7c580e36b2c6b803c2617462b19d51c886e17))
+* add `SuspectScore` smart signal support ([331f2a8](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/331f2a82b31e7a281dfaa7921b015128b147cbe8))
+* fix `ipLocation` deprecation ([cb3b7b1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/cb3b7b1ade37fc3d221e2fa46c5d691a85a37248))
+* make identification field `tag` required ([678a3a1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/678a3a187fe5a10c5811b56dc43daab57e7cdff4))
+* use shared structures for webhooks and event ([c15ae21](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c15ae2107256d29fff02af3cc70b065d93092af3))
+
+
+### Bug Fixes
+
+* make fields required according to real API response ([8beb757](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/8beb757db67af38b7a112f93f1a7c21ef35e62a8))
+
 ## [4.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v3.0.0...v4.0.0) (2024-02-14)
 
 
