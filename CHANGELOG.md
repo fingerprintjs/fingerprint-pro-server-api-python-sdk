@@ -1,3 +1,14 @@
+## [6.0.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v5.0.0...v6.0.0-dev.1) (2024-03-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* now only Python >= 3.8 is supported
+
+### Features
+
+* drop support for python < 3.8 ([1e18e2c](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/1e18e2ccafb6967229922d7783782f2c97cadb64))
+
 ## [5.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v4.0.0...v5.0.0) (2024-03-20)
 
 
