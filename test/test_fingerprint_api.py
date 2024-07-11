@@ -17,8 +17,8 @@ import unittest
 
 import urllib3
 
-from fingerprint_pro_server_api_sdk import Configuration, ManyRequestsResponse, ErrorVisits403, ErrorEvent403Response, \
-    ErrorEvent404Response
+from fingerprint_pro_server_api_sdk import (Configuration, TooManyRequestsResponse, ErrorVisits403,
+                                            ErrorCommon403Response, ErrorEvent404Response)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException
 
@@ -157,7 +157,7 @@ class TestFingerprintApi(unittest.TestCase):
         with self.assertRaises(KnownApiException) as context:
             self.api.get_visits(mock_file)
         self.assertEqual(context.exception.status, 429)
-        self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
+        self.assertIsInstance(context.exception.structured_error, TooManyRequestsResponse)
         self.assertEqual(context.exception.structured_error.retry_after, 4)
 
     def test_get_visits_error_429_empty_retry_after(self):
@@ -171,7 +171,7 @@ class TestFingerprintApi(unittest.TestCase):
         with self.assertRaises(KnownApiException) as context:
             self.api.get_visits(mock_file)
         self.assertEqual(context.exception.status, 429)
-        self.assertIsInstance(context.exception.structured_error, ManyRequestsResponse)
+        self.assertIsInstance(context.exception.structured_error, TooManyRequestsResponse)
         self.assertEqual(context.exception.structured_error.retry_after, 1)
 
     def test_get_event_correct_data(self):
@@ -229,7 +229,7 @@ class TestFingerprintApi(unittest.TestCase):
         with self.assertRaises(KnownApiException) as context:
             self.api.get_event(mock_file)
         self.assertEqual(context.exception.status, 403)
-        self.assertIsInstance(context.exception.structured_error, ErrorEvent403Response)
+        self.assertIsInstance(context.exception.structured_error, ErrorCommon403Response)
 
     def test_get_event_error_404(self):
         """Test checks correct code run result in case of 403 error"""

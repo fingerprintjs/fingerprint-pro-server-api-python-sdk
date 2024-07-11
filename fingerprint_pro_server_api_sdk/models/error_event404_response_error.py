@@ -49,7 +49,7 @@ class ErrorEvent404ResponseError(object):
     def code(self):
         """Gets the code of this ErrorEvent404ResponseError.  # noqa: E501
 
-        Error code:  * `RequestNotFound` - request not found for specified id   # noqa: E501
+        Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted.   # noqa: E501
 
         :return: The code of this ErrorEvent404ResponseError.  # noqa: E501
         :rtype: str
@@ -60,7 +60,7 @@ class ErrorEvent404ResponseError(object):
     def code(self, code):
         """Sets the code of this ErrorEvent404ResponseError.
 
-        Error code:  * `RequestNotFound` - request not found for specified id   # noqa: E501
+        Error code:  * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted.   # noqa: E501
 
         :param code: The code of this ErrorEvent404ResponseError.  # noqa: E501
         :type: str

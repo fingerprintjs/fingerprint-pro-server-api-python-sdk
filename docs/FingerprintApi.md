@@ -4,15 +4,15 @@ All URIs are relative to *https://api.fpjs.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by requestId
-[**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
+[**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
+[**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 
 # **get_event**
 > EventResponse get_event(request_id)
 
-Get event by requestId
+Get event by request ID
 
-This endpoint allows you to get a detailed analysis of an individual request.  **Only for Enterprise customers:** Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
+Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`. 
 
 ### Example
 ```python
@@ -43,7 +43,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **request_id** | **str**| The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each analysis request. | 
+ **request_id** | **str**| The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. | 
 
 ### Return type
 
@@ -63,9 +63,9 @@ Name | Type | Description  | Notes
 # **get_visits**
 > Response get_visits(visitor_id, request_id=request_id, linked_id=linked_id, limit=limit, pagination_key=pagination_key, before=before)
 
-Get visits by visitorId
+Get visits by visitor ID
 
-This endpoint allows you to get a history of visits for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
+Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received. 
 
 ### Example
 ```python
@@ -96,7 +96,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **visitor_id** | **str**| Unique identifier of the visitor issued by Fingerprint Pro. | 
+ **visitor_id** | **str**| Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. | 
  **request_id** | **str**| Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned.  | [optional] 
  **linked_id** | **str**| Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] 
  **limit** | **int**| Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  | [optional] 

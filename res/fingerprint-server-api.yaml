@@ -36,14 +36,13 @@ paths:
       tags:
         - Fingerprint
       operationId: getEvent
-      summary: Get event by requestId
+      summary: Get event by request ID
       description: >
-        This endpoint allows you to get a detailed analysis of an individual
-        request. 
+        Get a detailed analysis of an individual identification event, including
+        Smart Signals. 
 
-        **Only for Enterprise customers:** Please note that the response
-        includes mobile signals (e.g. `rootApps`) even if the request originated
-        from a non-mobile platform.
+        Please note that the response includes mobile signals (e.g. `rootApps`)
+        even if the request originated from a non-mobile platform.
 
         It is highly recommended that you **ignore** the mobile signals for such
         requests. 
@@ -57,7 +56,7 @@ paths:
           description: >-
             The unique
             [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of
-            each analysis request.
+            each identification request.
           required: true
           schema:
             type: string
@@ -73,7 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorEvent403Response'
+                $ref: '#/components/schemas/ErrorCommon403Response'
         '404':
           description: Not found
           content:
@@ -85,9 +84,9 @@ paths:
       tags:
         - Fingerprint
       operationId: getVisits
-      summary: Get visits by visitorId
+      summary: Get visits by visitor ID
       description: >
-        This endpoint allows you to get a history of visits for a specific
+        Get a history of visits (identification events) for a specific
         `visitorId`. Use the `visitorId` as a URL path parameter.
 
         Only information from the _Identification_ product is returned.
@@ -102,7 +101,10 @@ paths:
         response is received.
       parameters:
         - name: visitor_id
-          description: Unique identifier of the visitor issued by Fingerprint Pro.
+          description: >-
+            Unique [visitor
+            identifier](https://dev.fingerprint.com/docs/js-agent#visitorid)
+            issued by Fingerprint Pro.
           in: path
           required: true
           schema:
@@ -210,8 +212,8 @@ paths:
           headers:
             Retry-After:
               description: >-
-                Indicates how long you should wait before attempting the next
-                request.
+                Indicates how many seconds you should wait before attempting the
+                next request.
               schema:
                 type: integer
                 format: int32
@@ -219,7 +221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ManyRequestsResponse'
+                $ref: '#/components/schemas/TooManyRequestsResponse'
   /webhook:
     trace:
       tags:
@@ -547,28 +549,30 @@ components:
       description: >-
         Fields `lastTimestamp` and `paginationKey` added when `limit` or
         `before` parameter provided and there is more data to show
-    ErrorEvent403Response:
+    ErrorCommon403Response:
       type: object
       additionalProperties: false
       properties:
         error:
           type: object
           additionalProperties: false
-          title: ErrorEvent403ResponseError
+          title: Common403ErrorResponse
           properties:
             code:
               type: string
               description: |
                 Error code:
                  * `TokenRequired` - `Auth-API-Key` header is missing or empty
-                 * `TokenNotFound` - subscription not found for specified secret key
-                 * `SubscriptionNotActive` - subscription is not active
-                 * `WrongRegion` - server and subscription region differ
+                 * `TokenNotFound` - No Fingerprint application found for specified secret key
+                 * `SubscriptionNotActive` - Fingerprint application is not active
+                 * `WrongRegion` - server and application region differ
+                 * `FeatureNotEnabled` - this feature (for example, Delete API) is not enabled for your application
               enum:
                 - TokenRequired
                 - TokenNotFound
                 - SubscriptionNotActive
                 - WrongRegion
+                - FeatureNotEnabled
               example: TokenRequired
             message:
               type: string
@@ -589,7 +593,7 @@ components:
               type: string
               description: |
                 Error code:
-                 * `RequestNotFound` - request not found for specified id
+                 * `RequestNotFound` - The specified request ID was not found. It never existed, expired, or it has been deleted.
               enum:
                 - RequestNotFound
               example: RequestNotFound
@@ -609,7 +613,7 @@ components:
           example: Forbidden (HTTP 403)
       required:
         - error
-    ManyRequestsResponse:
+    TooManyRequestsResponse:
       type: object
       additionalProperties: false
       properties:
@@ -1234,7 +1238,7 @@ components:
             data:
               $ref: '#/components/schemas/IncognitoResult'
             error:
-              $ref: '#/components/schemas/ProductError'
+              $ref: '#/components/schemas/IdentificationError'
         rootApps:
           title: SignalResponseRootApps
           type: object
@@ -1351,7 +1355,7 @@ components:
             data:
               $ref: '#/components/schemas/TamperingResult'
             error:
-              $ref: '#/components/schemas/ProductError'
+              $ref: '#/components/schemas/IdentificationError'
         highActivity:
           title: SignalResponseHighActivity
           type: object
@@ -1387,7 +1391,7 @@ components:
             data:
               $ref: '#/components/schemas/RawDeviceAttributesResult'
             error:
-              $ref: '#/components/schemas/ProductError'
+              $ref: '#/components/schemas/IdentificationError'
     EventResponse:
       description: >-
         Contains results from all activated products - Fingerprint Pro, Bot
@@ -1582,8 +1586,8 @@ components:
             timezoneMismatch:
               type: boolean
               description: >-
-                User's browser timezone doesn't match the timezone from which
-                the request was originally made.
+                The browser timezone doesn't match the timezone inferred from
+                the request IP address.
               example: false
             publicVPN:
               type: boolean

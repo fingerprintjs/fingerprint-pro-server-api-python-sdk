@@ -168,8 +168,8 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by requestId
-*FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
+*FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
+*FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 
 ## Documentation For Models
 
@@ -178,13 +178,13 @@ Class | Method | HTTP request | Description
  - [BotdResult](docs/BotdResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [ClonedAppResult](docs/ClonedAppResult.md)
+ - [Common403ErrorResponse](docs/Common403ErrorResponse.md)
  - [Confidence](docs/Confidence.md)
  - [DataCenter](docs/DataCenter.md)
  - [DeprecatedIPLocation](docs/DeprecatedIPLocation.md)
  - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
  - [EmulatorResult](docs/EmulatorResult.md)
- - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
- - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)
+ - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
@@ -204,7 +204,6 @@ Class | Method | HTTP request | Description
  - [JailbrokenResult](docs/JailbrokenResult.md)
  - [Location](docs/Location.md)
  - [LocationSpoofingResult](docs/LocationSpoofingResult.md)
- - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
  - [PrivacySettingsResult](docs/PrivacySettingsResult.md)
  - [ProductError](docs/ProductError.md)
  - [ProductsResponse](docs/ProductsResponse.md)
@@ -239,6 +238,7 @@ Class | Method | HTTP request | Description
  - [Subdivision](docs/Subdivision.md)
  - [SuspectScoreResult](docs/SuspectScoreResult.md)
  - [TamperingResult](docs/TamperingResult.md)
+ - [TooManyRequestsResponse](docs/TooManyRequestsResponse.md)
  - [TorResult](docs/TorResult.md)
  - [VirtualMachineResult](docs/VirtualMachineResult.md)
  - [Visit](docs/Visit.md)

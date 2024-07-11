@@ -1,4 +1,4 @@
-# ManyRequestsResponse
+# TooManyRequestsResponse
 
 ## Properties
 Name | Type | Description | Notes

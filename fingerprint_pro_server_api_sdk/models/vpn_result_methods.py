@@ -53,7 +53,7 @@ class VpnResultMethods(object):
     def timezone_mismatch(self):
         """Gets the timezone_mismatch of this VpnResultMethods.  # noqa: E501
 
-        User's browser timezone doesn't match the timezone from which the request was originally made.  # noqa: E501
+        The browser timezone doesn't match the timezone inferred from the request IP address.  # noqa: E501
 
         :return: The timezone_mismatch of this VpnResultMethods.  # noqa: E501
         :rtype: bool
@@ -64,7 +64,7 @@ class VpnResultMethods(object):
     def timezone_mismatch(self, timezone_mismatch):
         """Sets the timezone_mismatch of this VpnResultMethods.
 
-        User's browser timezone doesn't match the timezone from which the request was originally made.  # noqa: E501
+        The browser timezone doesn't match the timezone inferred from the request IP address.  # noqa: E501
 
         :param timezone_mismatch: The timezone_mismatch of this VpnResultMethods.  # noqa: E501
         :type: bool

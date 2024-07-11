@@ -29,7 +29,7 @@ class SignalResponseRawDeviceAttributes(object):
     """
     swagger_types = {
         'data': 'RawDeviceAttributesResult',
-        'error': 'ProductError'
+        'error': 'IdentificationError'
     }
 
     attribute_map = {
@@ -74,7 +74,7 @@ class SignalResponseRawDeviceAttributes(object):
 
 
         :return: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :rtype: ProductError
+        :rtype: IdentificationError
         """
         return self._error
 
@@ -84,7 +84,7 @@ class SignalResponseRawDeviceAttributes(object):
 
 
         :param error: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :type: ProductError
+        :type: IdentificationError
         """
 
         self._error = error
