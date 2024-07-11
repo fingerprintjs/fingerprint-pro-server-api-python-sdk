@@ -391,6 +391,8 @@ paths:
                           result: true
                         suspectScore:
                           result: 0
+                        remoteControl:
+                          result: false
               responses:
                 default:
                   description: The server doesn't validate the answer.
@@ -679,6 +681,8 @@ components:
           $ref: '#/components/schemas/LocationSpoofingResult'
         suspectScore:
           $ref: '#/components/schemas/SuspectScoreResult'
+        remoteControl:
+          $ref: '#/components/schemas/RemoteControlResult'
         requestId:
           description: Unique identifier of the user's identification request.
           type: string
@@ -1399,6 +1403,15 @@ components:
               $ref: '#/components/schemas/RawDeviceAttributesResult'
             error:
               $ref: '#/components/schemas/IdentificationError'
+        remoteControl:
+          title: SignalResponseRemoteControl
+          type: object
+          additionalProperties: false
+          properties:
+            data:
+              $ref: '#/components/schemas/RemoteControlResult'
+            error:
+              $ref: '#/components/schemas/ProductError'
     EventResponse:
       description: >-
         Contains results from all activated products - Fingerprint Pro, Bot
@@ -1895,3 +1908,15 @@ components:
       required:
         - code
         - message
+    RemoteControlResult:
+      type: object
+      additionalProperties: false
+      properties:
+        result:
+          type: boolean
+          description: >
+            `true` if the request came from a machine being remotely controlled
+            (e.g. TeamViewer), `false` otherwise.
+          example: false
+      required:
+        - result

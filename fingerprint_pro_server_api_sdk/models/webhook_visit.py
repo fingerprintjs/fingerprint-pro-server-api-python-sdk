@@ -51,6 +51,7 @@ class WebhookVisit(object):
         'high_activity': 'HighActivityResult',
         'location_spoofing': 'LocationSpoofingResult',
         'suspect_score': 'SuspectScoreResult',
+        'remote_control': 'RemoteControlResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
@@ -90,6 +91,7 @@ class WebhookVisit(object):
         'high_activity': 'highActivity',
         'location_spoofing': 'locationSpoofing',
         'suspect_score': 'suspectScore',
+        'remote_control': 'remoteControl',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
         'ip': 'ip',
@@ -105,7 +107,7 @@ class WebhookVisit(object):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -130,6 +132,7 @@ class WebhookVisit(object):
         self._high_activity = None
         self._location_spoofing = None
         self._suspect_score = None
+        self._remote_control = None
         self._request_id = None
         self._browser_details = None
         self._ip = None
@@ -188,6 +191,8 @@ class WebhookVisit(object):
             self.location_spoofing = location_spoofing
         if suspect_score is not None:
             self.suspect_score = suspect_score
+        if remote_control is not None:
+            self.remote_control = remote_control
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
@@ -693,6 +698,27 @@ class WebhookVisit(object):
         """
 
         self._suspect_score = suspect_score
+
+    @property
+    def remote_control(self):
+        """Gets the remote_control of this WebhookVisit.  # noqa: E501
+
+
+        :return: The remote_control of this WebhookVisit.  # noqa: E501
+        :rtype: RemoteControlResult
+        """
+        return self._remote_control
+
+    @remote_control.setter
+    def remote_control(self, remote_control):
+        """Sets the remote_control of this WebhookVisit.
+
+
+        :param remote_control: The remote_control of this WebhookVisit.  # noqa: E501
+        :type: RemoteControlResult
+        """
+
+        self._remote_control = remote_control
 
     @property
     def request_id(self):

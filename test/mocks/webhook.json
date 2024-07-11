@@ -188,5 +188,8 @@
   },
   "suspectScore": {
     "result": 0
+  },
+  "remoteControl": {
+    "result": false
   }
 }
