@@ -348,6 +348,7 @@ paths:
                             timezoneMismatch: false
                             publicVPN: false
                             auxiliaryMobile: false
+                            osMismatch: false
                         proxy:
                           result: false
                         tampering:
@@ -1607,10 +1608,17 @@ components:
                 This method applies to mobile devices only. Indicates the result
                 of additional methods used to detect a VPN in mobile devices.
               example: false
+            osMismatch:
+              type: boolean
+              description: >-
+                The browser runs on a different operating system than the
+                operating system inferred from the  request network signature.
+              example: false
           required:
             - timezoneMismatch
             - publicVPN
             - auxiliaryMobile
+            - osMismatch
       required:
         - result
         - originTimezone

@@ -30,24 +30,28 @@ class VpnResultMethods(object):
     swagger_types = {
         'timezone_mismatch': 'bool',
         'public_vpn': 'bool',
-        'auxiliary_mobile': 'bool'
+        'auxiliary_mobile': 'bool',
+        'os_mismatch': 'bool'
     }
 
     attribute_map = {
         'timezone_mismatch': 'timezoneMismatch',
         'public_vpn': 'publicVPN',
-        'auxiliary_mobile': 'auxiliaryMobile'
+        'auxiliary_mobile': 'auxiliaryMobile',
+        'os_mismatch': 'osMismatch'
     }
 
-    def __init__(self, timezone_mismatch=None, public_vpn=None, auxiliary_mobile=None):  # noqa: E501
+    def __init__(self, timezone_mismatch=None, public_vpn=None, auxiliary_mobile=None, os_mismatch=None):  # noqa: E501
         """VpnResultMethods - a model defined in Swagger"""  # noqa: E501
         self._timezone_mismatch = None
         self._public_vpn = None
         self._auxiliary_mobile = None
+        self._os_mismatch = None
         self.discriminator = None
         self.timezone_mismatch = timezone_mismatch
         self.public_vpn = public_vpn
         self.auxiliary_mobile = auxiliary_mobile
+        self.os_mismatch = os_mismatch
 
     @property
     def timezone_mismatch(self):
@@ -123,6 +127,31 @@ class VpnResultMethods(object):
             raise ValueError("Invalid value for `auxiliary_mobile`, must not be `None`")  # noqa: E501
 
         self._auxiliary_mobile = auxiliary_mobile
+
+    @property
+    def os_mismatch(self):
+        """Gets the os_mismatch of this VpnResultMethods.  # noqa: E501
+
+        The browser runs on a different operating system than the operating system inferred from the  request network signature.  # noqa: E501
+
+        :return: The os_mismatch of this VpnResultMethods.  # noqa: E501
+        :rtype: bool
+        """
+        return self._os_mismatch
+
+    @os_mismatch.setter
+    def os_mismatch(self, os_mismatch):
+        """Sets the os_mismatch of this VpnResultMethods.
+
+        The browser runs on a different operating system than the operating system inferred from the  request network signature.  # noqa: E501
+
+        :param os_mismatch: The os_mismatch of this VpnResultMethods.  # noqa: E501
+        :type: bool
+        """
+        if os_mismatch is None:
+            raise ValueError("Invalid value for `os_mismatch`, must not be `None`")  # noqa: E501
+
+        self._os_mismatch = os_mismatch
 
     def to_dict(self):
         """Returns the model properties as a dict"""
