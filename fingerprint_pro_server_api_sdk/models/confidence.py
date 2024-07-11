@@ -28,18 +28,23 @@ class Confidence(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'score': 'float'
+        'score': 'float',
+        'revision': 'str'
     }
 
     attribute_map = {
-        'score': 'score'
+        'score': 'score',
+        'revision': 'revision'
     }
 
-    def __init__(self, score=None):  # noqa: E501
+    def __init__(self, score=None, revision=None):  # noqa: E501
         """Confidence - a model defined in Swagger"""  # noqa: E501
         self._score = None
+        self._revision = None
         self.discriminator = None
         self.score = score
+        if revision is not None:
+            self.revision = revision
 
     @property
     def score(self):
@@ -65,6 +70,29 @@ class Confidence(object):
             raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
 
         self._score = score
+
+    @property
+    def revision(self):
+        """Gets the revision of this Confidence.  # noqa: E501
+
+        The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501
+
+        :return: The revision of this Confidence.  # noqa: E501
+        :rtype: str
+        """
+        return self._revision
+
+    @revision.setter
+    def revision(self, revision):
+        """Sets the revision of this Confidence.
+
+        The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501
+
+        :param revision: The revision of this Confidence.  # noqa: E501
+        :type: str
+        """
+
+        self._revision = revision
 
     def to_dict(self):
         """Returns the model properties as a dict"""
