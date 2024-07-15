@@ -34,6 +34,117 @@ class FingerprintApi(object):
             raise ValueError("Missing the required parameter `configuration` when calling `FingerprintApi`")  # noqa: E501
         self.api_client = ApiClient(configuration, pool=pool)
 
+    def delete_visitor_data(self, visitor_id, **kwargs):  # noqa: E501
+        """Delete data by visitor ID  # noqa: E501
+
+        Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_visitor_data(visitor_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str visitor_id: The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_visitor_data_with_http_info(visitor_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_visitor_data_with_http_info(visitor_id, **kwargs)  # noqa: E501
+            return data
+
+    def delete_visitor_data_with_http_info(self, visitor_id, **kwargs):  # noqa: E501
+        """Delete data by visitor ID  # noqa: E501
+
+        Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_visitor_data_with_http_info(visitor_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str visitor_id: The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['visitor_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_visitor_data" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'visitor_id' is set
+        if ('visitor_id' not in params or
+                                                       params['visitor_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `visitor_id` when calling `delete_visitor_data`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'visitor_id' in params:
+            path_params['visitor_id'] = params['visitor_id']  # noqa: E501
+
+        query_params = []
+        query_params.append(('ii', 'fingerprint-pro-server-python-sdk/6.0.0'))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
+
+        try:
+            return self.api_client.call_api(
+                '/visitors/{visitor_id}', 'DELETE',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type=None,  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 400:
+                error = self.api_client.deserialize(e, 'ErrorVisitor400Response', True)
+                raise extend_exception(e, error)
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorCommon403Response', True)
+                raise extend_exception(e, error)
+            if e.status == 404:
+                error = self.api_client.deserialize(e, 'ErrorVisitor404Response', True)
+                raise extend_exception(e, error)
+            if e.status == 429:
+                error = self.api_client.deserialize(e, 'ErrorCommon429Response', True)
+                raise extend_exception(e, error)
+            raise e
+
     def get_event(self, request_id, **kwargs):  # noqa: E501
         """Get event by request ID  # noqa: E501
 

@@ -168,6 +168,7 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*FingerprintApi* | [**delete_visitor_data**](docs/FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 *FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 
@@ -185,8 +186,14 @@ Class | Method | HTTP request | Description
  - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
  - [EmulatorResult](docs/EmulatorResult.md)
  - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
+ - [ErrorCommon429Response](docs/ErrorCommon429Response.md)
+ - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
+ - [ErrorVisitor400Response](docs/ErrorVisitor400Response.md)
+ - [ErrorVisitor400ResponseError](docs/ErrorVisitor400ResponseError.md)
+ - [ErrorVisitor404Response](docs/ErrorVisitor404Response.md)
+ - [ErrorVisitor404ResponseError](docs/ErrorVisitor404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
  - [EventResponse](docs/EventResponse.md)
  - [FactoryResetResult](docs/FactoryResetResult.md)

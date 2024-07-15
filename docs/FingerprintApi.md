@@ -4,8 +4,62 @@ All URIs are relative to *https://api.fpjs.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_visitor_data**](FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 [**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 [**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+
+# **delete_visitor_data**
+> delete_visitor_data(visitor_id)
+
+Delete data by visitor ID
+
+Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403. 
+
+### Example
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+# Configure API key authorization and region
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY", region="eu")
+
+# create an instance of the API class
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+visitor_id = 'visitor_id_example'  # str |
+#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
+#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
+limit = 10  # int | Limit scanned results (optional)
+#before = 56  # int | Used to paginate results (optional)
+
+try:
+    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    print(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **visitor_id** | **str**| The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyHeader](../README.md#ApiKeyHeader), [ApiKeyQuery](../README.md#ApiKeyQuery)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_event**
 > EventResponse get_event(request_id)
