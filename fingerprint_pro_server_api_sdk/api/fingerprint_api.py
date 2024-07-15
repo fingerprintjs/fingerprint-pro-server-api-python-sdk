@@ -374,3 +374,122 @@ class FingerprintApi(object):
                 error = self.api_client.deserialize(e, 'TooManyRequestsResponse', True)
                 raise extend_exception(e, error)
             raise e
+
+    def update_event(self, request_id, **kwargs):  # noqa: E501
+        """Update an event with a given request ID  # noqa: E501
+
+        Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_event(request_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+        :param EventUpdateRequest body:
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_event_with_http_info(request_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_event_with_http_info(request_id, **kwargs)  # noqa: E501
+            return data
+
+    def update_event_with_http_info(self, request_id, **kwargs):  # noqa: E501
+        """Update an event with a given request ID  # noqa: E501
+
+        Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_event_with_http_info(request_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+        :param EventUpdateRequest body:
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['request_id', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_event" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'request_id' is set
+        if ('request_id' not in params or
+                                                       params['request_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `request_id` when calling `update_event`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'request_id' in params:
+            path_params['request_id'] = params['request_id']  # noqa: E501
+
+        query_params = []
+        query_params.append(('ii', 'fingerprint-pro-server-python-sdk/6.0.0'))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
+
+        try:
+            return self.api_client.call_api(
+                '/events/{request_id}', 'PUT',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type=None,  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 400:
+                error = self.api_client.deserialize(e, 'ErrorUpdateEvent400Response', True)
+                raise extend_exception(e, error)
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorCommon403Response', True)
+                raise extend_exception(e, error)
+            if e.status == 404:
+                error = self.api_client.deserialize(e, 'ErrorEvent404Response', True)
+                raise extend_exception(e, error)
+            if e.status == 409:
+                error = self.api_client.deserialize(e, 'ErrorUpdateEvent409Response', True)
+                raise extend_exception(e, error)
+            raise e

@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**delete_visitor_data**](FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 [**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 [**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+[**update_event**](FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
 # **delete_visitor_data**
 > delete_visitor_data(visitor_id)
@@ -168,6 +169,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_event**
+> update_event(request_id, body=body)
+
+Update an event with a given request ID
+
+Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days. 
+
+### Example
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import Response
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+# Configure API key authorization and region
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY", region="eu")
+
+# create an instance of the API class
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+visitor_id = 'visitor_id_example'  # str |
+#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
+#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
+limit = 10  # int | Limit scanned results (optional)
+#before = 56  # int | Used to paginate results (optional)
+
+try:
+    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    print(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request_id** | **str**| The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). | 
+ **body** | [**EventUpdateRequest**](EventUpdateRequest.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKeyHeader](../README.md#ApiKeyHeader), [ApiKeyQuery](../README.md#ApiKeyQuery)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

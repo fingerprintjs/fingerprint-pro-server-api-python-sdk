@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
 *FingerprintApi* | [**delete_visitor_data**](docs/FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 *FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+*FingerprintApi* | [**update_event**](docs/FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
 ## Documentation For Models
 
@@ -190,12 +191,17 @@ Class | Method | HTTP request | Description
  - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
+ - [ErrorUpdateEvent400Response](docs/ErrorUpdateEvent400Response.md)
+ - [ErrorUpdateEvent400ResponseError](docs/ErrorUpdateEvent400ResponseError.md)
+ - [ErrorUpdateEvent409Response](docs/ErrorUpdateEvent409Response.md)
+ - [ErrorUpdateEvent409ResponseError](docs/ErrorUpdateEvent409ResponseError.md)
  - [ErrorVisitor400Response](docs/ErrorVisitor400Response.md)
  - [ErrorVisitor400ResponseError](docs/ErrorVisitor400ResponseError.md)
  - [ErrorVisitor404Response](docs/ErrorVisitor404Response.md)
  - [ErrorVisitor404ResponseError](docs/ErrorVisitor404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
  - [EventResponse](docs/EventResponse.md)
+ - [EventUpdateRequest](docs/EventUpdateRequest.md)
  - [FactoryResetResult](docs/FactoryResetResult.md)
  - [FridaResult](docs/FridaResult.md)
  - [HighActivityResult](docs/HighActivityResult.md)
