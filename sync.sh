@@ -34,4 +34,8 @@ for example in ${examplesList[*]}; do
   curl -o ./test/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/"$example"
 done
 
+for example in ${sharedExamplesList[*]}; do
+  curl -o ./test/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/shared/"$example"
+done
+
 ./generate.sh
