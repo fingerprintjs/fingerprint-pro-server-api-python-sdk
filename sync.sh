@@ -19,6 +19,17 @@ examplesList=(
   'get_event_200_identification_too_many_requests_error.json'
 )
 
+sharedExamplesList=(
+  '400_error_empty_visitor_id.json'
+  '400_error_incorrect_visitor_id.json'
+  '403_error_feature_not_enabled.json'
+  '403_error_token_not_found.json'
+  '403_error_token_required.json'
+  '403_error_wrong_region.json'
+  '404_error_visitor_not_found.json'
+  '429_error_too_many_requests.json'
+)
+
 for example in ${examplesList[*]}; do
   curl -o ./test/mocks/"$example" https://fingerprintjs.github.io/fingerprint-pro-server-api-openapi/examples/"$example"
 done
