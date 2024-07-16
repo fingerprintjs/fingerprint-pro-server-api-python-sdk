@@ -514,6 +514,23 @@ paths:
                           result: 0
                         remoteControl:
                           result: false
+                        velocity:
+                          distinctIp:
+                            intervals:
+                              5m: 1
+                              1h: 1
+                              24h: 1
+                          distinctLinkedId: {}
+                          distinctCountry:
+                            intervals:
+                              5m: 1
+                              1h: 2
+                              24h: 2
+                          events:
+                            intervals:
+                              5m: 1
+                              1h: 5
+                              24h: 5
               responses:
                 default:
                   description: The server doesn't validate the answer.
@@ -870,6 +887,8 @@ components:
           $ref: '#/components/schemas/SuspectScoreResult'
         remoteControl:
           $ref: '#/components/schemas/RemoteControlResult'
+        velocity:
+          $ref: '#/components/schemas/VelocityResult'
         requestId:
           description: Unique identifier of the user's identification request.
           type: string
@@ -1599,6 +1618,15 @@ components:
               $ref: '#/components/schemas/RemoteControlResult'
             error:
               $ref: '#/components/schemas/ProductError'
+        velocity:
+          title: SignalResponseVelocity
+          type: object
+          additionalProperties: false
+          properties:
+            data:
+              $ref: '#/components/schemas/VelocityResult'
+            error:
+              $ref: '#/components/schemas/ProductError'
     EventResponse:
       description: >-
         Contains results from all activated products - Fingerprint Pro, Bot
@@ -1890,6 +1918,36 @@ components:
           example: 0
       required:
         - result
+    VelocityResult:
+      type: object
+      description: >
+        Sums key data points for a specific `visitorId` at three distinct time
+        intervals: 5 minutes, 1 hour, and 24 hours as follows: 
+
+        - Number of identification events attributed to the visitor ID - Number
+        of distinct IP addresses associated to the visitor ID. - Number of
+        distinct countries associated with the visitor ID. - Number of distinct
+        `linkedId`s associated with the visitor ID.
+
+        The `24h` interval of `distinctIp`, `distinctLinkedId`, and
+        `distinctCountry` will be omitted if the number of `events` for the
+        visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher
+        than 20.000.
+      additionalProperties: false
+      properties:
+        distinctIp:
+          $ref: '#/components/schemas/VelocityIntervals'
+        distinctLinkedId:
+          $ref: '#/components/schemas/VelocityIntervals'
+        distinctCountry:
+          $ref: '#/components/schemas/VelocityIntervals'
+        events:
+          $ref: '#/components/schemas/VelocityIntervals'
+      required:
+        - distinctIp
+        - distinctLinkedId
+        - distinctCountry
+        - events
     RawDeviceAttributesResult:
       type: object
       description: >
@@ -2176,3 +2234,33 @@ components:
           required:
             - code
             - message
+    VelocityIntervals:
+      type: object
+      additionalProperties: false
+      properties:
+        intervals:
+          $ref: '#/components/schemas/VelocityIntervalResult'
+    VelocityIntervalResult:
+      type: object
+      description: >
+        Is absent if the velocity data could not be generated for the visitor
+        ID.
+      additionalProperties: false
+      properties:
+        5m:
+          type: integer
+          example: 1
+        1h:
+          type: integer
+          example: 1
+        24h:
+          type: integer
+          description: >
+            The `24h` interval of `distinctIp`, `distinctLinkedId`, and
+            `distinctCountry` will be omitted if the number of `events`` for the
+            visitor ID in the last 24 hours (`events.intervals.['24h']`) is
+            higher than 20.000.
+          example: 1
+      required:
+        - 5m
+        - 1h

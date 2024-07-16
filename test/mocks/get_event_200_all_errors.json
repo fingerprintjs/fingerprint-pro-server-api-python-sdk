@@ -141,6 +141,12 @@
         "code": "Failed",
         "message": "internal server error"
       }
+    },
+    "velocity": {
+      "error": {
+        "code": "Failed",
+        "message": "internal server error"
+      }
     }
   }
 }
