@@ -17,6 +17,10 @@ examplesList=(
   'get_event_200_botd_too_many_requests_error.json'
   'get_event_200_identification_failed_error.json'
   'get_event_200_identification_too_many_requests_error.json'
+  'update_event_400_error.json'
+  'update_event_403_error.json'
+  'update_event_404_error.json'
+  'update_event_409_error.json'
 )
 
 sharedExamplesList=(

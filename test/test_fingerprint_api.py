@@ -19,7 +19,8 @@ import urllib3
 
 from fingerprint_pro_server_api_sdk import (Configuration, TooManyRequestsResponse, ErrorVisits403,
                                             ErrorCommon403Response, ErrorEvent404Response, ErrorVisitor400Response,
-                                            ErrorVisitor404Response, ErrorCommon429Response)
+                                            ErrorVisitor404Response, ErrorCommon429Response, EventUpdateRequest,
+                                            ErrorUpdateEvent400Response, ErrorUpdateEvent409Response)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException
 from six.moves.urllib.parse import urlencode
@@ -69,6 +70,8 @@ class MockPoolManager(object):
             return urllib3.HTTPResponse(status=200, body='{"products": {}}')
         if mock_file_by_first_argument == 'delete_visitor':
             return urllib3.HTTPResponse(status=200, body='OK')
+        if mock_file_by_first_argument == 'update_event':
+            return urllib3.HTTPResponse(status=200, body='OK')
         try:
             with io.open('./test/mocks/' + mock_file_by_first_argument, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
@@ -111,7 +114,7 @@ class TestFingerprintApi(unittest.TestCase):
         return 'https://%s/visitors/%s' % (domain, visitor_id)
 
     @staticmethod
-    def get_get_event_method_path(request_id, region='us'):
+    def get_events_path(request_id, region='us'):
         domain = {
             "us": "api.fpjs.io",
             "eu": "eu.api.fpjs.io",
@@ -189,7 +192,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file1 = 'get_event_200.json'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file1),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file1),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
@@ -204,21 +207,21 @@ class TestFingerprintApi(unittest.TestCase):
         mock_file_identification_fail = 'get_event_200_identification_failed_error.json'
         mock_file_identification_429 = 'get_event_200_identification_too_many_requests_error.json'
         mock_file_all_errors = 'get_event_200_all_errors.json'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_fail),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file_botd_fail),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_botd_429),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_get_event_method_path(request_id=mock_file_identification_fail),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file_botd_429),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
         mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_get_event_method_path(request_id=mock_file_identification_429),
+                                 TestFingerprintApi.get_events_path(request_id=mock_file_identification_fail),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file_all_errors),
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_events_path(request_id=mock_file_identification_429),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file_all_errors),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
@@ -233,7 +236,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_403_error.json'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=403)
         with self.assertRaises(KnownApiException) as context:
@@ -246,7 +249,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_404_error.json'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mock_file),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=404)
         with self.assertRaises(KnownApiException) as context:
@@ -259,7 +262,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mocked_id = 'empty_event_answer'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_get_event_method_path(request_id=mocked_id),
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mocked_id),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
@@ -425,6 +428,99 @@ class TestFingerprintApi(unittest.TestCase):
             self.api.delete_visitor_data(mock_file)
         self.assertEqual(context.exception.status, 429)
         self.assertIsInstance(context.exception.structured_error, ErrorCommon429Response)
+
+    def test_update_event(self):
+        """Test that update event method returns 200"""
+        test_cases = [
+            (EventUpdateRequest(linked_id='qwe'), '{"linkedId": "qwe"}'),
+            (EventUpdateRequest(tag={'qwe': 123}), '{"tag": {"qwe": 123}}'),
+            (EventUpdateRequest(suspect=False), '{"suspect": false}'),
+            (EventUpdateRequest(suspect=True), '{"suspect": true}'),
+            (EventUpdateRequest(linked_id='qwe', tag={'qwe': 123}, suspect=False),
+             '{"linkedId": "qwe", "tag": {"qwe": 123}, "suspect": false}')
+        ]
+
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'update_event'
+
+        for (update_body, serialized_body) in test_cases:
+            mock_pool.expect_request('PUT',
+                                     TestFingerprintApi.get_events_path(request_id=mock_file) + '?' + urlencode(
+                                         [self.integration_info]),
+                                     headers=self.request_headers, preload_content=True, timeout=None, status=200,
+                                     body=serialized_body)
+
+            self.api.update_event(update_body, mock_file)
+
+    def test_update_event_400_error(self):
+        """Test that delete visit method returns 400 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'update_event_400_error.json'
+        mock_pool.expect_request('PUT',
+                                 TestFingerprintApi.get_events_path(request_id=mock_file) + '?' + urlencode(
+                                     [self.integration_info]),
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=400,
+                                 body="{}")
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.update_event({}, mock_file)
+        self.assertEqual(context.exception.status, 400)
+        self.assertIsInstance(context.exception.structured_error, ErrorUpdateEvent400Response)
+
+    def test_update_event_403_error(self):
+        """Test that delete visit method returns 403 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'update_event_403_error.json'
+        mock_pool.expect_request('PUT',
+                                 TestFingerprintApi.get_events_path(request_id=mock_file) + '?' + urlencode(
+                                     [self.integration_info]),
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=403,
+                                 body="{}")
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.update_event({}, mock_file)
+        self.assertEqual(context.exception.status, 403)
+        self.assertIsInstance(context.exception.structured_error, ErrorCommon403Response)
+
+    def test_update_event_404_error(self):
+        """Test that delete visit method returns 404 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'update_event_404_error.json'
+        mock_pool.expect_request('PUT',
+                                 TestFingerprintApi.get_events_path(request_id=mock_file) + '?' + urlencode(
+                                     [self.integration_info]),
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=404,
+                                 body="{}")
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.update_event({}, mock_file)
+        self.assertEqual(context.exception.status, 404)
+        self.assertIsInstance(context.exception.structured_error, ErrorEvent404Response)
+
+    def test_update_event_409_error(self):
+        """Test that delete visit method returns 409 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'update_event_409_error.json'
+        mock_pool.expect_request('PUT',
+                                 TestFingerprintApi.get_events_path(request_id=mock_file) + '?' + urlencode(
+                                     [self.integration_info]),
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=409,
+                                 body="{}")
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.update_event({}, mock_file)
+        self.assertEqual(context.exception.status, 409)
+        self.assertIsInstance(context.exception.structured_error, ErrorUpdateEvent409Response)
 
 
 if __name__ == '__main__':
