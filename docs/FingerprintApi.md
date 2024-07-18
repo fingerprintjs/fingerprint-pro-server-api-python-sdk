@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_event**
-> update_event(request_id, body=body)
+> update_event(body, request_id)
 
 Update an event with a given request ID
 
@@ -209,8 +209,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**EventUpdateRequest**](EventUpdateRequest.md)|  | 
  **request_id** | **str**| The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). | 
- **body** | [**EventUpdateRequest**](EventUpdateRequest.md)|  | [optional] 
 
 ### Return type
 

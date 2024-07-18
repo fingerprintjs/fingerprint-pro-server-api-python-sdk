@@ -375,47 +375,47 @@ class FingerprintApi(object):
                 raise extend_exception(e, error)
             raise e
 
-    def update_event(self, request_id, **kwargs):  # noqa: E501
+    def update_event(self, body, request_id, **kwargs):  # noqa: E501
         """Update an event with a given request ID  # noqa: E501
 
         Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event(request_id, async_req=True)
+        >>> thread = api.update_event(body, request_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param EventUpdateRequest body: (required)
         :param str request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
-        :param EventUpdateRequest body:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_event_with_http_info(request_id, **kwargs)  # noqa: E501
+            return self.update_event_with_http_info(body, request_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_event_with_http_info(request_id, **kwargs)  # noqa: E501
+            (data) = self.update_event_with_http_info(body, request_id, **kwargs)  # noqa: E501
             return data
 
-    def update_event_with_http_info(self, request_id, **kwargs):  # noqa: E501
+    def update_event_with_http_info(self, body, request_id, **kwargs):  # noqa: E501
         """Update an event with a given request ID  # noqa: E501
 
         Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_event_with_http_info(request_id, async_req=True)
+        >>> thread = api.update_event_with_http_info(body, request_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param EventUpdateRequest body: (required)
         :param str request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
-        :param EventUpdateRequest body:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['request_id', 'body']  # noqa: E501
+        all_params = ['body', 'request_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -430,6 +430,10 @@ class FingerprintApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `update_event`")  # noqa: E501
         # verify the required parameter 'request_id' is set
         if ('request_id' not in params or
                                                        params['request_id'] is None):  # noqa: E501
