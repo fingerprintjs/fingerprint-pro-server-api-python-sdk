@@ -28,17 +28,14 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+
+visitor_id = 'visitor_id_example' # str | The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete.
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
-    print(api_response)
+    # Delete data by visitor ID
+    api_instance.delete_visitor_data(visitor_id)
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling FingerprintApi->delete_visitor_data: %s\n" % e)
 ```
 
 ### Parameters
@@ -81,17 +78,15 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+
+request_id = 'request_id_example' # str | The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request.
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    # Get event by request ID
+    api_response = api_instance.get_event(request_id)
     print(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling FingerprintApi->get_event: %s\n" % e)
 ```
 
 ### Parameters
@@ -134,17 +129,20 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+
+visitor_id = 'visitor_id_example' # str | Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro.
+request_id = 'request_id_example' # str | Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned.  (optional)
+linked_id = 'linked_id_example' # str | Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+limit = 56 # int | Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  (optional)
+pagination_key = 'pagination_key_example' # str | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  (optional)
+before = 789 # int | ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results.  (optional)
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    # Get visits by visitor ID
+    api_response = api_instance.get_visits(visitor_id, request_id=request_id, linked_id=linked_id, limit=limit, pagination_key=pagination_key, before=before)
     print(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling FingerprintApi->get_visits: %s\n" % e)
 ```
 
 ### Parameters
@@ -192,17 +190,15 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 
 # create an instance of the API class
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+
+body = fingerprint_pro_server_api_sdk.EventUpdateRequest() # EventUpdateRequest | 
+request_id = 'request_id_example' # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
-    print(api_response)
+    # Update an event with a given request ID
+    api_instance.update_event(body, request_id)
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling FingerprintApi->update_event: %s\n" % e)
 ```
 
 ### Parameters
