@@ -141,6 +141,8 @@ class VelocityIntervalResult(object):
                     if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
+            elif value is None:
+                continue
             else:
                 result[attr] = value
         if issubclass(VelocityIntervalResult, dict):
