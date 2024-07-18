@@ -6,7 +6,6 @@ from fingerprint_pro_server_api_sdk.rest import ApiException
 from dotenv import load_dotenv
 
 load_dotenv()
-print(os.environ["PRIVATE_KEY"])
 
 # configure
 configuration = fingerprint_pro_server_api_sdk.Configuration(
