@@ -22,7 +22,7 @@ from fingerprint_pro_server_api_sdk import (Configuration, TooManyRequestsRespon
                                             ErrorVisitor404Response, ErrorCommon429Response, EventUpdateRequest,
                                             ErrorUpdateEvent400Response, ErrorUpdateEvent409Response)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
-from fingerprint_pro_server_api_sdk.rest import KnownApiException
+from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from six.moves.urllib.parse import urlencode
 
 API_KEY = 'private_key'
@@ -521,6 +521,26 @@ class TestFingerprintApi(unittest.TestCase):
             self.api.update_event({}, mock_file)
         self.assertEqual(context.exception.status, 409)
         self.assertIsInstance(context.exception.structured_error, ErrorUpdateEvent409Response)
+
+    def test_get_event_wrong_shape(self):
+        """Test that get event method returns correct response"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'get_event_200_wrong_shape.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        with io.open('./test/mocks/' + mock_file, encoding='utf-8') as raw_file:
+            raw_file_data = raw_file.read()
+            raw_file.close()
+
+        with self.assertRaises(ApiException) as context:
+            self.api.get_event(mock_file)
+        self.assertEqual(context.exception.status, 200)
+        self.assertIsInstance(context.exception.reason, ValueError)
+        self.assertEqual(context.exception.body, raw_file_data)
 
 
 if __name__ == '__main__':

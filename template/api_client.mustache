@@ -19,6 +19,7 @@ import tornado.gen
 from {{packageName}}.configuration import Configuration
 import {{modelPackage}}
 from {{packageName}} import rest
+from {{packageName}}.rest import ApiException
 
 
 class ApiClient(object):
@@ -159,12 +160,17 @@ class ApiClient(object):
         self.last_response = response_data
 
         return_data = response_data
-        if _preload_content:
-            # deserialize response data
-            if response_type:
-                return_data = self.deserialize(response_data, response_type)
-            else:
-                return_data = None
+        try:
+            if _preload_content:
+                # deserialize response data
+                if response_type:
+                    return_data = self.deserialize(response_data, response_type)
+                else:
+                    return_data = None
+        except ValueError as e:
+            error = ApiException(http_resp=response_data)
+            error.reason = e
+            raise error
 
 {{^tornado}}
         if _return_http_data_only:

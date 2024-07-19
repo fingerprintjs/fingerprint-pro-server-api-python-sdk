@@ -24,6 +24,7 @@ from six.moves.urllib.parse import quote
 from fingerprint_pro_server_api_sdk.configuration import Configuration
 import fingerprint_pro_server_api_sdk.models
 from fingerprint_pro_server_api_sdk import rest
+from fingerprint_pro_server_api_sdk.rest import ApiException
 
 
 class ApiClient(object):
@@ -161,12 +162,17 @@ class ApiClient(object):
         self.last_response = response_data
 
         return_data = response_data
-        if _preload_content:
-            # deserialize response data
-            if response_type:
-                return_data = self.deserialize(response_data, response_type)
-            else:
-                return_data = None
+        try:
+            if _preload_content:
+                # deserialize response data
+                if response_type:
+                    return_data = self.deserialize(response_data, response_type)
+                else:
+                    return_data = None
+        except ValueError as e:
+            error = ApiException(http_resp=response_data)
+            error.reason = e
+            raise error
 
         if _return_http_data_only:
             return (return_data)
