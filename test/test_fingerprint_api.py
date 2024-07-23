@@ -291,8 +291,11 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ApiException) as context:
             self.api.get_visits(mocked_id)
+        self.assertEqual(context.exception.status, 200)
+        self.assertIsInstance(context.exception.reason, ValueError)
+        self.assertEqual(context.exception.body, 'really bad data')
 
     def test_get_visits_bad_json_data(self):
         """Test checks exception raising when client receives a bad JSON answer"""
@@ -302,8 +305,11 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ApiException) as context:
             self.api.get_visits(mocked_id)
+        self.assertEqual(context.exception.status, 200)
+        self.assertIsInstance(context.exception.reason, ValueError)
+        self.assertEqual(context.exception.body, '{}')
 
     def test_init_with_us_region(self):
         """Test that link for us region generates correct"""
