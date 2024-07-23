@@ -29,17 +29,16 @@ configuration = {{{packageName}}}.Configuration(api_key="SECRET_API_KEY")
 
 # create an instance of the API class
 api_instance = {{{packageName}}}.FingerprintApi(configuration)
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+
+{{#allParams}}{{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{/allParams}}
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
-    print(api_response)
+{{#summary}}    # {{{.}}}
+{{/summary}}    {{#returnType}}api_response = {{/returnType}}api_instance.{{{operationId}}}({{#allParams}}{{#required}}{{paramName}}{{/required}}{{^required}}{{paramName}}={{paramName}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}}){{#returnType}}
+    print(api_response){{/returnType}}
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling {{classname}}->{{operationId}}: %s\n" % e)
 ```
 
 ### Parameters

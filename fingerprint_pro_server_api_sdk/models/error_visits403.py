@@ -85,6 +85,8 @@ class ErrorVisits403(object):
                     if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
+            elif value is None:
+                continue
             else:
                 result[attr] = value
         if issubclass(ErrorVisits403, dict):

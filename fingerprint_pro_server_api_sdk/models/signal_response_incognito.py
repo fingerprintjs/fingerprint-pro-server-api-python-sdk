@@ -29,7 +29,7 @@ class SignalResponseIncognito(object):
     """
     swagger_types = {
         'data': 'IncognitoResult',
-        'error': 'ProductError'
+        'error': 'IdentificationError'
     }
 
     attribute_map = {
@@ -74,7 +74,7 @@ class SignalResponseIncognito(object):
 
 
         :return: The error of this SignalResponseIncognito.  # noqa: E501
-        :rtype: ProductError
+        :rtype: IdentificationError
         """
         return self._error
 
@@ -84,7 +84,7 @@ class SignalResponseIncognito(object):
 
 
         :param error: The error of this SignalResponseIncognito.  # noqa: E501
-        :type: ProductError
+        :type: IdentificationError
         """
 
         self._error = error
@@ -108,6 +108,8 @@ class SignalResponseIncognito(object):
                     if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
+            elif value is None:
+                continue
             else:
                 result[attr] = value
         if issubclass(SignalResponseIncognito, dict):

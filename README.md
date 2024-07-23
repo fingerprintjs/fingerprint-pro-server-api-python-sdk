@@ -95,11 +95,11 @@ from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 
-visitor_id = 'visitor_id_example'  # str |
-#request_id = 'request_id_example'  # str | Filter events by requestId (optional)
-#linked_id = 'linked_id_example'  # str | Filter events by custom identifier (optional)
-limit = 10  # int | Limit scanned results (optional)
-#before = 56  # int | Used to paginate results (optional)
+visitor_id = 'visitor_id_example'  # str | Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro.
+#request_id = 'request_id_example'  # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
+#linked_id = 'linked_id_example'  # str | Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+limit = 10  # int | Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500.  (optional)
+#pagination_key = 'pagination_key_example' # str | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  (optional)
 
 try:
     api_response: Response = api_instance.get_visits(visitor_id, limit=2)
@@ -108,7 +108,26 @@ except KnownApiException as e:
     structured_error = e.structured_error
     print("Error: %s\n" % structured_error.error)
 except ApiException as e:
-    print("Exception when calling DefaultApi->visitors_visitor_id_get: %s\n" % e)
+    print("Exception when calling FingerprintApi->visitors_visitor_id_get: %s\n" % e)
+```
+
+Delete visits using visitorId:
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
+
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+visitor_id = 'visitor_id_example'  # str | Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro.
+
+try:
+    api_instance.delete_visitor_data(visitor_id)
+except KnownApiException as e:
+    structured_error = e.structured_error
+    print("Error: %s\n" % structured_error.error)
+except ApiException as e:
+    print("Exception when calling FingerprintApi->delete_visitor_data: %s\n" % e)
 ```
 
 Fetching events for requestId:
@@ -120,7 +139,7 @@ from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 
-request_id = 'request_id_example'  # str
+request_id = 'request_id_example'  # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
 
 try:
     events_response: EventResponse = api_instance.get_event(request_id)
@@ -129,7 +148,31 @@ except KnownApiException as e:
     structured_error = e.structured_error
     print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
 except ApiException as e:
-    print("Exception when calling DefaultApi->get_event: %s\n" % e)
+    print("Exception when calling FingerprintApi->get_event: %s\n" % e)
+```
+
+Update event for requestId:
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk import EventUpdateRequest
+from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
+
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+request_id = 'request_id_example'  # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
+body = EventUpdateRequest(linked_id='foo')  # EventUpdateRequest |
+# body = EventUpdateRequest(tag={'bar': 123})
+# body = EventUpdateRequest(suspect=True)
+# body = EventUpdateRequest(linked_id='foo', tag={'bar': 123}, suspect=False)
+
+try:
+    api_instance.update_event(request_id, body)
+except KnownApiException as e:
+    structured_error = e.structured_error
+    print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
+except ApiException as e:
+    print("Exception when calling FingerprintApi->update_event: %s\n" % e)
 ```
 
 ## Sealed results
@@ -168,8 +211,10 @@ All URIs are relative to *https://api.fpjs.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by requestId
-*FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitorId
+*FingerprintApi* | [**delete_visitor_data**](docs/FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
+*FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
+*FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+*FingerprintApi* | [**update_event**](docs/FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
 ## Documentation For Models
 
@@ -178,17 +223,28 @@ Class | Method | HTTP request | Description
  - [BotdResult](docs/BotdResult.md)
  - [BrowserDetails](docs/BrowserDetails.md)
  - [ClonedAppResult](docs/ClonedAppResult.md)
+ - [Common403ErrorResponse](docs/Common403ErrorResponse.md)
  - [Confidence](docs/Confidence.md)
  - [DataCenter](docs/DataCenter.md)
  - [DeprecatedIPLocation](docs/DeprecatedIPLocation.md)
  - [DeprecatedIPLocationCity](docs/DeprecatedIPLocationCity.md)
  - [EmulatorResult](docs/EmulatorResult.md)
- - [ErrorEvent403Response](docs/ErrorEvent403Response.md)
- - [ErrorEvent403ResponseError](docs/ErrorEvent403ResponseError.md)
+ - [ErrorCommon403Response](docs/ErrorCommon403Response.md)
+ - [ErrorCommon429Response](docs/ErrorCommon429Response.md)
+ - [ErrorCommon429ResponseError](docs/ErrorCommon429ResponseError.md)
  - [ErrorEvent404Response](docs/ErrorEvent404Response.md)
  - [ErrorEvent404ResponseError](docs/ErrorEvent404ResponseError.md)
+ - [ErrorUpdateEvent400Response](docs/ErrorUpdateEvent400Response.md)
+ - [ErrorUpdateEvent400ResponseError](docs/ErrorUpdateEvent400ResponseError.md)
+ - [ErrorUpdateEvent409Response](docs/ErrorUpdateEvent409Response.md)
+ - [ErrorUpdateEvent409ResponseError](docs/ErrorUpdateEvent409ResponseError.md)
+ - [ErrorVisitor400Response](docs/ErrorVisitor400Response.md)
+ - [ErrorVisitor400ResponseError](docs/ErrorVisitor400ResponseError.md)
+ - [ErrorVisitor404Response](docs/ErrorVisitor404Response.md)
+ - [ErrorVisitor404ResponseError](docs/ErrorVisitor404ResponseError.md)
  - [ErrorVisits403](docs/ErrorVisits403.md)
  - [EventResponse](docs/EventResponse.md)
+ - [EventUpdateRequest](docs/EventUpdateRequest.md)
  - [FactoryResetResult](docs/FactoryResetResult.md)
  - [FridaResult](docs/FridaResult.md)
  - [HighActivityResult](docs/HighActivityResult.md)
@@ -204,7 +260,6 @@ Class | Method | HTTP request | Description
  - [JailbrokenResult](docs/JailbrokenResult.md)
  - [Location](docs/Location.md)
  - [LocationSpoofingResult](docs/LocationSpoofingResult.md)
- - [ManyRequestsResponse](docs/ManyRequestsResponse.md)
  - [PrivacySettingsResult](docs/PrivacySettingsResult.md)
  - [ProductError](docs/ProductError.md)
  - [ProductsResponse](docs/ProductsResponse.md)
@@ -213,6 +268,7 @@ Class | Method | HTTP request | Description
  - [ProductsResponseIdentificationData](docs/ProductsResponseIdentificationData.md)
  - [ProxyResult](docs/ProxyResult.md)
  - [RawDeviceAttributesResult](docs/RawDeviceAttributesResult.md)
+ - [RemoteControlResult](docs/RemoteControlResult.md)
  - [Response](docs/Response.md)
  - [ResponseVisits](docs/ResponseVisits.md)
  - [RootAppsResult](docs/RootAppsResult.md)
@@ -230,16 +286,22 @@ Class | Method | HTTP request | Description
  - [SignalResponsePrivacySettings](docs/SignalResponsePrivacySettings.md)
  - [SignalResponseProxy](docs/SignalResponseProxy.md)
  - [SignalResponseRawDeviceAttributes](docs/SignalResponseRawDeviceAttributes.md)
+ - [SignalResponseRemoteControl](docs/SignalResponseRemoteControl.md)
  - [SignalResponseRootApps](docs/SignalResponseRootApps.md)
  - [SignalResponseSuspectScore](docs/SignalResponseSuspectScore.md)
  - [SignalResponseTampering](docs/SignalResponseTampering.md)
  - [SignalResponseTor](docs/SignalResponseTor.md)
+ - [SignalResponseVelocity](docs/SignalResponseVelocity.md)
  - [SignalResponseVirtualMachine](docs/SignalResponseVirtualMachine.md)
  - [SignalResponseVpn](docs/SignalResponseVpn.md)
  - [Subdivision](docs/Subdivision.md)
  - [SuspectScoreResult](docs/SuspectScoreResult.md)
  - [TamperingResult](docs/TamperingResult.md)
+ - [TooManyRequestsResponse](docs/TooManyRequestsResponse.md)
  - [TorResult](docs/TorResult.md)
+ - [VelocityIntervalResult](docs/VelocityIntervalResult.md)
+ - [VelocityIntervals](docs/VelocityIntervals.md)
+ - [VelocityResult](docs/VelocityResult.md)
  - [VirtualMachineResult](docs/VirtualMachineResult.md)
  - [Visit](docs/Visit.md)
  - [VpnResult](docs/VpnResult.md)

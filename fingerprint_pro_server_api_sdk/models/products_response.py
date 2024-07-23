@@ -51,7 +51,9 @@ class ProductsResponse(object):
         'high_activity': 'SignalResponseHighActivity',
         'location_spoofing': 'SignalResponseLocationSpoofing',
         'suspect_score': 'SignalResponseSuspectScore',
-        'raw_device_attributes': 'SignalResponseRawDeviceAttributes'
+        'raw_device_attributes': 'SignalResponseRawDeviceAttributes',
+        'remote_control': 'SignalResponseRemoteControl',
+        'velocity': 'SignalResponseVelocity'
     }
 
     attribute_map = {
@@ -75,10 +77,12 @@ class ProductsResponse(object):
         'high_activity': 'highActivity',
         'location_spoofing': 'locationSpoofing',
         'suspect_score': 'suspectScore',
-        'raw_device_attributes': 'rawDeviceAttributes'
+        'raw_device_attributes': 'rawDeviceAttributes',
+        'remote_control': 'remoteControl',
+        'velocity': 'velocity'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, suspect_score=None, raw_device_attributes=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, suspect_score=None, raw_device_attributes=None, remote_control=None, velocity=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -101,6 +105,8 @@ class ProductsResponse(object):
         self._location_spoofing = None
         self._suspect_score = None
         self._raw_device_attributes = None
+        self._remote_control = None
+        self._velocity = None
         self.discriminator = None
         if identification is not None:
             self.identification = identification
@@ -144,6 +150,10 @@ class ProductsResponse(object):
             self.suspect_score = suspect_score
         if raw_device_attributes is not None:
             self.raw_device_attributes = raw_device_attributes
+        if remote_control is not None:
+            self.remote_control = remote_control
+        if velocity is not None:
+            self.velocity = velocity
 
     @property
     def identification(self):
@@ -586,6 +596,48 @@ class ProductsResponse(object):
 
         self._raw_device_attributes = raw_device_attributes
 
+    @property
+    def remote_control(self):
+        """Gets the remote_control of this ProductsResponse.  # noqa: E501
+
+
+        :return: The remote_control of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseRemoteControl
+        """
+        return self._remote_control
+
+    @remote_control.setter
+    def remote_control(self, remote_control):
+        """Sets the remote_control of this ProductsResponse.
+
+
+        :param remote_control: The remote_control of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseRemoteControl
+        """
+
+        self._remote_control = remote_control
+
+    @property
+    def velocity(self):
+        """Gets the velocity of this ProductsResponse.  # noqa: E501
+
+
+        :return: The velocity of this ProductsResponse.  # noqa: E501
+        :rtype: SignalResponseVelocity
+        """
+        return self._velocity
+
+    @velocity.setter
+    def velocity(self, velocity):
+        """Sets the velocity of this ProductsResponse.
+
+
+        :param velocity: The velocity of this ProductsResponse.  # noqa: E501
+        :type: SignalResponseVelocity
+        """
+
+        self._velocity = velocity
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -605,6 +657,8 @@ class ProductsResponse(object):
                     if hasattr(item[1], "to_dict") else item,
                     value.items()
                 ))
+            elif value is None:
+                continue
             else:
                 result[attr] = value
         if issubclass(ProductsResponse, dict):

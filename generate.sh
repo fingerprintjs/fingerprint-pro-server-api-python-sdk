@@ -22,7 +22,7 @@ fi
 find ./docs -type f ! -name "DecryptionKey.md" ! -name "SealedResults.md" -exec rm {} +
 cd fingerprint_pro_server_api_sdk/models
 shopt -s extglob
-rm !("many_requests_response.py")
+rm !("too_many_requests_response.py")
 cd ../..
 java -jar ./bin/swagger-codegen-cli.jar generate -t ./template -l python -i ./res/fingerprint-server-api.yaml -o ./ -c config.json -DpackageVersion=$VERSION
 

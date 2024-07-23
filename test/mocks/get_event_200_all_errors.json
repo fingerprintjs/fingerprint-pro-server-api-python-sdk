@@ -135,6 +135,18 @@
         "code": "Failed",
         "message": "internal server error"
       }
+    },
+    "remoteControl": {
+      "error": {
+        "code": "Failed",
+        "message": "internal server error"
+      }
+    },
+    "velocity": {
+      "error": {
+        "code": "Failed",
+        "message": "internal server error"
+      }
     }
   }
 }
