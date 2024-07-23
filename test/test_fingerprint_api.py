@@ -102,6 +102,7 @@ class TestFingerprintApi(unittest.TestCase):
         }
 
     def tearDown(self):
+        del self.api
         pass
 
     @staticmethod
@@ -146,7 +147,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.get_visits(mock_file2)
 
     def test_get_visits_error_403(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 403 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_403_error.json'
@@ -160,7 +161,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(context.exception.structured_error, ErrorVisits403)
 
     def test_get_visits_error_429(self):
-        """Test checks correct code run result in case of 429 error"""
+        """Test checks correct code run result in case of 429 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_429_too_many_requests_error.json'
@@ -174,7 +175,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertEqual(context.exception.structured_error.retry_after, 4)
 
     def test_get_visits_error_429_empty_retry_after(self):
-        """Test checks correct code run result in case of 429 error"""
+        """Test checks retry after value in exception in case of 429 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_429_too_many_requests_error_empty_header.json'
@@ -232,7 +233,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.get_event(mock_file_all_errors)
 
     def test_get_event_error_403(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 403 error for get_event method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_403_error.json'
@@ -245,7 +246,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(context.exception.structured_error, ErrorCommon403Response)
 
     def test_get_event_error_404(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 404 error for get_event method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_404_error.json'
@@ -306,6 +307,7 @@ class TestFingerprintApi(unittest.TestCase):
         regions_list = ["us", "eu", "ap"]
         for region in regions_list:
             configuration = Configuration(api_key=API_KEY, region=region)
+            del self.api
             self.api = FingerprintApi(configuration)  # noqa: E501
             mock_pool = MockPoolManager(self)
             self.api.api_client.rest_client.pool_manager = mock_pool
@@ -427,7 +429,7 @@ class TestFingerprintApi(unittest.TestCase):
             self.api.update_event(update_body, mock_file)
 
     def test_update_event_400_error(self):
-        """Test that delete visit method returns 400 error"""
+        """Test that update event method returns 400 error"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
 
