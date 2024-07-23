@@ -283,72 +283,38 @@ class TestFingerprintApi(unittest.TestCase):
                                  preload_content=True, timeout=None)
         self.assertEqual(self.api.get_visits(mocked_id).visits, [])
 
-    def test_get_visits_bad_text_data(self):
-        """Test checks exception raising when client receives not a JSON answer"""
+    def test_get_visits_bad_data(self):
+        """Test checks exception raising when client receives answer with bad data shape"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'bad_text_data'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        with self.assertRaises(ApiException) as context:
-            self.api.get_visits(mocked_id)
-        self.assertEqual(context.exception.status, 200)
-        self.assertIsInstance(context.exception.reason, ValueError)
-        self.assertEqual(context.exception.body, 'really bad data')
+        test_cases = [
+            ('bad_text_data', 'really bad data'),
+            ('bad_json_data', '{}')
+        ]
+        for (mocked_id, raw_data) in test_cases:
+            mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
+                                     fields=[self.integration_info], headers=self.request_headers,
+                                     preload_content=True, timeout=None)
+            with self.assertRaises(ApiException) as context:
+                self.api.get_visits(mocked_id)
+            self.assertEqual(context.exception.status, 200)
+            self.assertIsInstance(context.exception.reason, ValueError)
+            self.assertEqual(context.exception.body, raw_data)
 
-    def test_get_visits_bad_json_data(self):
-        """Test checks exception raising when client receives a bad JSON answer"""
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'bad_json_data'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        with self.assertRaises(ApiException) as context:
-            self.api.get_visits(mocked_id)
-        self.assertEqual(context.exception.status, 200)
-        self.assertIsInstance(context.exception.reason, ValueError)
-        self.assertEqual(context.exception.body, '{}')
-
-    def test_init_with_us_region(self):
+    def test_init_with_region(self):
         """Test that link for us region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="us")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="us"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
-
-    def test_init_with_eu_region(self):
-        """Test that link for eu region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="eu")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="eu"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
-
-    def test_init_with_ap_region(self):
-        """Test that link for ap region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="ap")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="ap"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
+        regions_list = ["us", "eu", "ap"]
+        for region in regions_list:
+            configuration = Configuration(api_key=API_KEY, region=region)
+            self.api = FingerprintApi(configuration)  # noqa: E501
+            mock_pool = MockPoolManager(self)
+            self.api.api_client.rest_client.pool_manager = mock_pool
+            mocked_id = 'empty_answer'
+            mock_pool.expect_request('GET',
+                                     TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region=region),
+                                     fields=[self.integration_info], headers=self.request_headers,
+                                     preload_content=True, timeout=None)
+            self.assertEqual(self.api.get_visits(mocked_id).visits, [])
 
     def test_delete_visitor_data(self):
         """Test that delete visit method works"""
