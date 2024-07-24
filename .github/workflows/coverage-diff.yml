@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.12"
       - name: "Install dependencies"
         run: |
           python -m pip install --upgrade pip
@@ -22,7 +22,7 @@ jobs:
           coverage run --source=fingerprint_pro_server_api_sdk -m pytest
           coverage xml
       - name: Get Cover
-        uses: orgoro/coverage@d77626a5fa35d39123e86d6c62907fabe2491496
+        uses: orgoro/coverage@3f13a558c5af7376496aa4848bf0224aead366ac
         with:
           coverageFile: ./coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}

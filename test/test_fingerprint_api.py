@@ -22,7 +22,7 @@ from fingerprint_pro_server_api_sdk import (Configuration, TooManyRequestsRespon
                                             ErrorVisitor404Response, ErrorCommon429Response, EventUpdateRequest,
                                             ErrorUpdateEvent400Response, ErrorUpdateEvent409Response)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
-from fingerprint_pro_server_api_sdk.rest import KnownApiException
+from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from six.moves.urllib.parse import urlencode
 
 API_KEY = 'private_key'
@@ -102,6 +102,7 @@ class TestFingerprintApi(unittest.TestCase):
         }
 
     def tearDown(self):
+        del self.api
         pass
 
     @staticmethod
@@ -146,7 +147,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.get_visits(mock_file2)
 
     def test_get_visits_error_403(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 403 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_403_error.json'
@@ -160,7 +161,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(context.exception.structured_error, ErrorVisits403)
 
     def test_get_visits_error_429(self):
-        """Test checks correct code run result in case of 429 error"""
+        """Test checks correct code run result in case of 429 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_429_too_many_requests_error.json'
@@ -174,7 +175,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertEqual(context.exception.structured_error.retry_after, 4)
 
     def test_get_visits_error_429_empty_retry_after(self):
-        """Test checks correct code run result in case of 429 error"""
+        """Test checks retry after value in exception in case of 429 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_429_too_many_requests_error_empty_header.json'
@@ -232,7 +233,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.api.get_event(mock_file_all_errors)
 
     def test_get_event_error_403(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 403 error for get_event method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_403_error.json'
@@ -245,7 +246,7 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(context.exception.structured_error, ErrorCommon403Response)
 
     def test_get_event_error_404(self):
-        """Test checks correct code run result in case of 403 error"""
+        """Test checks correct code run result in case of 404 error for get_event method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_event_404_error.json'
@@ -283,66 +284,39 @@ class TestFingerprintApi(unittest.TestCase):
                                  preload_content=True, timeout=None)
         self.assertEqual(self.api.get_visits(mocked_id).visits, [])
 
-    def test_get_visits_bad_text_data(self):
-        """Test checks exception raising when client receives not a JSON answer"""
+    def test_get_visits_bad_data(self):
+        """Test checks exception raising when client receives answer with bad data shape"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'bad_text_data'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        with self.assertRaises(ValueError):
-            self.api.get_visits(mocked_id)
+        test_cases = [
+            ('bad_text_data', 'really bad data'),
+            ('bad_json_data', '{}')
+        ]
+        for (mocked_id, raw_data) in test_cases:
+            mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
+                                     fields=[self.integration_info], headers=self.request_headers,
+                                     preload_content=True, timeout=None)
+            with self.assertRaises(ApiException) as context:
+                self.api.get_visits(mocked_id)
+            self.assertEqual(context.exception.status, 200)
+            self.assertIsInstance(context.exception.reason, ValueError)
+            self.assertEqual(context.exception.body, raw_data)
 
-    def test_get_visits_bad_json_data(self):
-        """Test checks exception raising when client receives a bad JSON answer"""
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'bad_json_data'
-        mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mocked_id),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        with self.assertRaises(ValueError):
-            self.api.get_visits(mocked_id)
-
-    def test_init_with_us_region(self):
+    def test_init_with_region(self):
         """Test that link for us region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="us")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="us"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
-
-    def test_init_with_eu_region(self):
-        """Test that link for eu region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="eu")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="eu"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
-
-    def test_init_with_ap_region(self):
-        """Test that link for ap region generates correct"""
-        configuration = Configuration(api_key=API_KEY, region="ap")
-        self.api = FingerprintApi(configuration)  # noqa: E501
-        mock_pool = MockPoolManager(self)
-        self.api.api_client.rest_client.pool_manager = mock_pool
-        mocked_id = 'empty_answer'
-        mock_pool.expect_request('GET',
-                                 TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region="ap"),
-                                 fields=[self.integration_info], headers=self.request_headers,
-                                 preload_content=True, timeout=None)
-        self.assertEqual(self.api.get_visits(mocked_id).visits, [])
+        regions_list = ["us", "eu", "ap"]
+        for region in regions_list:
+            configuration = Configuration(api_key=API_KEY, region=region)
+            del self.api
+            self.api = FingerprintApi(configuration)  # noqa: E501
+            mock_pool = MockPoolManager(self)
+            self.api.api_client.rest_client.pool_manager = mock_pool
+            mocked_id = 'empty_answer'
+            mock_pool.expect_request('GET',
+                                     TestFingerprintApi.get_visitors_path(visitor_id=mocked_id, region=region),
+                                     fields=[self.integration_info], headers=self.request_headers,
+                                     preload_content=True, timeout=None)
+            self.assertEqual(self.api.get_visits(mocked_id).visits, [])
 
     def test_delete_visitor_data(self):
         """Test that delete visit method works"""
@@ -455,7 +429,7 @@ class TestFingerprintApi(unittest.TestCase):
             self.api.update_event(update_body, mock_file)
 
     def test_update_event_400_error(self):
-        """Test that delete visit method returns 400 error"""
+        """Test that update event method returns 400 error"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
 
@@ -521,6 +495,26 @@ class TestFingerprintApi(unittest.TestCase):
             self.api.update_event({}, mock_file)
         self.assertEqual(context.exception.status, 409)
         self.assertIsInstance(context.exception.structured_error, ErrorUpdateEvent409Response)
+
+    def test_get_event_wrong_shape(self):
+        """Test that get event method returns correct response"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_file = 'get_event_200_wrong_shape.json'
+        mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file),
+                                 fields=[self.integration_info], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        with io.open('./test/mocks/' + mock_file, encoding='utf-8') as raw_file:
+            raw_file_data = raw_file.read()
+            raw_file.close()
+
+        with self.assertRaises(ApiException) as context:
+            self.api.get_event(mock_file)
+        self.assertEqual(context.exception.status, 200)
+        self.assertIsInstance(context.exception.reason, ValueError)
+        self.assertEqual(context.exception.body, raw_file_data)
 
 
 if __name__ == '__main__':

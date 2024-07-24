@@ -12,7 +12,7 @@ jobs:
     with:
       appId: ${{ vars.APP_ID }}
       language: python
-      language-version: '3.9'
+      language-version: '3.12'
       semantic-release-extra-plugins: |
         semantic-release-pypi@2.5.0
       prepare-command: |
