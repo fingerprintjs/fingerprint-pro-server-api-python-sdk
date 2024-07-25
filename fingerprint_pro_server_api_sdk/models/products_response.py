@@ -13,8 +13,6 @@
 import pprint
 import re  # noqa: F401
 
-import six
-
 class ProductsResponse(object):
     """
     Contains all information about the request identified by `requestId`, depending on the pricing plan (Pro, Pro Plus, Enterprise)
@@ -642,7 +640,7 @@ class ProductsResponse(object):
         """Returns the model properties as a dict"""
         result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
+        for attr, _ in self.swagger_types.items():
             value = getattr(self, attr)
             if isinstance(value, list):
                 result[attr] = list(map(

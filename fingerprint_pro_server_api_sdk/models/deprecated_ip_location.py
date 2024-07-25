@@ -13,8 +13,6 @@
 import pprint
 import re  # noqa: F401
 
-import six
-
 class DeprecatedIPLocation(object):
     """
     This field is **deprecated** and will not return a result for **applications created after January 23rd, 2024**. Please use the [IP Geolocation Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.
@@ -280,7 +278,7 @@ class DeprecatedIPLocation(object):
         """Returns the model properties as a dict"""
         result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
+        for attr, _ in self.swagger_types.items():
             value = getattr(self, attr)
             if isinstance(value, list):
                 result[attr] = list(map(

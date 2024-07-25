@@ -13,8 +13,6 @@
 import pprint
 import re  # noqa: F401
 
-import six
-
 class VelocityIntervalResult(object):
     """
     Is absent if the velocity data could not be generated for the visitor ID. 
@@ -126,7 +124,7 @@ class VelocityIntervalResult(object):
         """Returns the model properties as a dict"""
         result = {}
 
-        for attr, _ in six.iteritems(self.swagger_types):
+        for attr, _ in self.swagger_types.items():
             value = getattr(self, attr)
             if isinstance(value, list):
                 result[attr] = list(map(
