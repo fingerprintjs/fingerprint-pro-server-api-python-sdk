@@ -10,6 +10,8 @@
 # import ApiClient
 from {{packageName}}.api_client import ApiClient
 from {{packageName}}.configuration import Configuration
+# import BaseModel
+from {{packageName}}.base_model import BaseModel
 # import models into sdk package
 {{#models}}{{#model}}from {{modelPackage}}.{{classFilename}} import {{classname}}
 {{/model}}{{/models}}
