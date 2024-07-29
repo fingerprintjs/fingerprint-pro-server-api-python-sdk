@@ -17,6 +17,8 @@ from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi
 # import ApiClient
 from fingerprint_pro_server_api_sdk.api_client import ApiClient
 from fingerprint_pro_server_api_sdk.configuration import Configuration
+# import BaseModel
+from fingerprint_pro_server_api_sdk.base_model import BaseModel
 # import models into sdk package
 from fingerprint_pro_server_api_sdk.models.asn import ASN
 from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
