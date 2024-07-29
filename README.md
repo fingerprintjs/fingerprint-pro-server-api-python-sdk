@@ -89,7 +89,6 @@ api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 Fetching visits using visitorId:
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
 
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
@@ -102,7 +101,7 @@ limit = 10  # int | Limit scanned results.   For performance reasons, the API fi
 #pagination_key = 'pagination_key_example' # str | Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned.  (optional)
 
 try:
-    api_response: Response = api_instance.get_visits(visitor_id, limit=2)
+    api_response = api_instance.get_visits(visitor_id, limit=2)
     print(api_response)
 except KnownApiException as e:
     structured_error = e.structured_error
@@ -133,7 +132,6 @@ except ApiException as e:
 Fetching events for requestId:
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import EventResponse
 from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
 
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
@@ -142,7 +140,7 @@ api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 request_id = 'request_id_example'  # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
 
 try:
-    events_response: EventResponse = api_instance.get_event(request_id)
+    events_response = api_instance.get_event(request_id)
 
 except KnownApiException as e:
     structured_error = e.structured_error
