@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from datetime import datetime
 
 
 class FactoryResetResult(BaseModel):
@@ -45,24 +47,22 @@ class FactoryResetResult(BaseModel):
         self.timestamp = timestamp
 
     @property
-    def time(self):
+    def time(self) -> datetime:
         """Gets the time of this FactoryResetResult.  # noqa: E501
 
         Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC.   # noqa: E501
 
         :return: The time of this FactoryResetResult.  # noqa: E501
-        :rtype: datetime
         """
         return self._time
 
     @time.setter
-    def time(self, time):
+    def time(self, time: datetime):
         """Sets the time of this FactoryResetResult.
 
         Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC.   # noqa: E501
 
         :param time: The time of this FactoryResetResult.  # noqa: E501
-        :type: datetime
         """
         if time is None:
             raise ValueError("Invalid value for `time`, must not be `None`")  # noqa: E501
@@ -70,24 +70,22 @@ class FactoryResetResult(BaseModel):
         self._time = time
 
     @property
-    def timestamp(self):
+    def timestamp(self) -> int:
         """Gets the timestamp of this FactoryResetResult.  # noqa: E501
 
         Same value as it's in the `time` field but represented in timestamp format.  # noqa: E501
 
         :return: The timestamp of this FactoryResetResult.  # noqa: E501
-        :rtype: int
         """
         return self._timestamp
 
     @timestamp.setter
-    def timestamp(self, timestamp):
+    def timestamp(self, timestamp: int):
         """Sets the timestamp of this FactoryResetResult.
 
         Same value as it's in the `time` field but represented in timestamp format.  # noqa: E501
 
         :param timestamp: The timestamp of this FactoryResetResult.  # noqa: E501
-        :type: int
         """
         if timestamp is None:
             raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501

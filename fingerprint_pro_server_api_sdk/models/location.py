@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,22 +46,20 @@ class Location(BaseModel):
         self.name = name
 
     @property
-    def code(self):
+    def code(self) -> str:
         """Gets the code of this Location.  # noqa: E501
 
 
         :return: The code of this Location.  # noqa: E501
-        :rtype: str
         """
         return self._code
 
     @code.setter
-    def code(self, code):
+    def code(self, code: str):
         """Sets the code of this Location.
 
 
         :param code: The code of this Location.  # noqa: E501
-        :type: str
         """
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")  # noqa: E501
@@ -68,22 +67,20 @@ class Location(BaseModel):
         self._code = code
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Gets the name of this Location.  # noqa: E501
 
 
         :return: The name of this Location.  # noqa: E501
-        :rtype: str
         """
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """Sets the name of this Location.
 
 
         :param name: The name of this Location.  # noqa: E501
-        :type: str
         """
         if name is None:
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501

@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -41,24 +42,22 @@ class RootAppsResult(BaseModel):
         self.result = result
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this RootAppsResult.  # noqa: E501
 
         Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected or the client isn't Android.   # noqa: E501
 
         :return: The result of this RootAppsResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this RootAppsResult.
 
         Android specific root management apps detection. There are 2 values: • `true` - Root Management Apps detected (e.g. Magisk) • `false` - No Root Management Apps detected or the client isn't Android.   # noqa: E501
 
         :param result: The result of this RootAppsResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501

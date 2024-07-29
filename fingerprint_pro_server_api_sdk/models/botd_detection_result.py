@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -49,24 +50,22 @@ class BotdDetectionResult(BaseModel):
             self.type = type
 
     @property
-    def result(self):
+    def result(self) -> str:
         """Gets the result of this BotdDetectionResult.  # noqa: E501
 
         Bot detection result:  * `notDetected` - the visitor is not a bot  * `good` - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * `bad` - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on   # noqa: E501
 
         :return: The result of this BotdDetectionResult.  # noqa: E501
-        :rtype: str
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: str):
         """Sets the result of this BotdDetectionResult.
 
         Bot detection result:  * `notDetected` - the visitor is not a bot  * `good` - good bot detected, such as Google bot, Baidu Spider, AlexaBot and so on  * `bad` - bad bot detected, such as Selenium, Puppeteer, Playwright, headless browsers, and so on   # noqa: E501
 
         :param result: The result of this BotdDetectionResult.  # noqa: E501
-        :type: str
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -80,22 +79,20 @@ class BotdDetectionResult(BaseModel):
         self._result = result
 
     @property
-    def type(self):
+    def type(self) -> str:
         """Gets the type of this BotdDetectionResult.  # noqa: E501
 
 
         :return: The type of this BotdDetectionResult.  # noqa: E501
-        :rtype: str
         """
         return self._type
 
     @type.setter
-    def type(self, type):
+    def type(self, type: str):
         """Sets the type of this BotdDetectionResult.
 
 
         :param type: The type of this BotdDetectionResult.  # noqa: E501
-        :type: str
         """
 
         self._type = type

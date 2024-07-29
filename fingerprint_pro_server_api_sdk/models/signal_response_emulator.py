@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.emulator_result import EmulatorResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseEmulator(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseEmulator(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> EmulatorResult:
         """Gets the data of this SignalResponseEmulator.  # noqa: E501
 
 
         :return: The data of this SignalResponseEmulator.  # noqa: E501
-        :rtype: EmulatorResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: EmulatorResult):
         """Sets the data of this SignalResponseEmulator.
 
 
         :param data: The data of this SignalResponseEmulator.  # noqa: E501
-        :type: EmulatorResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseEmulator.  # noqa: E501
 
 
         :return: The error of this SignalResponseEmulator.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseEmulator.
 
 
         :param error: The error of this SignalResponseEmulator.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

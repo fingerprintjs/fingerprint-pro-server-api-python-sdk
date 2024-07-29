@@ -11,7 +11,31 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.products_response_identification import ProductsResponseIdentification
+from fingerprint_pro_server_api_sdk.models.products_response_botd import ProductsResponseBotd
+from fingerprint_pro_server_api_sdk.models.signal_response_ip_info import SignalResponseIpInfo
+from fingerprint_pro_server_api_sdk.models.signal_response_incognito import SignalResponseIncognito
+from fingerprint_pro_server_api_sdk.models.signal_response_root_apps import SignalResponseRootApps
+from fingerprint_pro_server_api_sdk.models.signal_response_emulator import SignalResponseEmulator
+from fingerprint_pro_server_api_sdk.models.signal_response_cloned_app import SignalResponseClonedApp
+from fingerprint_pro_server_api_sdk.models.signal_response_factory_reset import SignalResponseFactoryReset
+from fingerprint_pro_server_api_sdk.models.signal_response_jailbroken import SignalResponseJailbroken
+from fingerprint_pro_server_api_sdk.models.signal_response_frida import SignalResponseFrida
+from fingerprint_pro_server_api_sdk.models.signal_response_ip_blocklist import SignalResponseIpBlocklist
+from fingerprint_pro_server_api_sdk.models.signal_response_tor import SignalResponseTor
+from fingerprint_pro_server_api_sdk.models.signal_response_privacy_settings import SignalResponsePrivacySettings
+from fingerprint_pro_server_api_sdk.models.signal_response_virtual_machine import SignalResponseVirtualMachine
+from fingerprint_pro_server_api_sdk.models.signal_response_vpn import SignalResponseVpn
+from fingerprint_pro_server_api_sdk.models.signal_response_proxy import SignalResponseProxy
+from fingerprint_pro_server_api_sdk.models.signal_response_tampering import SignalResponseTampering
+from fingerprint_pro_server_api_sdk.models.signal_response_high_activity import SignalResponseHighActivity
+from fingerprint_pro_server_api_sdk.models.signal_response_location_spoofing import SignalResponseLocationSpoofing
+from fingerprint_pro_server_api_sdk.models.signal_response_suspect_score import SignalResponseSuspectScore
+from fingerprint_pro_server_api_sdk.models.signal_response_raw_device_attributes import SignalResponseRawDeviceAttributes
+from fingerprint_pro_server_api_sdk.models.signal_response_remote_control import SignalResponseRemoteControl
+from fingerprint_pro_server_api_sdk.models.signal_response_velocity import SignalResponseVelocity
 
 
 class ProductsResponse(BaseModel):
@@ -155,484 +179,438 @@ class ProductsResponse(BaseModel):
             self.velocity = velocity
 
     @property
-    def identification(self):
+    def identification(self) -> ProductsResponseIdentification:
         """Gets the identification of this ProductsResponse.  # noqa: E501
 
 
         :return: The identification of this ProductsResponse.  # noqa: E501
-        :rtype: ProductsResponseIdentification
         """
         return self._identification
 
     @identification.setter
-    def identification(self, identification):
+    def identification(self, identification: ProductsResponseIdentification):
         """Sets the identification of this ProductsResponse.
 
 
         :param identification: The identification of this ProductsResponse.  # noqa: E501
-        :type: ProductsResponseIdentification
         """
 
         self._identification = identification
 
     @property
-    def botd(self):
+    def botd(self) -> ProductsResponseBotd:
         """Gets the botd of this ProductsResponse.  # noqa: E501
 
 
         :return: The botd of this ProductsResponse.  # noqa: E501
-        :rtype: ProductsResponseBotd
         """
         return self._botd
 
     @botd.setter
-    def botd(self, botd):
+    def botd(self, botd: ProductsResponseBotd):
         """Sets the botd of this ProductsResponse.
 
 
         :param botd: The botd of this ProductsResponse.  # noqa: E501
-        :type: ProductsResponseBotd
         """
 
         self._botd = botd
 
     @property
-    def ip_info(self):
+    def ip_info(self) -> SignalResponseIpInfo:
         """Gets the ip_info of this ProductsResponse.  # noqa: E501
 
 
         :return: The ip_info of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseIpInfo
         """
         return self._ip_info
 
     @ip_info.setter
-    def ip_info(self, ip_info):
+    def ip_info(self, ip_info: SignalResponseIpInfo):
         """Sets the ip_info of this ProductsResponse.
 
 
         :param ip_info: The ip_info of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseIpInfo
         """
 
         self._ip_info = ip_info
 
     @property
-    def incognito(self):
+    def incognito(self) -> SignalResponseIncognito:
         """Gets the incognito of this ProductsResponse.  # noqa: E501
 
 
         :return: The incognito of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseIncognito
         """
         return self._incognito
 
     @incognito.setter
-    def incognito(self, incognito):
+    def incognito(self, incognito: SignalResponseIncognito):
         """Sets the incognito of this ProductsResponse.
 
 
         :param incognito: The incognito of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseIncognito
         """
 
         self._incognito = incognito
 
     @property
-    def root_apps(self):
+    def root_apps(self) -> SignalResponseRootApps:
         """Gets the root_apps of this ProductsResponse.  # noqa: E501
 
 
         :return: The root_apps of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseRootApps
         """
         return self._root_apps
 
     @root_apps.setter
-    def root_apps(self, root_apps):
+    def root_apps(self, root_apps: SignalResponseRootApps):
         """Sets the root_apps of this ProductsResponse.
 
 
         :param root_apps: The root_apps of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseRootApps
         """
 
         self._root_apps = root_apps
 
     @property
-    def emulator(self):
+    def emulator(self) -> SignalResponseEmulator:
         """Gets the emulator of this ProductsResponse.  # noqa: E501
 
 
         :return: The emulator of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseEmulator
         """
         return self._emulator
 
     @emulator.setter
-    def emulator(self, emulator):
+    def emulator(self, emulator: SignalResponseEmulator):
         """Sets the emulator of this ProductsResponse.
 
 
         :param emulator: The emulator of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseEmulator
         """
 
         self._emulator = emulator
 
     @property
-    def cloned_app(self):
+    def cloned_app(self) -> SignalResponseClonedApp:
         """Gets the cloned_app of this ProductsResponse.  # noqa: E501
 
 
         :return: The cloned_app of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseClonedApp
         """
         return self._cloned_app
 
     @cloned_app.setter
-    def cloned_app(self, cloned_app):
+    def cloned_app(self, cloned_app: SignalResponseClonedApp):
         """Sets the cloned_app of this ProductsResponse.
 
 
         :param cloned_app: The cloned_app of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseClonedApp
         """
 
         self._cloned_app = cloned_app
 
     @property
-    def factory_reset(self):
+    def factory_reset(self) -> SignalResponseFactoryReset:
         """Gets the factory_reset of this ProductsResponse.  # noqa: E501
 
 
         :return: The factory_reset of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseFactoryReset
         """
         return self._factory_reset
 
     @factory_reset.setter
-    def factory_reset(self, factory_reset):
+    def factory_reset(self, factory_reset: SignalResponseFactoryReset):
         """Sets the factory_reset of this ProductsResponse.
 
 
         :param factory_reset: The factory_reset of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseFactoryReset
         """
 
         self._factory_reset = factory_reset
 
     @property
-    def jailbroken(self):
+    def jailbroken(self) -> SignalResponseJailbroken:
         """Gets the jailbroken of this ProductsResponse.  # noqa: E501
 
 
         :return: The jailbroken of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseJailbroken
         """
         return self._jailbroken
 
     @jailbroken.setter
-    def jailbroken(self, jailbroken):
+    def jailbroken(self, jailbroken: SignalResponseJailbroken):
         """Sets the jailbroken of this ProductsResponse.
 
 
         :param jailbroken: The jailbroken of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseJailbroken
         """
 
         self._jailbroken = jailbroken
 
     @property
-    def frida(self):
+    def frida(self) -> SignalResponseFrida:
         """Gets the frida of this ProductsResponse.  # noqa: E501
 
 
         :return: The frida of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseFrida
         """
         return self._frida
 
     @frida.setter
-    def frida(self, frida):
+    def frida(self, frida: SignalResponseFrida):
         """Sets the frida of this ProductsResponse.
 
 
         :param frida: The frida of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseFrida
         """
 
         self._frida = frida
 
     @property
-    def ip_blocklist(self):
+    def ip_blocklist(self) -> SignalResponseIpBlocklist:
         """Gets the ip_blocklist of this ProductsResponse.  # noqa: E501
 
 
         :return: The ip_blocklist of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseIpBlocklist
         """
         return self._ip_blocklist
 
     @ip_blocklist.setter
-    def ip_blocklist(self, ip_blocklist):
+    def ip_blocklist(self, ip_blocklist: SignalResponseIpBlocklist):
         """Sets the ip_blocklist of this ProductsResponse.
 
 
         :param ip_blocklist: The ip_blocklist of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseIpBlocklist
         """
 
         self._ip_blocklist = ip_blocklist
 
     @property
-    def tor(self):
+    def tor(self) -> SignalResponseTor:
         """Gets the tor of this ProductsResponse.  # noqa: E501
 
 
         :return: The tor of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseTor
         """
         return self._tor
 
     @tor.setter
-    def tor(self, tor):
+    def tor(self, tor: SignalResponseTor):
         """Sets the tor of this ProductsResponse.
 
 
         :param tor: The tor of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseTor
         """
 
         self._tor = tor
 
     @property
-    def privacy_settings(self):
+    def privacy_settings(self) -> SignalResponsePrivacySettings:
         """Gets the privacy_settings of this ProductsResponse.  # noqa: E501
 
 
         :return: The privacy_settings of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponsePrivacySettings
         """
         return self._privacy_settings
 
     @privacy_settings.setter
-    def privacy_settings(self, privacy_settings):
+    def privacy_settings(self, privacy_settings: SignalResponsePrivacySettings):
         """Sets the privacy_settings of this ProductsResponse.
 
 
         :param privacy_settings: The privacy_settings of this ProductsResponse.  # noqa: E501
-        :type: SignalResponsePrivacySettings
         """
 
         self._privacy_settings = privacy_settings
 
     @property
-    def virtual_machine(self):
+    def virtual_machine(self) -> SignalResponseVirtualMachine:
         """Gets the virtual_machine of this ProductsResponse.  # noqa: E501
 
 
         :return: The virtual_machine of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseVirtualMachine
         """
         return self._virtual_machine
 
     @virtual_machine.setter
-    def virtual_machine(self, virtual_machine):
+    def virtual_machine(self, virtual_machine: SignalResponseVirtualMachine):
         """Sets the virtual_machine of this ProductsResponse.
 
 
         :param virtual_machine: The virtual_machine of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseVirtualMachine
         """
 
         self._virtual_machine = virtual_machine
 
     @property
-    def vpn(self):
+    def vpn(self) -> SignalResponseVpn:
         """Gets the vpn of this ProductsResponse.  # noqa: E501
 
 
         :return: The vpn of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseVpn
         """
         return self._vpn
 
     @vpn.setter
-    def vpn(self, vpn):
+    def vpn(self, vpn: SignalResponseVpn):
         """Sets the vpn of this ProductsResponse.
 
 
         :param vpn: The vpn of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseVpn
         """
 
         self._vpn = vpn
 
     @property
-    def proxy(self):
+    def proxy(self) -> SignalResponseProxy:
         """Gets the proxy of this ProductsResponse.  # noqa: E501
 
 
         :return: The proxy of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseProxy
         """
         return self._proxy
 
     @proxy.setter
-    def proxy(self, proxy):
+    def proxy(self, proxy: SignalResponseProxy):
         """Sets the proxy of this ProductsResponse.
 
 
         :param proxy: The proxy of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseProxy
         """
 
         self._proxy = proxy
 
     @property
-    def tampering(self):
+    def tampering(self) -> SignalResponseTampering:
         """Gets the tampering of this ProductsResponse.  # noqa: E501
 
 
         :return: The tampering of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseTampering
         """
         return self._tampering
 
     @tampering.setter
-    def tampering(self, tampering):
+    def tampering(self, tampering: SignalResponseTampering):
         """Sets the tampering of this ProductsResponse.
 
 
         :param tampering: The tampering of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseTampering
         """
 
         self._tampering = tampering
 
     @property
-    def high_activity(self):
+    def high_activity(self) -> SignalResponseHighActivity:
         """Gets the high_activity of this ProductsResponse.  # noqa: E501
 
 
         :return: The high_activity of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseHighActivity
         """
         return self._high_activity
 
     @high_activity.setter
-    def high_activity(self, high_activity):
+    def high_activity(self, high_activity: SignalResponseHighActivity):
         """Sets the high_activity of this ProductsResponse.
 
 
         :param high_activity: The high_activity of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseHighActivity
         """
 
         self._high_activity = high_activity
 
     @property
-    def location_spoofing(self):
+    def location_spoofing(self) -> SignalResponseLocationSpoofing:
         """Gets the location_spoofing of this ProductsResponse.  # noqa: E501
 
 
         :return: The location_spoofing of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseLocationSpoofing
         """
         return self._location_spoofing
 
     @location_spoofing.setter
-    def location_spoofing(self, location_spoofing):
+    def location_spoofing(self, location_spoofing: SignalResponseLocationSpoofing):
         """Sets the location_spoofing of this ProductsResponse.
 
 
         :param location_spoofing: The location_spoofing of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseLocationSpoofing
         """
 
         self._location_spoofing = location_spoofing
 
     @property
-    def suspect_score(self):
+    def suspect_score(self) -> SignalResponseSuspectScore:
         """Gets the suspect_score of this ProductsResponse.  # noqa: E501
 
 
         :return: The suspect_score of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseSuspectScore
         """
         return self._suspect_score
 
     @suspect_score.setter
-    def suspect_score(self, suspect_score):
+    def suspect_score(self, suspect_score: SignalResponseSuspectScore):
         """Sets the suspect_score of this ProductsResponse.
 
 
         :param suspect_score: The suspect_score of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseSuspectScore
         """
 
         self._suspect_score = suspect_score
 
     @property
-    def raw_device_attributes(self):
+    def raw_device_attributes(self) -> SignalResponseRawDeviceAttributes:
         """Gets the raw_device_attributes of this ProductsResponse.  # noqa: E501
 
 
         :return: The raw_device_attributes of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseRawDeviceAttributes
         """
         return self._raw_device_attributes
 
     @raw_device_attributes.setter
-    def raw_device_attributes(self, raw_device_attributes):
+    def raw_device_attributes(self, raw_device_attributes: SignalResponseRawDeviceAttributes):
         """Sets the raw_device_attributes of this ProductsResponse.
 
 
         :param raw_device_attributes: The raw_device_attributes of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseRawDeviceAttributes
         """
 
         self._raw_device_attributes = raw_device_attributes
 
     @property
-    def remote_control(self):
+    def remote_control(self) -> SignalResponseRemoteControl:
         """Gets the remote_control of this ProductsResponse.  # noqa: E501
 
 
         :return: The remote_control of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseRemoteControl
         """
         return self._remote_control
 
     @remote_control.setter
-    def remote_control(self, remote_control):
+    def remote_control(self, remote_control: SignalResponseRemoteControl):
         """Sets the remote_control of this ProductsResponse.
 
 
         :param remote_control: The remote_control of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseRemoteControl
         """
 
         self._remote_control = remote_control
 
     @property
-    def velocity(self):
+    def velocity(self) -> SignalResponseVelocity:
         """Gets the velocity of this ProductsResponse.  # noqa: E501
 
 
         :return: The velocity of this ProductsResponse.  # noqa: E501
-        :rtype: SignalResponseVelocity
         """
         return self._velocity
 
     @velocity.setter
-    def velocity(self, velocity):
+    def velocity(self, velocity: SignalResponseVelocity):
         """Sets the velocity of this ProductsResponse.
 
 
         :param velocity: The velocity of this ProductsResponse.  # noqa: E501
-        :type: SignalResponseVelocity
         """
 
         self._velocity = velocity

@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.incognito_result import IncognitoResult
+from fingerprint_pro_server_api_sdk.models.identification_error import IdentificationError
 
 
 class SignalResponseIncognito(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseIncognito(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> IncognitoResult:
         """Gets the data of this SignalResponseIncognito.  # noqa: E501
 
 
         :return: The data of this SignalResponseIncognito.  # noqa: E501
-        :rtype: IncognitoResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: IncognitoResult):
         """Sets the data of this SignalResponseIncognito.
 
 
         :param data: The data of this SignalResponseIncognito.  # noqa: E501
-        :type: IncognitoResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> IdentificationError:
         """Gets the error of this SignalResponseIncognito.  # noqa: E501
 
 
         :return: The error of this SignalResponseIncognito.  # noqa: E501
-        :rtype: IdentificationError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: IdentificationError):
         """Sets the error of this SignalResponseIncognito.
 
 
         :param error: The error of this SignalResponseIncognito.  # noqa: E501
-        :type: IdentificationError
         """
 
         self._error = error

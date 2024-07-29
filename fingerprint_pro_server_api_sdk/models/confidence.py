@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -46,24 +47,22 @@ class Confidence(BaseModel):
             self.revision = revision
 
     @property
-    def score(self):
+    def score(self) -> float:
         """Gets the score of this Confidence.  # noqa: E501
 
         The confidence score is a floating-point number between 0 and 1 that represents the probability of accurate identification.  # noqa: E501
 
         :return: The score of this Confidence.  # noqa: E501
-        :rtype: float
         """
         return self._score
 
     @score.setter
-    def score(self, score):
+    def score(self, score: float):
         """Sets the score of this Confidence.
 
         The confidence score is a floating-point number between 0 and 1 that represents the probability of accurate identification.  # noqa: E501
 
         :param score: The score of this Confidence.  # noqa: E501
-        :type: float
         """
         if score is None:
             raise ValueError("Invalid value for `score`, must not be `None`")  # noqa: E501
@@ -71,24 +70,22 @@ class Confidence(BaseModel):
         self._score = score
 
     @property
-    def revision(self):
+    def revision(self) -> str:
         """Gets the revision of this Confidence.  # noqa: E501
 
         The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501
 
         :return: The revision of this Confidence.  # noqa: E501
-        :rtype: str
         """
         return self._revision
 
     @revision.setter
-    def revision(self, revision):
+    def revision(self, revision: str):
         """Sets the revision of this Confidence.
 
         The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501
 
         :param revision: The revision of this Confidence.  # noqa: E501
-        :type: str
         """
 
         self._revision = revision

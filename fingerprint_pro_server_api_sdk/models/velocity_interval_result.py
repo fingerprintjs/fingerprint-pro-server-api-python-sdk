@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -53,22 +54,20 @@ class VelocityIntervalResult(BaseModel):
             self._24h = _24h
 
     @property
-    def _5m(self):
+    def _5m(self) -> int:
         """Gets the _5m of this VelocityIntervalResult.  # noqa: E501
 
 
         :return: The _5m of this VelocityIntervalResult.  # noqa: E501
-        :rtype: int
         """
         return self.__5m
 
     @_5m.setter
-    def _5m(self, _5m):
+    def _5m(self, _5m: int):
         """Sets the _5m of this VelocityIntervalResult.
 
 
         :param _5m: The _5m of this VelocityIntervalResult.  # noqa: E501
-        :type: int
         """
         if _5m is None:
             raise ValueError("Invalid value for `_5m`, must not be `None`")  # noqa: E501
@@ -76,22 +75,20 @@ class VelocityIntervalResult(BaseModel):
         self.__5m = _5m
 
     @property
-    def _1h(self):
+    def _1h(self) -> int:
         """Gets the _1h of this VelocityIntervalResult.  # noqa: E501
 
 
         :return: The _1h of this VelocityIntervalResult.  # noqa: E501
-        :rtype: int
         """
         return self.__1h
 
     @_1h.setter
-    def _1h(self, _1h):
+    def _1h(self, _1h: int):
         """Sets the _1h of this VelocityIntervalResult.
 
 
         :param _1h: The _1h of this VelocityIntervalResult.  # noqa: E501
-        :type: int
         """
         if _1h is None:
             raise ValueError("Invalid value for `_1h`, must not be `None`")  # noqa: E501
@@ -99,24 +96,22 @@ class VelocityIntervalResult(BaseModel):
         self.__1h = _1h
 
     @property
-    def _24h(self):
+    def _24h(self) -> int:
         """Gets the _24h of this VelocityIntervalResult.  # noqa: E501
 
         The `24h` interval of `distinctIp`, `distinctLinkedId`, and `distinctCountry` will be omitted if the number of `events`` for the visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher than 20.000.   # noqa: E501
 
         :return: The _24h of this VelocityIntervalResult.  # noqa: E501
-        :rtype: int
         """
         return self.__24h
 
     @_24h.setter
-    def _24h(self, _24h):
+    def _24h(self, _24h: int):
         """Sets the _24h of this VelocityIntervalResult.
 
         The `24h` interval of `distinctIp`, `distinctLinkedId`, and `distinctCountry` will be omitted if the number of `events`` for the visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher than 20.000.   # noqa: E501
 
         :param _24h: The _24h of this VelocityIntervalResult.  # noqa: E501
-        :type: int
         """
 
         self.__24h = _24h

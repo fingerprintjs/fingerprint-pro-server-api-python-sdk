@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.error_visitor400_response_error import ErrorVisitor400ResponseError
 
 
 class ErrorVisitor400Response(BaseModel):
@@ -42,22 +44,20 @@ class ErrorVisitor400Response(BaseModel):
             self.error = error
 
     @property
-    def error(self):
+    def error(self) -> ErrorVisitor400ResponseError:
         """Gets the error of this ErrorVisitor400Response.  # noqa: E501
 
 
         :return: The error of this ErrorVisitor400Response.  # noqa: E501
-        :rtype: ErrorVisitor400ResponseError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ErrorVisitor400ResponseError):
         """Sets the error of this ErrorVisitor400Response.
 
 
         :param error: The error of this ErrorVisitor400Response.  # noqa: E501
-        :type: ErrorVisitor400ResponseError
         """
 
         self._error = error

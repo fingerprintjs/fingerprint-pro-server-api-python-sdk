@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.ip_block_list_result_details import IpBlockListResultDetails
 
 
 class IpBlockListResult(BaseModel):
@@ -45,24 +47,22 @@ class IpBlockListResult(BaseModel):
         self.details = details
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this IpBlockListResult.  # noqa: E501
 
         `true` if request IP address is part of any database that we use to search for known malicious actors, `false` otherwise.   # noqa: E501
 
         :return: The result of this IpBlockListResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this IpBlockListResult.
 
         `true` if request IP address is part of any database that we use to search for known malicious actors, `false` otherwise.   # noqa: E501
 
         :param result: The result of this IpBlockListResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -70,22 +70,20 @@ class IpBlockListResult(BaseModel):
         self._result = result
 
     @property
-    def details(self):
+    def details(self) -> IpBlockListResultDetails:
         """Gets the details of this IpBlockListResult.  # noqa: E501
 
 
         :return: The details of this IpBlockListResult.  # noqa: E501
-        :rtype: IpBlockListResultDetails
         """
         return self._details
 
     @details.setter
-    def details(self, details):
+    def details(self, details: IpBlockListResultDetails):
         """Sets the details of this IpBlockListResult.
 
 
         :param details: The details of this IpBlockListResult.  # noqa: E501
-        :type: IpBlockListResultDetails
         """
         if details is None:
             raise ValueError("Invalid value for `details`, must not be `None`")  # noqa: E501

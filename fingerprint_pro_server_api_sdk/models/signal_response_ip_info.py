@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.ip_info_result import IpInfoResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseIpInfo(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseIpInfo(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> IpInfoResult:
         """Gets the data of this SignalResponseIpInfo.  # noqa: E501
 
 
         :return: The data of this SignalResponseIpInfo.  # noqa: E501
-        :rtype: IpInfoResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: IpInfoResult):
         """Sets the data of this SignalResponseIpInfo.
 
 
         :param data: The data of this SignalResponseIpInfo.  # noqa: E501
-        :type: IpInfoResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseIpInfo.  # noqa: E501
 
 
         :return: The error of this SignalResponseIpInfo.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseIpInfo.
 
 
         :param error: The error of this SignalResponseIpInfo.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

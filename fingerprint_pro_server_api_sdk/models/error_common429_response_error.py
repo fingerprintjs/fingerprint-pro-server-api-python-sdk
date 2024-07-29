@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,24 +46,22 @@ class ErrorCommon429ResponseError(BaseModel):
         self.message = message
 
     @property
-    def code(self):
+    def code(self) -> str:
         """Gets the code of this ErrorCommon429ResponseError.  # noqa: E501
 
         Error code: * `TooManyRequests` - The request is throttled.   # noqa: E501
 
         :return: The code of this ErrorCommon429ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._code
 
     @code.setter
-    def code(self, code):
+    def code(self, code: str):
         """Sets the code of this ErrorCommon429ResponseError.
 
         Error code: * `TooManyRequests` - The request is throttled.   # noqa: E501
 
         :param code: The code of this ErrorCommon429ResponseError.  # noqa: E501
-        :type: str
         """
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")  # noqa: E501
@@ -76,22 +75,20 @@ class ErrorCommon429ResponseError(BaseModel):
         self._code = code
 
     @property
-    def message(self):
+    def message(self) -> str:
         """Gets the message of this ErrorCommon429ResponseError.  # noqa: E501
 
 
         :return: The message of this ErrorCommon429ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._message
 
     @message.setter
-    def message(self, message):
+    def message(self, message: str):
         """Sets the message of this ErrorCommon429ResponseError.
 
 
         :param message: The message of this ErrorCommon429ResponseError.  # noqa: E501
-        :type: str
         """
         if message is None:
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501

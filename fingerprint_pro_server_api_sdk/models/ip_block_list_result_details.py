@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,24 +46,22 @@ class IpBlockListResultDetails(BaseModel):
         self.attack_source = attack_source
 
     @property
-    def email_spam(self):
+    def email_spam(self) -> bool:
         """Gets the email_spam of this IpBlockListResultDetails.  # noqa: E501
 
         IP address was part of a known email spam attack (SMTP).  # noqa: E501
 
         :return: The email_spam of this IpBlockListResultDetails.  # noqa: E501
-        :rtype: bool
         """
         return self._email_spam
 
     @email_spam.setter
-    def email_spam(self, email_spam):
+    def email_spam(self, email_spam: bool):
         """Sets the email_spam of this IpBlockListResultDetails.
 
         IP address was part of a known email spam attack (SMTP).  # noqa: E501
 
         :param email_spam: The email_spam of this IpBlockListResultDetails.  # noqa: E501
-        :type: bool
         """
         if email_spam is None:
             raise ValueError("Invalid value for `email_spam`, must not be `None`")  # noqa: E501
@@ -70,24 +69,22 @@ class IpBlockListResultDetails(BaseModel):
         self._email_spam = email_spam
 
     @property
-    def attack_source(self):
+    def attack_source(self) -> bool:
         """Gets the attack_source of this IpBlockListResultDetails.  # noqa: E501
 
         IP address was part of a known network attack (SSH/HTTPS).  # noqa: E501
 
         :return: The attack_source of this IpBlockListResultDetails.  # noqa: E501
-        :rtype: bool
         """
         return self._attack_source
 
     @attack_source.setter
-    def attack_source(self, attack_source):
+    def attack_source(self, attack_source: bool):
         """Sets the attack_source of this IpBlockListResultDetails.
 
         IP address was part of a known network attack (SSH/HTTPS).  # noqa: E501
 
         :param attack_source: The attack_source of this IpBlockListResultDetails.  # noqa: E501
-        :type: bool
         """
         if attack_source is None:
             raise ValueError("Invalid value for `attack_source`, must not be `None`")  # noqa: E501

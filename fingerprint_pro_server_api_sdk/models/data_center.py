@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -46,22 +47,20 @@ class DataCenter(BaseModel):
             self.name = name
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this DataCenter.  # noqa: E501
 
 
         :return: The result of this DataCenter.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this DataCenter.
 
 
         :param result: The result of this DataCenter.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -69,22 +68,20 @@ class DataCenter(BaseModel):
         self._result = result
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Gets the name of this DataCenter.  # noqa: E501
 
 
         :return: The name of this DataCenter.  # noqa: E501
-        :rtype: str
         """
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """Sets the name of this DataCenter.
 
 
         :param name: The name of this DataCenter.  # noqa: E501
-        :type: str
         """
 
         self._name = name

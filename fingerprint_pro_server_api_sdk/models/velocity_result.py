@@ -11,7 +11,12 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.velocity_intervals import VelocityIntervals
+from fingerprint_pro_server_api_sdk.models.velocity_intervals import VelocityIntervals
+from fingerprint_pro_server_api_sdk.models.velocity_intervals import VelocityIntervals
+from fingerprint_pro_server_api_sdk.models.velocity_intervals import VelocityIntervals
 
 
 class VelocityResult(BaseModel):
@@ -56,22 +61,20 @@ class VelocityResult(BaseModel):
         self.events = events
 
     @property
-    def distinct_ip(self):
+    def distinct_ip(self) -> VelocityIntervals:
         """Gets the distinct_ip of this VelocityResult.  # noqa: E501
 
 
         :return: The distinct_ip of this VelocityResult.  # noqa: E501
-        :rtype: VelocityIntervals
         """
         return self._distinct_ip
 
     @distinct_ip.setter
-    def distinct_ip(self, distinct_ip):
+    def distinct_ip(self, distinct_ip: VelocityIntervals):
         """Sets the distinct_ip of this VelocityResult.
 
 
         :param distinct_ip: The distinct_ip of this VelocityResult.  # noqa: E501
-        :type: VelocityIntervals
         """
         if distinct_ip is None:
             raise ValueError("Invalid value for `distinct_ip`, must not be `None`")  # noqa: E501
@@ -79,22 +82,20 @@ class VelocityResult(BaseModel):
         self._distinct_ip = distinct_ip
 
     @property
-    def distinct_linked_id(self):
+    def distinct_linked_id(self) -> VelocityIntervals:
         """Gets the distinct_linked_id of this VelocityResult.  # noqa: E501
 
 
         :return: The distinct_linked_id of this VelocityResult.  # noqa: E501
-        :rtype: VelocityIntervals
         """
         return self._distinct_linked_id
 
     @distinct_linked_id.setter
-    def distinct_linked_id(self, distinct_linked_id):
+    def distinct_linked_id(self, distinct_linked_id: VelocityIntervals):
         """Sets the distinct_linked_id of this VelocityResult.
 
 
         :param distinct_linked_id: The distinct_linked_id of this VelocityResult.  # noqa: E501
-        :type: VelocityIntervals
         """
         if distinct_linked_id is None:
             raise ValueError("Invalid value for `distinct_linked_id`, must not be `None`")  # noqa: E501
@@ -102,22 +103,20 @@ class VelocityResult(BaseModel):
         self._distinct_linked_id = distinct_linked_id
 
     @property
-    def distinct_country(self):
+    def distinct_country(self) -> VelocityIntervals:
         """Gets the distinct_country of this VelocityResult.  # noqa: E501
 
 
         :return: The distinct_country of this VelocityResult.  # noqa: E501
-        :rtype: VelocityIntervals
         """
         return self._distinct_country
 
     @distinct_country.setter
-    def distinct_country(self, distinct_country):
+    def distinct_country(self, distinct_country: VelocityIntervals):
         """Sets the distinct_country of this VelocityResult.
 
 
         :param distinct_country: The distinct_country of this VelocityResult.  # noqa: E501
-        :type: VelocityIntervals
         """
         if distinct_country is None:
             raise ValueError("Invalid value for `distinct_country`, must not be `None`")  # noqa: E501
@@ -125,22 +124,20 @@ class VelocityResult(BaseModel):
         self._distinct_country = distinct_country
 
     @property
-    def events(self):
+    def events(self) -> VelocityIntervals:
         """Gets the events of this VelocityResult.  # noqa: E501
 
 
         :return: The events of this VelocityResult.  # noqa: E501
-        :rtype: VelocityIntervals
         """
         return self._events
 
     @events.setter
-    def events(self, events):
+    def events(self, events: VelocityIntervals):
         """Sets the events of this VelocityResult.
 
 
         :param events: The events of this VelocityResult.  # noqa: E501
-        :type: VelocityIntervals
         """
         if events is None:
             raise ValueError("Invalid value for `events`, must not be `None`")  # noqa: E501

@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.suspect_score_result import SuspectScoreResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseSuspectScore(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseSuspectScore(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> SuspectScoreResult:
         """Gets the data of this SignalResponseSuspectScore.  # noqa: E501
 
 
         :return: The data of this SignalResponseSuspectScore.  # noqa: E501
-        :rtype: SuspectScoreResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: SuspectScoreResult):
         """Sets the data of this SignalResponseSuspectScore.
 
 
         :param data: The data of this SignalResponseSuspectScore.  # noqa: E501
-        :type: SuspectScoreResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseSuspectScore.  # noqa: E501
 
 
         :return: The error of this SignalResponseSuspectScore.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseSuspectScore.
 
 
         :param error: The error of this SignalResponseSuspectScore.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

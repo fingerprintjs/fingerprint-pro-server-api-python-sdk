@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -46,24 +47,22 @@ class HighActivityResult(BaseModel):
             self.daily_requests = daily_requests
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this HighActivityResult.  # noqa: E501
 
         Flag indicating whether the request came from a high activity visitor.  # noqa: E501
 
         :return: The result of this HighActivityResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this HighActivityResult.
 
         Flag indicating whether the request came from a high activity visitor.  # noqa: E501
 
         :param result: The result of this HighActivityResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -71,24 +70,22 @@ class HighActivityResult(BaseModel):
         self._result = result
 
     @property
-    def daily_requests(self):
+    def daily_requests(self) -> float:
         """Gets the daily_requests of this HighActivityResult.  # noqa: E501
 
         Number of requests from the same visitor in the previous day.  # noqa: E501
 
         :return: The daily_requests of this HighActivityResult.  # noqa: E501
-        :rtype: float
         """
         return self._daily_requests
 
     @daily_requests.setter
-    def daily_requests(self, daily_requests):
+    def daily_requests(self, daily_requests: float):
         """Sets the daily_requests of this HighActivityResult.
 
         Number of requests from the same visitor in the previous day.  # noqa: E501
 
         :param daily_requests: The daily_requests of this HighActivityResult.  # noqa: E501
-        :type: float
         """
 
         self._daily_requests = daily_requests

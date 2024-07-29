@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,24 +46,22 @@ class TamperingResult(BaseModel):
         self.anomaly_score = anomaly_score
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this TamperingResult.  # noqa: E501
 
         Flag indicating whether browser tampering was detected according to our internal thresholds.  # noqa: E501
 
         :return: The result of this TamperingResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this TamperingResult.
 
         Flag indicating whether browser tampering was detected according to our internal thresholds.  # noqa: E501
 
         :param result: The result of this TamperingResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -70,24 +69,22 @@ class TamperingResult(BaseModel):
         self._result = result
 
     @property
-    def anomaly_score(self):
+    def anomaly_score(self) -> float:
         """Gets the anomaly_score of this TamperingResult.  # noqa: E501
 
         Confidence score (`0.0 - 1.0`) for the tampering detection. Values above `0.5` suggest that we're reasonably sure there was a tampering attempt. Values below `0.5` are genuine browsers.  # noqa: E501
 
         :return: The anomaly_score of this TamperingResult.  # noqa: E501
-        :rtype: float
         """
         return self._anomaly_score
 
     @anomaly_score.setter
-    def anomaly_score(self, anomaly_score):
+    def anomaly_score(self, anomaly_score: float):
         """Sets the anomaly_score of this TamperingResult.
 
         Confidence score (`0.0 - 1.0`) for the tampering detection. Values above `0.5` suggest that we're reasonably sure there was a tampering attempt. Values below `0.5` are genuine browsers.  # noqa: E501
 
         :param anomaly_score: The anomaly_score of this TamperingResult.  # noqa: E501
-        :type: float
         """
         if anomaly_score is None:
             raise ValueError("Invalid value for `anomaly_score`, must not be `None`")  # noqa: E501

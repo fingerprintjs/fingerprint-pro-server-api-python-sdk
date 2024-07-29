@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,24 +46,22 @@ class ErrorUpdateEvent409ResponseError(BaseModel):
         self.message = message
 
     @property
-    def code(self):
+    def code(self) -> str:
         """Gets the code of this ErrorUpdateEvent409ResponseError.  # noqa: E501
 
         Error code: * `StateNotReady` - The event specified with request id is not ready for updates yet. Try again. This error happens in rare cases when update API is called immediately after receiving the request id on the client. In case you need to send information right away, we recommend using the JS agent API instead.   # noqa: E501
 
         :return: The code of this ErrorUpdateEvent409ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._code
 
     @code.setter
-    def code(self, code):
+    def code(self, code: str):
         """Sets the code of this ErrorUpdateEvent409ResponseError.
 
         Error code: * `StateNotReady` - The event specified with request id is not ready for updates yet. Try again. This error happens in rare cases when update API is called immediately after receiving the request id on the client. In case you need to send information right away, we recommend using the JS agent API instead.   # noqa: E501
 
         :param code: The code of this ErrorUpdateEvent409ResponseError.  # noqa: E501
-        :type: str
         """
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")  # noqa: E501
@@ -76,22 +75,20 @@ class ErrorUpdateEvent409ResponseError(BaseModel):
         self._code = code
 
     @property
-    def message(self):
+    def message(self) -> str:
         """Gets the message of this ErrorUpdateEvent409ResponseError.  # noqa: E501
 
 
         :return: The message of this ErrorUpdateEvent409ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._message
 
     @message.setter
-    def message(self, message):
+    def message(self, message: str):
         """Sets the message of this ErrorUpdateEvent409ResponseError.
 
 
         :param message: The message of this ErrorUpdateEvent409ResponseError.  # noqa: E501
-        :type: str
         """
         if message is None:
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501

@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.frida_result import FridaResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseFrida(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseFrida(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> FridaResult:
         """Gets the data of this SignalResponseFrida.  # noqa: E501
 
 
         :return: The data of this SignalResponseFrida.  # noqa: E501
-        :rtype: FridaResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: FridaResult):
         """Sets the data of this SignalResponseFrida.
 
 
         :param data: The data of this SignalResponseFrida.  # noqa: E501
-        :type: FridaResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseFrida.  # noqa: E501
 
 
         :return: The error of this SignalResponseFrida.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseFrida.
 
 
         :param error: The error of this SignalResponseFrida.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

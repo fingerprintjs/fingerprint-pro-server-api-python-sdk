@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.error_event404_response_error import ErrorEvent404ResponseError
 
 
 class ErrorEvent404Response(BaseModel):
@@ -42,22 +44,20 @@ class ErrorEvent404Response(BaseModel):
             self.error = error
 
     @property
-    def error(self):
+    def error(self) -> ErrorEvent404ResponseError:
         """Gets the error of this ErrorEvent404Response.  # noqa: E501
 
 
         :return: The error of this ErrorEvent404Response.  # noqa: E501
-        :rtype: ErrorEvent404ResponseError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ErrorEvent404ResponseError):
         """Sets the error of this ErrorEvent404Response.
 
 
         :param error: The error of this ErrorEvent404Response.  # noqa: E501
-        :type: ErrorEvent404ResponseError
         """
 
         self._error = error

@@ -26,6 +26,8 @@ rm !("too_many_requests_response.py")
 cd ../..
 java -jar ./bin/swagger-codegen-cli.jar generate -t ./template -l python -i ./res/fingerprint-server-api.yaml -o ./ -c config.json -DpackageVersion=$VERSION
 
+python ./fix_codegen_problems.py
+
 # Ugly fix for codegen problem that I couldn't fix editing template.
 # Platform check
 platform=$(uname)

@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.vpn_result_methods import VpnResultMethods
 
 
 class VpnResult(BaseModel):
@@ -54,24 +56,22 @@ class VpnResult(BaseModel):
         self.methods = methods
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this VpnResult.  # noqa: E501
 
         VPN or other anonymizing service has been used when sending the request.  # noqa: E501
 
         :return: The result of this VpnResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this VpnResult.
 
         VPN or other anonymizing service has been used when sending the request.  # noqa: E501
 
         :param result: The result of this VpnResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
@@ -79,24 +79,22 @@ class VpnResult(BaseModel):
         self._result = result
 
     @property
-    def origin_timezone(self):
+    def origin_timezone(self) -> str:
         """Gets the origin_timezone of this VpnResult.  # noqa: E501
 
         Local timezone which is used in timezoneMismatch method.  # noqa: E501
 
         :return: The origin_timezone of this VpnResult.  # noqa: E501
-        :rtype: str
         """
         return self._origin_timezone
 
     @origin_timezone.setter
-    def origin_timezone(self, origin_timezone):
+    def origin_timezone(self, origin_timezone: str):
         """Sets the origin_timezone of this VpnResult.
 
         Local timezone which is used in timezoneMismatch method.  # noqa: E501
 
         :param origin_timezone: The origin_timezone of this VpnResult.  # noqa: E501
-        :type: str
         """
         if origin_timezone is None:
             raise ValueError("Invalid value for `origin_timezone`, must not be `None`")  # noqa: E501
@@ -104,45 +102,41 @@ class VpnResult(BaseModel):
         self._origin_timezone = origin_timezone
 
     @property
-    def origin_country(self):
+    def origin_country(self) -> str:
         """Gets the origin_country of this VpnResult.  # noqa: E501
 
         Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501
 
         :return: The origin_country of this VpnResult.  # noqa: E501
-        :rtype: str
         """
         return self._origin_country
 
     @origin_country.setter
-    def origin_country(self, origin_country):
+    def origin_country(self, origin_country: str):
         """Sets the origin_country of this VpnResult.
 
         Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501
 
         :param origin_country: The origin_country of this VpnResult.  # noqa: E501
-        :type: str
         """
 
         self._origin_country = origin_country
 
     @property
-    def methods(self):
+    def methods(self) -> VpnResultMethods:
         """Gets the methods of this VpnResult.  # noqa: E501
 
 
         :return: The methods of this VpnResult.  # noqa: E501
-        :rtype: VpnResultMethods
         """
         return self._methods
 
     @methods.setter
-    def methods(self, methods):
+    def methods(self, methods: VpnResultMethods):
         """Sets the methods of this VpnResult.
 
 
         :param methods: The methods of this VpnResult.  # noqa: E501
-        :type: VpnResultMethods
         """
         if methods is None:
             raise ValueError("Invalid value for `methods`, must not be `None`")  # noqa: E501

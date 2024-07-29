@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from datetime import datetime
+from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
 
 
 class BotdResult(BaseModel):
@@ -69,24 +72,22 @@ class BotdResult(BaseModel):
         self.bot = bot
 
     @property
-    def ip(self):
+    def ip(self) -> str:
         """Gets the ip of this BotdResult.  # noqa: E501
 
         IP address of the requesting browser or bot.  # noqa: E501
 
         :return: The ip of this BotdResult.  # noqa: E501
-        :rtype: str
         """
         return self._ip
 
     @ip.setter
-    def ip(self, ip):
+    def ip(self, ip: str):
         """Sets the ip of this BotdResult.
 
         IP address of the requesting browser or bot.  # noqa: E501
 
         :param ip: The ip of this BotdResult.  # noqa: E501
-        :type: str
         """
         if ip is None:
             raise ValueError("Invalid value for `ip`, must not be `None`")  # noqa: E501
@@ -94,24 +95,22 @@ class BotdResult(BaseModel):
         self._ip = ip
 
     @property
-    def time(self):
+    def time(self) -> datetime:
         """Gets the time of this BotdResult.  # noqa: E501
 
         Time in UTC when the request from the JS agent was made. We recommend to treat requests that are older than 2 minutes as malicious. Otherwise, request replay attacks are possible  # noqa: E501
 
         :return: The time of this BotdResult.  # noqa: E501
-        :rtype: datetime
         """
         return self._time
 
     @time.setter
-    def time(self, time):
+    def time(self, time: datetime):
         """Sets the time of this BotdResult.
 
         Time in UTC when the request from the JS agent was made. We recommend to treat requests that are older than 2 minutes as malicious. Otherwise, request replay attacks are possible  # noqa: E501
 
         :param time: The time of this BotdResult.  # noqa: E501
-        :type: datetime
         """
         if time is None:
             raise ValueError("Invalid value for `time`, must not be `None`")  # noqa: E501
@@ -119,24 +118,22 @@ class BotdResult(BaseModel):
         self._time = time
 
     @property
-    def url(self):
+    def url(self) -> str:
         """Gets the url of this BotdResult.  # noqa: E501
 
         Page URL from which identification request was sent.  # noqa: E501
 
         :return: The url of this BotdResult.  # noqa: E501
-        :rtype: str
         """
         return self._url
 
     @url.setter
-    def url(self, url):
+    def url(self, url: str):
         """Sets the url of this BotdResult.
 
         Page URL from which identification request was sent.  # noqa: E501
 
         :param url: The url of this BotdResult.  # noqa: E501
-        :type: str
         """
         if url is None:
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
@@ -144,22 +141,20 @@ class BotdResult(BaseModel):
         self._url = url
 
     @property
-    def user_agent(self):
+    def user_agent(self) -> str:
         """Gets the user_agent of this BotdResult.  # noqa: E501
 
 
         :return: The user_agent of this BotdResult.  # noqa: E501
-        :rtype: str
         """
         return self._user_agent
 
     @user_agent.setter
-    def user_agent(self, user_agent):
+    def user_agent(self, user_agent: str):
         """Sets the user_agent of this BotdResult.
 
 
         :param user_agent: The user_agent of this BotdResult.  # noqa: E501
-        :type: str
         """
         if user_agent is None:
             raise ValueError("Invalid value for `user_agent`, must not be `None`")  # noqa: E501
@@ -167,22 +162,20 @@ class BotdResult(BaseModel):
         self._user_agent = user_agent
 
     @property
-    def request_id(self):
+    def request_id(self) -> str:
         """Gets the request_id of this BotdResult.  # noqa: E501
 
 
         :return: The request_id of this BotdResult.  # noqa: E501
-        :rtype: str
         """
         return self._request_id
 
     @request_id.setter
-    def request_id(self, request_id):
+    def request_id(self, request_id: str):
         """Sets the request_id of this BotdResult.
 
 
         :param request_id: The request_id of this BotdResult.  # noqa: E501
-        :type: str
         """
         if request_id is None:
             raise ValueError("Invalid value for `request_id`, must not be `None`")  # noqa: E501
@@ -190,43 +183,39 @@ class BotdResult(BaseModel):
         self._request_id = request_id
 
     @property
-    def linked_id(self):
+    def linked_id(self) -> str:
         """Gets the linked_id of this BotdResult.  # noqa: E501
 
 
         :return: The linked_id of this BotdResult.  # noqa: E501
-        :rtype: str
         """
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id):
+    def linked_id(self, linked_id: str):
         """Sets the linked_id of this BotdResult.
 
 
         :param linked_id: The linked_id of this BotdResult.  # noqa: E501
-        :type: str
         """
 
         self._linked_id = linked_id
 
     @property
-    def bot(self):
+    def bot(self) -> BotdDetectionResult:
         """Gets the bot of this BotdResult.  # noqa: E501
 
 
         :return: The bot of this BotdResult.  # noqa: E501
-        :rtype: BotdDetectionResult
         """
         return self._bot
 
     @bot.setter
-    def bot(self, bot):
+    def bot(self, bot: BotdDetectionResult):
         """Sets the bot of this BotdResult.
 
 
         :param bot: The bot of this BotdResult.  # noqa: E501
-        :type: BotdDetectionResult
         """
         if bot is None:
             raise ValueError("Invalid value for `bot`, must not be `None`")  # noqa: E501
