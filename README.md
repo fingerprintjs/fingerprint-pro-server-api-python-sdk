@@ -165,7 +165,7 @@ body = EventUpdateRequest(linked_id='foo')  # EventUpdateRequest |
 # body = EventUpdateRequest(linked_id='foo', tag={'bar': 123}, suspect=False)
 
 try:
-    api_instance.update_event(request_id, body)
+    api_instance.update_event(body, request_id)
 except KnownApiException as e:
     structured_error = e.structured_error
     print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
