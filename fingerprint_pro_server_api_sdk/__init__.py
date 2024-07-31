@@ -109,3 +109,5 @@ from fingerprint_pro_server_api_sdk.models.visit import Visit
 from fingerprint_pro_server_api_sdk.models.vpn_result import VpnResult
 from fingerprint_pro_server_api_sdk.models.vpn_result_methods import VpnResultMethods
 from fingerprint_pro_server_api_sdk.models.webhook_visit import WebhookVisit
+# import custom methods into sdk package
+from fingerprint_pro_server_api_sdk.webhook import Webhook

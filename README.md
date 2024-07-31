@@ -203,6 +203,50 @@ exit(0)
 ```
 To learn more, refer to example located in [sealed_results_example.py](sealed_results_example.py).
 
+## Webhook signature validation
+
+This SDK provides utility method for verifying the HMAC signature of the incoming webhook request.
+```python
+import os
+from flask import Flask, request, jsonify
+from fingerprint_pro_server_api_sdk import Webhook
+
+app = Flask(__name__)
+
+@app.route('/api/webhook', methods=['POST'])
+def webhook_handler():
+    try:
+        # Retrieve the secret key from environment variables
+        secret = os.getenv("WEBHOOK_SIGNATURE_SECRET")
+        if not secret:
+            return jsonify({"message": "Secret key is not configured."}), 400
+
+        # Get the "fpjs-event-signature" header from the incoming request
+        header = request.headers.get('fpjs-event-signature')
+        if not header:
+            return jsonify({"message": "Missing fpjs-event-signature header."}), 400
+
+        # Read the raw body of the incoming request
+        data = request.get_data()
+
+        # Validate the webhook signature
+        is_valid = Webhook.is_valid_webhook_signature(header, data, secret)
+        if not is_valid:
+            return jsonify({"message": "Webhook signature is invalid."}), 403
+
+        # Process the webhook data here
+        return jsonify({"message": "Webhook received."}), 200
+
+    except Exception as e:
+        # Handle any unexpected errors
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    # Start the Flask application on the specified host and port
+    app.run(host='0.0.0.0', port=5000)
+```
+To learn more, refer to example located in [webhook_signature_example.py](webhook_signature_example.py).
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.fpjs.io*
