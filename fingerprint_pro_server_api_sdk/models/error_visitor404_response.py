@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.error_visitor404_response_error import ErrorVisitor404ResponseError
 

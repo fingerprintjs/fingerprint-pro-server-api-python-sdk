@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.ip_location import IPLocation
 from fingerprint_pro_server_api_sdk.models.asn import ASN

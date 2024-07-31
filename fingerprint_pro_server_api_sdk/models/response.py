@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.response_visits import ResponseVisits
 
@@ -81,7 +81,7 @@ class Response(BaseModel):
         self._visitor_id = visitor_id
 
     @property
-    def visits(self) -> list[ResponseVisits]:
+    def visits(self) -> List[ResponseVisits]:
         """Gets the visits of this Response.  # noqa: E501
 
 
@@ -90,7 +90,7 @@ class Response(BaseModel):
         return self._visits
 
     @visits.setter
-    def visits(self, visits: list[ResponseVisits]):
+    def visits(self, visits: List[ResponseVisits]):
         """Sets the visits of this Response.
 
 

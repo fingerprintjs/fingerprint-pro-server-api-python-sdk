@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.ip_location_city import IPLocationCity
 from fingerprint_pro_server_api_sdk.models.location import Location
@@ -241,7 +241,7 @@ class IPLocation(BaseModel):
         self._continent = continent
 
     @property
-    def subdivisions(self) -> list[Subdivision]:
+    def subdivisions(self) -> List[Subdivision]:
         """Gets the subdivisions of this IPLocation.  # noqa: E501
 
 
@@ -250,7 +250,7 @@ class IPLocation(BaseModel):
         return self._subdivisions
 
     @subdivisions.setter
-    def subdivisions(self, subdivisions: list[Subdivision]):
+    def subdivisions(self, subdivisions: List[Subdivision]):
         """Sets the subdivisions of this IPLocation.
 
 

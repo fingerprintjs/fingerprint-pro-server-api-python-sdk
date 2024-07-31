@@ -22,12 +22,15 @@ def convert_to_snake_case(text):
 
 def convert_type_annotations(text):
     """Replaces dict(str, object) with dict[str, object] in function annotations."""
-    pattern1 = r'-> dict\((\w+), (\w+)\):'
-    replacement1 = r'-> Dict[\1, \2]:'
-    result = re.sub(pattern1, replacement1, text)
-    pattern2 = r': dict\((\w+), (\w+)\)'
-    replacement2 = r': Dict[\1, \2]'
-    result = re.sub(pattern2, replacement2, result)
+    result = text
+    replacement_pairs = [
+        (r'-> dict\((\w+), (\w+)\):', r'-> Dict[\1, \2]:'),
+        (r': dict\((\w+), (\w+)\)', r': Dict[\1, \2]'),
+        (r'-> list\[(\w+)\]:', r'-> List[\1]:'),
+        (r': list\[(\w+)\]', r': List[\1]')
+    ]
+    for pattern, replacement in replacement_pairs:
+        result = re.sub(pattern, replacement, result)
     return result
 
 
