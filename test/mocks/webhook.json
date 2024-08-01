@@ -215,5 +215,8 @@
         "24h": 5
       }
     }
+  },
+  "developerTools": {
+    "result": false
   }
 }

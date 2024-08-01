@@ -532,6 +532,8 @@ paths:
                               5m: 1
                               1h: 5
                               24h: 5
+                        developerTools:
+                          result: false
               responses:
                 default:
                   description: The server doesn't validate the answer.
@@ -890,6 +892,8 @@ components:
           $ref: '#/components/schemas/RemoteControlResult'
         velocity:
           $ref: '#/components/schemas/VelocityResult'
+        developerTools:
+          $ref: '#/components/schemas/DeveloperToolsResult'
         requestId:
           description: Unique identifier of the user's identification request.
           type: string
@@ -1628,6 +1632,15 @@ components:
               $ref: '#/components/schemas/VelocityResult'
             error:
               $ref: '#/components/schemas/ProductError'
+        developerTools:
+          title: SignalResponseDeveloperTools
+          type: object
+          additionalProperties: false
+          properties:
+            data:
+              $ref: '#/components/schemas/DeveloperToolsResult'
+            error:
+              $ref: '#/components/schemas/ProductError'
     EventResponse:
       description: >-
         Contains results from all activated products - Fingerprint Pro, Bot
@@ -2163,6 +2176,18 @@ components:
           description: >
             `true` if the request came from a machine being remotely controlled
             (e.g. TeamViewer), `false` otherwise.
+          example: false
+      required:
+        - result
+    DeveloperToolsResult:
+      type: object
+      additionalProperties: false
+      properties:
+        result:
+          type: boolean
+          description: >
+            `true` if the browser is Chrome with DevTools open or Firefox with
+            Developer Tools open, `false` otherwise.
           example: false
       required:
         - result

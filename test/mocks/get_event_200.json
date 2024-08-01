@@ -303,6 +303,11 @@
           }
         }
       }
+    },
+    "developerTools": {
+      "data": {
+        "result": false
+      }
     }
   }
 }

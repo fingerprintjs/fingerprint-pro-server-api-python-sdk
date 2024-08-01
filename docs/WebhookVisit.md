@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **suspect_score** | [**SuspectScoreResult**](SuspectScoreResult.md) |  | [optional] 
 **remote_control** | [**RemoteControlResult**](RemoteControlResult.md) |  | [optional] 
 **velocity** | [**VelocityResult**](VelocityResult.md) |  | [optional] 
+**developer_tools** | [**DeveloperToolsResult**](DeveloperToolsResult.md) |  | [optional] 
 **request_id** | **str** | Unique identifier of the user's identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **ip** | **str** |  | 

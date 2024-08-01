@@ -147,6 +147,12 @@
         "code": "Failed",
         "message": "internal server error"
       }
+    },
+    "developerTools": {
+      "error": {
+        "code": "Failed",
+        "message": "internal server error"
+      }
     }
   }
 }
