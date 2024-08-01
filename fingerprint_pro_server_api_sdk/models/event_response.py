@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.products_response import ProductsResponse
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class EventResponse(BaseModel):
@@ -49,22 +52,20 @@ class EventResponse(BaseModel):
             self.error = error
 
     @property
-    def products(self):
+    def products(self) -> ProductsResponse:
         """Gets the products of this EventResponse.  # noqa: E501
 
 
         :return: The products of this EventResponse.  # noqa: E501
-        :rtype: ProductsResponse
         """
         return self._products
 
     @products.setter
-    def products(self, products):
+    def products(self, products: ProductsResponse):
         """Sets the products of this EventResponse.
 
 
         :param products: The products of this EventResponse.  # noqa: E501
-        :type: ProductsResponse
         """
         if products is None:
             raise ValueError("Invalid value for `products`, must not be `None`")  # noqa: E501
@@ -72,22 +73,20 @@ class EventResponse(BaseModel):
         self._products = products
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this EventResponse.  # noqa: E501
 
 
         :return: The error of this EventResponse.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this EventResponse.
 
 
         :param error: The error of this EventResponse.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

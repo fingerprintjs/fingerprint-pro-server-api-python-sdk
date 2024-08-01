@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from datetime import datetime
+from datetime import datetime
 
 
 class SeenAt(BaseModel):
@@ -45,43 +48,39 @@ class SeenAt(BaseModel):
         self.subscription = subscription
 
     @property
-    def _global(self):
+    def _global(self) -> datetime:
         """Gets the _global of this SeenAt.  # noqa: E501
 
 
         :return: The _global of this SeenAt.  # noqa: E501
-        :rtype: datetime
         """
         return self.__global
 
     @_global.setter
-    def _global(self, _global):
+    def _global(self, _global: datetime):
         """Sets the _global of this SeenAt.
 
 
         :param _global: The _global of this SeenAt.  # noqa: E501
-        :type: datetime
         """
 
         self.__global = _global
 
     @property
-    def subscription(self):
+    def subscription(self) -> datetime:
         """Gets the subscription of this SeenAt.  # noqa: E501
 
 
         :return: The subscription of this SeenAt.  # noqa: E501
-        :rtype: datetime
         """
         return self._subscription
 
     @subscription.setter
-    def subscription(self, subscription):
+    def subscription(self, subscription: datetime):
         """Sets the subscription of this SeenAt.
 
 
         :param subscription: The subscription of this SeenAt.  # noqa: E501
-        :type: datetime
         """
 
         self._subscription = subscription

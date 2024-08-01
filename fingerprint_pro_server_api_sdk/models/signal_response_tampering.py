@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.tampering_result import TamperingResult
+from fingerprint_pro_server_api_sdk.models.identification_error import IdentificationError
 
 
 class SignalResponseTampering(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseTampering(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> TamperingResult:
         """Gets the data of this SignalResponseTampering.  # noqa: E501
 
 
         :return: The data of this SignalResponseTampering.  # noqa: E501
-        :rtype: TamperingResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: TamperingResult):
         """Sets the data of this SignalResponseTampering.
 
 
         :param data: The data of this SignalResponseTampering.  # noqa: E501
-        :type: TamperingResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> IdentificationError:
         """Gets the error of this SignalResponseTampering.  # noqa: E501
 
 
         :return: The error of this SignalResponseTampering.  # noqa: E501
-        :rtype: IdentificationError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: IdentificationError):
         """Sets the error of this SignalResponseTampering.
 
 
         :param error: The error of this SignalResponseTampering.  # noqa: E501
-        :type: IdentificationError
         """
 
         self._error = error

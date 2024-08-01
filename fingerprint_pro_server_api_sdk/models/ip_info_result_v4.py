@@ -11,7 +11,11 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.ip_location import IPLocation
+from fingerprint_pro_server_api_sdk.models.asn import ASN
+from fingerprint_pro_server_api_sdk.models.data_center import DataCenter
 
 
 class IpInfoResultV4(BaseModel):
@@ -55,22 +59,20 @@ class IpInfoResultV4(BaseModel):
             self.datacenter = datacenter
 
     @property
-    def address(self):
+    def address(self) -> str:
         """Gets the address of this IpInfoResultV4.  # noqa: E501
 
 
         :return: The address of this IpInfoResultV4.  # noqa: E501
-        :rtype: str
         """
         return self._address
 
     @address.setter
-    def address(self, address):
+    def address(self, address: str):
         """Sets the address of this IpInfoResultV4.
 
 
         :param address: The address of this IpInfoResultV4.  # noqa: E501
-        :type: str
         """
         if address is None:
             raise ValueError("Invalid value for `address`, must not be `None`")  # noqa: E501
@@ -78,22 +80,20 @@ class IpInfoResultV4(BaseModel):
         self._address = address
 
     @property
-    def geolocation(self):
+    def geolocation(self) -> IPLocation:
         """Gets the geolocation of this IpInfoResultV4.  # noqa: E501
 
 
         :return: The geolocation of this IpInfoResultV4.  # noqa: E501
-        :rtype: IPLocation
         """
         return self._geolocation
 
     @geolocation.setter
-    def geolocation(self, geolocation):
+    def geolocation(self, geolocation: IPLocation):
         """Sets the geolocation of this IpInfoResultV4.
 
 
         :param geolocation: The geolocation of this IpInfoResultV4.  # noqa: E501
-        :type: IPLocation
         """
         if geolocation is None:
             raise ValueError("Invalid value for `geolocation`, must not be `None`")  # noqa: E501
@@ -101,43 +101,39 @@ class IpInfoResultV4(BaseModel):
         self._geolocation = geolocation
 
     @property
-    def asn(self):
+    def asn(self) -> ASN:
         """Gets the asn of this IpInfoResultV4.  # noqa: E501
 
 
         :return: The asn of this IpInfoResultV4.  # noqa: E501
-        :rtype: ASN
         """
         return self._asn
 
     @asn.setter
-    def asn(self, asn):
+    def asn(self, asn: ASN):
         """Sets the asn of this IpInfoResultV4.
 
 
         :param asn: The asn of this IpInfoResultV4.  # noqa: E501
-        :type: ASN
         """
 
         self._asn = asn
 
     @property
-    def datacenter(self):
+    def datacenter(self) -> DataCenter:
         """Gets the datacenter of this IpInfoResultV4.  # noqa: E501
 
 
         :return: The datacenter of this IpInfoResultV4.  # noqa: E501
-        :rtype: DataCenter
         """
         return self._datacenter
 
     @datacenter.setter
-    def datacenter(self, datacenter):
+    def datacenter(self, datacenter: DataCenter):
         """Sets the datacenter of this IpInfoResultV4.
 
 
         :param datacenter: The datacenter of this IpInfoResultV4.  # noqa: E501
-        :type: DataCenter
         """
 
         self._datacenter = datacenter

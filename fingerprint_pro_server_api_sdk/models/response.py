@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.response_visits import ResponseVisits
 
 
 class Response(BaseModel):
@@ -58,22 +60,20 @@ class Response(BaseModel):
             self.pagination_key = pagination_key
 
     @property
-    def visitor_id(self):
+    def visitor_id(self) -> str:
         """Gets the visitor_id of this Response.  # noqa: E501
 
 
         :return: The visitor_id of this Response.  # noqa: E501
-        :rtype: str
         """
         return self._visitor_id
 
     @visitor_id.setter
-    def visitor_id(self, visitor_id):
+    def visitor_id(self, visitor_id: str):
         """Sets the visitor_id of this Response.
 
 
         :param visitor_id: The visitor_id of this Response.  # noqa: E501
-        :type: str
         """
         if visitor_id is None:
             raise ValueError("Invalid value for `visitor_id`, must not be `None`")  # noqa: E501
@@ -81,22 +81,20 @@ class Response(BaseModel):
         self._visitor_id = visitor_id
 
     @property
-    def visits(self):
+    def visits(self) -> List[ResponseVisits]:
         """Gets the visits of this Response.  # noqa: E501
 
 
         :return: The visits of this Response.  # noqa: E501
-        :rtype: list[ResponseVisits]
         """
         return self._visits
 
     @visits.setter
-    def visits(self, visits):
+    def visits(self, visits: List[ResponseVisits]):
         """Sets the visits of this Response.
 
 
         :param visits: The visits of this Response.  # noqa: E501
-        :type: list[ResponseVisits]
         """
         if visits is None:
             raise ValueError("Invalid value for `visits`, must not be `None`")  # noqa: E501
@@ -104,47 +102,43 @@ class Response(BaseModel):
         self._visits = visits
 
     @property
-    def last_timestamp(self):
+    def last_timestamp(self) -> int:
         """Gets the last_timestamp of this Response.  # noqa: E501
 
         ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
 
         :return: The last_timestamp of this Response.  # noqa: E501
-        :rtype: int
         """
         return self._last_timestamp
 
     @last_timestamp.setter
-    def last_timestamp(self, last_timestamp):
+    def last_timestamp(self, last_timestamp: int):
         """Sets the last_timestamp of this Response.
 
         ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
 
         :param last_timestamp: The last_timestamp of this Response.  # noqa: E501
-        :type: int
         """
 
         self._last_timestamp = last_timestamp
 
     @property
-    def pagination_key(self):
+    def pagination_key(self) -> str:
         """Gets the pagination_key of this Response.  # noqa: E501
 
         Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501
 
         :return: The pagination_key of this Response.  # noqa: E501
-        :rtype: str
         """
         return self._pagination_key
 
     @pagination_key.setter
-    def pagination_key(self, pagination_key):
+    def pagination_key(self, pagination_key: str):
         """Sets the pagination_key of this Response.
 
         Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501
 
         :param pagination_key: The pagination_key of this Response.  # noqa: E501
-        :type: str
         """
 
         self._pagination_key = pagination_key

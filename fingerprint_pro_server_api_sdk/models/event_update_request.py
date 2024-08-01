@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -52,70 +53,64 @@ class EventUpdateRequest(BaseModel):
             self.suspect = suspect
 
     @property
-    def linked_id(self):
+    def linked_id(self) -> str:
         """Gets the linked_id of this EventUpdateRequest.  # noqa: E501
 
         LinkedID value to assign to the existing event  # noqa: E501
 
         :return: The linked_id of this EventUpdateRequest.  # noqa: E501
-        :rtype: str
         """
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id):
+    def linked_id(self, linked_id: str):
         """Sets the linked_id of this EventUpdateRequest.
 
         LinkedID value to assign to the existing event  # noqa: E501
 
         :param linked_id: The linked_id of this EventUpdateRequest.  # noqa: E501
-        :type: str
         """
 
         self._linked_id = linked_id
 
     @property
-    def tag(self):
+    def tag(self) -> object:
         """Gets the tag of this EventUpdateRequest.  # noqa: E501
 
         Full `tag` value to be set to the existing event. Replaces any existing `tag` payload completely.  # noqa: E501
 
         :return: The tag of this EventUpdateRequest.  # noqa: E501
-        :rtype: object
         """
         return self._tag
 
     @tag.setter
-    def tag(self, tag):
+    def tag(self, tag: object):
         """Sets the tag of this EventUpdateRequest.
 
         Full `tag` value to be set to the existing event. Replaces any existing `tag` payload completely.  # noqa: E501
 
         :param tag: The tag of this EventUpdateRequest.  # noqa: E501
-        :type: object
         """
 
         self._tag = tag
 
     @property
-    def suspect(self):
+    def suspect(self) -> bool:
         """Gets the suspect of this EventUpdateRequest.  # noqa: E501
 
         Suspect flag indicating observed suspicious or fraudulent event  # noqa: E501
 
         :return: The suspect of this EventUpdateRequest.  # noqa: E501
-        :rtype: bool
         """
         return self._suspect
 
     @suspect.setter
-    def suspect(self, suspect):
+    def suspect(self, suspect: bool):
         """Sets the suspect of this EventUpdateRequest.
 
         Suspect flag indicating observed suspicious or fraudulent event  # noqa: E501
 
         :param suspect: The suspect of this EventUpdateRequest.  # noqa: E501
-        :type: bool
         """
 
         self._suspect = suspect

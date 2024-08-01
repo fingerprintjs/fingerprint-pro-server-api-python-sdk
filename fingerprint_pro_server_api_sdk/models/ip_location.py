@@ -11,7 +11,12 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.ip_location_city import IPLocationCity
+from fingerprint_pro_server_api_sdk.models.location import Location
+from fingerprint_pro_server_api_sdk.models.location import Location
+from fingerprint_pro_server_api_sdk.models.subdivision import Subdivision
 
 
 class IPLocation(BaseModel):
@@ -82,192 +87,174 @@ class IPLocation(BaseModel):
             self.subdivisions = subdivisions
 
     @property
-    def accuracy_radius(self):
+    def accuracy_radius(self) -> int:
         """Gets the accuracy_radius of this IPLocation.  # noqa: E501
 
         The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
 
         :return: The accuracy_radius of this IPLocation.  # noqa: E501
-        :rtype: int
         """
         return self._accuracy_radius
 
     @accuracy_radius.setter
-    def accuracy_radius(self, accuracy_radius):
+    def accuracy_radius(self, accuracy_radius: int):
         """Sets the accuracy_radius of this IPLocation.
 
         The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
 
         :param accuracy_radius: The accuracy_radius of this IPLocation.  # noqa: E501
-        :type: int
         """
 
         self._accuracy_radius = accuracy_radius
 
     @property
-    def latitude(self):
+    def latitude(self) -> float:
         """Gets the latitude of this IPLocation.  # noqa: E501
 
 
         :return: The latitude of this IPLocation.  # noqa: E501
-        :rtype: float
         """
         return self._latitude
 
     @latitude.setter
-    def latitude(self, latitude):
+    def latitude(self, latitude: float):
         """Sets the latitude of this IPLocation.
 
 
         :param latitude: The latitude of this IPLocation.  # noqa: E501
-        :type: float
         """
 
         self._latitude = latitude
 
     @property
-    def longitude(self):
+    def longitude(self) -> float:
         """Gets the longitude of this IPLocation.  # noqa: E501
 
 
         :return: The longitude of this IPLocation.  # noqa: E501
-        :rtype: float
         """
         return self._longitude
 
     @longitude.setter
-    def longitude(self, longitude):
+    def longitude(self, longitude: float):
         """Sets the longitude of this IPLocation.
 
 
         :param longitude: The longitude of this IPLocation.  # noqa: E501
-        :type: float
         """
 
         self._longitude = longitude
 
     @property
-    def postal_code(self):
+    def postal_code(self) -> str:
         """Gets the postal_code of this IPLocation.  # noqa: E501
 
 
         :return: The postal_code of this IPLocation.  # noqa: E501
-        :rtype: str
         """
         return self._postal_code
 
     @postal_code.setter
-    def postal_code(self, postal_code):
+    def postal_code(self, postal_code: str):
         """Sets the postal_code of this IPLocation.
 
 
         :param postal_code: The postal_code of this IPLocation.  # noqa: E501
-        :type: str
         """
 
         self._postal_code = postal_code
 
     @property
-    def timezone(self):
+    def timezone(self) -> str:
         """Gets the timezone of this IPLocation.  # noqa: E501
 
 
         :return: The timezone of this IPLocation.  # noqa: E501
-        :rtype: str
         """
         return self._timezone
 
     @timezone.setter
-    def timezone(self, timezone):
+    def timezone(self, timezone: str):
         """Sets the timezone of this IPLocation.
 
 
         :param timezone: The timezone of this IPLocation.  # noqa: E501
-        :type: str
         """
 
         self._timezone = timezone
 
     @property
-    def city(self):
+    def city(self) -> IPLocationCity:
         """Gets the city of this IPLocation.  # noqa: E501
 
 
         :return: The city of this IPLocation.  # noqa: E501
-        :rtype: IPLocationCity
         """
         return self._city
 
     @city.setter
-    def city(self, city):
+    def city(self, city: IPLocationCity):
         """Sets the city of this IPLocation.
 
 
         :param city: The city of this IPLocation.  # noqa: E501
-        :type: IPLocationCity
         """
 
         self._city = city
 
     @property
-    def country(self):
+    def country(self) -> Location:
         """Gets the country of this IPLocation.  # noqa: E501
 
 
         :return: The country of this IPLocation.  # noqa: E501
-        :rtype: Location
         """
         return self._country
 
     @country.setter
-    def country(self, country):
+    def country(self, country: Location):
         """Sets the country of this IPLocation.
 
 
         :param country: The country of this IPLocation.  # noqa: E501
-        :type: Location
         """
 
         self._country = country
 
     @property
-    def continent(self):
+    def continent(self) -> Location:
         """Gets the continent of this IPLocation.  # noqa: E501
 
 
         :return: The continent of this IPLocation.  # noqa: E501
-        :rtype: Location
         """
         return self._continent
 
     @continent.setter
-    def continent(self, continent):
+    def continent(self, continent: Location):
         """Sets the continent of this IPLocation.
 
 
         :param continent: The continent of this IPLocation.  # noqa: E501
-        :type: Location
         """
 
         self._continent = continent
 
     @property
-    def subdivisions(self):
+    def subdivisions(self) -> List[Subdivision]:
         """Gets the subdivisions of this IPLocation.  # noqa: E501
 
 
         :return: The subdivisions of this IPLocation.  # noqa: E501
-        :rtype: list[Subdivision]
         """
         return self._subdivisions
 
     @subdivisions.setter
-    def subdivisions(self, subdivisions):
+    def subdivisions(self, subdivisions: List[Subdivision]):
         """Sets the subdivisions of this IPLocation.
 
 
         :param subdivisions: The subdivisions of this IPLocation.  # noqa: E501
-        :type: list[Subdivision]
         """
 
         self._subdivisions = subdivisions

@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -70,22 +71,20 @@ class BrowserDetails(BaseModel):
             self.bot_probability = bot_probability
 
     @property
-    def browser_name(self):
+    def browser_name(self) -> str:
         """Gets the browser_name of this BrowserDetails.  # noqa: E501
 
 
         :return: The browser_name of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._browser_name
 
     @browser_name.setter
-    def browser_name(self, browser_name):
+    def browser_name(self, browser_name: str):
         """Sets the browser_name of this BrowserDetails.
 
 
         :param browser_name: The browser_name of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if browser_name is None:
             raise ValueError("Invalid value for `browser_name`, must not be `None`")  # noqa: E501
@@ -93,22 +92,20 @@ class BrowserDetails(BaseModel):
         self._browser_name = browser_name
 
     @property
-    def browser_major_version(self):
+    def browser_major_version(self) -> str:
         """Gets the browser_major_version of this BrowserDetails.  # noqa: E501
 
 
         :return: The browser_major_version of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._browser_major_version
 
     @browser_major_version.setter
-    def browser_major_version(self, browser_major_version):
+    def browser_major_version(self, browser_major_version: str):
         """Sets the browser_major_version of this BrowserDetails.
 
 
         :param browser_major_version: The browser_major_version of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if browser_major_version is None:
             raise ValueError("Invalid value for `browser_major_version`, must not be `None`")  # noqa: E501
@@ -116,22 +113,20 @@ class BrowserDetails(BaseModel):
         self._browser_major_version = browser_major_version
 
     @property
-    def browser_full_version(self):
+    def browser_full_version(self) -> str:
         """Gets the browser_full_version of this BrowserDetails.  # noqa: E501
 
 
         :return: The browser_full_version of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._browser_full_version
 
     @browser_full_version.setter
-    def browser_full_version(self, browser_full_version):
+    def browser_full_version(self, browser_full_version: str):
         """Sets the browser_full_version of this BrowserDetails.
 
 
         :param browser_full_version: The browser_full_version of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if browser_full_version is None:
             raise ValueError("Invalid value for `browser_full_version`, must not be `None`")  # noqa: E501
@@ -139,22 +134,20 @@ class BrowserDetails(BaseModel):
         self._browser_full_version = browser_full_version
 
     @property
-    def os(self):
+    def os(self) -> str:
         """Gets the os of this BrowserDetails.  # noqa: E501
 
 
         :return: The os of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._os
 
     @os.setter
-    def os(self, os):
+    def os(self, os: str):
         """Sets the os of this BrowserDetails.
 
 
         :param os: The os of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if os is None:
             raise ValueError("Invalid value for `os`, must not be `None`")  # noqa: E501
@@ -162,22 +155,20 @@ class BrowserDetails(BaseModel):
         self._os = os
 
     @property
-    def os_version(self):
+    def os_version(self) -> str:
         """Gets the os_version of this BrowserDetails.  # noqa: E501
 
 
         :return: The os_version of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._os_version
 
     @os_version.setter
-    def os_version(self, os_version):
+    def os_version(self, os_version: str):
         """Sets the os_version of this BrowserDetails.
 
 
         :param os_version: The os_version of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if os_version is None:
             raise ValueError("Invalid value for `os_version`, must not be `None`")  # noqa: E501
@@ -185,22 +176,20 @@ class BrowserDetails(BaseModel):
         self._os_version = os_version
 
     @property
-    def device(self):
+    def device(self) -> str:
         """Gets the device of this BrowserDetails.  # noqa: E501
 
 
         :return: The device of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._device
 
     @device.setter
-    def device(self, device):
+    def device(self, device: str):
         """Sets the device of this BrowserDetails.
 
 
         :param device: The device of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if device is None:
             raise ValueError("Invalid value for `device`, must not be `None`")  # noqa: E501
@@ -208,22 +197,20 @@ class BrowserDetails(BaseModel):
         self._device = device
 
     @property
-    def user_agent(self):
+    def user_agent(self) -> str:
         """Gets the user_agent of this BrowserDetails.  # noqa: E501
 
 
         :return: The user_agent of this BrowserDetails.  # noqa: E501
-        :rtype: str
         """
         return self._user_agent
 
     @user_agent.setter
-    def user_agent(self, user_agent):
+    def user_agent(self, user_agent: str):
         """Sets the user_agent of this BrowserDetails.
 
 
         :param user_agent: The user_agent of this BrowserDetails.  # noqa: E501
-        :type: str
         """
         if user_agent is None:
             raise ValueError("Invalid value for `user_agent`, must not be `None`")  # noqa: E501
@@ -231,22 +218,20 @@ class BrowserDetails(BaseModel):
         self._user_agent = user_agent
 
     @property
-    def bot_probability(self):
+    def bot_probability(self) -> int:
         """Gets the bot_probability of this BrowserDetails.  # noqa: E501
 
 
         :return: The bot_probability of this BrowserDetails.  # noqa: E501
-        :rtype: int
         """
         return self._bot_probability
 
     @bot_probability.setter
-    def bot_probability(self, bot_probability):
+    def bot_probability(self, bot_probability: int):
         """Sets the bot_probability of this BrowserDetails.
 
 
         :param bot_probability: The bot_probability of this BrowserDetails.  # noqa: E501
-        :type: int
         """
 
         self._bot_probability = bot_probability

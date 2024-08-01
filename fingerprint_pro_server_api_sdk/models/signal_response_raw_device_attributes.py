@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.raw_device_attributes_result import RawDeviceAttributesResult
+from fingerprint_pro_server_api_sdk.models.identification_error import IdentificationError
 
 
 class SignalResponseRawDeviceAttributes(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseRawDeviceAttributes(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> RawDeviceAttributesResult:
         """Gets the data of this SignalResponseRawDeviceAttributes.  # noqa: E501
 
 
         :return: The data of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :rtype: RawDeviceAttributesResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: RawDeviceAttributesResult):
         """Sets the data of this SignalResponseRawDeviceAttributes.
 
 
         :param data: The data of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :type: RawDeviceAttributesResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> IdentificationError:
         """Gets the error of this SignalResponseRawDeviceAttributes.  # noqa: E501
 
 
         :return: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :rtype: IdentificationError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: IdentificationError):
         """Sets the error of this SignalResponseRawDeviceAttributes.
 
 
         :param error: The error of this SignalResponseRawDeviceAttributes.  # noqa: E501
-        :type: IdentificationError
         """
 
         self._error = error

@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -41,24 +42,22 @@ class ErrorVisits403(BaseModel):
         self.error = error
 
     @property
-    def error(self):
+    def error(self) -> str:
         """Gets the error of this ErrorVisits403.  # noqa: E501
 
         Error text.  # noqa: E501
 
         :return: The error of this ErrorVisits403.  # noqa: E501
-        :rtype: str
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: str):
         """Sets the error of this ErrorVisits403.
 
         Error text.  # noqa: E501
 
         :param error: The error of this ErrorVisits403.  # noqa: E501
-        :type: str
         """
         if error is None:
             raise ValueError("Invalid value for `error`, must not be `None`")  # noqa: E501

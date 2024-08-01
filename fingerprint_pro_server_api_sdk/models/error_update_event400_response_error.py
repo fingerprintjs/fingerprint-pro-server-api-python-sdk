@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -45,24 +46,22 @@ class ErrorUpdateEvent400ResponseError(BaseModel):
         self.message = message
 
     @property
-    def code(self):
+    def code(self) -> str:
         """Gets the code of this ErrorUpdateEvent400ResponseError.  # noqa: E501
 
         Error code: * `RequestCannotBeParsed` - the JSON content of the request contains some errors that prevented us from parsing it (wrong type/surpassed limits) * `Failed` - the event is more than 10 days old and cannot be updated   # noqa: E501
 
         :return: The code of this ErrorUpdateEvent400ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._code
 
     @code.setter
-    def code(self, code):
+    def code(self, code: str):
         """Sets the code of this ErrorUpdateEvent400ResponseError.
 
         Error code: * `RequestCannotBeParsed` - the JSON content of the request contains some errors that prevented us from parsing it (wrong type/surpassed limits) * `Failed` - the event is more than 10 days old and cannot be updated   # noqa: E501
 
         :param code: The code of this ErrorUpdateEvent400ResponseError.  # noqa: E501
-        :type: str
         """
         if code is None:
             raise ValueError("Invalid value for `code`, must not be `None`")  # noqa: E501
@@ -76,24 +75,22 @@ class ErrorUpdateEvent400ResponseError(BaseModel):
         self._code = code
 
     @property
-    def message(self):
+    def message(self) -> str:
         """Gets the message of this ErrorUpdateEvent400ResponseError.  # noqa: E501
 
         Details about the underlying issue with the input payload  # noqa: E501
 
         :return: The message of this ErrorUpdateEvent400ResponseError.  # noqa: E501
-        :rtype: str
         """
         return self._message
 
     @message.setter
-    def message(self, message):
+    def message(self, message: str):
         """Sets the message of this ErrorUpdateEvent400ResponseError.
 
         Details about the underlying issue with the input payload  # noqa: E501
 
         :param message: The message of this ErrorUpdateEvent400ResponseError.  # noqa: E501
-        :type: str
         """
         if message is None:
             raise ValueError("Invalid value for `message`, must not be `None`")  # noqa: E501

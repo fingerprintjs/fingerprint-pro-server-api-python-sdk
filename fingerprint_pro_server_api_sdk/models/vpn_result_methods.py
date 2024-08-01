@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -53,24 +54,22 @@ class VpnResultMethods(BaseModel):
         self.os_mismatch = os_mismatch
 
     @property
-    def timezone_mismatch(self):
+    def timezone_mismatch(self) -> bool:
         """Gets the timezone_mismatch of this VpnResultMethods.  # noqa: E501
 
         The browser timezone doesn't match the timezone inferred from the request IP address.  # noqa: E501
 
         :return: The timezone_mismatch of this VpnResultMethods.  # noqa: E501
-        :rtype: bool
         """
         return self._timezone_mismatch
 
     @timezone_mismatch.setter
-    def timezone_mismatch(self, timezone_mismatch):
+    def timezone_mismatch(self, timezone_mismatch: bool):
         """Sets the timezone_mismatch of this VpnResultMethods.
 
         The browser timezone doesn't match the timezone inferred from the request IP address.  # noqa: E501
 
         :param timezone_mismatch: The timezone_mismatch of this VpnResultMethods.  # noqa: E501
-        :type: bool
         """
         if timezone_mismatch is None:
             raise ValueError("Invalid value for `timezone_mismatch`, must not be `None`")  # noqa: E501
@@ -78,24 +77,22 @@ class VpnResultMethods(BaseModel):
         self._timezone_mismatch = timezone_mismatch
 
     @property
-    def public_vpn(self):
+    def public_vpn(self) -> bool:
         """Gets the public_vpn of this VpnResultMethods.  # noqa: E501
 
         Request IP address is owned and used by a public VPN service provider.  # noqa: E501
 
         :return: The public_vpn of this VpnResultMethods.  # noqa: E501
-        :rtype: bool
         """
         return self._public_vpn
 
     @public_vpn.setter
-    def public_vpn(self, public_vpn):
+    def public_vpn(self, public_vpn: bool):
         """Sets the public_vpn of this VpnResultMethods.
 
         Request IP address is owned and used by a public VPN service provider.  # noqa: E501
 
         :param public_vpn: The public_vpn of this VpnResultMethods.  # noqa: E501
-        :type: bool
         """
         if public_vpn is None:
             raise ValueError("Invalid value for `public_vpn`, must not be `None`")  # noqa: E501
@@ -103,24 +100,22 @@ class VpnResultMethods(BaseModel):
         self._public_vpn = public_vpn
 
     @property
-    def auxiliary_mobile(self):
+    def auxiliary_mobile(self) -> bool:
         """Gets the auxiliary_mobile of this VpnResultMethods.  # noqa: E501
 
         This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.  # noqa: E501
 
         :return: The auxiliary_mobile of this VpnResultMethods.  # noqa: E501
-        :rtype: bool
         """
         return self._auxiliary_mobile
 
     @auxiliary_mobile.setter
-    def auxiliary_mobile(self, auxiliary_mobile):
+    def auxiliary_mobile(self, auxiliary_mobile: bool):
         """Sets the auxiliary_mobile of this VpnResultMethods.
 
         This method applies to mobile devices only. Indicates the result of additional methods used to detect a VPN in mobile devices.  # noqa: E501
 
         :param auxiliary_mobile: The auxiliary_mobile of this VpnResultMethods.  # noqa: E501
-        :type: bool
         """
         if auxiliary_mobile is None:
             raise ValueError("Invalid value for `auxiliary_mobile`, must not be `None`")  # noqa: E501
@@ -128,24 +123,22 @@ class VpnResultMethods(BaseModel):
         self._auxiliary_mobile = auxiliary_mobile
 
     @property
-    def os_mismatch(self):
+    def os_mismatch(self) -> bool:
         """Gets the os_mismatch of this VpnResultMethods.  # noqa: E501
 
         The browser runs on a different operating system than the operating system inferred from the  request network signature.  # noqa: E501
 
         :return: The os_mismatch of this VpnResultMethods.  # noqa: E501
-        :rtype: bool
         """
         return self._os_mismatch
 
     @os_mismatch.setter
-    def os_mismatch(self, os_mismatch):
+    def os_mismatch(self, os_mismatch: bool):
         """Sets the os_mismatch of this VpnResultMethods.
 
         The browser runs on a different operating system than the operating system inferred from the  request network signature.  # noqa: E501
 
         :param os_mismatch: The os_mismatch of this VpnResultMethods.  # noqa: E501
-        :type: bool
         """
         if os_mismatch is None:
             raise ValueError("Invalid value for `os_mismatch`, must not be `None`")  # noqa: E501

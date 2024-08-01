@@ -27,7 +27,7 @@ request_id = os.environ["REQUEST_ID_TO_UPDATE"]
 try:
     updateBody = EventUpdateRequest(**vars(args))
     print(f'updateBody: {updateBody}')
-    api_instance.update_event(request_id, updateBody)
+    api_instance.update_event(updateBody, request_id)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_event: %s\n" % e)
     exit(1)

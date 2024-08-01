@@ -7,9 +7,12 @@ import json
 import logging
 import re
 import ssl
-
 import certifi
+
+from typing import Optional, Dict, List, Tuple, Any
 from urllib.parse import urlencode
+
+from fingerprint_pro_server_api_sdk.configuration import Configuration
 
 try:
     import urllib3
@@ -22,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 class RESTResponse(io.IOBase):
 
-    def __init__(self, resp):
+    def __init__(self, resp: urllib3.HTTPResponse):
         self.urllib3_response = resp
         self.status = resp.status
         self.reason = resp.reason
@@ -37,9 +40,9 @@ class RESTResponse(io.IOBase):
         return self.urllib3_response.getheader(name, default)
 
 
-class RESTClientObject(object):
+class RESTClientObject:
 
-    def __init__(self, configuration, pools_size=4, maxsize=None):
+    def __init__(self, configuration: Configuration, pools_size: int = 4, maxsize: int = None):
         # urllib3.PoolManager will pass all kw parameters to connectionpool
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/poolmanager.py#L75  # noqa: E501
         # https://github.com/shazow/urllib3/blob/f9409436f83aeb79fbaf090181cd81b784f1b8ce/urllib3/connectionpool.py#L680  # noqa: E501
@@ -92,9 +95,10 @@ class RESTClientObject(object):
                 **addition_pool_args
             )
 
-    def request(self, method, url, query_params=None, headers=None,
-                body=None, post_params=None, _preload_content=True,
-                _request_timeout=None):
+    def request(self, method: str, url: str, query_params: Optional[List[Tuple[str, Any]]] = None,
+                headers: Optional[Dict[str, Any]] = None, body: Any = None,
+                post_params: Optional[List[Tuple[str, Any]]] = None,
+                _preload_content: bool = True, _request_timeout: Optional[int] = None):
         """Perform requests.
 
         :param method: http request method
@@ -211,75 +215,11 @@ class RESTClientObject(object):
 
         return r
 
-    def GET(self, url, headers=None, query_params=None, _preload_content=True,
-            _request_timeout=None):
-        return self.request("GET", url,
-                            headers=headers,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            query_params=query_params)
-
-    def HEAD(self, url, headers=None, query_params=None, _preload_content=True,
-             _request_timeout=None):
-        return self.request("HEAD", url,
-                            headers=headers,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            query_params=query_params)
-
-    def OPTIONS(self, url, headers=None, query_params=None, post_params=None,
-                body=None, _preload_content=True, _request_timeout=None):
-        return self.request("OPTIONS", url,
-                            headers=headers,
-                            query_params=query_params,
-                            post_params=post_params,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            body=body)
-
-    def DELETE(self, url, headers=None, query_params=None, body=None,
-               _preload_content=True, _request_timeout=None):
-        return self.request("DELETE", url,
-                            headers=headers,
-                            query_params=query_params,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            body=body)
-
-    def POST(self, url, headers=None, query_params=None, post_params=None,
-             body=None, _preload_content=True, _request_timeout=None):
-        return self.request("POST", url,
-                            headers=headers,
-                            query_params=query_params,
-                            post_params=post_params,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            body=body)
-
-    def PUT(self, url, headers=None, query_params=None, post_params=None,
-            body=None, _preload_content=True, _request_timeout=None):
-        return self.request("PUT", url,
-                            headers=headers,
-                            query_params=query_params,
-                            post_params=post_params,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            body=body)
-
-    def PATCH(self, url, headers=None, query_params=None, post_params=None,
-              body=None, _preload_content=True, _request_timeout=None):
-        return self.request("PATCH", url,
-                            headers=headers,
-                            query_params=query_params,
-                            post_params=post_params,
-                            _preload_content=_preload_content,
-                            _request_timeout=_request_timeout,
-                            body=body)
-
 
 class ApiException(Exception):
 
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status: Optional[int] = None, reason: Optional[str] = None,
+                 http_resp: Optional[RESTResponse] = None):
         if http_resp:
             self.status = http_resp.status
             self.reason = http_resp.reason
@@ -291,7 +231,7 @@ class ApiException(Exception):
             self.body = None
             self.headers = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Custom error messages for exception"""
         error_message = "({0})\n"\
                         "Reason: {1}\n".format(self.status, self.reason)
@@ -307,7 +247,7 @@ class ApiException(Exception):
 
 class KnownApiException(ApiException):
 
-    def __init__(self, original_exception, structured_error):
+    def __init__(self, original_exception: ApiException, structured_error: Any):
         super(KnownApiException, self).__init__(status=original_exception.status, reason=original_exception.reason)
         self.headers = original_exception.headers
         self.body = original_exception.body

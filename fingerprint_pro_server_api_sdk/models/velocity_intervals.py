@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.velocity_interval_result import VelocityIntervalResult
 
 
 class VelocityIntervals(BaseModel):
@@ -42,22 +44,20 @@ class VelocityIntervals(BaseModel):
             self.intervals = intervals
 
     @property
-    def intervals(self):
+    def intervals(self) -> VelocityIntervalResult:
         """Gets the intervals of this VelocityIntervals.  # noqa: E501
 
 
         :return: The intervals of this VelocityIntervals.  # noqa: E501
-        :rtype: VelocityIntervalResult
         """
         return self._intervals
 
     @intervals.setter
-    def intervals(self, intervals):
+    def intervals(self, intervals: VelocityIntervalResult):
         """Sets the intervals of this VelocityIntervals.
 
 
         :param intervals: The intervals of this VelocityIntervals.  # noqa: E501
-        :type: VelocityIntervalResult
         """
 
         self._intervals = intervals

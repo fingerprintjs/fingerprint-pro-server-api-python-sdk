@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -42,22 +43,20 @@ class DeprecatedIPLocationCity(BaseModel):
             self.name = name
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Gets the name of this DeprecatedIPLocationCity.  # noqa: E501
 
 
         :return: The name of this DeprecatedIPLocationCity.  # noqa: E501
-        :rtype: str
         """
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """Sets the name of this DeprecatedIPLocationCity.
 
 
         :param name: The name of this DeprecatedIPLocationCity.  # noqa: E501
-        :type: str
         """
 
         self._name = name

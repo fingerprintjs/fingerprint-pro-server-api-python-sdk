@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -41,24 +42,22 @@ class EmulatorResult(BaseModel):
         self.result = result
 
     @property
-    def result(self):
+    def result(self) -> bool:
         """Gets the result of this EmulatorResult.  # noqa: E501
 
         Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android.   # noqa: E501
 
         :return: The result of this EmulatorResult.  # noqa: E501
-        :rtype: bool
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: bool):
         """Sets the result of this EmulatorResult.
 
         Android specific emulator detection. There are 2 values: • `true` - Emulated environment detected (e.g. launch inside of AVD) • `false` - No signs of emulated environment detected or the client is not Android.   # noqa: E501
 
         :param result: The result of this EmulatorResult.  # noqa: E501
-        :type: bool
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501

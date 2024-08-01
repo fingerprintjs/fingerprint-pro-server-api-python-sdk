@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -50,22 +51,20 @@ class ASN(BaseModel):
             self.name = name
 
     @property
-    def asn(self):
+    def asn(self) -> str:
         """Gets the asn of this ASN.  # noqa: E501
 
 
         :return: The asn of this ASN.  # noqa: E501
-        :rtype: str
         """
         return self._asn
 
     @asn.setter
-    def asn(self, asn):
+    def asn(self, asn: str):
         """Sets the asn of this ASN.
 
 
         :param asn: The asn of this ASN.  # noqa: E501
-        :type: str
         """
         if asn is None:
             raise ValueError("Invalid value for `asn`, must not be `None`")  # noqa: E501
@@ -73,22 +72,20 @@ class ASN(BaseModel):
         self._asn = asn
 
     @property
-    def network(self):
+    def network(self) -> str:
         """Gets the network of this ASN.  # noqa: E501
 
 
         :return: The network of this ASN.  # noqa: E501
-        :rtype: str
         """
         return self._network
 
     @network.setter
-    def network(self, network):
+    def network(self, network: str):
         """Sets the network of this ASN.
 
 
         :param network: The network of this ASN.  # noqa: E501
-        :type: str
         """
         if network is None:
             raise ValueError("Invalid value for `network`, must not be `None`")  # noqa: E501
@@ -96,22 +93,20 @@ class ASN(BaseModel):
         self._network = network
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Gets the name of this ASN.  # noqa: E501
 
 
         :return: The name of this ASN.  # noqa: E501
-        :rtype: str
         """
         return self._name
 
     @name.setter
-    def name(self, name):
+    def name(self, name: str):
         """Sets the name of this ASN.
 
 
         :param name: The name of this ASN.  # noqa: E501
-        :type: str
         """
 
         self._name = name

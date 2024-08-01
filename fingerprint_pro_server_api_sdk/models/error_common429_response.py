@@ -11,7 +11,9 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.error_common429_response_error import ErrorCommon429ResponseError
 
 
 class ErrorCommon429Response(BaseModel):
@@ -42,22 +44,20 @@ class ErrorCommon429Response(BaseModel):
             self.error = error
 
     @property
-    def error(self):
+    def error(self) -> ErrorCommon429ResponseError:
         """Gets the error of this ErrorCommon429Response.  # noqa: E501
 
 
         :return: The error of this ErrorCommon429Response.  # noqa: E501
-        :rtype: ErrorCommon429ResponseError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ErrorCommon429ResponseError):
         """Sets the error of this ErrorCommon429Response.
 
 
         :param error: The error of this ErrorCommon429Response.  # noqa: E501
-        :type: ErrorCommon429ResponseError
         """
 
         self._error = error

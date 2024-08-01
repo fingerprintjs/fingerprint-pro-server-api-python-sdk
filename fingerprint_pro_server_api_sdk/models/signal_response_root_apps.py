@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.root_apps_result import RootAppsResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseRootApps(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseRootApps(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> RootAppsResult:
         """Gets the data of this SignalResponseRootApps.  # noqa: E501
 
 
         :return: The data of this SignalResponseRootApps.  # noqa: E501
-        :rtype: RootAppsResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: RootAppsResult):
         """Sets the data of this SignalResponseRootApps.
 
 
         :param data: The data of this SignalResponseRootApps.  # noqa: E501
-        :type: RootAppsResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseRootApps.  # noqa: E501
 
 
         :return: The error of this SignalResponseRootApps.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseRootApps.
 
 
         :param error: The error of this SignalResponseRootApps.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error

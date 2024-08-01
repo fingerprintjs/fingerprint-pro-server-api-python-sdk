@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.ip_info_result_v4 import IpInfoResultV4
+from fingerprint_pro_server_api_sdk.models.ip_info_result_v6 import IpInfoResultV6
 
 
 class IpInfoResult(BaseModel):
@@ -50,43 +53,39 @@ class IpInfoResult(BaseModel):
             self.v6 = v6
 
     @property
-    def v4(self):
+    def v4(self) -> IpInfoResultV4:
         """Gets the v4 of this IpInfoResult.  # noqa: E501
 
 
         :return: The v4 of this IpInfoResult.  # noqa: E501
-        :rtype: IpInfoResultV4
         """
         return self._v4
 
     @v4.setter
-    def v4(self, v4):
+    def v4(self, v4: IpInfoResultV4):
         """Sets the v4 of this IpInfoResult.
 
 
         :param v4: The v4 of this IpInfoResult.  # noqa: E501
-        :type: IpInfoResultV4
         """
 
         self._v4 = v4
 
     @property
-    def v6(self):
+    def v6(self) -> IpInfoResultV6:
         """Gets the v6 of this IpInfoResult.  # noqa: E501
 
 
         :return: The v6 of this IpInfoResult.  # noqa: E501
-        :rtype: IpInfoResultV6
         """
         return self._v6
 
     @v6.setter
-    def v6(self, v6):
+    def v6(self, v6: IpInfoResultV6):
         """Sets the v6 of this IpInfoResult.
 
 
         :param v6: The v6 of this IpInfoResult.  # noqa: E501
-        :type: IpInfoResultV6
         """
 
         self._v6 = v6

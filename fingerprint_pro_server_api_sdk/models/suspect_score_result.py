@@ -11,6 +11,7 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -41,24 +42,22 @@ class SuspectScoreResult(BaseModel):
         self.result = result
 
     @property
-    def result(self):
+    def result(self) -> int:
         """Gets the result of this SuspectScoreResult.  # noqa: E501
 
         Suspect Score is an easy way to integrate Smart Signals into your fraud protection work flow.  It is a weighted representation of all Smart Signals present in the payload that helps identify suspicious activity. The value range is [0; S] where S is sum of all Smart Signals weights.  See more details here: https://dev.fingerprint.com/docs/suspect-score   # noqa: E501
 
         :return: The result of this SuspectScoreResult.  # noqa: E501
-        :rtype: int
         """
         return self._result
 
     @result.setter
-    def result(self, result):
+    def result(self, result: int):
         """Sets the result of this SuspectScoreResult.
 
         Suspect Score is an easy way to integrate Smart Signals into your fraud protection work flow.  It is a weighted representation of all Smart Signals present in the payload that helps identify suspicious activity. The value range is [0; S] where S is sum of all Smart Signals weights.  See more details here: https://dev.fingerprint.com/docs/suspect-score   # noqa: E501
 
         :param result: The result of this SuspectScoreResult.  # noqa: E501
-        :type: int
         """
         if result is None:
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501

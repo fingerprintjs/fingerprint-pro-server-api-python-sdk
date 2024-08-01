@@ -11,7 +11,10 @@
 """
 
 import re  # noqa: F401
+from typing import Dict, List  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.high_activity_result import HighActivityResult
+from fingerprint_pro_server_api_sdk.models.product_error import ProductError
 
 
 class SignalResponseHighActivity(BaseModel):
@@ -47,43 +50,39 @@ class SignalResponseHighActivity(BaseModel):
             self.error = error
 
     @property
-    def data(self):
+    def data(self) -> HighActivityResult:
         """Gets the data of this SignalResponseHighActivity.  # noqa: E501
 
 
         :return: The data of this SignalResponseHighActivity.  # noqa: E501
-        :rtype: HighActivityResult
         """
         return self._data
 
     @data.setter
-    def data(self, data):
+    def data(self, data: HighActivityResult):
         """Sets the data of this SignalResponseHighActivity.
 
 
         :param data: The data of this SignalResponseHighActivity.  # noqa: E501
-        :type: HighActivityResult
         """
 
         self._data = data
 
     @property
-    def error(self):
+    def error(self) -> ProductError:
         """Gets the error of this SignalResponseHighActivity.  # noqa: E501
 
 
         :return: The error of this SignalResponseHighActivity.  # noqa: E501
-        :rtype: ProductError
         """
         return self._error
 
     @error.setter
-    def error(self, error):
+    def error(self, error: ProductError):
         """Sets the error of this SignalResponseHighActivity.
 
 
         :param error: The error of this SignalResponseHighActivity.  # noqa: E501
-        :type: ProductError
         """
 
         self._error = error
