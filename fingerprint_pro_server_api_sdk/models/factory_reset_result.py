@@ -50,7 +50,7 @@ class FactoryResetResult(BaseModel):
     def time(self) -> datetime:
         """Gets the time of this FactoryResetResult.  # noqa: E501
 
-        Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC.   # noqa: E501
+        Indicates the time (in UTC) of the most recent factory reset that happened on the **mobile device**.  When a factory reset cannot be detected on the mobile device or when the request is initiated from a browser, this field will correspond to the *epoch* time (i.e 1 Jan 1970 UTC). See [Factory Reset Detection](https://dev.fingerprint.com/docs/smart-signals-overview#factory-reset-detection) to learn more about this Smart Signal.   # noqa: E501
 
         :return: The time of this FactoryResetResult.  # noqa: E501
         """
@@ -60,7 +60,7 @@ class FactoryResetResult(BaseModel):
     def time(self, time: datetime):
         """Sets the time of this FactoryResetResult.
 
-        Time in UTC when the most recent factory reset of the Android or iOS device was done.  If there is no sign of factory reset or the client is not a mobile device, the field will contain the epoch time (1 January 1970) in UTC.   # noqa: E501
+        Indicates the time (in UTC) of the most recent factory reset that happened on the **mobile device**.  When a factory reset cannot be detected on the mobile device or when the request is initiated from a browser, this field will correspond to the *epoch* time (i.e 1 Jan 1970 UTC). See [Factory Reset Detection](https://dev.fingerprint.com/docs/smart-signals-overview#factory-reset-detection) to learn more about this Smart Signal.   # noqa: E501
 
         :param time: The time of this FactoryResetResult.  # noqa: E501
         """
@@ -73,7 +73,7 @@ class FactoryResetResult(BaseModel):
     def timestamp(self) -> int:
         """Gets the timestamp of this FactoryResetResult.  # noqa: E501
 
-        Same value as it's in the `time` field but represented in timestamp format.  # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
 
         :return: The timestamp of this FactoryResetResult.  # noqa: E501
         """
@@ -83,7 +83,7 @@ class FactoryResetResult(BaseModel):
     def timestamp(self, timestamp: int):
         """Sets the timestamp of this FactoryResetResult.
 
-        Same value as it's in the `time` field but represented in timestamp format.  # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
 
         :param timestamp: The timestamp of this FactoryResetResult.  # noqa: E501
         """
