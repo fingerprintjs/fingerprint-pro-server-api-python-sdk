@@ -93,7 +93,8 @@ class Visit(BaseModel):
         self.timestamp = timestamp
         self.time = time
         self.url = url
-        self.tag = tag
+        if tag is not None:
+            self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
         if confidence is not None:
@@ -296,8 +297,6 @@ class Visit(BaseModel):
 
         :param tag: The tag of this Visit.  # noqa: E501
         """
-        if tag is None:
-            raise ValueError("Invalid value for `tag`, must not be `None`")  # noqa: E501
 
         self._tag = tag
 
