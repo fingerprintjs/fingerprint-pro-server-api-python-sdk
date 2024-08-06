@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **suspect_score** | [**SuspectScoreResult**](SuspectScoreResult.md) |  | [optional] 
 **remote_control** | [**RemoteControlResult**](RemoteControlResult.md) |  | [optional] 
 **velocity** | [**VelocityResult**](VelocityResult.md) |  | [optional] 
+**developer_tools** | [**DeveloperToolsResult**](DeveloperToolsResult.md) |  | [optional] 
 **request_id** | **str** | Unique identifier of the user's identification request. | 
 **browser_details** | [**BrowserDetails**](BrowserDetails.md) |  | 
 **ip** | **str** |  | 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format. | 
 **url** | **str** | Page URL from which the identification request was sent. | 
-**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | 
+**tag** | **dict(str, object)** | A customer-provided value or an object that was sent with identification request. | [optional] 
 **linked_id** | **str** | A customer-provided id that was sent with identification request. | [optional] 
 **confidence** | [**Confidence**](Confidence.md) |  | [optional] 
 **visitor_found** | **bool** | Attribute represents if a visitor had been identified before. | 

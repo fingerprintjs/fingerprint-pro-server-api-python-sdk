@@ -532,6 +532,8 @@ paths:
                               5m: 1
                               1h: 5
                               24h: 5
+                        developerTools:
+                          result: false
               responses:
                 default:
                   description: The server doesn't validate the answer.
@@ -668,8 +670,8 @@ components:
               - time
               - timestamp
               - url
-              - tag
               - visitorFound
+              - tag
         lastTimestamp:
           description: >
             ⚠️ Deprecated paging attribute, please use `paginationKey` instead.
@@ -890,6 +892,8 @@ components:
           $ref: '#/components/schemas/RemoteControlResult'
         velocity:
           $ref: '#/components/schemas/VelocityResult'
+        developerTools:
+          $ref: '#/components/schemas/DeveloperToolsResult'
         requestId:
           description: Unique identifier of the user's identification request.
           type: string
@@ -994,7 +998,6 @@ components:
         - time
         - timestamp
         - url
-        - tag
         - visitorFound
     Visit:
       type: object
@@ -1105,7 +1108,6 @@ components:
         - time
         - timestamp
         - url
-        - tag
         - visitorFound
       title: Visit
     BrowserDetails:
@@ -1425,9 +1427,9 @@ components:
                 - time
                 - timestamp
                 - url
-                - tag
                 - visitorFound
                 - visitorId
+                - tag
             error:
               $ref: '#/components/schemas/IdentificationError'
         botd:
@@ -1626,6 +1628,15 @@ components:
           properties:
             data:
               $ref: '#/components/schemas/VelocityResult'
+            error:
+              $ref: '#/components/schemas/ProductError'
+        developerTools:
+          title: SignalResponseDeveloperTools
+          type: object
+          additionalProperties: false
+          properties:
+            data:
+              $ref: '#/components/schemas/DeveloperToolsResult'
             error:
               $ref: '#/components/schemas/ProductError'
     EventResponse:
@@ -1986,19 +1997,27 @@ components:
       additionalProperties: false
       properties:
         time:
-          title: Time
           description: >
-            Time in UTC when the most recent factory reset of the Android or iOS
-            device was done.  If there is no sign of factory reset or the client
-            is not a mobile device, the field will contain the epoch time (1
-            January 1970) in UTC.
+            Indicates the time (in UTC) of the most recent factory reset that
+            happened on the **mobile device**. 
+
+            When a factory reset cannot be detected on the mobile device or when
+            the request is initiated from a browser, this field will correspond
+            to the *epoch* time (i.e 1 Jan 1970 UTC).
+
+            See [Factory Reset
+            Detection](https://dev.fingerprint.com/docs/smart-signals-overview#factory-reset-detection)
+            to learn more about this Smart Signal.
           type: string
           format: date-time
           example: '2022-06-09T22:58:36Z'
         timestamp:
-          description: >-
-            Same value as it's in the `time` field but represented in timestamp
-            format.
+          description: >
+            This field is just another representation of the value in the `time`
+            field.
+
+            The time of the most recent factory reset that happened on the
+            **mobile device** is expressed as Unix epoch time.       
           type: integer
           format: int64
           example: 1654815517198
@@ -2163,6 +2182,18 @@ components:
           description: >
             `true` if the request came from a machine being remotely controlled
             (e.g. TeamViewer), `false` otherwise.
+          example: false
+      required:
+        - result
+    DeveloperToolsResult:
+      type: object
+      additionalProperties: false
+      properties:
+        result:
+          type: boolean
+          description: >
+            `true` if the browser is Chrome with DevTools open or Firefox with
+            Developer Tools open, `false` otherwise.
           example: false
       required:
         - result

@@ -36,6 +36,7 @@ from fingerprint_pro_server_api_sdk.models.signal_response_suspect_score import 
 from fingerprint_pro_server_api_sdk.models.signal_response_raw_device_attributes import SignalResponseRawDeviceAttributes
 from fingerprint_pro_server_api_sdk.models.signal_response_remote_control import SignalResponseRemoteControl
 from fingerprint_pro_server_api_sdk.models.signal_response_velocity import SignalResponseVelocity
+from fingerprint_pro_server_api_sdk.models.signal_response_developer_tools import SignalResponseDeveloperTools
 
 
 class ProductsResponse(BaseModel):
@@ -76,7 +77,8 @@ class ProductsResponse(BaseModel):
         'suspect_score': 'SignalResponseSuspectScore',
         'raw_device_attributes': 'SignalResponseRawDeviceAttributes',
         'remote_control': 'SignalResponseRemoteControl',
-        'velocity': 'SignalResponseVelocity'
+        'velocity': 'SignalResponseVelocity',
+        'developer_tools': 'SignalResponseDeveloperTools'
     }
 
     attribute_map = {
@@ -102,10 +104,11 @@ class ProductsResponse(BaseModel):
         'suspect_score': 'suspectScore',
         'raw_device_attributes': 'rawDeviceAttributes',
         'remote_control': 'remoteControl',
-        'velocity': 'velocity'
+        'velocity': 'velocity',
+        'developer_tools': 'developerTools'
     }
 
-    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, suspect_score=None, raw_device_attributes=None, remote_control=None, velocity=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, high_activity=None, location_spoofing=None, suspect_score=None, raw_device_attributes=None, remote_control=None, velocity=None, developer_tools=None):  # noqa: E501
         """ProductsResponse - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -130,6 +133,7 @@ class ProductsResponse(BaseModel):
         self._raw_device_attributes = None
         self._remote_control = None
         self._velocity = None
+        self._developer_tools = None
         self.discriminator = None
         if identification is not None:
             self.identification = identification
@@ -177,6 +181,8 @@ class ProductsResponse(BaseModel):
             self.remote_control = remote_control
         if velocity is not None:
             self.velocity = velocity
+        if developer_tools is not None:
+            self.developer_tools = developer_tools
 
     @property
     def identification(self) -> ProductsResponseIdentification:
@@ -614,4 +620,23 @@ class ProductsResponse(BaseModel):
         """
 
         self._velocity = velocity
+
+    @property
+    def developer_tools(self) -> SignalResponseDeveloperTools:
+        """Gets the developer_tools of this ProductsResponse.  # noqa: E501
+
+
+        :return: The developer_tools of this ProductsResponse.  # noqa: E501
+        """
+        return self._developer_tools
+
+    @developer_tools.setter
+    def developer_tools(self, developer_tools: SignalResponseDeveloperTools):
+        """Sets the developer_tools of this ProductsResponse.
+
+
+        :param developer_tools: The developer_tools of this ProductsResponse.  # noqa: E501
+        """
+
+        self._developer_tools = developer_tools
 

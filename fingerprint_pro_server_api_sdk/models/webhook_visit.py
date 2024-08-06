@@ -34,6 +34,7 @@ from fingerprint_pro_server_api_sdk.models.location_spoofing_result import Locat
 from fingerprint_pro_server_api_sdk.models.suspect_score_result import SuspectScoreResult
 from fingerprint_pro_server_api_sdk.models.remote_control_result import RemoteControlResult
 from fingerprint_pro_server_api_sdk.models.velocity_result import VelocityResult
+from fingerprint_pro_server_api_sdk.models.developer_tools_result import DeveloperToolsResult
 from fingerprint_pro_server_api_sdk.models.browser_details import BrowserDetails
 from fingerprint_pro_server_api_sdk.models.deprecated_ip_location import DeprecatedIPLocation
 from datetime import datetime
@@ -80,6 +81,7 @@ class WebhookVisit(BaseModel):
         'suspect_score': 'SuspectScoreResult',
         'remote_control': 'RemoteControlResult',
         'velocity': 'VelocityResult',
+        'developer_tools': 'DeveloperToolsResult',
         'request_id': 'str',
         'browser_details': 'BrowserDetails',
         'ip': 'str',
@@ -121,6 +123,7 @@ class WebhookVisit(BaseModel):
         'suspect_score': 'suspectScore',
         'remote_control': 'remoteControl',
         'velocity': 'velocity',
+        'developer_tools': 'developerTools',
         'request_id': 'requestId',
         'browser_details': 'browserDetails',
         'ip': 'ip',
@@ -136,7 +139,7 @@ class WebhookVisit(BaseModel):
         'last_seen_at': 'lastSeenAt'
     }
 
-    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
+    def __init__(self, visitor_id=None, client_referrer=None, user_agent=None, bot=None, ip_info=None, incognito=None, root_apps=None, emulator=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, ip_blocklist=None, tor=None, privacy_settings=None, virtual_machine=None, vpn=None, proxy=None, tampering=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, request_id=None, browser_details=None, ip=None, ip_location=None, timestamp=None, time=None, url=None, tag=None, linked_id=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None):  # noqa: E501
         """WebhookVisit - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._client_referrer = None
@@ -163,6 +166,7 @@ class WebhookVisit(BaseModel):
         self._suspect_score = None
         self._remote_control = None
         self._velocity = None
+        self._developer_tools = None
         self._request_id = None
         self._browser_details = None
         self._ip = None
@@ -225,6 +229,8 @@ class WebhookVisit(BaseModel):
             self.remote_control = remote_control
         if velocity is not None:
             self.velocity = velocity
+        if developer_tools is not None:
+            self.developer_tools = developer_tools
         self.request_id = request_id
         self.browser_details = browser_details
         self.ip = ip
@@ -233,7 +239,8 @@ class WebhookVisit(BaseModel):
         self.timestamp = timestamp
         self.time = time
         self.url = url
-        self.tag = tag
+        if tag is not None:
+            self.tag = tag
         if linked_id is not None:
             self.linked_id = linked_id
         if confidence is not None:
@@ -724,6 +731,25 @@ class WebhookVisit(BaseModel):
         self._velocity = velocity
 
     @property
+    def developer_tools(self) -> DeveloperToolsResult:
+        """Gets the developer_tools of this WebhookVisit.  # noqa: E501
+
+
+        :return: The developer_tools of this WebhookVisit.  # noqa: E501
+        """
+        return self._developer_tools
+
+    @developer_tools.setter
+    def developer_tools(self, developer_tools: DeveloperToolsResult):
+        """Sets the developer_tools of this WebhookVisit.
+
+
+        :param developer_tools: The developer_tools of this WebhookVisit.  # noqa: E501
+        """
+
+        self._developer_tools = developer_tools
+
+    @property
     def request_id(self) -> str:
         """Gets the request_id of this WebhookVisit.  # noqa: E501
 
@@ -894,8 +920,6 @@ class WebhookVisit(BaseModel):
 
         :param tag: The tag of this WebhookVisit.  # noqa: E501
         """
-        if tag is None:
-            raise ValueError("Invalid value for `tag`, must not be `None`")  # noqa: E501
 
         self._tag = tag
 
