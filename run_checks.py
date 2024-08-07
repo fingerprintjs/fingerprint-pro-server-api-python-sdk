@@ -36,6 +36,18 @@ except ApiException as e:
     print("Exception when calling DefaultApi->get_event: %s\n" % e)
     exit(1)
 
+# Async methods examples
+try:
+    visits_response_request = api_instance.get_visits(visitor_id, limit=2, async_req=True)
+    events_response_request = api_instance.get_event(request_id, async_req=True)
+    visits_response = visits_response_request.get()
+    print("\n\n\nVisits async response: \n", visits_response)
+    events_response = events_response_request.get()
+    print("\n\n\nEvent async response: \n", events_response.products)
+except ApiException as e:
+    print("Exception when calling Async example: %s\n" % e)
+    exit(1)
+
 print("Checks passed!")
 
 exit(0)

@@ -12,7 +12,7 @@
 
 import re  # noqa: F401
 from multiprocessing import Pool
-from threading import Thread
+from multiprocessing.pool import ApplyResult as AsyncResult
 from typing import Optional, Union
 
 from fingerprint_pro_server_api_sdk.configuration import Configuration
@@ -45,7 +45,7 @@ class FingerprintApi:
             raise ValueError("Missing the required parameter `configuration` when calling `FingerprintApi`")  # noqa: E501
         self.api_client = ApiClient(configuration, pool=pool)
 
-    def delete_visitor_data(self, visitor_id: str, **kwargs) -> Union[None, Thread]:  # noqa: E501
+    def delete_visitor_data(self, visitor_id: str, **kwargs) -> Union[None, AsyncResult[None]]:  # noqa: E501
         """Delete data by visitor ID  # noqa: E501
 
         Request deleting all data associated with the specified visitor ID. This API is useful for compliance with privacy regulations. All delete requests are queued:   * Recent data (10 days or newer) belonging to the specified visitor will be deleted within 24 hours. * Data from older (11 days or more) identification events  will be deleted after 90 days.  If you are interested in using this API, please [contact our support team](https://fingerprint.com/support/) to enable it for you. Otherwise, you will receive a 403.   # noqa: E501
@@ -155,7 +155,7 @@ class FingerprintApi:
                 raise extend_exception(e, error)
             raise e
 
-    def get_event(self, request_id: str, **kwargs) -> Union[EventResponse, Thread]:  # noqa: E501
+    def get_event(self, request_id: str, **kwargs) -> Union[EventResponse, AsyncResult[EventResponse]]:  # noqa: E501
         """Get event by request ID  # noqa: E501
 
         Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`.   # noqa: E501
@@ -259,7 +259,7 @@ class FingerprintApi:
                 raise extend_exception(e, error)
             raise e
 
-    def get_visits(self, visitor_id: str, **kwargs) -> Union[Response, Thread]:  # noqa: E501
+    def get_visits(self, visitor_id: str, **kwargs) -> Union[Response, AsyncResult[Response]]:  # noqa: E501
         """Get visits by visitor ID  # noqa: E501
 
         Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received.   # noqa: E501
@@ -388,7 +388,7 @@ class FingerprintApi:
                 raise extend_exception(e, error)
             raise e
 
-    def update_event(self, body: EventUpdateRequest, request_id: str, **kwargs) -> Union[None, Thread]:  # noqa: E501
+    def update_event(self, body: EventUpdateRequest, request_id: str, **kwargs) -> Union[None, AsyncResult[None]]:  # noqa: E501
         """Update an event with a given request ID  # noqa: E501
 
         Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501

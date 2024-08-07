@@ -4,7 +4,7 @@
 
 import re  # noqa: F401
 from multiprocessing import Pool
-from threading import Thread
+from multiprocessing.pool import ApplyResult as AsyncResult
 from typing import Optional, Union
 
 from {{packageName}}.configuration import Configuration
@@ -30,7 +30,7 @@ class {{classname}}:
         self.api_client = ApiClient(configuration, pool=pool)
 {{#operation}}
 
-    def {{operationId}}(self, {{#sortParamsByRequiredFlag}}{{#allParams}}{{#required}}{{paramName}}: {{dataType}}, {{/required}}{{/allParams}}{{/sortParamsByRequiredFlag}}**kwargs) -> Union[{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}, Thread]:  # noqa: E501
+    def {{operationId}}(self, {{#sortParamsByRequiredFlag}}{{#allParams}}{{#required}}{{paramName}}: {{dataType}}, {{/required}}{{/allParams}}{{/sortParamsByRequiredFlag}}**kwargs) -> Union[{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}, AsyncResult[{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}]]:  # noqa: E501
         """{{#summary}}{{{.}}}{{/summary}}{{^summary}}{{operationId}}{{/summary}}  # noqa: E501
 
 {{#notes}}
