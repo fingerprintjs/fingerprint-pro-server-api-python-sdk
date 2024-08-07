@@ -24,9 +24,10 @@ NAME = "fingerprint-pro-server-api-sdk"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-    "certifi>=2017.4.17",
-    "python-dateutil>=2.1",
-    "urllib3>=1.23"
+    "certifi>=2023.7.22",
+    "python-dateutil>=2.5.3",
+    "urllib3>=1.23",
+    "cryptography"
 ]
 
 
