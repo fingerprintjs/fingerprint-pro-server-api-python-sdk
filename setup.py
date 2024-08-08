@@ -24,9 +24,10 @@ NAME = "fingerprint-pro-server-api-sdk"
 # http://pypi.python.org/pypi/setuptools
 
 REQUIRES = [
-    "certifi>=2017.4.17",
-    "python-dateutil>=2.1",
-    "urllib3>=1.23"
+    "certifi>=2023.7.22",
+    "python-dateutil>=2.5.3",
+    "urllib3>=1.23",
+    "cryptography"
 ]
 
 
@@ -44,7 +45,11 @@ setup(
     license_files=["LICENSE"],
     author="Fingerprint",
     author_email="support@fingerprint.com",
-    url="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
+    project_urls={
+        "Changelog": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/blob/main/CHANGELOG.md",
+        "Code": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
+        "Issue Tracker": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/issues",
+    },
     keywords=["Swagger", "Fingerprint Pro Server API", "browser", "detection", "fingerprint", "identification",
               "fingerprinting", "browser-fingerprinting", "browser-fingerprint", "fraud-detection", "fraud",
               "audio-fingerprinting", "fingerprintjs", "fingerprintjs-pro", "visitor-identifier"],
@@ -56,7 +61,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.12',
