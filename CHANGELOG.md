@@ -1,3 +1,38 @@
+## [7.0.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v6.0.0...v7.0.0-dev.1) (2024-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimum supported Python version is 3.9 now
+* rename `error_event403_response`, `error_event403_response_error`, `many_requests_response` to `common403_error_response`, `error_common403_response` `too_many_requests_response`
+
+### Features
+
+* add `delete_visitor_data` method ([961a165](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/961a165bd1acf43797dd3767fc3c1d72cc541917))
+* add `developer_tools` signal ([ca25ef7](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/ca25ef7f07acbf47a7e5a55092bd336050cd0967))
+* add `osMismatch` field to the `vpn` signal ([0b95bda](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/0b95bdadaad62285558c442cf36b3990668537c1))
+* add `remoteControl` signal ([5c7b149](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5c7b1493dfa84ddab2df753c4c856da808bf844d))
+* add `revision` field to the `confidence` signal ([9b42d6b](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9b42d6b984a0c8c65a98faeea21bd86460a51df1))
+* add `update_event` method ([752b1c9](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/752b1c97054a131afcb3582a58a77f6a4d8b1816))
+* add `velocity` signal ([9b31367](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9b313677da304c8090518f484406694c7b1123b8))
+* add better error reporting in case of wrong data shape ([40e9e6a](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/40e9e6a4a7d743d853c6defcb2f0ae6aa78f5e7e))
+* add webhook validation method ([d92b1fe](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/d92b1fe9a69e943926c729affa6ef7b91a0857d8))
+* create base class for models and move here utility functions ([bfa2285](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/bfa2285cd45136c970cc3d07b1ada56874011c98))
+* drop Python 3.8 support ([d857954](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/d857954e826b05f2061d195b2a2a8c3cae5b0232))
+* simplify `Configuration` class, use inline types ([8cad048](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/8cad04860ec59b6a57d50827fb288871c2dbf384))
+* simplify `rest.py` and `api_client.py` and add inline types ([a8b1ae6](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/a8b1ae61d74ff5eaca09012741be4a894ff8526e))
+* update schema ([c2e99cd](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c2e99cd104e6ab9c7e9f670636d984e829eb2747))
+* use inline types for `fingerprint_api.py` ([c466bd5](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c466bd58f1838baf0b6bbf5aac2de6b0a047630b))
+* use inline types instead of annotations for models ([1121a5c](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/1121a5c5e81d3458595d2bd7920463cce0b661ac))
+
+
+### Bug Fixes
+
+* don't serialise empty fields in models ([9643e1d](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9643e1d7781e0d1eb414f8f5177cdace16ef3063))
+* make `tag` field optional for webhook ([e8a28f6](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/e8a28f69d08a7969af3b1b66ef399aacd4bc14d1))
+* remove Python2 compatibility code ([2621ccd](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/2621ccddb01c495a8a385766d15ea875171260e8))
+* update schema with required `body` field for the `updateEvent` method ([c6eaf5e](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c6eaf5e64d387ce55a898ba800b8989e77c5cae0))
+
 ## [6.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v5.0.0...v6.0.0) (2024-03-27)
 
 
