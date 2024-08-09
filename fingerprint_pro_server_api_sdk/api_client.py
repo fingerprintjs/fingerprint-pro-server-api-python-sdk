@@ -25,6 +25,18 @@ from fingerprint_pro_server_api_sdk import rest
 from fingerprint_pro_server_api_sdk.rest import ApiException, RESTResponse
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
+PRIMITIVE_TYPES = (float, bool, bytes, str, int)
+NATIVE_TYPES_MAPPING = {
+    'int': int,
+    'long': int,
+    'float': float,
+    'str': str,
+    'bool': bool,
+    'date': date,
+    'datetime': datetime,
+    'object': object,
+}
+
 
 class ApiClient:
     """Generic API client for Swagger client library builds.
@@ -45,18 +57,6 @@ class ApiClient:
     :param cookie: a cookie to include in the header when making calls
         to the API
     """
-
-    PRIMITIVE_TYPES = (float, bool, bytes, str, int)
-    NATIVE_TYPES_MAPPING = {
-        'int': int,
-        'long': int,
-        'float': float,
-        'str': str,
-        'bool': bool,
-        'date': date,
-        'datetime': datetime,
-        'object': object,
-    }
 
     def __init__(self, configuration: Optional[Configuration] = None, header_name: Optional[str] = None,
                  header_value: Optional[str] = None, cookie: Optional[str] = None, pool: Optional[Pool] = None):
@@ -197,7 +197,7 @@ class ApiClient:
         """
         if obj is None:
             return None
-        elif isinstance(obj, self.PRIMITIVE_TYPES):
+        elif isinstance(obj, PRIMITIVE_TYPES):
             return obj
         elif isinstance(obj, list):
             return [self.sanitize_for_serialization(sub_obj)
@@ -251,46 +251,7 @@ class ApiClient:
             except ValueError:
                 data = response.data
 
-        return self.__deserialize(data, response_type)
-
-    def __deserialize(self, data: Union[Dict, List, str], klass: Any):
-        """Deserializes dict, list, str into an object.
-
-        :param data: dict, list or str.
-        :param klass: class literal, or string of class name.
-
-        :return: object.
-        """
-        if data is None:
-            return None
-
-        if type(klass) == str:
-            if klass.startswith('list['):
-                sub_kls = re.match(r'list\[(.*)\]', klass).group(1)
-                return [self.__deserialize(sub_data, sub_kls)
-                        for sub_data in data]
-
-            if klass.startswith('dict('):
-                sub_kls = re.match(r'dict\(([^,]*), (.*)\)', klass).group(2)
-                return {k: self.__deserialize(v, sub_kls)
-                        for k, v in data.items()}
-
-            # convert str to class
-            if klass in self.NATIVE_TYPES_MAPPING:
-                klass = self.NATIVE_TYPES_MAPPING[klass]
-            else:
-                klass = getattr(fingerprint_pro_server_api_sdk.models, klass)
-
-        if klass in self.PRIMITIVE_TYPES:
-            return self.__deserialize_primitive(data, klass)
-        elif klass == object:
-            return data
-        elif klass == date:
-            return self.__deserialize_date(data)
-        elif klass == datetime:
-            return self.__deserialize_datatime(data)
-        else:
-            return self.__deserialize_model(data, klass)
+        return ApiClientDeserializer.deserialize(data, response_type)
 
     def call_api(self, resource_path: str, method: str, path_params: Optional[Dict[str, Any]] = None,
                  query_params: Optional[List[Tuple[str, Any]]] = None, header_params: Optional[Dict[str, Any]] = None,
@@ -515,7 +476,51 @@ class ApiClient:
                     f.write(response_data)
         return path
 
-    def __deserialize_primitive(self, data, klass):
+
+class ApiClientDeserializer:
+    """Deserializes server response into appropriate type."""
+    @staticmethod
+    def deserialize(data: Union[Dict, List, str], klass: Any):
+        """Deserializes dict, list, str into an object.
+
+        :param data: dict, list or str.
+        :param klass: class literal, or string of class name.
+
+        :return: object.
+        """
+        if data is None:
+            return None
+
+        if type(klass) == str:
+            if klass.startswith('list['):
+                sub_kls = re.match(r'list\[(.*)\]', klass).group(1)
+                return [ApiClientDeserializer.deserialize(sub_data, sub_kls)
+                        for sub_data in data]
+
+            if klass.startswith('dict('):
+                sub_kls = re.match(r'dict\(([^,]*), (.*)\)', klass).group(2)
+                return {k: ApiClientDeserializer.deserialize(v, sub_kls)
+                        for k, v in data.items()}
+
+            # convert str to class
+            if klass in NATIVE_TYPES_MAPPING:
+                klass = NATIVE_TYPES_MAPPING[klass]
+            else:
+                klass = getattr(fingerprint_pro_server_api_sdk.models, klass)
+
+        if klass in PRIMITIVE_TYPES:
+            return ApiClientDeserializer.__deserialize_primitive(data, klass)
+        elif klass == object:
+            return data
+        elif klass == date:
+            return ApiClientDeserializer.__deserialize_date(data)
+        elif klass == datetime:
+            return ApiClientDeserializer.__deserialize_datatime(data)
+        else:
+            return ApiClientDeserializer.__deserialize_model(data, klass)
+
+    @staticmethod
+    def __deserialize_primitive(data, klass):
         """Deserializes string to primitive type.
 
         :param data: str.
@@ -530,7 +535,8 @@ class ApiClient:
         except TypeError:
             return data
 
-    def __deserialize_date(self, string: str) -> date:
+    @staticmethod
+    def __deserialize_date(string: str) -> date:
         """Deserializes string to date.
 
         :param string: str.
@@ -546,7 +552,8 @@ class ApiClient:
                 reason="Failed to parse `{0}` as date object".format(string)
             )
 
-    def __deserialize_datatime(self, string: str) -> datetime:
+    @staticmethod
+    def __deserialize_datatime(string: str) -> datetime:
         """Deserializes string to datetime.
 
         The string should be in iso8601 datetime format.
@@ -567,10 +574,12 @@ class ApiClient:
                 )
             )
 
-    def __hasattr(self, object, name):
+    @staticmethod
+    def __hasattr(object, name):
         return name in object.__class__.__dict__
 
-    def __deserialize_model(self, data, klass):
+    @staticmethod
+    def __deserialize_model(data, klass):
         """Deserializes list or dict to model.
 
         :param data: dict, list.
@@ -578,7 +587,7 @@ class ApiClient:
         :return: model object.
         """
 
-        if not klass.swagger_types and not self.__hasattr(klass, 'get_real_child_model'):
+        if not klass.swagger_types and not ApiClientDeserializer.__hasattr(klass, 'get_real_child_model'):
             return data
 
         kwargs = {}
@@ -588,7 +597,7 @@ class ApiClient:
                         klass.attribute_map[attr] in data and
                         isinstance(data, (list, dict))):
                     value = data[klass.attribute_map[attr]]
-                    kwargs[attr] = self.__deserialize(value, attr_type)
+                    kwargs[attr] = ApiClientDeserializer.deserialize(value, attr_type)
 
         instance = klass(**kwargs)
 
@@ -598,8 +607,8 @@ class ApiClient:
             for key, value in data.items():
                 if key not in klass.swagger_types:
                     instance[key] = value
-        if self.__hasattr(instance, 'get_real_child_model'):
+        if ApiClientDeserializer.__hasattr(instance, 'get_real_child_model'):
             klass_name = instance.get_real_child_model(data)
             if klass_name:
-                instance = self.__deserialize(data, klass_name)
+                instance = ApiClientDeserializer.deserialize(data, klass_name)
         return instance
