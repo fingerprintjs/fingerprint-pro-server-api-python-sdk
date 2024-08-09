@@ -1,8 +1,11 @@
 import json
+from typing import List
+
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 import zlib
 
+from fingerprint_pro_server_api_sdk.api_client import ApiClientDeserializer
 from fingerprint_pro_server_api_sdk.models.event_response import EventResponse
 
 SEALED_HEADER = bytes([0x9e, 0x85, 0xdc, 0xed])
@@ -12,41 +15,53 @@ DecryptionAlgorithm = {
 
 
 class DecryptionKey:
-    def __init__(self, key, algorithm):
+    """Key for decryption of sealed data."""
+    exception: Exception
+    algorithm: str
+
+    def __init__(self, key: bytes, algorithm: str):
         self.key = key
         self.algorithm = algorithm
 
 
 class UnsealError(Exception):
+    """Error during unsealing."""
     exception: Exception
     key: DecryptionKey
 
-    def __init__(self, exception, key):
+    def __init__(self, exception: Exception, key: DecryptionKey):
         self.exception = exception
         self.key = key
 
 
 class UnsealAggregateError(Exception):
-    def __init__(self, errors):
+    """Aggregated error during unsealing."""
+    errors: List[UnsealError]
+
+    def __init__(self, errors: List[UnsealError]):
         self.errors = errors
         super().__init__("Unable to decrypt sealed data")
 
 
-def parse_events_response(unsealed):
+def unseal_event_response(sealed_data: bytes, decryption_keys: List[DecryptionKey]) -> EventResponse:
+    """Unseal event response with one of the provided keys."""
+    unsealed = __unseal(sealed_data, decryption_keys)
+    return __parse_event_response(unsealed)
+
+
+def __parse_event_response(unsealed: str) -> EventResponse:
+    """Parse event response from unsealed data."""
     json_data = json.loads(unsealed)
 
     if 'products' not in json_data:
-        raise ValueError('Sealed data is not valid events response')
+        raise ValueError('Sealed data is not valid event response')
 
-    return EventResponse(json_data['products'])
-
-
-def unseal_events_response(sealed_data, decryption_keys):
-    unsealed = unseal(sealed_data, decryption_keys)
-    return parse_events_response(unsealed)
+    result: EventResponse = ApiClientDeserializer.deserialize(json_data, 'EventResponse')
+    return result
 
 
-def unseal(sealed_data, decryption_keys):
+def __unseal(sealed_data: bytes, decryption_keys: List[DecryptionKey]) -> str:
+    """Unseal data with one of the provided keys."""
     if sealed_data[:len(SEALED_HEADER)].hex() != SEALED_HEADER.hex():
         raise ValueError('Invalid sealed data header')
 
@@ -54,7 +69,7 @@ def unseal(sealed_data, decryption_keys):
     for decryption_key in decryption_keys:
         if decryption_key.algorithm == DecryptionAlgorithm['Aes256Gcm']:
             try:
-                return unseal_aes256gcm(sealed_data, decryption_key.key)
+                return __unseal_aes256gcm(sealed_data, decryption_key.key)
             except Exception as e:
                 errors.append(UnsealError(e, decryption_key))
                 continue
@@ -64,7 +79,8 @@ def unseal(sealed_data, decryption_keys):
     raise UnsealAggregateError(errors)
 
 
-def unseal_aes256gcm(sealed_data, decryption_key):
+def __unseal_aes256gcm(sealed_data: bytes, decryption_key: bytes) -> str:
+    """Unseal data with AES-256-GCM."""
     nonce_length = 12
     nonce = sealed_data[len(SEALED_HEADER):len(SEALED_HEADER) + nonce_length]
 
