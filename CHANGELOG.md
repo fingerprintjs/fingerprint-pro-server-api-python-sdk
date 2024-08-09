@@ -1,3 +1,14 @@
+## [7.0.0-dev.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v7.0.0-dev.1...v7.0.0-dev.2) (2024-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename `unseal_events_response` to `unseal_event_response` to keep proper naming
+
+### Bug Fixes
+
+* `unseal_event_response` returns correct `EventResponse` structure ([a7a0e2d](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/a7a0e2d3c0c42fb225545673954ee816917d3124))
+
 ## [7.0.0-dev.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v6.0.0...v7.0.0-dev.1) (2024-08-08)
 
 

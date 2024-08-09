@@ -45,7 +45,11 @@ setup(
     license_files=["LICENSE"],
     author="Fingerprint",
     author_email="support@fingerprint.com",
-    url="https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
+    project_urls={
+        "Changelog": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/blob/main/CHANGELOG.md",
+        "Code": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
+        "Issue Tracker": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/issues",
+    },
     keywords=["Swagger", "Fingerprint Pro Server API", "browser", "detection", "fingerprint", "identification",
               "fingerprinting", "browser-fingerprinting", "browser-fingerprint", "fraud-detection", "fraud",
               "audio-fingerprinting", "fingerprintjs", "fingerprintjs-pro", "visitor-identifier"],
