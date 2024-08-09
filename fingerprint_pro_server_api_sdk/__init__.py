@@ -113,3 +113,5 @@ from fingerprint_pro_server_api_sdk.models.vpn_result_methods import VpnResultMe
 from fingerprint_pro_server_api_sdk.models.webhook_visit import WebhookVisit
 # import custom methods into sdk package
 from fingerprint_pro_server_api_sdk.webhook import Webhook
+from fingerprint_pro_server_api_sdk.sealed import ApiClientDeserializer, DecryptionAlgorithm, DecryptionKey, \
+    UnsealError, UnsealAggregateError, unseal_event_response
