@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
 from fingerprint_pro_server_api_sdk.models.ip_info_result import IpInfoResult
@@ -271,7 +271,7 @@ class WebhookVisit(BaseModel):
         self._visitor_id = visitor_id
 
     @property
-    def client_referrer(self) -> str:
+    def client_referrer(self) -> Optional[str]:
         """Gets the client_referrer of this WebhookVisit.  # noqa: E501
 
 
@@ -280,7 +280,7 @@ class WebhookVisit(BaseModel):
         return self._client_referrer
 
     @client_referrer.setter
-    def client_referrer(self, client_referrer: str):
+    def client_referrer(self, client_referrer: Optional[str]):
         """Sets the client_referrer of this WebhookVisit.
 
 
@@ -290,7 +290,7 @@ class WebhookVisit(BaseModel):
         self._client_referrer = client_referrer
 
     @property
-    def user_agent(self) -> str:
+    def user_agent(self) -> Optional[str]:
         """Gets the user_agent of this WebhookVisit.  # noqa: E501
 
 
@@ -299,7 +299,7 @@ class WebhookVisit(BaseModel):
         return self._user_agent
 
     @user_agent.setter
-    def user_agent(self, user_agent: str):
+    def user_agent(self, user_agent: Optional[str]):
         """Sets the user_agent of this WebhookVisit.
 
 
@@ -309,7 +309,7 @@ class WebhookVisit(BaseModel):
         self._user_agent = user_agent
 
     @property
-    def bot(self) -> BotdDetectionResult:
+    def bot(self) -> Optional[BotdDetectionResult]:
         """Gets the bot of this WebhookVisit.  # noqa: E501
 
 
@@ -318,7 +318,7 @@ class WebhookVisit(BaseModel):
         return self._bot
 
     @bot.setter
-    def bot(self, bot: BotdDetectionResult):
+    def bot(self, bot: Optional[BotdDetectionResult]):
         """Sets the bot of this WebhookVisit.
 
 
@@ -328,7 +328,7 @@ class WebhookVisit(BaseModel):
         self._bot = bot
 
     @property
-    def ip_info(self) -> IpInfoResult:
+    def ip_info(self) -> Optional[IpInfoResult]:
         """Gets the ip_info of this WebhookVisit.  # noqa: E501
 
 
@@ -337,7 +337,7 @@ class WebhookVisit(BaseModel):
         return self._ip_info
 
     @ip_info.setter
-    def ip_info(self, ip_info: IpInfoResult):
+    def ip_info(self, ip_info: Optional[IpInfoResult]):
         """Sets the ip_info of this WebhookVisit.
 
 
@@ -370,7 +370,7 @@ class WebhookVisit(BaseModel):
         self._incognito = incognito
 
     @property
-    def root_apps(self) -> RootAppsResult:
+    def root_apps(self) -> Optional[RootAppsResult]:
         """Gets the root_apps of this WebhookVisit.  # noqa: E501
 
 
@@ -379,7 +379,7 @@ class WebhookVisit(BaseModel):
         return self._root_apps
 
     @root_apps.setter
-    def root_apps(self, root_apps: RootAppsResult):
+    def root_apps(self, root_apps: Optional[RootAppsResult]):
         """Sets the root_apps of this WebhookVisit.
 
 
@@ -389,7 +389,7 @@ class WebhookVisit(BaseModel):
         self._root_apps = root_apps
 
     @property
-    def emulator(self) -> EmulatorResult:
+    def emulator(self) -> Optional[EmulatorResult]:
         """Gets the emulator of this WebhookVisit.  # noqa: E501
 
 
@@ -398,7 +398,7 @@ class WebhookVisit(BaseModel):
         return self._emulator
 
     @emulator.setter
-    def emulator(self, emulator: EmulatorResult):
+    def emulator(self, emulator: Optional[EmulatorResult]):
         """Sets the emulator of this WebhookVisit.
 
 
@@ -408,7 +408,7 @@ class WebhookVisit(BaseModel):
         self._emulator = emulator
 
     @property
-    def cloned_app(self) -> ClonedAppResult:
+    def cloned_app(self) -> Optional[ClonedAppResult]:
         """Gets the cloned_app of this WebhookVisit.  # noqa: E501
 
 
@@ -417,7 +417,7 @@ class WebhookVisit(BaseModel):
         return self._cloned_app
 
     @cloned_app.setter
-    def cloned_app(self, cloned_app: ClonedAppResult):
+    def cloned_app(self, cloned_app: Optional[ClonedAppResult]):
         """Sets the cloned_app of this WebhookVisit.
 
 
@@ -427,7 +427,7 @@ class WebhookVisit(BaseModel):
         self._cloned_app = cloned_app
 
     @property
-    def factory_reset(self) -> FactoryResetResult:
+    def factory_reset(self) -> Optional[FactoryResetResult]:
         """Gets the factory_reset of this WebhookVisit.  # noqa: E501
 
 
@@ -436,7 +436,7 @@ class WebhookVisit(BaseModel):
         return self._factory_reset
 
     @factory_reset.setter
-    def factory_reset(self, factory_reset: FactoryResetResult):
+    def factory_reset(self, factory_reset: Optional[FactoryResetResult]):
         """Sets the factory_reset of this WebhookVisit.
 
 
@@ -446,7 +446,7 @@ class WebhookVisit(BaseModel):
         self._factory_reset = factory_reset
 
     @property
-    def jailbroken(self) -> JailbrokenResult:
+    def jailbroken(self) -> Optional[JailbrokenResult]:
         """Gets the jailbroken of this WebhookVisit.  # noqa: E501
 
 
@@ -455,7 +455,7 @@ class WebhookVisit(BaseModel):
         return self._jailbroken
 
     @jailbroken.setter
-    def jailbroken(self, jailbroken: JailbrokenResult):
+    def jailbroken(self, jailbroken: Optional[JailbrokenResult]):
         """Sets the jailbroken of this WebhookVisit.
 
 
@@ -465,7 +465,7 @@ class WebhookVisit(BaseModel):
         self._jailbroken = jailbroken
 
     @property
-    def frida(self) -> FridaResult:
+    def frida(self) -> Optional[FridaResult]:
         """Gets the frida of this WebhookVisit.  # noqa: E501
 
 
@@ -474,7 +474,7 @@ class WebhookVisit(BaseModel):
         return self._frida
 
     @frida.setter
-    def frida(self, frida: FridaResult):
+    def frida(self, frida: Optional[FridaResult]):
         """Sets the frida of this WebhookVisit.
 
 
@@ -484,7 +484,7 @@ class WebhookVisit(BaseModel):
         self._frida = frida
 
     @property
-    def ip_blocklist(self) -> IpBlockListResult:
+    def ip_blocklist(self) -> Optional[IpBlockListResult]:
         """Gets the ip_blocklist of this WebhookVisit.  # noqa: E501
 
 
@@ -493,7 +493,7 @@ class WebhookVisit(BaseModel):
         return self._ip_blocklist
 
     @ip_blocklist.setter
-    def ip_blocklist(self, ip_blocklist: IpBlockListResult):
+    def ip_blocklist(self, ip_blocklist: Optional[IpBlockListResult]):
         """Sets the ip_blocklist of this WebhookVisit.
 
 
@@ -503,7 +503,7 @@ class WebhookVisit(BaseModel):
         self._ip_blocklist = ip_blocklist
 
     @property
-    def tor(self) -> TorResult:
+    def tor(self) -> Optional[TorResult]:
         """Gets the tor of this WebhookVisit.  # noqa: E501
 
 
@@ -512,7 +512,7 @@ class WebhookVisit(BaseModel):
         return self._tor
 
     @tor.setter
-    def tor(self, tor: TorResult):
+    def tor(self, tor: Optional[TorResult]):
         """Sets the tor of this WebhookVisit.
 
 
@@ -522,7 +522,7 @@ class WebhookVisit(BaseModel):
         self._tor = tor
 
     @property
-    def privacy_settings(self) -> PrivacySettingsResult:
+    def privacy_settings(self) -> Optional[PrivacySettingsResult]:
         """Gets the privacy_settings of this WebhookVisit.  # noqa: E501
 
 
@@ -531,7 +531,7 @@ class WebhookVisit(BaseModel):
         return self._privacy_settings
 
     @privacy_settings.setter
-    def privacy_settings(self, privacy_settings: PrivacySettingsResult):
+    def privacy_settings(self, privacy_settings: Optional[PrivacySettingsResult]):
         """Sets the privacy_settings of this WebhookVisit.
 
 
@@ -541,7 +541,7 @@ class WebhookVisit(BaseModel):
         self._privacy_settings = privacy_settings
 
     @property
-    def virtual_machine(self) -> VirtualMachineResult:
+    def virtual_machine(self) -> Optional[VirtualMachineResult]:
         """Gets the virtual_machine of this WebhookVisit.  # noqa: E501
 
 
@@ -550,7 +550,7 @@ class WebhookVisit(BaseModel):
         return self._virtual_machine
 
     @virtual_machine.setter
-    def virtual_machine(self, virtual_machine: VirtualMachineResult):
+    def virtual_machine(self, virtual_machine: Optional[VirtualMachineResult]):
         """Sets the virtual_machine of this WebhookVisit.
 
 
@@ -560,7 +560,7 @@ class WebhookVisit(BaseModel):
         self._virtual_machine = virtual_machine
 
     @property
-    def vpn(self) -> VpnResult:
+    def vpn(self) -> Optional[VpnResult]:
         """Gets the vpn of this WebhookVisit.  # noqa: E501
 
 
@@ -569,7 +569,7 @@ class WebhookVisit(BaseModel):
         return self._vpn
 
     @vpn.setter
-    def vpn(self, vpn: VpnResult):
+    def vpn(self, vpn: Optional[VpnResult]):
         """Sets the vpn of this WebhookVisit.
 
 
@@ -579,7 +579,7 @@ class WebhookVisit(BaseModel):
         self._vpn = vpn
 
     @property
-    def proxy(self) -> ProxyResult:
+    def proxy(self) -> Optional[ProxyResult]:
         """Gets the proxy of this WebhookVisit.  # noqa: E501
 
 
@@ -588,7 +588,7 @@ class WebhookVisit(BaseModel):
         return self._proxy
 
     @proxy.setter
-    def proxy(self, proxy: ProxyResult):
+    def proxy(self, proxy: Optional[ProxyResult]):
         """Sets the proxy of this WebhookVisit.
 
 
@@ -598,7 +598,7 @@ class WebhookVisit(BaseModel):
         self._proxy = proxy
 
     @property
-    def tampering(self) -> TamperingResult:
+    def tampering(self) -> Optional[TamperingResult]:
         """Gets the tampering of this WebhookVisit.  # noqa: E501
 
 
@@ -607,7 +607,7 @@ class WebhookVisit(BaseModel):
         return self._tampering
 
     @tampering.setter
-    def tampering(self, tampering: TamperingResult):
+    def tampering(self, tampering: Optional[TamperingResult]):
         """Sets the tampering of this WebhookVisit.
 
 
@@ -617,7 +617,7 @@ class WebhookVisit(BaseModel):
         self._tampering = tampering
 
     @property
-    def raw_device_attributes(self) -> RawDeviceAttributesResult:
+    def raw_device_attributes(self) -> Optional[RawDeviceAttributesResult]:
         """Gets the raw_device_attributes of this WebhookVisit.  # noqa: E501
 
 
@@ -626,7 +626,7 @@ class WebhookVisit(BaseModel):
         return self._raw_device_attributes
 
     @raw_device_attributes.setter
-    def raw_device_attributes(self, raw_device_attributes: RawDeviceAttributesResult):
+    def raw_device_attributes(self, raw_device_attributes: Optional[RawDeviceAttributesResult]):
         """Sets the raw_device_attributes of this WebhookVisit.
 
 
@@ -636,7 +636,7 @@ class WebhookVisit(BaseModel):
         self._raw_device_attributes = raw_device_attributes
 
     @property
-    def high_activity(self) -> HighActivityResult:
+    def high_activity(self) -> Optional[HighActivityResult]:
         """Gets the high_activity of this WebhookVisit.  # noqa: E501
 
 
@@ -645,7 +645,7 @@ class WebhookVisit(BaseModel):
         return self._high_activity
 
     @high_activity.setter
-    def high_activity(self, high_activity: HighActivityResult):
+    def high_activity(self, high_activity: Optional[HighActivityResult]):
         """Sets the high_activity of this WebhookVisit.
 
 
@@ -655,7 +655,7 @@ class WebhookVisit(BaseModel):
         self._high_activity = high_activity
 
     @property
-    def location_spoofing(self) -> LocationSpoofingResult:
+    def location_spoofing(self) -> Optional[LocationSpoofingResult]:
         """Gets the location_spoofing of this WebhookVisit.  # noqa: E501
 
 
@@ -664,7 +664,7 @@ class WebhookVisit(BaseModel):
         return self._location_spoofing
 
     @location_spoofing.setter
-    def location_spoofing(self, location_spoofing: LocationSpoofingResult):
+    def location_spoofing(self, location_spoofing: Optional[LocationSpoofingResult]):
         """Sets the location_spoofing of this WebhookVisit.
 
 
@@ -674,7 +674,7 @@ class WebhookVisit(BaseModel):
         self._location_spoofing = location_spoofing
 
     @property
-    def suspect_score(self) -> SuspectScoreResult:
+    def suspect_score(self) -> Optional[SuspectScoreResult]:
         """Gets the suspect_score of this WebhookVisit.  # noqa: E501
 
 
@@ -683,7 +683,7 @@ class WebhookVisit(BaseModel):
         return self._suspect_score
 
     @suspect_score.setter
-    def suspect_score(self, suspect_score: SuspectScoreResult):
+    def suspect_score(self, suspect_score: Optional[SuspectScoreResult]):
         """Sets the suspect_score of this WebhookVisit.
 
 
@@ -693,7 +693,7 @@ class WebhookVisit(BaseModel):
         self._suspect_score = suspect_score
 
     @property
-    def remote_control(self) -> RemoteControlResult:
+    def remote_control(self) -> Optional[RemoteControlResult]:
         """Gets the remote_control of this WebhookVisit.  # noqa: E501
 
 
@@ -702,7 +702,7 @@ class WebhookVisit(BaseModel):
         return self._remote_control
 
     @remote_control.setter
-    def remote_control(self, remote_control: RemoteControlResult):
+    def remote_control(self, remote_control: Optional[RemoteControlResult]):
         """Sets the remote_control of this WebhookVisit.
 
 
@@ -712,7 +712,7 @@ class WebhookVisit(BaseModel):
         self._remote_control = remote_control
 
     @property
-    def velocity(self) -> VelocityResult:
+    def velocity(self) -> Optional[VelocityResult]:
         """Gets the velocity of this WebhookVisit.  # noqa: E501
 
 
@@ -721,7 +721,7 @@ class WebhookVisit(BaseModel):
         return self._velocity
 
     @velocity.setter
-    def velocity(self, velocity: VelocityResult):
+    def velocity(self, velocity: Optional[VelocityResult]):
         """Sets the velocity of this WebhookVisit.
 
 
@@ -731,7 +731,7 @@ class WebhookVisit(BaseModel):
         self._velocity = velocity
 
     @property
-    def developer_tools(self) -> DeveloperToolsResult:
+    def developer_tools(self) -> Optional[DeveloperToolsResult]:
         """Gets the developer_tools of this WebhookVisit.  # noqa: E501
 
 
@@ -740,7 +740,7 @@ class WebhookVisit(BaseModel):
         return self._developer_tools
 
     @developer_tools.setter
-    def developer_tools(self, developer_tools: DeveloperToolsResult):
+    def developer_tools(self, developer_tools: Optional[DeveloperToolsResult]):
         """Sets the developer_tools of this WebhookVisit.
 
 
@@ -815,7 +815,7 @@ class WebhookVisit(BaseModel):
         self._ip = ip
 
     @property
-    def ip_location(self) -> DeprecatedIPLocation:
+    def ip_location(self) -> Optional[DeprecatedIPLocation]:
         """Gets the ip_location of this WebhookVisit.  # noqa: E501
 
 
@@ -824,7 +824,7 @@ class WebhookVisit(BaseModel):
         return self._ip_location
 
     @ip_location.setter
-    def ip_location(self, ip_location: DeprecatedIPLocation):
+    def ip_location(self, ip_location: Optional[DeprecatedIPLocation]):
         """Sets the ip_location of this WebhookVisit.
 
 
@@ -903,7 +903,7 @@ class WebhookVisit(BaseModel):
         self._url = url
 
     @property
-    def tag(self) -> Dict[str, object]:
+    def tag(self) -> Optional[Dict[str, object]]:
         """Gets the tag of this WebhookVisit.  # noqa: E501
 
         A customer-provided value or an object that was sent with identification request.  # noqa: E501
@@ -913,7 +913,7 @@ class WebhookVisit(BaseModel):
         return self._tag
 
     @tag.setter
-    def tag(self, tag: Dict[str, object]):
+    def tag(self, tag: Optional[Dict[str, object]]):
         """Sets the tag of this WebhookVisit.
 
         A customer-provided value or an object that was sent with identification request.  # noqa: E501
@@ -924,7 +924,7 @@ class WebhookVisit(BaseModel):
         self._tag = tag
 
     @property
-    def linked_id(self) -> str:
+    def linked_id(self) -> Optional[str]:
         """Gets the linked_id of this WebhookVisit.  # noqa: E501
 
         A customer-provided id that was sent with identification request.  # noqa: E501
@@ -934,7 +934,7 @@ class WebhookVisit(BaseModel):
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id: str):
+    def linked_id(self, linked_id: Optional[str]):
         """Sets the linked_id of this WebhookVisit.
 
         A customer-provided id that was sent with identification request.  # noqa: E501
@@ -945,7 +945,7 @@ class WebhookVisit(BaseModel):
         self._linked_id = linked_id
 
     @property
-    def confidence(self) -> Confidence:
+    def confidence(self) -> Optional[Confidence]:
         """Gets the confidence of this WebhookVisit.  # noqa: E501
 
 
@@ -954,7 +954,7 @@ class WebhookVisit(BaseModel):
         return self._confidence
 
     @confidence.setter
-    def confidence(self, confidence: Confidence):
+    def confidence(self, confidence: Optional[Confidence]):
         """Sets the confidence of this WebhookVisit.
 
 

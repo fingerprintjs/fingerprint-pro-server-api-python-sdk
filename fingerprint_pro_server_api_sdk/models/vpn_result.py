@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.vpn_result_methods import VpnResultMethods
 
@@ -102,7 +102,7 @@ class VpnResult(BaseModel):
         self._origin_timezone = origin_timezone
 
     @property
-    def origin_country(self) -> str:
+    def origin_country(self) -> Optional[str]:
         """Gets the origin_country of this VpnResult.  # noqa: E501
 
         Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501
@@ -112,7 +112,7 @@ class VpnResult(BaseModel):
         return self._origin_country
 
     @origin_country.setter
-    def origin_country(self, origin_country: str):
+    def origin_country(self, origin_country: Optional[str]):
         """Sets the origin_country of this VpnResult.
 
         Country of the request (only for Android SDK version >= 2.4.0, ISO 3166 format or unknown).  # noqa: E501

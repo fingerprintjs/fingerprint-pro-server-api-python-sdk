@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.remote_control_result import RemoteControlResult
 from fingerprint_pro_server_api_sdk.models.product_error import ProductError
@@ -50,7 +50,7 @@ class SignalResponseRemoteControl(BaseModel):
             self.error = error
 
     @property
-    def data(self) -> RemoteControlResult:
+    def data(self) -> Optional[RemoteControlResult]:
         """Gets the data of this SignalResponseRemoteControl.  # noqa: E501
 
 
@@ -59,7 +59,7 @@ class SignalResponseRemoteControl(BaseModel):
         return self._data
 
     @data.setter
-    def data(self, data: RemoteControlResult):
+    def data(self, data: Optional[RemoteControlResult]):
         """Sets the data of this SignalResponseRemoteControl.
 
 
@@ -69,7 +69,7 @@ class SignalResponseRemoteControl(BaseModel):
         self._data = data
 
     @property
-    def error(self) -> ProductError:
+    def error(self) -> Optional[ProductError]:
         """Gets the error of this SignalResponseRemoteControl.  # noqa: E501
 
 
@@ -78,7 +78,7 @@ class SignalResponseRemoteControl(BaseModel):
         return self._error
 
     @error.setter
-    def error(self, error: ProductError):
+    def error(self, error: Optional[ProductError]):
         """Sets the error of this SignalResponseRemoteControl.
 
 

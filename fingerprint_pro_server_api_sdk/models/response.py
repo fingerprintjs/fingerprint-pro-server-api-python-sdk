@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.response_visits import ResponseVisits
 
@@ -102,7 +102,7 @@ class Response(BaseModel):
         self._visits = visits
 
     @property
-    def last_timestamp(self) -> int:
+    def last_timestamp(self) -> Optional[int]:
         """Gets the last_timestamp of this Response.  # noqa: E501
 
         ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
@@ -112,7 +112,7 @@ class Response(BaseModel):
         return self._last_timestamp
 
     @last_timestamp.setter
-    def last_timestamp(self, last_timestamp: int):
+    def last_timestamp(self, last_timestamp: Optional[int]):
         """Sets the last_timestamp of this Response.
 
         ⚠️ Deprecated paging attribute, please use `paginationKey` instead. Timestamp of the last visit in the current page of results.   # noqa: E501
@@ -123,7 +123,7 @@ class Response(BaseModel):
         self._last_timestamp = last_timestamp
 
     @property
-    def pagination_key(self) -> str:
+    def pagination_key(self) -> Optional[str]:
         """Gets the pagination_key of this Response.  # noqa: E501
 
         Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501
@@ -133,7 +133,7 @@ class Response(BaseModel):
         return self._pagination_key
 
     @pagination_key.setter
-    def pagination_key(self, pagination_key: str):
+    def pagination_key(self, pagination_key: Optional[str]):
         """Sets the pagination_key of this Response.
 
         Request ID of the last visit in the current page of results. Use this value in the following request as the `paginationKey` parameter to get the next page of results.  # noqa: E501

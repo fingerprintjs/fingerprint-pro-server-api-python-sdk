@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.error_update_event409_response_error import ErrorUpdateEvent409ResponseError
 
@@ -44,7 +44,7 @@ class ErrorUpdateEvent409Response(BaseModel):
             self.error = error
 
     @property
-    def error(self) -> ErrorUpdateEvent409ResponseError:
+    def error(self) -> Optional[ErrorUpdateEvent409ResponseError]:
         """Gets the error of this ErrorUpdateEvent409Response.  # noqa: E501
 
 
@@ -53,7 +53,7 @@ class ErrorUpdateEvent409Response(BaseModel):
         return self._error
 
     @error.setter
-    def error(self, error: ErrorUpdateEvent409ResponseError):
+    def error(self, error: Optional[ErrorUpdateEvent409ResponseError]):
         """Sets the error of this ErrorUpdateEvent409Response.
 
 
