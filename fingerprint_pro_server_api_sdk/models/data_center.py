@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -68,7 +68,7 @@ class DataCenter(BaseModel):
         self._result = result
 
     @property
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """Gets the name of this DataCenter.  # noqa: E501
 
 
@@ -77,7 +77,7 @@ class DataCenter(BaseModel):
         return self._name
 
     @name.setter
-    def name(self, name: str):
+    def name(self, name: Optional[str]):
         """Sets the name of this DataCenter.
 
 

@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -43,7 +43,7 @@ class IPLocationCity(BaseModel):
             self.name = name
 
     @property
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """Gets the name of this IPLocationCity.  # noqa: E501
 
 
@@ -52,7 +52,7 @@ class IPLocationCity(BaseModel):
         return self._name
 
     @name.setter
-    def name(self, name: str):
+    def name(self, name: Optional[str]):
         """Sets the name of this IPLocationCity.
 
 

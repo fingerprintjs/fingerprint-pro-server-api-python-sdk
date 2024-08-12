@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.ip_location_city import IPLocationCity
 from fingerprint_pro_server_api_sdk.models.location import Location
@@ -87,7 +87,7 @@ class IPLocation(BaseModel):
             self.subdivisions = subdivisions
 
     @property
-    def accuracy_radius(self) -> int:
+    def accuracy_radius(self) -> Optional[int]:
         """Gets the accuracy_radius of this IPLocation.  # noqa: E501
 
         The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
@@ -97,7 +97,7 @@ class IPLocation(BaseModel):
         return self._accuracy_radius
 
     @accuracy_radius.setter
-    def accuracy_radius(self, accuracy_radius: int):
+    def accuracy_radius(self, accuracy_radius: Optional[int]):
         """Sets the accuracy_radius of this IPLocation.
 
         The IP address is likely to be within this radius (in km) of the specified location.  # noqa: E501
@@ -108,7 +108,7 @@ class IPLocation(BaseModel):
         self._accuracy_radius = accuracy_radius
 
     @property
-    def latitude(self) -> float:
+    def latitude(self) -> Optional[float]:
         """Gets the latitude of this IPLocation.  # noqa: E501
 
 
@@ -117,7 +117,7 @@ class IPLocation(BaseModel):
         return self._latitude
 
     @latitude.setter
-    def latitude(self, latitude: float):
+    def latitude(self, latitude: Optional[float]):
         """Sets the latitude of this IPLocation.
 
 
@@ -127,7 +127,7 @@ class IPLocation(BaseModel):
         self._latitude = latitude
 
     @property
-    def longitude(self) -> float:
+    def longitude(self) -> Optional[float]:
         """Gets the longitude of this IPLocation.  # noqa: E501
 
 
@@ -136,7 +136,7 @@ class IPLocation(BaseModel):
         return self._longitude
 
     @longitude.setter
-    def longitude(self, longitude: float):
+    def longitude(self, longitude: Optional[float]):
         """Sets the longitude of this IPLocation.
 
 
@@ -146,7 +146,7 @@ class IPLocation(BaseModel):
         self._longitude = longitude
 
     @property
-    def postal_code(self) -> str:
+    def postal_code(self) -> Optional[str]:
         """Gets the postal_code of this IPLocation.  # noqa: E501
 
 
@@ -155,7 +155,7 @@ class IPLocation(BaseModel):
         return self._postal_code
 
     @postal_code.setter
-    def postal_code(self, postal_code: str):
+    def postal_code(self, postal_code: Optional[str]):
         """Sets the postal_code of this IPLocation.
 
 
@@ -165,7 +165,7 @@ class IPLocation(BaseModel):
         self._postal_code = postal_code
 
     @property
-    def timezone(self) -> str:
+    def timezone(self) -> Optional[str]:
         """Gets the timezone of this IPLocation.  # noqa: E501
 
 
@@ -174,7 +174,7 @@ class IPLocation(BaseModel):
         return self._timezone
 
     @timezone.setter
-    def timezone(self, timezone: str):
+    def timezone(self, timezone: Optional[str]):
         """Sets the timezone of this IPLocation.
 
 
@@ -184,7 +184,7 @@ class IPLocation(BaseModel):
         self._timezone = timezone
 
     @property
-    def city(self) -> IPLocationCity:
+    def city(self) -> Optional[IPLocationCity]:
         """Gets the city of this IPLocation.  # noqa: E501
 
 
@@ -193,7 +193,7 @@ class IPLocation(BaseModel):
         return self._city
 
     @city.setter
-    def city(self, city: IPLocationCity):
+    def city(self, city: Optional[IPLocationCity]):
         """Sets the city of this IPLocation.
 
 
@@ -203,7 +203,7 @@ class IPLocation(BaseModel):
         self._city = city
 
     @property
-    def country(self) -> Location:
+    def country(self) -> Optional[Location]:
         """Gets the country of this IPLocation.  # noqa: E501
 
 
@@ -212,7 +212,7 @@ class IPLocation(BaseModel):
         return self._country
 
     @country.setter
-    def country(self, country: Location):
+    def country(self, country: Optional[Location]):
         """Sets the country of this IPLocation.
 
 
@@ -222,7 +222,7 @@ class IPLocation(BaseModel):
         self._country = country
 
     @property
-    def continent(self) -> Location:
+    def continent(self) -> Optional[Location]:
         """Gets the continent of this IPLocation.  # noqa: E501
 
 
@@ -231,7 +231,7 @@ class IPLocation(BaseModel):
         return self._continent
 
     @continent.setter
-    def continent(self, continent: Location):
+    def continent(self, continent: Optional[Location]):
         """Sets the continent of this IPLocation.
 
 
@@ -241,7 +241,7 @@ class IPLocation(BaseModel):
         self._continent = continent
 
     @property
-    def subdivisions(self) -> List[Subdivision]:
+    def subdivisions(self) -> Optional[List[Subdivision]]:
         """Gets the subdivisions of this IPLocation.  # noqa: E501
 
 
@@ -250,7 +250,7 @@ class IPLocation(BaseModel):
         return self._subdivisions
 
     @subdivisions.setter
-    def subdivisions(self, subdivisions: List[Subdivision]):
+    def subdivisions(self, subdivisions: Optional[List[Subdivision]]):
         """Sets the subdivisions of this IPLocation.
 
 

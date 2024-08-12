@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -53,7 +53,7 @@ class EventUpdateRequest(BaseModel):
             self.suspect = suspect
 
     @property
-    def linked_id(self) -> str:
+    def linked_id(self) -> Optional[str]:
         """Gets the linked_id of this EventUpdateRequest.  # noqa: E501
 
         LinkedID value to assign to the existing event  # noqa: E501
@@ -63,7 +63,7 @@ class EventUpdateRequest(BaseModel):
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id: str):
+    def linked_id(self, linked_id: Optional[str]):
         """Sets the linked_id of this EventUpdateRequest.
 
         LinkedID value to assign to the existing event  # noqa: E501
@@ -74,7 +74,7 @@ class EventUpdateRequest(BaseModel):
         self._linked_id = linked_id
 
     @property
-    def tag(self) -> object:
+    def tag(self) -> Optional[object]:
         """Gets the tag of this EventUpdateRequest.  # noqa: E501
 
         Full `tag` value to be set to the existing event. Replaces any existing `tag` payload completely.  # noqa: E501
@@ -84,7 +84,7 @@ class EventUpdateRequest(BaseModel):
         return self._tag
 
     @tag.setter
-    def tag(self, tag: object):
+    def tag(self, tag: Optional[object]):
         """Sets the tag of this EventUpdateRequest.
 
         Full `tag` value to be set to the existing event. Replaces any existing `tag` payload completely.  # noqa: E501
@@ -95,7 +95,7 @@ class EventUpdateRequest(BaseModel):
         self._tag = tag
 
     @property
-    def suspect(self) -> bool:
+    def suspect(self) -> Optional[bool]:
         """Gets the suspect of this EventUpdateRequest.  # noqa: E501
 
         Suspect flag indicating observed suspicious or fraudulent event  # noqa: E501
@@ -105,7 +105,7 @@ class EventUpdateRequest(BaseModel):
         return self._suspect
 
     @suspect.setter
-    def suspect(self, suspect: bool):
+    def suspect(self, suspect: Optional[bool]):
         """Sets the suspect of this EventUpdateRequest.
 
         Suspect flag indicating observed suspicious or fraudulent event  # noqa: E501

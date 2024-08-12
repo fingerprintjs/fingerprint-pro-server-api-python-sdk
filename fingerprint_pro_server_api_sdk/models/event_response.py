@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.products_response import ProductsResponse
 from fingerprint_pro_server_api_sdk.models.product_error import ProductError
@@ -73,7 +73,7 @@ class EventResponse(BaseModel):
         self._products = products
 
     @property
-    def error(self) -> ProductError:
+    def error(self) -> Optional[ProductError]:
         """Gets the error of this EventResponse.  # noqa: E501
 
 
@@ -82,7 +82,7 @@ class EventResponse(BaseModel):
         return self._error
 
     @error.setter
-    def error(self, error: ProductError):
+    def error(self, error: Optional[ProductError]):
         """Sets the error of this EventResponse.
 
 

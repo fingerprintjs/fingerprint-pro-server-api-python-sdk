@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -70,7 +70,7 @@ class HighActivityResult(BaseModel):
         self._result = result
 
     @property
-    def daily_requests(self) -> float:
+    def daily_requests(self) -> Optional[float]:
         """Gets the daily_requests of this HighActivityResult.  # noqa: E501
 
         Number of requests from the same visitor in the previous day.  # noqa: E501
@@ -80,7 +80,7 @@ class HighActivityResult(BaseModel):
         return self._daily_requests
 
     @daily_requests.setter
-    def daily_requests(self, daily_requests: float):
+    def daily_requests(self, daily_requests: Optional[float]):
         """Sets the daily_requests of this HighActivityResult.
 
         Number of requests from the same visitor in the previous day.  # noqa: E501
