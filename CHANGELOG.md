@@ -1,3 +1,10 @@
+## [7.0.0-dev.3](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v7.0.0-dev.2...v7.0.0-dev.3) (2024-08-12)
+
+
+### Bug Fixes
+
+* mark optional fields in models ([2c62e20](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/2c62e209de1d09ebd58f3174a0be81e39c6d8bf6))
+
 ## [7.0.0-dev.2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v7.0.0-dev.1...v7.0.0-dev.2) (2024-08-09)
 
 
