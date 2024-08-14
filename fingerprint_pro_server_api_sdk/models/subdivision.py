@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -48,7 +48,7 @@ class Subdivision(BaseModel):
             self.name = name
 
     @property
-    def iso_code(self) -> str:
+    def iso_code(self) -> Optional[str]:
         """Gets the iso_code of this Subdivision.  # noqa: E501
 
 
@@ -57,7 +57,7 @@ class Subdivision(BaseModel):
         return self._iso_code
 
     @iso_code.setter
-    def iso_code(self, iso_code: str):
+    def iso_code(self, iso_code: Optional[str]):
         """Sets the iso_code of this Subdivision.
 
 
@@ -67,7 +67,7 @@ class Subdivision(BaseModel):
         self._iso_code = iso_code
 
     @property
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """Gets the name of this Subdivision.  # noqa: E501
 
 
@@ -76,7 +76,7 @@ class Subdivision(BaseModel):
         return self._name
 
     @name.setter
-    def name(self, name: str):
+    def name(self, name: Optional[str]):
         """Sets the name of this Subdivision.
 
 

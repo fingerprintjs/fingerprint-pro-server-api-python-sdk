@@ -25,9 +25,13 @@ def convert_type_annotations(text):
     result = text
     replacement_pairs = [
         (r'-> dict\((\w+), (\w+)\):', r'-> Dict[\1, \2]:'),
+        (r'-> Optional\[dict\((\w+), (\w+)\)\]:', r'-> Optional[Dict[\1, \2]]:'),
         (r': dict\((\w+), (\w+)\)', r': Dict[\1, \2]'),
+        (r': Optional\[dict\((\w+), (\w+)\)\]', r': Optional[Dict[\1, \2]]'),
         (r'-> list\[(\w+)\]:', r'-> List[\1]:'),
-        (r': list\[(\w+)\]', r': List[\1]')
+        (r'-> Optional\[list\[(\w+)\]\]:', r'-> Optional[List[\1]]:'),
+        (r': list\[(\w+)\]', r': List[\1]'),
+        (r': Optional\[list\[(\w+)\]\]', r': Optional[List[\1]]')
     ]
     for pattern, replacement in replacement_pairs:
         result = re.sub(pattern, replacement, result)

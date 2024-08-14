@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -96,7 +96,7 @@ class VelocityIntervalResult(BaseModel):
         self.__1h = _1h
 
     @property
-    def _24h(self) -> int:
+    def _24h(self) -> Optional[int]:
         """Gets the _24h of this VelocityIntervalResult.  # noqa: E501
 
         The `24h` interval of `distinctIp`, `distinctLinkedId`, and `distinctCountry` will be omitted if the number of `events`` for the visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher than 20.000.   # noqa: E501
@@ -106,7 +106,7 @@ class VelocityIntervalResult(BaseModel):
         return self.__24h
 
     @_24h.setter
-    def _24h(self, _24h: int):
+    def _24h(self, _24h: Optional[int]):
         """Sets the _24h of this VelocityIntervalResult.
 
         The `24h` interval of `distinctIp`, `distinctLinkedId`, and `distinctCountry` will be omitted if the number of `events`` for the visitor ID in the last 24 hours (`events.intervals.['24h']`) is higher than 20.000.   # noqa: E501

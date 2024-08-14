@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -79,7 +79,7 @@ class BotdDetectionResult(BaseModel):
         self._result = result
 
     @property
-    def type(self) -> str:
+    def type(self) -> Optional[str]:
         """Gets the type of this BotdDetectionResult.  # noqa: E501
 
 
@@ -88,7 +88,7 @@ class BotdDetectionResult(BaseModel):
         return self._type
 
     @type.setter
-    def type(self, type: str):
+    def type(self, type: Optional[str]):
         """Sets the type of this BotdDetectionResult.
 
 

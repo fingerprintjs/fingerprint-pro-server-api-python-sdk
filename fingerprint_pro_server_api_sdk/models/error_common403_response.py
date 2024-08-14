@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.common403_error_response import Common403ErrorResponse
 
@@ -44,7 +44,7 @@ class ErrorCommon403Response(BaseModel):
             self.error = error
 
     @property
-    def error(self) -> Common403ErrorResponse:
+    def error(self) -> Optional[Common403ErrorResponse]:
         """Gets the error of this ErrorCommon403Response.  # noqa: E501
 
 
@@ -53,7 +53,7 @@ class ErrorCommon403Response(BaseModel):
         return self._error
 
     @error.setter
-    def error(self, error: Common403ErrorResponse):
+    def error(self, error: Optional[Common403ErrorResponse]):
         """Sets the error of this ErrorCommon403Response.
 
 

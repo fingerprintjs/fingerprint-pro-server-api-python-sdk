@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.products_response_identification import ProductsResponseIdentification
 from fingerprint_pro_server_api_sdk.models.products_response_botd import ProductsResponseBotd
@@ -185,7 +185,7 @@ class ProductsResponse(BaseModel):
             self.developer_tools = developer_tools
 
     @property
-    def identification(self) -> ProductsResponseIdentification:
+    def identification(self) -> Optional[ProductsResponseIdentification]:
         """Gets the identification of this ProductsResponse.  # noqa: E501
 
 
@@ -194,7 +194,7 @@ class ProductsResponse(BaseModel):
         return self._identification
 
     @identification.setter
-    def identification(self, identification: ProductsResponseIdentification):
+    def identification(self, identification: Optional[ProductsResponseIdentification]):
         """Sets the identification of this ProductsResponse.
 
 
@@ -204,7 +204,7 @@ class ProductsResponse(BaseModel):
         self._identification = identification
 
     @property
-    def botd(self) -> ProductsResponseBotd:
+    def botd(self) -> Optional[ProductsResponseBotd]:
         """Gets the botd of this ProductsResponse.  # noqa: E501
 
 
@@ -213,7 +213,7 @@ class ProductsResponse(BaseModel):
         return self._botd
 
     @botd.setter
-    def botd(self, botd: ProductsResponseBotd):
+    def botd(self, botd: Optional[ProductsResponseBotd]):
         """Sets the botd of this ProductsResponse.
 
 
@@ -223,7 +223,7 @@ class ProductsResponse(BaseModel):
         self._botd = botd
 
     @property
-    def ip_info(self) -> SignalResponseIpInfo:
+    def ip_info(self) -> Optional[SignalResponseIpInfo]:
         """Gets the ip_info of this ProductsResponse.  # noqa: E501
 
 
@@ -232,7 +232,7 @@ class ProductsResponse(BaseModel):
         return self._ip_info
 
     @ip_info.setter
-    def ip_info(self, ip_info: SignalResponseIpInfo):
+    def ip_info(self, ip_info: Optional[SignalResponseIpInfo]):
         """Sets the ip_info of this ProductsResponse.
 
 
@@ -242,7 +242,7 @@ class ProductsResponse(BaseModel):
         self._ip_info = ip_info
 
     @property
-    def incognito(self) -> SignalResponseIncognito:
+    def incognito(self) -> Optional[SignalResponseIncognito]:
         """Gets the incognito of this ProductsResponse.  # noqa: E501
 
 
@@ -251,7 +251,7 @@ class ProductsResponse(BaseModel):
         return self._incognito
 
     @incognito.setter
-    def incognito(self, incognito: SignalResponseIncognito):
+    def incognito(self, incognito: Optional[SignalResponseIncognito]):
         """Sets the incognito of this ProductsResponse.
 
 
@@ -261,7 +261,7 @@ class ProductsResponse(BaseModel):
         self._incognito = incognito
 
     @property
-    def root_apps(self) -> SignalResponseRootApps:
+    def root_apps(self) -> Optional[SignalResponseRootApps]:
         """Gets the root_apps of this ProductsResponse.  # noqa: E501
 
 
@@ -270,7 +270,7 @@ class ProductsResponse(BaseModel):
         return self._root_apps
 
     @root_apps.setter
-    def root_apps(self, root_apps: SignalResponseRootApps):
+    def root_apps(self, root_apps: Optional[SignalResponseRootApps]):
         """Sets the root_apps of this ProductsResponse.
 
 
@@ -280,7 +280,7 @@ class ProductsResponse(BaseModel):
         self._root_apps = root_apps
 
     @property
-    def emulator(self) -> SignalResponseEmulator:
+    def emulator(self) -> Optional[SignalResponseEmulator]:
         """Gets the emulator of this ProductsResponse.  # noqa: E501
 
 
@@ -289,7 +289,7 @@ class ProductsResponse(BaseModel):
         return self._emulator
 
     @emulator.setter
-    def emulator(self, emulator: SignalResponseEmulator):
+    def emulator(self, emulator: Optional[SignalResponseEmulator]):
         """Sets the emulator of this ProductsResponse.
 
 
@@ -299,7 +299,7 @@ class ProductsResponse(BaseModel):
         self._emulator = emulator
 
     @property
-    def cloned_app(self) -> SignalResponseClonedApp:
+    def cloned_app(self) -> Optional[SignalResponseClonedApp]:
         """Gets the cloned_app of this ProductsResponse.  # noqa: E501
 
 
@@ -308,7 +308,7 @@ class ProductsResponse(BaseModel):
         return self._cloned_app
 
     @cloned_app.setter
-    def cloned_app(self, cloned_app: SignalResponseClonedApp):
+    def cloned_app(self, cloned_app: Optional[SignalResponseClonedApp]):
         """Sets the cloned_app of this ProductsResponse.
 
 
@@ -318,7 +318,7 @@ class ProductsResponse(BaseModel):
         self._cloned_app = cloned_app
 
     @property
-    def factory_reset(self) -> SignalResponseFactoryReset:
+    def factory_reset(self) -> Optional[SignalResponseFactoryReset]:
         """Gets the factory_reset of this ProductsResponse.  # noqa: E501
 
 
@@ -327,7 +327,7 @@ class ProductsResponse(BaseModel):
         return self._factory_reset
 
     @factory_reset.setter
-    def factory_reset(self, factory_reset: SignalResponseFactoryReset):
+    def factory_reset(self, factory_reset: Optional[SignalResponseFactoryReset]):
         """Sets the factory_reset of this ProductsResponse.
 
 
@@ -337,7 +337,7 @@ class ProductsResponse(BaseModel):
         self._factory_reset = factory_reset
 
     @property
-    def jailbroken(self) -> SignalResponseJailbroken:
+    def jailbroken(self) -> Optional[SignalResponseJailbroken]:
         """Gets the jailbroken of this ProductsResponse.  # noqa: E501
 
 
@@ -346,7 +346,7 @@ class ProductsResponse(BaseModel):
         return self._jailbroken
 
     @jailbroken.setter
-    def jailbroken(self, jailbroken: SignalResponseJailbroken):
+    def jailbroken(self, jailbroken: Optional[SignalResponseJailbroken]):
         """Sets the jailbroken of this ProductsResponse.
 
 
@@ -356,7 +356,7 @@ class ProductsResponse(BaseModel):
         self._jailbroken = jailbroken
 
     @property
-    def frida(self) -> SignalResponseFrida:
+    def frida(self) -> Optional[SignalResponseFrida]:
         """Gets the frida of this ProductsResponse.  # noqa: E501
 
 
@@ -365,7 +365,7 @@ class ProductsResponse(BaseModel):
         return self._frida
 
     @frida.setter
-    def frida(self, frida: SignalResponseFrida):
+    def frida(self, frida: Optional[SignalResponseFrida]):
         """Sets the frida of this ProductsResponse.
 
 
@@ -375,7 +375,7 @@ class ProductsResponse(BaseModel):
         self._frida = frida
 
     @property
-    def ip_blocklist(self) -> SignalResponseIpBlocklist:
+    def ip_blocklist(self) -> Optional[SignalResponseIpBlocklist]:
         """Gets the ip_blocklist of this ProductsResponse.  # noqa: E501
 
 
@@ -384,7 +384,7 @@ class ProductsResponse(BaseModel):
         return self._ip_blocklist
 
     @ip_blocklist.setter
-    def ip_blocklist(self, ip_blocklist: SignalResponseIpBlocklist):
+    def ip_blocklist(self, ip_blocklist: Optional[SignalResponseIpBlocklist]):
         """Sets the ip_blocklist of this ProductsResponse.
 
 
@@ -394,7 +394,7 @@ class ProductsResponse(BaseModel):
         self._ip_blocklist = ip_blocklist
 
     @property
-    def tor(self) -> SignalResponseTor:
+    def tor(self) -> Optional[SignalResponseTor]:
         """Gets the tor of this ProductsResponse.  # noqa: E501
 
 
@@ -403,7 +403,7 @@ class ProductsResponse(BaseModel):
         return self._tor
 
     @tor.setter
-    def tor(self, tor: SignalResponseTor):
+    def tor(self, tor: Optional[SignalResponseTor]):
         """Sets the tor of this ProductsResponse.
 
 
@@ -413,7 +413,7 @@ class ProductsResponse(BaseModel):
         self._tor = tor
 
     @property
-    def privacy_settings(self) -> SignalResponsePrivacySettings:
+    def privacy_settings(self) -> Optional[SignalResponsePrivacySettings]:
         """Gets the privacy_settings of this ProductsResponse.  # noqa: E501
 
 
@@ -422,7 +422,7 @@ class ProductsResponse(BaseModel):
         return self._privacy_settings
 
     @privacy_settings.setter
-    def privacy_settings(self, privacy_settings: SignalResponsePrivacySettings):
+    def privacy_settings(self, privacy_settings: Optional[SignalResponsePrivacySettings]):
         """Sets the privacy_settings of this ProductsResponse.
 
 
@@ -432,7 +432,7 @@ class ProductsResponse(BaseModel):
         self._privacy_settings = privacy_settings
 
     @property
-    def virtual_machine(self) -> SignalResponseVirtualMachine:
+    def virtual_machine(self) -> Optional[SignalResponseVirtualMachine]:
         """Gets the virtual_machine of this ProductsResponse.  # noqa: E501
 
 
@@ -441,7 +441,7 @@ class ProductsResponse(BaseModel):
         return self._virtual_machine
 
     @virtual_machine.setter
-    def virtual_machine(self, virtual_machine: SignalResponseVirtualMachine):
+    def virtual_machine(self, virtual_machine: Optional[SignalResponseVirtualMachine]):
         """Sets the virtual_machine of this ProductsResponse.
 
 
@@ -451,7 +451,7 @@ class ProductsResponse(BaseModel):
         self._virtual_machine = virtual_machine
 
     @property
-    def vpn(self) -> SignalResponseVpn:
+    def vpn(self) -> Optional[SignalResponseVpn]:
         """Gets the vpn of this ProductsResponse.  # noqa: E501
 
 
@@ -460,7 +460,7 @@ class ProductsResponse(BaseModel):
         return self._vpn
 
     @vpn.setter
-    def vpn(self, vpn: SignalResponseVpn):
+    def vpn(self, vpn: Optional[SignalResponseVpn]):
         """Sets the vpn of this ProductsResponse.
 
 
@@ -470,7 +470,7 @@ class ProductsResponse(BaseModel):
         self._vpn = vpn
 
     @property
-    def proxy(self) -> SignalResponseProxy:
+    def proxy(self) -> Optional[SignalResponseProxy]:
         """Gets the proxy of this ProductsResponse.  # noqa: E501
 
 
@@ -479,7 +479,7 @@ class ProductsResponse(BaseModel):
         return self._proxy
 
     @proxy.setter
-    def proxy(self, proxy: SignalResponseProxy):
+    def proxy(self, proxy: Optional[SignalResponseProxy]):
         """Sets the proxy of this ProductsResponse.
 
 
@@ -489,7 +489,7 @@ class ProductsResponse(BaseModel):
         self._proxy = proxy
 
     @property
-    def tampering(self) -> SignalResponseTampering:
+    def tampering(self) -> Optional[SignalResponseTampering]:
         """Gets the tampering of this ProductsResponse.  # noqa: E501
 
 
@@ -498,7 +498,7 @@ class ProductsResponse(BaseModel):
         return self._tampering
 
     @tampering.setter
-    def tampering(self, tampering: SignalResponseTampering):
+    def tampering(self, tampering: Optional[SignalResponseTampering]):
         """Sets the tampering of this ProductsResponse.
 
 
@@ -508,7 +508,7 @@ class ProductsResponse(BaseModel):
         self._tampering = tampering
 
     @property
-    def high_activity(self) -> SignalResponseHighActivity:
+    def high_activity(self) -> Optional[SignalResponseHighActivity]:
         """Gets the high_activity of this ProductsResponse.  # noqa: E501
 
 
@@ -517,7 +517,7 @@ class ProductsResponse(BaseModel):
         return self._high_activity
 
     @high_activity.setter
-    def high_activity(self, high_activity: SignalResponseHighActivity):
+    def high_activity(self, high_activity: Optional[SignalResponseHighActivity]):
         """Sets the high_activity of this ProductsResponse.
 
 
@@ -527,7 +527,7 @@ class ProductsResponse(BaseModel):
         self._high_activity = high_activity
 
     @property
-    def location_spoofing(self) -> SignalResponseLocationSpoofing:
+    def location_spoofing(self) -> Optional[SignalResponseLocationSpoofing]:
         """Gets the location_spoofing of this ProductsResponse.  # noqa: E501
 
 
@@ -536,7 +536,7 @@ class ProductsResponse(BaseModel):
         return self._location_spoofing
 
     @location_spoofing.setter
-    def location_spoofing(self, location_spoofing: SignalResponseLocationSpoofing):
+    def location_spoofing(self, location_spoofing: Optional[SignalResponseLocationSpoofing]):
         """Sets the location_spoofing of this ProductsResponse.
 
 
@@ -546,7 +546,7 @@ class ProductsResponse(BaseModel):
         self._location_spoofing = location_spoofing
 
     @property
-    def suspect_score(self) -> SignalResponseSuspectScore:
+    def suspect_score(self) -> Optional[SignalResponseSuspectScore]:
         """Gets the suspect_score of this ProductsResponse.  # noqa: E501
 
 
@@ -555,7 +555,7 @@ class ProductsResponse(BaseModel):
         return self._suspect_score
 
     @suspect_score.setter
-    def suspect_score(self, suspect_score: SignalResponseSuspectScore):
+    def suspect_score(self, suspect_score: Optional[SignalResponseSuspectScore]):
         """Sets the suspect_score of this ProductsResponse.
 
 
@@ -565,7 +565,7 @@ class ProductsResponse(BaseModel):
         self._suspect_score = suspect_score
 
     @property
-    def raw_device_attributes(self) -> SignalResponseRawDeviceAttributes:
+    def raw_device_attributes(self) -> Optional[SignalResponseRawDeviceAttributes]:
         """Gets the raw_device_attributes of this ProductsResponse.  # noqa: E501
 
 
@@ -574,7 +574,7 @@ class ProductsResponse(BaseModel):
         return self._raw_device_attributes
 
     @raw_device_attributes.setter
-    def raw_device_attributes(self, raw_device_attributes: SignalResponseRawDeviceAttributes):
+    def raw_device_attributes(self, raw_device_attributes: Optional[SignalResponseRawDeviceAttributes]):
         """Sets the raw_device_attributes of this ProductsResponse.
 
 
@@ -584,7 +584,7 @@ class ProductsResponse(BaseModel):
         self._raw_device_attributes = raw_device_attributes
 
     @property
-    def remote_control(self) -> SignalResponseRemoteControl:
+    def remote_control(self) -> Optional[SignalResponseRemoteControl]:
         """Gets the remote_control of this ProductsResponse.  # noqa: E501
 
 
@@ -593,7 +593,7 @@ class ProductsResponse(BaseModel):
         return self._remote_control
 
     @remote_control.setter
-    def remote_control(self, remote_control: SignalResponseRemoteControl):
+    def remote_control(self, remote_control: Optional[SignalResponseRemoteControl]):
         """Sets the remote_control of this ProductsResponse.
 
 
@@ -603,7 +603,7 @@ class ProductsResponse(BaseModel):
         self._remote_control = remote_control
 
     @property
-    def velocity(self) -> SignalResponseVelocity:
+    def velocity(self) -> Optional[SignalResponseVelocity]:
         """Gets the velocity of this ProductsResponse.  # noqa: E501
 
 
@@ -612,7 +612,7 @@ class ProductsResponse(BaseModel):
         return self._velocity
 
     @velocity.setter
-    def velocity(self, velocity: SignalResponseVelocity):
+    def velocity(self, velocity: Optional[SignalResponseVelocity]):
         """Sets the velocity of this ProductsResponse.
 
 
@@ -622,7 +622,7 @@ class ProductsResponse(BaseModel):
         self._velocity = velocity
 
     @property
-    def developer_tools(self) -> SignalResponseDeveloperTools:
+    def developer_tools(self) -> Optional[SignalResponseDeveloperTools]:
         """Gets the developer_tools of this ProductsResponse.  # noqa: E501
 
 
@@ -631,7 +631,7 @@ class ProductsResponse(BaseModel):
         return self._developer_tools
 
     @developer_tools.setter
-    def developer_tools(self, developer_tools: SignalResponseDeveloperTools):
+    def developer_tools(self, developer_tools: Optional[SignalResponseDeveloperTools]):
         """Sets the developer_tools of this ProductsResponse.
 
 

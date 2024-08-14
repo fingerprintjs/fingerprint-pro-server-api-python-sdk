@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.vpn_result import VpnResult
 from fingerprint_pro_server_api_sdk.models.product_error import ProductError
@@ -50,7 +50,7 @@ class SignalResponseVpn(BaseModel):
             self.error = error
 
     @property
-    def data(self) -> VpnResult:
+    def data(self) -> Optional[VpnResult]:
         """Gets the data of this SignalResponseVpn.  # noqa: E501
 
 
@@ -59,7 +59,7 @@ class SignalResponseVpn(BaseModel):
         return self._data
 
     @data.setter
-    def data(self, data: VpnResult):
+    def data(self, data: Optional[VpnResult]):
         """Sets the data of this SignalResponseVpn.
 
 
@@ -69,7 +69,7 @@ class SignalResponseVpn(BaseModel):
         self._data = data
 
     @property
-    def error(self) -> ProductError:
+    def error(self) -> Optional[ProductError]:
         """Gets the error of this SignalResponseVpn.  # noqa: E501
 
 
@@ -78,7 +78,7 @@ class SignalResponseVpn(BaseModel):
         return self._error
 
     @error.setter
-    def error(self, error: ProductError):
+    def error(self, error: Optional[ProductError]):
         """Sets the error of this SignalResponseVpn.
 
 

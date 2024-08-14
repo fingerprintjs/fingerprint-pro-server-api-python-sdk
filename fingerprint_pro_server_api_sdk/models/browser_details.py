@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -218,7 +218,7 @@ class BrowserDetails(BaseModel):
         self._user_agent = user_agent
 
     @property
-    def bot_probability(self) -> int:
+    def bot_probability(self) -> Optional[int]:
         """Gets the bot_probability of this BrowserDetails.  # noqa: E501
 
 
@@ -227,7 +227,7 @@ class BrowserDetails(BaseModel):
         return self._bot_probability
 
     @bot_probability.setter
-    def bot_probability(self, bot_probability: int):
+    def bot_probability(self, bot_probability: Optional[int]):
         """Sets the bot_probability of this BrowserDetails.
 
 

@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
@@ -70,7 +70,7 @@ class Confidence(BaseModel):
         self._score = score
 
     @property
-    def revision(self) -> str:
+    def revision(self) -> Optional[str]:
         """Gets the revision of this Confidence.  # noqa: E501
 
         The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501
@@ -80,7 +80,7 @@ class Confidence(BaseModel):
         return self._revision
 
     @revision.setter
-    def revision(self, revision: str):
+    def revision(self, revision: Optional[str]):
         """Sets the revision of this Confidence.
 
         The revision name of the method used to calculate the Confidence score. This field is only present for customers who opted in to an alternative calculation method.  # noqa: E501

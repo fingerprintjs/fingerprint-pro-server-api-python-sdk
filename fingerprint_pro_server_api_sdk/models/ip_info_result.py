@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.ip_info_result_v4 import IpInfoResultV4
 from fingerprint_pro_server_api_sdk.models.ip_info_result_v6 import IpInfoResultV6
@@ -53,7 +53,7 @@ class IpInfoResult(BaseModel):
             self.v6 = v6
 
     @property
-    def v4(self) -> IpInfoResultV4:
+    def v4(self) -> Optional[IpInfoResultV4]:
         """Gets the v4 of this IpInfoResult.  # noqa: E501
 
 
@@ -62,7 +62,7 @@ class IpInfoResult(BaseModel):
         return self._v4
 
     @v4.setter
-    def v4(self, v4: IpInfoResultV4):
+    def v4(self, v4: Optional[IpInfoResultV4]):
         """Sets the v4 of this IpInfoResult.
 
 
@@ -72,7 +72,7 @@ class IpInfoResult(BaseModel):
         self._v4 = v4
 
     @property
-    def v6(self) -> IpInfoResultV6:
+    def v6(self) -> Optional[IpInfoResultV6]:
         """Gets the v6 of this IpInfoResult.  # noqa: E501
 
 
@@ -81,7 +81,7 @@ class IpInfoResult(BaseModel):
         return self._v6
 
     @v6.setter
-    def v6(self, v6: IpInfoResultV6):
+    def v6(self, v6: Optional[IpInfoResultV6]):
         """Sets the v6 of this IpInfoResult.
 
 

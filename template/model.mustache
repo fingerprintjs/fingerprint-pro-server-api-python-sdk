@@ -3,7 +3,7 @@
 {{>partial_header}}
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from {{packageName}}.base_model import BaseModel
 {{#models}}
 {{#model}}
@@ -80,7 +80,7 @@ class {{classname}}(BaseModel):
 
 {{#vars}}
     @property
-    def {{name}}(self) -> {{datatype}}:
+    def {{name}}(self) -> {{#required}}{{datatype}}{{/required}}{{^required}}Optional[{{datatype}}]{{/required}}:
         """Gets the {{name}} of this {{classname}}.  # noqa: E501
 
 {{#description}}
@@ -92,7 +92,7 @@ class {{classname}}(BaseModel):
         return self._{{name}}
 
     @{{name}}.setter
-    def {{name}}(self, {{name}}: {{datatype}}):
+    def {{name}}(self, {{name}}: {{#required}}{{datatype}}{{/required}}{{^required}}Optional[{{datatype}}]{{/required}}):
         """Sets the {{name}} of this {{classname}}.
 
 {{#description}}

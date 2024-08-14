@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.ip_location import IPLocation
 from fingerprint_pro_server_api_sdk.models.asn import ASN
@@ -101,7 +101,7 @@ class IpInfoResultV4(BaseModel):
         self._geolocation = geolocation
 
     @property
-    def asn(self) -> ASN:
+    def asn(self) -> Optional[ASN]:
         """Gets the asn of this IpInfoResultV4.  # noqa: E501
 
 
@@ -110,7 +110,7 @@ class IpInfoResultV4(BaseModel):
         return self._asn
 
     @asn.setter
-    def asn(self, asn: ASN):
+    def asn(self, asn: Optional[ASN]):
         """Sets the asn of this IpInfoResultV4.
 
 
@@ -120,7 +120,7 @@ class IpInfoResultV4(BaseModel):
         self._asn = asn
 
     @property
-    def datacenter(self) -> DataCenter:
+    def datacenter(self) -> Optional[DataCenter]:
         """Gets the datacenter of this IpInfoResultV4.  # noqa: E501
 
 
@@ -129,7 +129,7 @@ class IpInfoResultV4(BaseModel):
         return self._datacenter
 
     @datacenter.setter
-    def datacenter(self, datacenter: DataCenter):
+    def datacenter(self, datacenter: Optional[DataCenter]):
         """Sets the datacenter of this IpInfoResultV4.
 
 

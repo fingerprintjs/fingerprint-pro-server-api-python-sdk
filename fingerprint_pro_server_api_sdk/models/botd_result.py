@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from datetime import datetime
 from fingerprint_pro_server_api_sdk.models.botd_detection_result import BotdDetectionResult
@@ -183,7 +183,7 @@ class BotdResult(BaseModel):
         self._request_id = request_id
 
     @property
-    def linked_id(self) -> str:
+    def linked_id(self) -> Optional[str]:
         """Gets the linked_id of this BotdResult.  # noqa: E501
 
 
@@ -192,7 +192,7 @@ class BotdResult(BaseModel):
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id: str):
+    def linked_id(self, linked_id: Optional[str]):
         """Sets the linked_id of this BotdResult.
 
 

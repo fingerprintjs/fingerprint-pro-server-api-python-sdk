@@ -11,7 +11,7 @@
 """
 
 import re  # noqa: F401
-from typing import Dict, List  # noqa: F401
+from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.browser_details import BrowserDetails
 from fingerprint_pro_server_api_sdk.models.deprecated_ip_location import DeprecatedIPLocation
@@ -192,7 +192,7 @@ class Visit(BaseModel):
         self._ip = ip
 
     @property
-    def ip_location(self) -> DeprecatedIPLocation:
+    def ip_location(self) -> Optional[DeprecatedIPLocation]:
         """Gets the ip_location of this Visit.  # noqa: E501
 
 
@@ -201,7 +201,7 @@ class Visit(BaseModel):
         return self._ip_location
 
     @ip_location.setter
-    def ip_location(self, ip_location: DeprecatedIPLocation):
+    def ip_location(self, ip_location: Optional[DeprecatedIPLocation]):
         """Sets the ip_location of this Visit.
 
 
@@ -280,7 +280,7 @@ class Visit(BaseModel):
         self._url = url
 
     @property
-    def tag(self) -> Dict[str, object]:
+    def tag(self) -> Optional[Dict[str, object]]:
         """Gets the tag of this Visit.  # noqa: E501
 
         A customer-provided value or an object that was sent with identification request.  # noqa: E501
@@ -290,7 +290,7 @@ class Visit(BaseModel):
         return self._tag
 
     @tag.setter
-    def tag(self, tag: Dict[str, object]):
+    def tag(self, tag: Optional[Dict[str, object]]):
         """Sets the tag of this Visit.
 
         A customer-provided value or an object that was sent with identification request.  # noqa: E501
@@ -301,7 +301,7 @@ class Visit(BaseModel):
         self._tag = tag
 
     @property
-    def linked_id(self) -> str:
+    def linked_id(self) -> Optional[str]:
         """Gets the linked_id of this Visit.  # noqa: E501
 
         A customer-provided id that was sent with identification request.  # noqa: E501
@@ -311,7 +311,7 @@ class Visit(BaseModel):
         return self._linked_id
 
     @linked_id.setter
-    def linked_id(self, linked_id: str):
+    def linked_id(self, linked_id: Optional[str]):
         """Sets the linked_id of this Visit.
 
         A customer-provided id that was sent with identification request.  # noqa: E501
@@ -322,7 +322,7 @@ class Visit(BaseModel):
         self._linked_id = linked_id
 
     @property
-    def confidence(self) -> Confidence:
+    def confidence(self) -> Optional[Confidence]:
         """Gets the confidence of this Visit.  # noqa: E501
 
 
@@ -331,7 +331,7 @@ class Visit(BaseModel):
         return self._confidence
 
     @confidence.setter
-    def confidence(self, confidence: Confidence):
+    def confidence(self, confidence: Optional[Confidence]):
         """Sets the confidence of this Visit.
 
 
