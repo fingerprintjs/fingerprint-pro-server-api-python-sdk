@@ -17,7 +17,7 @@ from datetime import datetime
 {{/vars}}
 
 
-class {{classname}}(BaseModel):
+class {{classname}}({{#parent}}{{parent}}{{/parent}}{{^parent}}BaseModel{{/parent}}):
     """{{#description}}
     {{{.}}}
 
@@ -60,13 +60,19 @@ class {{classname}}(BaseModel):
     }
 {{/discriminator}}
 
+{{#parent}}
+    __parent_class__ = '{{parent}}'
+{{/parent}}
+{{^parent}}
     def __init__(self{{#vars}}, {{name}}={{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}None{{/defaultValue}}{{/vars}}):  # noqa: E501
-        """{{classname}} - a model defined in Swagger"""  # noqa: E501
+        """{{classname}} - a model defined in Swagger"""  # noqa: E501{{#parent}}
+        super().__init__(){{/parent}}
 {{#vars}}{{#@first}}
 {{/@first}}
         self._{{name}} = None
 {{/vars}}
         self.discriminator = {{#discriminator}}'{{discriminator}}'{{/discriminator}}{{^discriminator}}None{{/discriminator}}
+{{/parent}}
 {{#vars}}{{#@first}}
 {{/@first}}
 {{#required}}

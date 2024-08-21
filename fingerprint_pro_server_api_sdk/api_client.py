@@ -588,6 +588,8 @@ class ApiClientDeserializer:
         """
 
         if not klass.swagger_types and not ApiClientDeserializer.__hasattr(klass, 'get_real_child_model'):
+            if hasattr(klass, '__parent_class__') and klass.__parent_class__ == 'dict':
+                return klass(**data)
             return data
 
         kwargs = {}
