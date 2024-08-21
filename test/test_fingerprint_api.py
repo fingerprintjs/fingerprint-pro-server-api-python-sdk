@@ -18,7 +18,8 @@ import urllib3
 from fingerprint_pro_server_api_sdk import (Configuration, TooManyRequestsResponse, ErrorVisits403,
                                             ErrorCommon403Response, ErrorEvent404Response, ErrorVisitor400Response,
                                             ErrorVisitor404Response, ErrorCommon429Response, EventUpdateRequest,
-                                            ErrorUpdateEvent400Response, ErrorUpdateEvent409Response)
+                                            ErrorUpdateEvent400Response, ErrorUpdateEvent409Response,
+                                            RawDeviceAttributesResult)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from urllib.parse import urlencode
@@ -195,7 +196,8 @@ class TestFingerprintApi(unittest.TestCase):
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
-        self.api.get_event(mock_file1)
+        event_response = self.api.get_event(mock_file1)
+        self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributesResult)
 
     def test_get_event_errors_200(self):
         """Test checks correct code run result in scenario of arrors in BotD or identification API"""
