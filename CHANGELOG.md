@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v7.0.0...v7.0.1) (2024-08-22)
+
+
+### Bug Fixes
+
+* deserialize `raw_device_attributes.data` to correct type `RawDeviceAttributesResult` ([743db13](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/743db13b384003a6fffd4124936db29fa7e9a850))
+
 ## [7.0.0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/compare/v6.0.0...v7.0.0) (2024-08-14)
 
 
