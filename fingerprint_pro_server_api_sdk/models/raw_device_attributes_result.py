@@ -15,7 +15,7 @@ from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 
 
-class RawDeviceAttributesResult(BaseModel):
+class RawDeviceAttributesResult(dict):
     """
     It includes 35+ raw browser identification attributes to provide Fingerprint users with even more information than our standard visitor ID provides. This enables Fingerprint users to not have to run our open-source product in conjunction with Fingerprint Pro Plus and Enterprise to get those additional attributes. Warning: The raw signals data can change at any moment as we improve the product. We cannot guarantee the internal shape of raw device attributes to be stable, so typical semantic versioning rules do not apply here. Use this data with caution without assuming a specific structure beyond the generic type provided here. 
 
@@ -36,7 +36,5 @@ class RawDeviceAttributesResult(BaseModel):
     attribute_map = {
     }
 
-    def __init__(self):  # noqa: E501
-        """RawDeviceAttributesResult - a model defined in Swagger"""  # noqa: E501
-        self.discriminator = None
+    __parent_class__ = 'dict'
 
