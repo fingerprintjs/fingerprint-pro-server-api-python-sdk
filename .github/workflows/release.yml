@@ -6,15 +6,15 @@ on:
       - dev
 
 jobs:
-  release-server-sdk-python:
-    name: 'Publish new version'
-    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-server-sdk.yml@v1
+  release:
+    name: 'Release project'
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-sdk-changesets.yml@v1
     with:
       appId: ${{ vars.APP_ID }}
+      version-command: bash ./changeset-version.sh
+      publish-command: bash ./changeset-publish.sh
       language: python
       language-version: '3.12'
-      semantic-release-extra-plugins: |
-        semantic-release-pypi@2.5.0
       prepare-command: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
@@ -22,4 +22,3 @@ jobs:
         pip install twine
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
-      PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
