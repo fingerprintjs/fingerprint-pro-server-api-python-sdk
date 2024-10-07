@@ -107,7 +107,6 @@ from fingerprint_pro_server_api_sdk.models.velocity_interval_result import Veloc
 from fingerprint_pro_server_api_sdk.models.velocity_intervals import VelocityIntervals
 from fingerprint_pro_server_api_sdk.models.velocity_result import VelocityResult
 from fingerprint_pro_server_api_sdk.models.virtual_machine_result import VirtualMachineResult
-from fingerprint_pro_server_api_sdk.models.visit import Visit
 from fingerprint_pro_server_api_sdk.models.vpn_result import VpnResult
 from fingerprint_pro_server_api_sdk.models.vpn_result_methods import VpnResultMethods
 from fingerprint_pro_server_api_sdk.models.webhook_visit import WebhookVisit
