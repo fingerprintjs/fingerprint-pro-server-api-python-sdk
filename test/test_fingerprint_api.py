@@ -11,6 +11,7 @@
 """
 
 import io
+import os
 import unittest
 
 import urllib3
@@ -30,9 +31,14 @@ VERSION = '7.0.1'
 
 
 class MockPoolManager(object):
-    def __init__(self, tc):
+
+
+    def __init__(self, tc, request_headers=None):
+        if request_headers is None:
+            request_headers = {}
         self._tc = tc
         self._reqs = []
+        self.request_headers = request_headers
 
     def expect_request(self, *args, **kwargs):
         self._reqs.append((args, kwargs))
@@ -72,14 +78,15 @@ class MockPoolManager(object):
         if mock_file_by_first_argument == 'update_event':
             return urllib3.HTTPResponse(status=200, body='OK')
         try:
-            with io.open('./test/mocks/' + mock_file_by_first_argument, 'r', encoding='utf-8') as mock_file:
+            path = './test/mocks/' + mock_file_by_first_argument
+
+            if not os.path.isfile(path):
+                path = './test/mocks/shared/' + mock_file_by_first_argument
+
+            with io.open(path, 'r', encoding='utf-8') as mock_file:
                 answer_mock = mock_file.read()
                 mock_file.close()
-            headers = {}
-            if mock_file_by_first_argument == 'get_visits_429_too_many_requests_error.json':
-                headers.update({'Retry-After': '4'})
-
-            return urllib3.HTTPResponse(status=status, body=answer_mock, headers=headers)
+            return urllib3.HTTPResponse(status=status, body=answer_mock, headers=self.request_headers)
         except IOError as e:
             print(e)
             return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_first_argument)
@@ -161,7 +168,7 @@ class TestFingerprintApi(unittest.TestCase):
 
     def test_get_visits_error_429(self):
         """Test checks correct code run result in case of 429 error for get_visits method"""
-        mock_pool = MockPoolManager(self)
+        mock_pool = MockPoolManager(self, request_headers={'Retry-After': '4'})
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_file = 'get_visits_429_too_many_requests_error.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mock_file),
@@ -177,7 +184,7 @@ class TestFingerprintApi(unittest.TestCase):
         """Test checks retry after value in exception in case of 429 error for get_visits method"""
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_file = 'get_visits_429_too_many_requests_error_empty_header.json'
+        mock_file = 'get_visits_429_too_many_requests_error.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_visitors_path(visitor_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None, status=429)
@@ -501,7 +508,7 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
 
-        mock_file = 'get_event_200_wrong_shape.json'
+        mock_file = 'get_event_200_with_broken_format.json'
         mock_pool.expect_request('GET', TestFingerprintApi.get_events_path(request_id=mock_file),
                                  fields=[self.integration_info], headers=self.request_headers,
                                  preload_content=True, timeout=None)
