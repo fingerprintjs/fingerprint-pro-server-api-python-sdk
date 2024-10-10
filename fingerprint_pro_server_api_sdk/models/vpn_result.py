@@ -32,28 +32,32 @@ class VpnResult(BaseModel):
         'result': 'bool',
         'origin_timezone': 'str',
         'origin_country': 'str',
-        'methods': 'VpnResultMethods'
+        'methods': 'VpnResultMethods',
+        'confidence': 'str'
     }
 
     attribute_map = {
         'result': 'result',
         'origin_timezone': 'originTimezone',
         'origin_country': 'originCountry',
-        'methods': 'methods'
+        'methods': 'methods',
+        'confidence': 'confidence'
     }
 
-    def __init__(self, result=None, origin_timezone=None, origin_country=None, methods=None):  # noqa: E501
+    def __init__(self, result=None, origin_timezone=None, origin_country=None, methods=None, confidence=None):  # noqa: E501
         """VpnResult - a model defined in Swagger"""  # noqa: E501
         self._result = None
         self._origin_timezone = None
         self._origin_country = None
         self._methods = None
+        self._confidence = None
         self.discriminator = None
         self.result = result
         self.origin_timezone = origin_timezone
         if origin_country is not None:
             self.origin_country = origin_country
         self.methods = methods
+        self.confidence = confidence
 
     @property
     def result(self) -> bool:
@@ -142,4 +146,33 @@ class VpnResult(BaseModel):
             raise ValueError("Invalid value for `methods`, must not be `None`")  # noqa: E501
 
         self._methods = methods
+
+    @property
+    def confidence(self) -> str:
+        """Gets the confidence of this VpnResult.  # noqa: E501
+
+        A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods.  # noqa: E501
+
+        :return: The confidence of this VpnResult.  # noqa: E501
+        """
+        return self._confidence
+
+    @confidence.setter
+    def confidence(self, confidence: str):
+        """Sets the confidence of this VpnResult.
+
+        A confidence rating for the VPN detection result — \"low\", \"medium\", or \"high\". Depends on the combination of results returned from all VPN detection methods.  # noqa: E501
+
+        :param confidence: The confidence of this VpnResult.  # noqa: E501
+        """
+        if confidence is None:
+            raise ValueError("Invalid value for `confidence`, must not be `None`")  # noqa: E501
+        allowed_values = ["low", "medium", "high"]  # noqa: E501
+        if (confidence not in allowed_values):
+            raise ValueError(
+                "Invalid value for `confidence` ({0}), must be one of {1}"  # noqa: E501
+                .format(confidence, allowed_values)
+            )
+
+        self._confidence = confidence
 
