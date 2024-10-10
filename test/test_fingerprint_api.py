@@ -27,7 +27,7 @@ from urllib.parse import urlencode
 
 API_KEY = 'private_key'
 
-VERSION = '7.0.1'
+VERSION = '7.1.0-rc.0'
 
 
 class MockPoolManager(object):
