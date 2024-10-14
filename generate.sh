@@ -48,7 +48,9 @@ platform=$(uname)
 (
   if [ "$platform" = "Darwin" ]; then
     sed -i '' "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
+    sed -i '' "s/^version = [^']*/version = ${VERSION}/" "./setup.cfg"
   else
     sed -i "s/^VERSION = '[^']*'/VERSION = '${VERSION}'/" "./test/test_fingerprint_api.py"
+    sed -i "s/^version = [^']*/version = ${VERSION}/" "./setup.cfg"
   fi
 )
