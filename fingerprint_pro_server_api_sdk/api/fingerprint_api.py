@@ -109,7 +109,7 @@ class FingerprintApi:
         if 'visitor_id' in params:
             path_params['visitor_id'] = params['visitor_id']  # noqa: E501
 
-        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.0.1')]
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.1.0-rc.0')]
 
         header_params = {}
 
@@ -219,7 +219,7 @@ class FingerprintApi:
         if 'request_id' in params:
             path_params['request_id'] = params['request_id']  # noqa: E501
 
-        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.0.1')]
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.1.0-rc.0')]
 
         header_params = {}
 
@@ -338,7 +338,7 @@ class FingerprintApi:
         if 'visitor_id' in params:
             path_params['visitor_id'] = params['visitor_id']  # noqa: E501
 
-        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.0.1')]
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.1.0-rc.0')]
         if 'request_id' in params:
             query_params.append(('request_id', params['request_id']))  # noqa: E501
         if 'linked_id' in params:
@@ -458,7 +458,7 @@ class FingerprintApi:
         if 'request_id' in params:
             path_params['request_id'] = params['request_id']  # noqa: E501
 
-        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.0.1')]
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/7.1.0-rc.0')]
 
         header_params = {}
 
