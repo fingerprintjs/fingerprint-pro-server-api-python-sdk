@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 7.1.0
+
+### Minor Changes
+
+- **visitors**: Add the confidence field to the VPN Detection Smart Signal ([e98dbd4](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/e98dbd4675bdb28f5e98c4a670612e3f8d0aa671))
+
 ## 7.1.0-rc.0
 
 ### Minor Changes
