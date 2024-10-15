@@ -1,6 +1,6 @@
 {
   "name": "fingerprint-pro-server-api-python-sdk",
-  "version": "7.0.1",
+  "version": "7.1.0-rc.0",
   "private": true,
   "devDependencies": {
     "@changesets/cli": "^2.27.8",

@@ -4,5 +4,7 @@
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "7.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "orange-taxis-fetch"
+  ]
 }
