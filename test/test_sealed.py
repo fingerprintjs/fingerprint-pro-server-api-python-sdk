@@ -5,8 +5,8 @@ import unittest
 from unittest import expectedFailure
 
 from fingerprint_pro_server_api_sdk import ApiClientDeserializer, DecryptionAlgorithm, DecryptionKey, \
-    unseal_event_response, UnsealError, UnsealAggregateError, EventResponse, ProductsResponse, \
-    ProductsResponseIdentification, BrowserDetails
+    unseal_event_response, UnsealError, UnsealAggregateError, EventsGetResponse, Products, \
+    ProductIdentification, BrowserDetails
 
 class TestSealed(unittest.TestCase):
     valid_key = base64.b64decode('p2PA7MGy5tx56cnyJaFZMr96BCFwZeHjZV2EqMvTq53=')
@@ -102,9 +102,9 @@ class TestSealed(unittest.TestCase):
         ])
 
         self.assertEqual(result, expected_result)
-        self.assertIsInstance(result, EventResponse)
-        self.assertIsInstance(result.products, ProductsResponse)
-        self.assertIsInstance(result.products.identification, ProductsResponseIdentification)
+        self.assertIsInstance(result, EventsGetResponse)
+        self.assertIsInstance(result.products, Products)
+        self.assertIsInstance(result.products.identification, ProductIdentification)
         self.assertIsInstance(result.products.identification.data.browser_details, BrowserDetails)
 
 
