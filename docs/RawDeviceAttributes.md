@@ -3,8 +3,7 @@ It includes 35+ raw browser identification attributes to provide Fingerprint use
 
 
 ## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+The rawAttributes object follows this general shape: `{ value: any } | { error: { name: string; message: string; } }`
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,7 +6,7 @@ from cryptography.hazmat.backends import default_backend
 import zlib
 
 from fingerprint_pro_server_api_sdk.api_client import ApiClientDeserializer
-from fingerprint_pro_server_api_sdk.models.event_response import EventResponse
+from fingerprint_pro_server_api_sdk.models.events_get_response import EventsGetResponse
 
 SEALED_HEADER = bytes([0x9e, 0x85, 0xdc, 0xed])
 DecryptionAlgorithm = {
@@ -43,20 +43,20 @@ class UnsealAggregateError(Exception):
         super().__init__("Unable to decrypt sealed data")
 
 
-def unseal_event_response(sealed_data: bytes, decryption_keys: List[DecryptionKey]) -> EventResponse:
+def unseal_event_response(sealed_data: bytes, decryption_keys: List[DecryptionKey]) -> EventsGetResponse:
     """Unseal event response with one of the provided keys."""
     unsealed = __unseal(sealed_data, decryption_keys)
     return __parse_event_response(unsealed)
 
 
-def __parse_event_response(unsealed: str) -> EventResponse:
+def __parse_event_response(unsealed: str) -> EventsGetResponse:
     """Parse event response from unsealed data."""
     json_data = json.loads(unsealed)
 
     if 'products' not in json_data:
         raise ValueError('Sealed data is not valid event response')
 
-    result: EventResponse = ApiClientDeserializer.deserialize(json_data, 'EventResponse')
+    result: EventsGetResponse = ApiClientDeserializer.deserialize(json_data, 'EventResponse')
     return result
 
 

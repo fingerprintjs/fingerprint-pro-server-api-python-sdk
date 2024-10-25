@@ -40,6 +40,7 @@ class ErrorPlainResponse(BaseModel):
         self._error = None
         self.discriminator = None
         self.error = error
+        self.retry_after = 0
 
     @property
     def error(self) -> str:
@@ -62,3 +63,11 @@ class ErrorPlainResponse(BaseModel):
 
         self._error = error
 
+    @property
+    def retry_after(self) -> int:
+        """Indicates how many seconds you should wait before attempting the next request for 429 error """
+        return self._retry_after
+
+    @retry_after.setter
+    def retry_after(self, retry_after: int):
+        self._retry_after = retry_after

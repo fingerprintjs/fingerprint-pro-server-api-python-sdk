@@ -22,7 +22,7 @@ fi
 find ./docs -type f ! -name "DecryptionKey.md" ! -name "SealedResults.md" -exec rm {} +
 cd fingerprint_pro_server_api_sdk/models
 shopt -s extglob
-rm !("too_many_requests_response.py")
+rm !("error_plain_response.py")
 cd ../..
 java -jar ./bin/swagger-codegen-cli.jar generate -t ./template -l python -i ./res/fingerprint-server-api.yaml -o ./ -c config.json -DpackageVersion=$VERSION
 
@@ -34,7 +34,7 @@ platform=$(uname)
 (
   # Readme file fix
   replacement=$(printf 'The rawAttributes object follows this general shape: `{ value: any } | { error: { name: string; message: string; } }`\n')
-  readme_filename="./docs/RawDeviceAttributesResult.md"
+  readme_filename="./docs/RawDeviceAttributes.md"
   if [ "$platform" = "Darwin" ]; then
     sed -i '' "s/^Name |.*/${replacement}/" "$readme_filename"
     sed -i '' "/^------------ |/c\\" "$readme_filename"
