@@ -19,7 +19,6 @@ Request deleting all data associated with the specified visitor ID. This API is 
 ### Example
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 # Configure API key authorization and region
@@ -69,7 +68,6 @@ Get a detailed analysis of an individual identification event, including Smart S
 ### Example
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 # Configure API key authorization and region
@@ -120,7 +118,6 @@ Get a history of visits (identification events) for a specific `visitorId`. Use 
 ### Example
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 # Configure API key authorization and region
@@ -181,7 +178,6 @@ Change information in existing events specified by `requestId` or *flag suspicio
 ### Example
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import Response
 from fingerprint_pro_server_api_sdk.rest import ApiException
 
 # Configure API key authorization and region

@@ -152,20 +152,20 @@ except ApiException as e:
 Update event for requestId:
 ```python
 import fingerprint_pro_server_api_sdk
-from fingerprint_pro_server_api_sdk import EventUpdateRequest
+from fingerprint_pro_server_api_sdk import EventsUpdateRequest
 from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
 
 configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 
 request_id = 'request_id_example'  # str | The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid).
-body = EventUpdateRequest(linked_id='foo')  # EventUpdateRequest |
-# body = EventUpdateRequest(tag={'bar': 123})
-# body = EventUpdateRequest(suspect=True)
-# body = EventUpdateRequest(linked_id='foo', tag={'bar': 123}, suspect=False)
+body = EventsUpdateRequest(linked_id='foo')  # EventsUpdateRequest |
+# body = EventsUpdateRequest(tag={'bar': 123})
+# body = EventsUpdateRequest(suspect=True)
+# body = EventsUpdateRequest(linked_id='foo', tag={'bar': 123}, suspect=False)
 
 try:
-    api_instance.update_event(request_id, body)
+    api_instance.update_event(body, request_id)
 except KnownApiException as e:
     structured_error = e.structured_error
     print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
