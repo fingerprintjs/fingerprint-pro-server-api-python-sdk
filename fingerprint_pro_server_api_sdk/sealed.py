@@ -56,7 +56,7 @@ def __parse_event_response(unsealed: str) -> EventsGetResponse:
     if 'products' not in json_data:
         raise ValueError('Sealed data is not valid event response')
 
-    result: EventsGetResponse = ApiClientDeserializer.deserialize(json_data, 'EventResponse')
+    result: EventsGetResponse = ApiClientDeserializer.deserialize(json_data, 'EventsGetResponse')
     return result
 
 
