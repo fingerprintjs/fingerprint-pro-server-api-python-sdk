@@ -73,7 +73,7 @@ class WebhookFactoryReset(BaseModel):
     def timestamp(self) -> Optional[int]:
         """Gets the timestamp of this WebhookFactoryReset.  # noqa: E501
 
-        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.   # noqa: E501
 
         :return: The timestamp of this WebhookFactoryReset.  # noqa: E501
         """
@@ -83,7 +83,7 @@ class WebhookFactoryReset(BaseModel):
     def timestamp(self, timestamp: Optional[int]):
         """Sets the timestamp of this WebhookFactoryReset.
 
-        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.   # noqa: E501
 
         :param timestamp: The timestamp of this WebhookFactoryReset.  # noqa: E501
         """

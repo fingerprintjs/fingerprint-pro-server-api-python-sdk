@@ -325,7 +325,6 @@ Class | Method | HTTP request | Description
  - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
  - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
  - [RawDeviceAttributes](docs/RawDeviceAttributes.md)
- - [RelatedVisitor](docs/RelatedVisitor.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
  - [SuspectScore](docs/SuspectScore.md)
