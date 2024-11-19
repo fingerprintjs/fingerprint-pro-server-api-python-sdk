@@ -3,7 +3,7 @@ import argparse
 
 import fingerprint_pro_server_api_sdk
 from fingerprint_pro_server_api_sdk.rest import ApiException
-from fingerprint_pro_server_api_sdk.models import EventUpdateRequest
+from fingerprint_pro_server_api_sdk.models import EventsUpdateRequest
 
 from dotenv import load_dotenv
 
@@ -25,7 +25,7 @@ api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 request_id = os.environ["REQUEST_ID_TO_UPDATE"]
 
 try:
-    updateBody = EventUpdateRequest(**vars(args))
+    updateBody = EventsUpdateRequest(**vars(args))
     print(f'updateBody: {updateBody}')
     api_instance.update_event(updateBody, request_id)
 except ApiException as e:

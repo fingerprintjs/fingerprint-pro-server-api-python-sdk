@@ -1,7 +1,7 @@
 # Sealed results 
 
 ## **UnsealEventResponse**
-> unseal_event_response(sealed: bytes, keys: DecryptionKey[]) -> EventResponse
+> unseal_event_response(sealed: bytes, keys: DecryptionKey[]) -> EventsGetResponse
 
 Decrypts the sealed response with provided keys.
 ### Required Parameters

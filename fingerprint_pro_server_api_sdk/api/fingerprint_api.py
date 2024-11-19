@@ -19,18 +19,11 @@ from fingerprint_pro_server_api_sdk.configuration import Configuration
 from fingerprint_pro_server_api_sdk.api_client import ApiClient
 from fingerprint_pro_server_api_sdk.extend_exception import extend_exception
 from fingerprint_pro_server_api_sdk.rest import ApiException
-from fingerprint_pro_server_api_sdk.models.error_common403_response import ErrorCommon403Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_common429_response import ErrorCommon429Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_event404_response import ErrorEvent404Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_update_event400_response import ErrorUpdateEvent400Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_update_event409_response import ErrorUpdateEvent409Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_visitor400_response import ErrorVisitor400Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_visitor404_response import ErrorVisitor404Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.error_visits403 import ErrorVisits403  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.event_response import EventResponse  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.event_update_request import EventUpdateRequest  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.response import Response  # noqa: F401
-from fingerprint_pro_server_api_sdk.models.too_many_requests_response import TooManyRequestsResponse  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.error_plain_response import ErrorPlainResponse  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.error_response import ErrorResponse  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.events_get_response import EventsGetResponse  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.events_update_request import EventsUpdateRequest  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.visitors_get_response import VisitorsGetResponse  # noqa: F401
 
 
 class FingerprintApi:
@@ -55,7 +48,7 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param visitor_id: The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+        :param visitor_id: The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -77,7 +70,7 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param str visitor_id: The [visitor ID](https://dev.fingerprint.com/docs/js-agent#visitorid) you want to delete. (required)
+        :param str visitor_id: The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) you want to delete. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -142,20 +135,20 @@ class FingerprintApi:
                 collection_formats=collection_formats)
         except ApiException as e:
             if e.status == 400:
-                error = self.api_client.deserialize(e, 'ErrorVisitor400Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 403:
-                error = self.api_client.deserialize(e, 'ErrorCommon403Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 404:
-                error = self.api_client.deserialize(e, 'ErrorVisitor404Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 429:
-                error = self.api_client.deserialize(e, 'ErrorCommon429Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             raise e
 
-    def get_event(self, request_id: str, **kwargs) -> Union[EventResponse, AsyncResult[EventResponse]]:  # noqa: E501
+    def get_event(self, request_id: str, **kwargs) -> Union[EventsGetResponse, AsyncResult[EventsGetResponse]]:  # noqa: E501
         """Get event by request ID  # noqa: E501
 
         Get a detailed analysis of an individual identification event, including Smart Signals.  Please note that the response includes mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. It is highly recommended that you **ignore** the mobile signals for such requests.   Use `requestId` as the URL path parameter. This API method is scoped to a request, i.e. all returned information is by `requestId`.   # noqa: E501
@@ -165,8 +158,8 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param request_id: The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
-        :return: EventResponse
+        :param request_id: The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+        :return: EventsGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -187,8 +180,8 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param str request_id: The unique [identifier](https://dev.fingerprint.com/docs/js-agent#requestid) of each identification request. (required)
-        :return: EventResponse
+        :param str request_id: The unique [identifier](https://dev.fingerprint.com/reference/get-function#requestid) of each identification request. (required)
+        :return: EventsGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -243,7 +236,7 @@ class FingerprintApi:
                 body=body_params,
                 post_params=form_params,
                 files=local_var_files,
-                response_type='EventResponse',  # noqa: E501
+                response_type='EventsGetResponse',  # noqa: E501
                 auth_settings=auth_settings,
                 async_req=params.get('async_req'),
                 _return_http_data_only=params.get('_return_http_data_only'),
@@ -252,14 +245,14 @@ class FingerprintApi:
                 collection_formats=collection_formats)
         except ApiException as e:
             if e.status == 403:
-                error = self.api_client.deserialize(e, 'ErrorCommon403Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 404:
-                error = self.api_client.deserialize(e, 'ErrorEvent404Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             raise e
 
-    def get_visits(self, visitor_id: str, **kwargs) -> Union[Response, AsyncResult[Response]]:  # noqa: E501
+    def get_visits(self, visitor_id: str, **kwargs) -> Union[VisitorsGetResponse, AsyncResult[VisitorsGetResponse]]:  # noqa: E501
         """Get visits by visitor ID  # noqa: E501
 
         Get a history of visits (identification events) for a specific `visitorId`. Use the `visitorId` as a URL path parameter. Only information from the _Identification_ product is returned.  #### Headers  * `Retry-After` — Present in case of `429 Too many requests`. Indicates how long you should wait before making a follow-up request. The value is non-negative decimal integer indicating the seconds to delay after the response is received.   # noqa: E501
@@ -269,13 +262,13 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. (required)
-        :param request_id: Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned. 
-        :param linked_id: Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+        :param visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. (required)
+        :param request_id: Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned. 
+        :param linked_id: Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         :param limit: Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500. 
         :param pagination_key: Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
         :param before: ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
-        :return: Response
+        :return: VisitorsGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -296,13 +289,13 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param str visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/docs/js-agent#visitorid) issued by Fingerprint Pro. (required)
-        :param str request_id: Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/docs/js-agent#requestid). When you filter visits by `requestId`, only one visit will be returned. 
-        :param str linked_id: Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/docs/js-agent#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+        :param str visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. (required)
+        :param str request_id: Filter visits by `requestId`.   Every identification request has a unique identifier associated with it called `requestId`. This identifier is returned to the client in the identification [result](https://dev.fingerprint.com/reference/get-function#requestid). When you filter visits by `requestId`, only one visit will be returned. 
+        :param str linked_id: Filter visits by your custom identifier.   You can use [`linkedId`](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example: session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         :param int limit: Limit scanned results.   For performance reasons, the API first scans some number of events before filtering them. Use `limit` to specify how many events are scanned before they are filtered by `requestId` or `linkedId`. Results are always returned sorted by the timestamp (most recent first). By default, the most recent 100 visits are scanned, the maximum is 500. 
         :param str pagination_key: Use `paginationKey` to get the next page of results.   When more results are available (e.g., you requested 200 results using `limit` parameter, but a total of 600 results are available), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `requestId` of the last returned event. In the following request, use that value in the `paginationKey` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/visitors/:visitorId?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/visitors/:visitorId?limit=200&paginationKey=1683900801733.Ogvu1j`  Pagination happens during scanning and before filtering, so you can get less visits than the `limit` you specified with more available on the next page. When there are no more results available for scanning, the `paginationKey` attribute is not returned. 
         :param int before: ⚠️ Deprecated pagination method, please use `paginationKey` instead. Timestamp (in milliseconds since epoch) used to paginate results. 
-        :return: Response
+        :return: VisitorsGetResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -372,7 +365,7 @@ class FingerprintApi:
                 body=body_params,
                 post_params=form_params,
                 files=local_var_files,
-                response_type='Response',  # noqa: E501
+                response_type='VisitorsGetResponse',  # noqa: E501
                 auth_settings=auth_settings,
                 async_req=params.get('async_req'),
                 _return_http_data_only=params.get('_return_http_data_only'),
@@ -380,15 +373,18 @@ class FingerprintApi:
                 _request_timeout=params.get('_request_timeout'),
                 collection_formats=collection_formats)
         except ApiException as e:
+            if e.status == 400:
+                error = self.api_client.deserialize(e, 'ErrorPlainResponse', True)
+                raise extend_exception(e, error)
             if e.status == 403:
-                error = self.api_client.deserialize(e, 'ErrorVisits403', True)
+                error = self.api_client.deserialize(e, 'ErrorPlainResponse', True)
                 raise extend_exception(e, error)
             if e.status == 429:
-                error = self.api_client.deserialize(e, 'TooManyRequestsResponse', True)
+                error = self.api_client.deserialize(e, 'ErrorPlainResponse', True)
                 raise extend_exception(e, error)
             raise e
 
-    def update_event(self, body: EventUpdateRequest, request_id: str, **kwargs) -> Union[None, AsyncResult[None]]:  # noqa: E501
+    def update_event(self, body: EventsUpdateRequest, request_id: str, **kwargs) -> Union[None, AsyncResult[None]]:  # noqa: E501
         """Update an event with a given request ID  # noqa: E501
 
         Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
@@ -399,7 +395,7 @@ class FingerprintApi:
 
         :param async_req bool
         :param body: (required)
-        :param request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+        :param request_id: The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -411,7 +407,7 @@ class FingerprintApi:
             (data) = self.update_event_with_http_info(body, request_id, **kwargs)  # noqa: E501
             return data
 
-    def update_event_with_http_info(self, body: EventUpdateRequest, request_id: str, **kwargs):  # noqa: E501
+    def update_event_with_http_info(self, body: EventsUpdateRequest, request_id: str, **kwargs):  # noqa: E501
         """Update an event with a given request ID  # noqa: E501
 
         Change information in existing events specified by `requestId` or *flag suspicious events*.  When an event is created, it is assigned `linkedId` and `tag` submitted through the JS agent parameters. This information might not be available on the client so the Server API allows for updating the attributes after the fact.  **Warning** It's not possible to update events older than 10 days.   # noqa: E501
@@ -421,8 +417,8 @@ class FingerprintApi:
         >>> result = thread.get()
 
         :param async_req bool
-        :param EventUpdateRequest body: (required)
-        :param str request_id: The unique event [identifier](https://dev.fingerprint.com/docs/js-agent#requestid). (required)
+        :param EventsUpdateRequest body: (required)
+        :param str request_id: The unique event [identifier](https://dev.fingerprint.com/reference/get-function#requestid). (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -497,15 +493,15 @@ class FingerprintApi:
                 collection_formats=collection_formats)
         except ApiException as e:
             if e.status == 400:
-                error = self.api_client.deserialize(e, 'ErrorUpdateEvent400Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 403:
-                error = self.api_client.deserialize(e, 'ErrorCommon403Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 404:
-                error = self.api_client.deserialize(e, 'ErrorEvent404Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 409:
-                error = self.api_client.deserialize(e, 'ErrorUpdateEvent409Response', True)
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             raise e

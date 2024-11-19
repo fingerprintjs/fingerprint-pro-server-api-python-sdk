@@ -5,8 +5,8 @@ import unittest
 from unittest import expectedFailure
 
 from fingerprint_pro_server_api_sdk import ApiClientDeserializer, DecryptionAlgorithm, DecryptionKey, \
-    unseal_event_response, UnsealError, UnsealAggregateError, EventResponse, ProductsResponse, \
-    ProductsResponseIdentification, BrowserDetails
+    unseal_event_response, UnsealError, UnsealAggregateError, EventsGetResponse, Products, \
+    ProductIdentification, BrowserDetails
 
 class TestSealed(unittest.TestCase):
     valid_key = base64.b64decode('p2PA7MGy5tx56cnyJaFZMr96BCFwZeHjZV2EqMvTq53=')
@@ -91,7 +91,7 @@ class TestSealed(unittest.TestCase):
     }
   }
 }'''
-        expected_result = ApiClientDeserializer.deserialize(json.loads(sealed_result), 'EventResponse')
+        expected_result = ApiClientDeserializer.deserialize(json.loads(sealed_result), 'EventsGetResponse')
 
         sealed_data = base64.b64decode(
             'noXc7SXO+mqeAGrvBMgObi/S0fXTpP3zupk8qFqsO/1zdtWCD169iLA3VkkZh9ICHpZ0oWRzqG0M9/TnCeKFohgBLqDp6O0zEfXOv6i5q++aucItznQdLwrKLP+O0blfb4dWVI8/aSbd4ELAZuJJxj9bCoVZ1vk+ShbUXCRZTD30OIEAr3eiG9aw00y1UZIqMgX6CkFlU9L9OnKLsNsyomPIaRHTmgVTI5kNhrnVNyNsnzt9rY7fUD52DQxJILVPrUJ1Q+qW7VyNslzGYBPG0DyYlKbRAomKJDQIkdj/Uwa6bhSTq4XYNVvbk5AJ/dGwvsVdOnkMT2Ipd67KwbKfw5bqQj/cw6bj8Cp2FD4Dy4Ud4daBpPRsCyxBM2jOjVz1B/lAyrOp8BweXOXYugwdPyEn38MBZ5oL4D38jIwR/QiVnMHpERh93jtgwh9Abza6i4/zZaDAbPhtZLXSM5ztdctv8bAb63CppLU541Kf4OaLO3QLvfLRXK2n8bwEwzVAqQ22dyzt6/vPiRbZ5akh8JB6QFXG0QJF9DejsIspKF3JvOKjG2edmC9o+GfL3hwDBiihYXCGY9lElZICAdt+7rZm5UxMx7STrVKy81xcvfaIp1BwGh/HyMsJnkE8IczzRFpLlHGYuNDxdLoBjiifrmHvOCUDcV8UvhSV+UAZtAVejdNGo5G/bz0NF21HUO4pVRPu6RqZIs/aX4hlm6iO/0Ru00ct8pfadUIgRcephTuFC2fHyZxNBC6NApRtLSNLfzYTTo/uSjgcu6rLWiNo5G7yfrM45RXjalFEFzk75Z/fu9lCJJa5uLFgDNKlU+IaFjArfXJCll3apbZp4/LNKiU35ZlB7ZmjDTrji1wLep8iRVVEGht/DW00MTok7Zn7Fv+MlxgWmbZB3BuezwTmXb/fNw==')
@@ -102,9 +102,9 @@ class TestSealed(unittest.TestCase):
         ])
 
         self.assertEqual(result, expected_result)
-        self.assertIsInstance(result, EventResponse)
-        self.assertIsInstance(result.products, ProductsResponse)
-        self.assertIsInstance(result.products.identification, ProductsResponseIdentification)
+        self.assertIsInstance(result, EventsGetResponse)
+        self.assertIsInstance(result.products, Products)
+        self.assertIsInstance(result.products.identification, ProductIdentification)
         self.assertIsInstance(result.products.identification.data.browser_details, BrowserDetails)
 
 

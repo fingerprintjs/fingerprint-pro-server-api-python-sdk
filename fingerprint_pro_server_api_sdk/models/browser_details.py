@@ -34,8 +34,7 @@ class BrowserDetails(BaseModel):
         'os': 'str',
         'os_version': 'str',
         'device': 'str',
-        'user_agent': 'str',
-        'bot_probability': 'int'
+        'user_agent': 'str'
     }
 
     attribute_map = {
@@ -45,11 +44,10 @@ class BrowserDetails(BaseModel):
         'os': 'os',
         'os_version': 'osVersion',
         'device': 'device',
-        'user_agent': 'userAgent',
-        'bot_probability': 'botProbability'
+        'user_agent': 'userAgent'
     }
 
-    def __init__(self, browser_name=None, browser_major_version=None, browser_full_version=None, os=None, os_version=None, device=None, user_agent=None, bot_probability=None):  # noqa: E501
+    def __init__(self, browser_name=None, browser_major_version=None, browser_full_version=None, os=None, os_version=None, device=None, user_agent=None):  # noqa: E501
         """BrowserDetails - a model defined in Swagger"""  # noqa: E501
         self._browser_name = None
         self._browser_major_version = None
@@ -58,7 +56,6 @@ class BrowserDetails(BaseModel):
         self._os_version = None
         self._device = None
         self._user_agent = None
-        self._bot_probability = None
         self.discriminator = None
         self.browser_name = browser_name
         self.browser_major_version = browser_major_version
@@ -67,8 +64,6 @@ class BrowserDetails(BaseModel):
         self.os_version = os_version
         self.device = device
         self.user_agent = user_agent
-        if bot_probability is not None:
-            self.bot_probability = bot_probability
 
     @property
     def browser_name(self) -> str:
@@ -216,23 +211,4 @@ class BrowserDetails(BaseModel):
             raise ValueError("Invalid value for `user_agent`, must not be `None`")  # noqa: E501
 
         self._user_agent = user_agent
-
-    @property
-    def bot_probability(self) -> Optional[int]:
-        """Gets the bot_probability of this BrowserDetails.  # noqa: E501
-
-
-        :return: The bot_probability of this BrowserDetails.  # noqa: E501
-        """
-        return self._bot_probability
-
-    @bot_probability.setter
-    def bot_probability(self, bot_probability: Optional[int]):
-        """Sets the bot_probability of this BrowserDetails.
-
-
-        :param bot_probability: The bot_probability of this BrowserDetails.  # noqa: E501
-        """
-
-        self._bot_probability = bot_probability
 
