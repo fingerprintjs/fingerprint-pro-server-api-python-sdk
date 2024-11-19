@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Coverage for fingerprint_pro_server_api_sdk/api_client.py: 66%</title>
+    <title>Coverage for fingerprint_pro_server_api_sdk/api_client.py: 65%</title>
     <link rel="icon" sizes="32x32" href="favicon_32_cb_58284776.png">
     <link rel="stylesheet" href="style_cb_8e611ae1.css" type="text/css">
     <script src="coverage_html_cb_6fb7b396.js" defer></script>
@@ -12,7 +12,7 @@
     <div class="content">
         <h1>
             <span class="text">Coverage for </span><b>fingerprint_pro_server_api_sdk/api_client.py</b>:
-            <span class="pc_cov">66%</span>
+            <span class="pc_cov">65%</span>
         </h1>
         <aside id="help_panel_wrapper">
             <input id="help_panel_state" type="checkbox">
@@ -55,8 +55,8 @@
         </aside>
         <h2>
             <span class="text">275 statements &nbsp;</span>
-            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">181<span class="text"> run</span></button>
-            <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">94<span class="text"> missing</span></button>
+            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">179<span class="text"> run</span></button>
+            <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">96<span class="text"> missing</span></button>
             <button type="button" class="exc show_exc button_toggle_exc" value="exc" data-shortcut="x" title="Toggle lines excluded">0<span class="text"> excluded</span></button>
         </h2>
         <p class="text">
@@ -64,8 +64,8 @@
             <a id="indexLink" class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a id="nextFileLink" class="nav" href="z_45b79bf59ff2da71_base_model_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.3">coverage.py v7.6.3</a>,
-            created at 2024-10-15 10:18 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.7">coverage.py v7.6.7</a>,
+            created at 2024-11-19 16:03 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -580,8 +580,8 @@
     <p class="pln"><span class="n"><a id="t498" href="#t498">498</a></span><span class="t">                        <span class="key">for</span> <span class="nam">sub_data</span> <span class="key">in</span> <span class="nam">data</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t499" href="#t499">499</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t500" href="#t500">500</a></span><span class="t">            <span class="key">if</span> <span class="nam">klass</span><span class="op">.</span><span class="nam">startswith</span><span class="op">(</span><span class="str">'dict('</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t501" href="#t501">501</a></span><span class="t">                <span class="nam">sub_kls</span> <span class="op">=</span> <span class="nam">re</span><span class="op">.</span><span class="nam">match</span><span class="op">(</span><span class="str">r'dict\(([^,]*), (.*)\)'</span><span class="op">,</span> <span class="nam">klass</span><span class="op">)</span><span class="op">.</span><span class="nam">group</span><span class="op">(</span><span class="num">2</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t502" href="#t502">502</a></span><span class="t">                <span class="key">return</span> <span class="op">{</span><span class="nam">k</span><span class="op">:</span> <span class="nam">ApiClientDeserializer</span><span class="op">.</span><span class="nam">deserialize</span><span class="op">(</span><span class="nam">v</span><span class="op">,</span> <span class="nam">sub_kls</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t501" href="#t501">501</a></span><span class="t">                <span class="nam">sub_kls</span> <span class="op">=</span> <span class="nam">re</span><span class="op">.</span><span class="nam">match</span><span class="op">(</span><span class="str">r'dict\(([^,]*), (.*)\)'</span><span class="op">,</span> <span class="nam">klass</span><span class="op">)</span><span class="op">.</span><span class="nam">group</span><span class="op">(</span><span class="num">2</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t502" href="#t502">502</a></span><span class="t">                <span class="key">return</span> <span class="op">{</span><span class="nam">k</span><span class="op">:</span> <span class="nam">ApiClientDeserializer</span><span class="op">.</span><span class="nam">deserialize</span><span class="op">(</span><span class="nam">v</span><span class="op">,</span> <span class="nam">sub_kls</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t503" href="#t503">503</a></span><span class="t">                        <span class="key">for</span> <span class="nam">k</span><span class="op">,</span> <span class="nam">v</span> <span class="key">in</span> <span class="nam">data</span><span class="op">.</span><span class="nam">items</span><span class="op">(</span><span class="op">)</span><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t504" href="#t504">504</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t505" href="#t505">505</a></span><span class="t">            <span class="com"># convert str to class</span>&nbsp;</span><span class="r"></span></p>
@@ -593,7 +593,7 @@
     <p class="run"><span class="n"><a id="t511" href="#t511">511</a></span><span class="t">        <span class="key">if</span> <span class="nam">klass</span> <span class="key">in</span> <span class="nam">PRIMITIVE_TYPES</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t512" href="#t512">512</a></span><span class="t">            <span class="key">return</span> <span class="nam">ApiClientDeserializer</span><span class="op">.</span><span class="nam">__deserialize_primitive</span><span class="op">(</span><span class="nam">data</span><span class="op">,</span> <span class="nam">klass</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t513" href="#t513">513</a></span><span class="t">        <span class="key">elif</span> <span class="nam">klass</span> <span class="op">==</span> <span class="nam">object</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t514" href="#t514">514</a></span><span class="t">            <span class="key">return</span> <span class="nam">data</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t514" href="#t514">514</a></span><span class="t">            <span class="key">return</span> <span class="nam">data</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t515" href="#t515">515</a></span><span class="t">        <span class="key">elif</span> <span class="nam">klass</span> <span class="op">==</span> <span class="nam">date</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t516" href="#t516">516</a></span><span class="t">            <span class="key">return</span> <span class="nam">ApiClientDeserializer</span><span class="op">.</span><span class="nam">__deserialize_date</span><span class="op">(</span><span class="nam">data</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t517" href="#t517">517</a></span><span class="t">        <span class="key">elif</span> <span class="nam">klass</span> <span class="op">==</span> <span class="nam">datetime</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
@@ -672,7 +672,7 @@
     <p class="run"><span class="n"><a id="t590" href="#t590">590</a></span><span class="t">        <span class="key">if</span> <span class="key">not</span> <span class="nam">klass</span><span class="op">.</span><span class="nam">swagger_types</span> <span class="key">and</span> <span class="key">not</span> <span class="nam">ApiClientDeserializer</span><span class="op">.</span><span class="nam">__hasattr</span><span class="op">(</span><span class="nam">klass</span><span class="op">,</span> <span class="str">'get_real_child_model'</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t591" href="#t591">591</a></span><span class="t">            <span class="key">if</span> <span class="nam">hasattr</span><span class="op">(</span><span class="nam">klass</span><span class="op">,</span> <span class="str">'__parent_class__'</span><span class="op">)</span> <span class="key">and</span> <span class="nam">klass</span><span class="op">.</span><span class="nam">__parent_class__</span> <span class="op">==</span> <span class="str">'dict'</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t592" href="#t592">592</a></span><span class="t">                <span class="key">return</span> <span class="nam">klass</span><span class="op">(</span><span class="op">**</span><span class="nam">data</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t593" href="#t593">593</a></span><span class="t">            <span class="key">return</span> <span class="nam">data</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t593" href="#t593">593</a></span><span class="t">            <span class="key">return</span> <span class="nam">data</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t594" href="#t594">594</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t595" href="#t595">595</a></span><span class="t">        <span class="nam">kwargs</span> <span class="op">=</span> <span class="op">{</span><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t596" href="#t596">596</a></span><span class="t">        <span class="key">if</span> <span class="nam">klass</span><span class="op">.</span><span class="nam">swagger_types</span> <span class="key">is</span> <span class="key">not</span> <span class="key">None</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
@@ -704,8 +704,8 @@
             <a class="nav" href="index.html">&Hat; index</a> &nbsp; &nbsp;
             <a class="nav" href="z_45b79bf59ff2da71_base_model_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
-            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.3">coverage.py v7.6.3</a>,
-            created at 2024-10-15 10:18 +0000
+            <a class="nav" href="https://coverage.readthedocs.io/en/7.6.7">coverage.py v7.6.7</a>,
+            created at 2024-11-19 16:03 +0000
         </p>
     </div>
 </footer>
