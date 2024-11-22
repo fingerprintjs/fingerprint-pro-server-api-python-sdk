@@ -2,7 +2,7 @@ import hmac
 import hashlib
 
 
-class Webhook:
+class WebhookValidation:
     """Manages work with webhooks."""
     @staticmethod
     def is_valid_hmac_signature(signature: str, data: bytes, secret: str) -> bool:
@@ -23,7 +23,7 @@ class Webhook:
             parts = signature.split('=')
             if len(parts) == 2:
                 version, hash_value = parts
-                if version == "v1" and Webhook.is_valid_hmac_signature(hash_value, data, secret):
+                if version == "v1" and WebhookValidation.is_valid_hmac_signature(hash_value, data, secret):
                     return True
 
         return False

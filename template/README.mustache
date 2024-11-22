@@ -214,7 +214,7 @@ This SDK provides utility method for verifying the HMAC signature of the incomin
 ```python
 import os
 from flask import Flask, request, jsonify
-from fingerprint_pro_server_api_sdk import Webhook
+from fingerprint_pro_server_api_sdk import WebhookValidation
 
 app = Flask(__name__)
 
@@ -235,7 +235,7 @@ def webhook_handler():
         data = request.get_data()
 
         # Validate the webhook signature
-        is_valid = Webhook.is_valid_webhook_signature(header, data, secret)
+        is_valid = WebhookValidation.is_valid_webhook_signature(header, data, secret)
         if not is_valid:
             return jsonify({"message": "Webhook signature is invalid."}), 403
 
