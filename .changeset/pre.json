@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "dev",
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "7.1.0"
