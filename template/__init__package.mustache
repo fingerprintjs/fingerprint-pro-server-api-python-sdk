@@ -16,6 +16,6 @@ from {{packageName}}.base_model import BaseModel
 {{#models}}{{#model}}from {{modelPackage}}.{{classFilename}} import {{classname}}
 {{/model}}{{/models}}
 # import custom methods into sdk package
-from {{packageName}}.webhook import Webhook
+from {{packageName}}.webhook_validation import WebhookValidation
 from {{packageName}}.sealed import ApiClientDeserializer, DecryptionAlgorithm, DecryptionKey, \
     UnsealError, UnsealAggregateError, unseal_event_response
