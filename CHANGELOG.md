@@ -4,6 +4,9 @@
 
 ### Major Changes
 
+The underlying Server API hasn’t changed, but we made SDK type and class generation more precise, resulting in small breaking changes for the SDK itself. This change should make the SDK API a lot more stable going forward
+
+
 - - Remove the `BrowserDetails` field `botProbability`.
   - Update the `IdentificationConfidence` field `score` type format: `float` -> `double`.
   - Make the `RawDeviceAttributeError` field `name` **optional** .
