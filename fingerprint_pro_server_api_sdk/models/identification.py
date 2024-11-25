@@ -43,6 +43,7 @@ class Identification(BaseModel):
         'ip': 'str',
         'ip_location': 'DeprecatedGeolocation',
         'linked_id': 'str',
+        'suspect': 'bool',
         'timestamp': 'int',
         'time': 'datetime',
         'url': 'str',
@@ -62,6 +63,7 @@ class Identification(BaseModel):
         'ip': 'ip',
         'ip_location': 'ipLocation',
         'linked_id': 'linkedId',
+        'suspect': 'suspect',
         'timestamp': 'timestamp',
         'time': 'time',
         'url': 'url',
@@ -73,7 +75,7 @@ class Identification(BaseModel):
         'components': 'components'
     }
 
-    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None):  # noqa: E501
+    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, suspect=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None):  # noqa: E501
         """Identification - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._request_id = None
@@ -82,6 +84,7 @@ class Identification(BaseModel):
         self._ip = None
         self._ip_location = None
         self._linked_id = None
+        self._suspect = None
         self._timestamp = None
         self._time = None
         self._url = None
@@ -101,6 +104,8 @@ class Identification(BaseModel):
             self.ip_location = ip_location
         if linked_id is not None:
             self.linked_id = linked_id
+        if suspect is not None:
+            self.suspect = suspect
         self.timestamp = timestamp
         self.time = time
         self.url = url
@@ -265,6 +270,27 @@ class Identification(BaseModel):
         """
 
         self._linked_id = linked_id
+
+    @property
+    def suspect(self) -> Optional[bool]:
+        """Gets the suspect of this Identification.  # noqa: E501
+
+        Field is `true` if you have previously set the `suspect` flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).  # noqa: E501
+
+        :return: The suspect of this Identification.  # noqa: E501
+        """
+        return self._suspect
+
+    @suspect.setter
+    def suspect(self, suspect: Optional[bool]):
+        """Sets the suspect of this Identification.
+
+        Field is `true` if you have previously set the `suspect` flag for this event using the [Server API Update event endpoint](https://dev.fingerprint.com/reference/updateevent).  # noqa: E501
+
+        :param suspect: The suspect of this Identification.  # noqa: E501
+        """
+
+        self._suspect = suspect
 
     @property
     def timestamp(self) -> int:
