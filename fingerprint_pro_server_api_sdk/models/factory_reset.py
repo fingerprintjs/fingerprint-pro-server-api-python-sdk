@@ -73,7 +73,7 @@ class FactoryReset(BaseModel):
     def timestamp(self) -> int:
         """Gets the timestamp of this FactoryReset.  # noqa: E501
 
-        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.   # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
 
         :return: The timestamp of this FactoryReset.  # noqa: E501
         """
@@ -83,7 +83,7 @@ class FactoryReset(BaseModel):
     def timestamp(self, timestamp: int):
         """Sets the timestamp of this FactoryReset.
 
-        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.   # noqa: E501
+        This field is just another representation of the value in the `time` field. The time of the most recent factory reset that happened on the **mobile device** is expressed as Unix epoch time.          # noqa: E501
 
         :param timestamp: The timestamp of this FactoryReset.  # noqa: E501
         """

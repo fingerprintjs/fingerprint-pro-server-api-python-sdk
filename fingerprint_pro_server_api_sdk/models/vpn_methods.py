@@ -31,27 +31,31 @@ class VPNMethods(BaseModel):
         'timezone_mismatch': 'bool',
         'public_vpn': 'bool',
         'auxiliary_mobile': 'bool',
-        'os_mismatch': 'bool'
+        'os_mismatch': 'bool',
+        'relay': 'bool'
     }
 
     attribute_map = {
         'timezone_mismatch': 'timezoneMismatch',
         'public_vpn': 'publicVPN',
         'auxiliary_mobile': 'auxiliaryMobile',
-        'os_mismatch': 'osMismatch'
+        'os_mismatch': 'osMismatch',
+        'relay': 'relay'
     }
 
-    def __init__(self, timezone_mismatch=None, public_vpn=None, auxiliary_mobile=None, os_mismatch=None):  # noqa: E501
+    def __init__(self, timezone_mismatch=None, public_vpn=None, auxiliary_mobile=None, os_mismatch=None, relay=None):  # noqa: E501
         """VPNMethods - a model defined in Swagger"""  # noqa: E501
         self._timezone_mismatch = None
         self._public_vpn = None
         self._auxiliary_mobile = None
         self._os_mismatch = None
+        self._relay = None
         self.discriminator = None
         self.timezone_mismatch = timezone_mismatch
         self.public_vpn = public_vpn
         self.auxiliary_mobile = auxiliary_mobile
         self.os_mismatch = os_mismatch
+        self.relay = relay
 
     @property
     def timezone_mismatch(self) -> bool:
@@ -144,4 +148,27 @@ class VPNMethods(BaseModel):
             raise ValueError("Invalid value for `os_mismatch`, must not be `None`")  # noqa: E501
 
         self._os_mismatch = os_mismatch
+
+    @property
+    def relay(self) -> bool:
+        """Gets the relay of this VPNMethods.  # noqa: E501
+
+        Request IP address belongs to a relay service provider, indicating the use of relay services like [Apple Private relay](https://support.apple.com/en-us/102602) or [Cloudflare Warp](https://developers.cloudflare.com/warp-client/).   * Like VPNs, relay services anonymize the visitor's true IP address. * Unlike traditional VPNs, relay services don't let visitors spoof their location by choosing an exit node in a different country.  This field allows you to differentiate VPN users and relay service users in your fraud prevention logic.   # noqa: E501
+
+        :return: The relay of this VPNMethods.  # noqa: E501
+        """
+        return self._relay
+
+    @relay.setter
+    def relay(self, relay: bool):
+        """Sets the relay of this VPNMethods.
+
+        Request IP address belongs to a relay service provider, indicating the use of relay services like [Apple Private relay](https://support.apple.com/en-us/102602) or [Cloudflare Warp](https://developers.cloudflare.com/warp-client/).   * Like VPNs, relay services anonymize the visitor's true IP address. * Unlike traditional VPNs, relay services don't let visitors spoof their location by choosing an exit node in a different country.  This field allows you to differentiate VPN users and relay service users in your fraud prevention logic.   # noqa: E501
+
+        :param relay: The relay of this VPNMethods.  # noqa: E501
+        """
+        if relay is None:
+            raise ValueError("Invalid value for `relay`, must not be `None`")  # noqa: E501
+
+        self._relay = relay
 
