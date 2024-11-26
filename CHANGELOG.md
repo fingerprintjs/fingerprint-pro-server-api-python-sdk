@@ -1,11 +1,17 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.1.0
+
+### Minor Changes
+
+- Add `relay` detection method to the VPN Detection Smart Signal ([cff0ef7](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/cff0ef77d21758844f7b9ff466df78aa7ecba51e))
+- **events**: Add a `suspect` field to the `identification` product schema ([cff0ef7](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/cff0ef77d21758844f7b9ff466df78aa7ecba51e))
+
 ## 8.0.0
 
 ### Major Changes
 
 The underlying Server API hasn’t changed, but we made SDK type and class generation more precise, resulting in small breaking changes for the SDK itself. This change should make the SDK API a lot more stable going forward
-
 
 - - Remove the `BrowserDetails` field `botProbability`.
   - Update the `IdentificationConfidence` field `score` type format: `float` -> `double`.
