@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete_visitor_data**](FingerprintApi.md#delete_visitor_data) | **DELETE** /visitors/{visitor_id} | Delete data by visitor ID
 [**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
+[**get_related_visitors**](FingerprintApi.md#get_related_visitors) | **GET** /related-visitors | Get Related Visitors
 [**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
 [**update_event**](FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
@@ -96,6 +97,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EventsGetResponse**](EventsGetResponse.md)
+
+### Authorization
+
+[ApiKeyHeader](../README.md#ApiKeyHeader), [ApiKeyQuery](../README.md#ApiKeyQuery)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_related_visitors**
+> RelatedVisitorsResponse get_related_visitors(visitor_id)
+
+Get Related Visitors
+
+Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device. It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.  ⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️  If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support). To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api). 
+
+### Example
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+# Configure API key authorization and region
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY", region="eu")
+
+# create an instance of the API class
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+visitor_id = 'visitor_id_example' # str | The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device.
+
+try:
+    # Get Related Visitors
+    api_response = api_instance.get_related_visitors(visitor_id)
+    print(api_response)
+except ApiException as e:
+    print("Exception when calling FingerprintApi->get_related_visitors: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **visitor_id** | **str**| The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. | 
+
+### Return type
+
+[**RelatedVisitorsResponse**](RelatedVisitorsResponse.md)
 
 ### Authorization
 

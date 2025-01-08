@@ -23,6 +23,7 @@ from fingerprint_pro_server_api_sdk.models.error_plain_response import ErrorPlai
 from fingerprint_pro_server_api_sdk.models.error_response import ErrorResponse  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.events_get_response import EventsGetResponse  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.events_update_request import EventsUpdateRequest  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.related_visitors_response import RelatedVisitorsResponse  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.visitors_get_response import VisitorsGetResponse  # noqa: F401
 
 
@@ -248,6 +249,116 @@ class FingerprintApi:
                 error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             if e.status == 404:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
+                raise extend_exception(e, error)
+            raise e
+
+    def get_related_visitors(self, visitor_id: str, **kwargs) -> Union[RelatedVisitorsResponse, AsyncResult[RelatedVisitorsResponse]]:  # noqa: E501
+        """Get Related Visitors  # noqa: E501
+
+        Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device. It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.  ⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️  If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support). To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_related_visitors(visitor_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param visitor_id: The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. (required)
+        :return: RelatedVisitorsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_related_visitors_with_http_info(visitor_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_related_visitors_with_http_info(visitor_id, **kwargs)  # noqa: E501
+            return data
+
+    def get_related_visitors_with_http_info(self, visitor_id: str, **kwargs):  # noqa: E501
+        """Get Related Visitors  # noqa: E501
+
+        Related visitors API lets you link web visits and in-app browser visits that originated from the same mobile device. It searches the past 6 months of identification events to find the visitor IDs that belong to the same mobile device as the given visitor ID.  ⚠️ Please note that this API is not enabled by default and is billable separately. ⚠️  If you would like to use Related visitors API, please contact our [support team](https://fingerprint.com/support). To learn more, see [Related visitors API reference](https://dev.fingerprint.com/reference/related-visitors-api).   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_related_visitors_with_http_info(visitor_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str visitor_id: The [visitor ID](https://dev.fingerprint.com/reference/get-function#visitorid) for which you want to find the other visitor IDs that originated from the same mobile device. (required)
+        :return: RelatedVisitorsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = [
+            'visitor_id',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout']
+
+        params = locals()
+        for key, val in params['kwargs'].items():
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_related_visitors" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'visitor_id' is set
+        if 'visitor_id' not in params or params['visitor_id'] is None:
+            raise ValueError("Missing the required parameter `visitor_id` when calling `get_related_visitors`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/8.1.0')]
+        if 'visitor_id' in params:
+            query_params.append(('visitor_id', params['visitor_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
+
+        try:
+            return self.api_client.call_api(
+                '/related-visitors', 'GET',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type='RelatedVisitorsResponse',  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 400:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
+                raise extend_exception(e, error)
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
+                raise extend_exception(e, error)
+            if e.status == 404:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
+                raise extend_exception(e, error)
+            if e.status == 429:
                 error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             raise e
