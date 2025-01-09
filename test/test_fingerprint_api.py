@@ -17,7 +17,7 @@ import unittest
 import urllib3
 
 from fingerprint_pro_server_api_sdk import (Configuration, ErrorResponse, ErrorPlainResponse, ErrorCode,
-                                            RawDeviceAttributes, EventsUpdateRequest)
+                                            RawDeviceAttributes, EventsUpdateRequest, RelatedVisitorsResponse)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from urllib.parse import urlencode
@@ -60,6 +60,8 @@ MOCK_UPDATE_EVENT_403_TOKEN_NOT_FOUND = '403_token_not_found.json'  # errors/
 MOCK_UPDATE_EVENT_403_WRONG_REGION = '403_wrong_region.json'  # errors/
 MOCK_UPDATE_EVENT_404 = '404_request_not_found.json'  # errors/
 MOCK_UPDATE_EVENT_409 = '409_state_not_ready.json'  # errors/
+
+MOCK_GET_RELATED_VISITORS_200= 'related-visitors/get_related_visitors_200.json'
 
 class MockPoolManager(object):
 
@@ -109,6 +111,10 @@ class MockPoolManager(object):
         if mock_file_by_first_argument == 'update_event':
             return urllib3.HTTPResponse(status=200, body='OK')
         try:
+            if mock_file_by_first_argument == 'related-visitors':
+                # Extract file name from visitor_id param
+                mock_file_by_first_argument = r[1]['fields'][1][1]
+
             path = './test/mocks/' + mock_file_by_first_argument
 
             if not os.path.isfile(path):
@@ -159,6 +165,15 @@ class TestFingerprintApi(unittest.TestCase):
             "ap": "ap.api.fpjs.io",
         }.get(region, "api.fpjs.io")
         return 'https://%s/events/%s' % (domain, request_id)
+
+    @staticmethod
+    def get_related_visitors_path(region='us'):
+        domain = {
+            "us": "api.fpjs.io",
+            "eu": "eu.api.fpjs.io",
+            "ap": "ap.api.fpjs.io",
+        }.get(region, "api.fpjs.io")
+        return 'https://%s/related-visitors' % domain
 
     def test_get_visits_correct_data(self):
         """Test checks correct code run result in default scenario"""
@@ -557,6 +572,17 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertEqual(context.exception.status, 200)
         self.assertIsInstance(context.exception.reason, ValueError)
         self.assertEqual(context.exception.body, raw_file_data)
+
+    def test_get_related_visitors(self):
+        """Test that get related visitors returns correct response"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_related_visitors_path(),
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_200)], headers=self.request_headers,
+                                 preload_content=True, timeout=None)
+
+        response = self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_200)
+        self.assertIsInstance(response, RelatedVisitorsResponse)
 
 
 if __name__ == '__main__':
