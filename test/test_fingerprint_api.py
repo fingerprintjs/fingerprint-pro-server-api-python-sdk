@@ -61,10 +61,14 @@ MOCK_UPDATE_EVENT_403_WRONG_REGION = '403_wrong_region.json'  # errors/
 MOCK_UPDATE_EVENT_404 = '404_request_not_found.json'  # errors/
 MOCK_UPDATE_EVENT_409 = '409_state_not_ready.json'  # errors/
 
-MOCK_GET_RELATED_VISITORS_200= 'related-visitors/get_related_visitors_200.json'
+MOCK_GET_RELATED_VISITORS_200 = 'related-visitors/get_related_visitors_200.json'
+MOCK_GET_RELATED_VISITORS_400 = '400_visitor_id_invalid.json'  # errors/
+MOCK_GET_RELATED_VISITORS_403 = '403_feature_not_enabled.json'  # errors/
+MOCK_GET_RELATED_VISITORS_404 = '404_visitor_not_found.json'  # errors/
+MOCK_GET_RELATED_VISITORS_429 = '429_too_many_requests.json'  # errors/
+
 
 class MockPoolManager(object):
-
 
     def __init__(self, tc, request_headers=None):
         if request_headers is None:
@@ -126,7 +130,8 @@ class MockPoolManager(object):
             return urllib3.HTTPResponse(status=status, body=answer_mock, headers=self.request_headers)
         except IOError as e:
             print(e)
-            return urllib3.HTTPResponse(status=200, body='{"visitorId": "%s", "visits": []}' % mock_file_by_first_argument)
+            return urllib3.HTTPResponse(status=200,
+                                        body='{"visitorId": "%s", "visits": []}' % mock_file_by_first_argument)
             pass
 
 
@@ -311,7 +316,6 @@ class TestFingerprintApi(unittest.TestCase):
         for field in response.products.attribute_map.keys():
             value = getattr(response.products, field)
             self.assertIsNone(value, f"Signal '{field}' is not empty")
-
 
     def test_get_visits_empty_answer(self):
         """Test checks correct code running in case of there is no visits"""
@@ -578,11 +582,81 @@ class TestFingerprintApi(unittest.TestCase):
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_pool.expect_request('GET', TestFingerprintApi.get_related_visitors_path(),
-                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_200)], headers=self.request_headers,
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_200)],
+                                 headers=self.request_headers,
                                  preload_content=True, timeout=None)
 
         response = self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_200)
         self.assertIsInstance(response, RelatedVisitorsResponse)
+
+    def test_get_related_visitors_400(self):
+        """Test that related visitors returns 400 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_related_visitors_path(),
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_400)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=400,
+                                 )
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_400)
+        self.assertEqual(context.exception.status, 400)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.REQUESTCANNOTBEPARSED)
+
+    def test_get_related_visitors_403(self):
+        """Test that related visitors returns 403 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_related_visitors_path(),
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_403)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=403,
+                                 )
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_403)
+        self.assertEqual(context.exception.status, 403)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.FEATURENOTENABLED)
+
+    def test_get_related_visitors_404(self):
+        """Test that related visitors returns 404 error"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_related_visitors_path(),
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_404)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=404,
+                                 )
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_404)
+        self.assertEqual(context.exception.status, 404)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.VISITORNOTFOUND)
+
+    def test_get_related_visitors_429(self):
+        """Test that related visitors returns 429 error"""
+        mock_pool = MockPoolManager(self, request_headers={'Retry-After': '4'})
+        self.api.api_client.rest_client.pool_manager = mock_pool
+
+        mock_pool.expect_request('GET',
+                                 TestFingerprintApi.get_related_visitors_path(),
+                                 fields=[self.integration_info, ('visitor_id', MOCK_GET_RELATED_VISITORS_429)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=429,
+                                 )
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.get_related_visitors(MOCK_GET_RELATED_VISITORS_429)
+        self.assertEqual(context.exception.status, 429)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.TOOMANYREQUESTS)
+        self.assertEqual(context.exception.structured_error.retry_after, 4)
 
 
 if __name__ == '__main__':
