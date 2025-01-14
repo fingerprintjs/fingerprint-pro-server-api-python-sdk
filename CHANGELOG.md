@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.2.0
+
+### Minor Changes
+
+- Add Related Visitors API ([691d02a](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/691d02a0868aa4c4a17df7e6485c5bde749ea9f5))
+
 ## 8.1.0
 
 ### Minor Changes
