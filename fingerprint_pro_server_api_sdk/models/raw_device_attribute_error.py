@@ -32,6 +32,11 @@ class RawDeviceAttributeError(BaseModel):
         'message': 'str'
     }
 
+    nullable_map = {
+        'name': False,
+        'message': False
+    }
+
     attribute_map = {
         'name': 'name',
         'message': 'message'

@@ -49,6 +49,9 @@ class ErrorCode(BaseModel):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

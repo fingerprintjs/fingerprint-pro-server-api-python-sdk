@@ -33,6 +33,11 @@ class WebhookIPBlocklist(BaseModel):
         'details': 'IPBlocklistDetails'
     }
 
+    nullable_map = {
+        'result': False,
+        'details': False
+    }
+
     attribute_map = {
         'result': 'result',
         'details': 'details'

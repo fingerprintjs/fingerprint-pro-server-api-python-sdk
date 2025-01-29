@@ -30,6 +30,9 @@ class GeolocationSubdivisions(BaseModel):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

@@ -33,6 +33,12 @@ class IPInfoASN(BaseModel):
         'network': 'str'
     }
 
+    nullable_map = {
+        'asn': False,
+        'name': False,
+        'network': False
+    }
+
     attribute_map = {
         'asn': 'asn',
         'name': 'name',

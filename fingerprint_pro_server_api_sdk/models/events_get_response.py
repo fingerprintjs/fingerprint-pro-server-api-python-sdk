@@ -35,6 +35,10 @@ class EventsGetResponse(BaseModel):
         'products': 'Products'
     }
 
+    nullable_map = {
+        'products': False
+    }
+
     attribute_map = {
         'products': 'products'
     }

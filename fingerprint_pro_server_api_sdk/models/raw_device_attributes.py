@@ -33,6 +33,9 @@ class RawDeviceAttributes(dict):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

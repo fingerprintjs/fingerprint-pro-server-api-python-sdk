@@ -81,6 +81,33 @@ class Products(BaseModel):
         'developer_tools': 'ProductDeveloperTools'
     }
 
+    nullable_map = {
+        'identification': False,
+        'botd': False,
+        'root_apps': False,
+        'emulator': False,
+        'ip_info': False,
+        'ip_blocklist': False,
+        'tor': False,
+        'vpn': False,
+        'proxy': False,
+        'incognito': False,
+        'tampering': False,
+        'cloned_app': False,
+        'factory_reset': False,
+        'jailbroken': False,
+        'frida': False,
+        'privacy_settings': False,
+        'virtual_machine': False,
+        'raw_device_attributes': False,
+        'high_activity': False,
+        'location_spoofing': False,
+        'suspect_score': False,
+        'remote_control': False,
+        'velocity': False,
+        'developer_tools': False
+    }
+
     attribute_map = {
         'identification': 'identification',
         'botd': 'botd',

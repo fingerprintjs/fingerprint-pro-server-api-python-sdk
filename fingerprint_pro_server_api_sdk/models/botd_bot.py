@@ -36,6 +36,11 @@ class BotdBot(BaseModel):
         'type': 'str'
     }
 
+    nullable_map = {
+        'result': False,
+        'type': False
+    }
+
     attribute_map = {
         'result': 'result',
         'type': 'type'

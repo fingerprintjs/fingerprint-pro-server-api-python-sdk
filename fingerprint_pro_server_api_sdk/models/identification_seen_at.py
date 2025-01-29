@@ -34,6 +34,11 @@ class IdentificationSeenAt(BaseModel):
         'subscription': 'datetime'
     }
 
+    nullable_map = {
+        '_global': True,
+        'subscription': True
+    }
+
     attribute_map = {
         '_global': 'global',
         'subscription': 'subscription'

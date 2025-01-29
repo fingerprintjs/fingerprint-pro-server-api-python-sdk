@@ -31,6 +31,10 @@ class GeolocationCity(BaseModel):
         'name': 'str'
     }
 
+    nullable_map = {
+        'name': False
+    }
+
     attribute_map = {
         'name': 'name'
     }

@@ -33,6 +33,11 @@ class WebhookFactoryReset(BaseModel):
         'timestamp': 'int'
     }
 
+    nullable_map = {
+        'time': False,
+        'timestamp': False
+    }
+
     attribute_map = {
         'time': 'time',
         'timestamp': 'timestamp'

@@ -53,6 +53,24 @@ class Visit(BaseModel):
         'components': 'RawDeviceAttributes'
     }
 
+    nullable_map = {
+        'request_id': False,
+        'browser_details': False,
+        'incognito': False,
+        'ip': False,
+        'ip_location': False,
+        'linked_id': False,
+        'timestamp': False,
+        'time': False,
+        'url': False,
+        'tag': False,
+        'confidence': False,
+        'visitor_found': False,
+        'first_seen_at': False,
+        'last_seen_at': False,
+        'components': False
+    }
+
     attribute_map = {
         'request_id': 'requestId',
         'browser_details': 'browserDetails',

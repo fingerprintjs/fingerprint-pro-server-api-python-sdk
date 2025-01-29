@@ -43,6 +43,18 @@ class Geolocation(BaseModel):
         'subdivisions': 'GeolocationSubdivisions'
     }
 
+    nullable_map = {
+        'accuracy_radius': False,
+        'latitude': False,
+        'longitude': False,
+        'postal_code': False,
+        'timezone': False,
+        'city': False,
+        'country': False,
+        'continent': False,
+        'subdivisions': False
+    }
+
     attribute_map = {
         'accuracy_radius': 'accuracyRadius',
         'latitude': 'latitude',

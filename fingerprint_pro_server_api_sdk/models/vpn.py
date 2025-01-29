@@ -37,6 +37,14 @@ class VPN(BaseModel):
         'methods': 'VPNMethods'
     }
 
+    nullable_map = {
+        'result': False,
+        'confidence': False,
+        'origin_timezone': False,
+        'origin_country': False,
+        'methods': False
+    }
+
     attribute_map = {
         'result': 'result',
         'confidence': 'confidence',
