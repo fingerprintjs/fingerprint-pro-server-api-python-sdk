@@ -47,6 +47,16 @@ class WebhookVelocity(BaseModel):
         'distinct_visitor_id_by_linked_id': 'VelocityData'
     }
 
+    nullable_map = {
+        'distinct_ip': False,
+        'distinct_linked_id': False,
+        'distinct_country': False,
+        'events': False,
+        'ip_events': False,
+        'distinct_ip_by_linked_id': False,
+        'distinct_visitor_id_by_linked_id': False
+    }
+
     attribute_map = {
         'distinct_ip': 'distinctIp',
         'distinct_linked_id': 'distinctLinkedId',

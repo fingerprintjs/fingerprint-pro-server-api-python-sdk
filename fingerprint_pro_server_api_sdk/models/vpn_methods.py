@@ -35,6 +35,14 @@ class VPNMethods(BaseModel):
         'relay': 'bool'
     }
 
+    nullable_map = {
+        'timezone_mismatch': False,
+        'public_vpn': False,
+        'auxiliary_mobile': False,
+        'os_mismatch': False,
+        'relay': False
+    }
+
     attribute_map = {
         'timezone_mismatch': 'timezoneMismatch',
         'public_vpn': 'publicVPN',

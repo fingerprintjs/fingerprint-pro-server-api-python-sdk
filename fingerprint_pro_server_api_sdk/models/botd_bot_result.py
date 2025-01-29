@@ -40,6 +40,9 @@ class BotdBotResult(BaseModel):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

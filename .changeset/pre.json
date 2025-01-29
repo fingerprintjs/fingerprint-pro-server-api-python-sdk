@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "dev",
+  "initialVersions": {
+    "fingerprint-pro-server-api-python-sdk": "8.2.0"
+  },
+  "changesets": []
+}

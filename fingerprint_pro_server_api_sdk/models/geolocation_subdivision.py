@@ -32,6 +32,11 @@ class GeolocationSubdivision(BaseModel):
         'name': 'str'
     }
 
+    nullable_map = {
+        'iso_code': False,
+        'name': False
+    }
+
     attribute_map = {
         'iso_code': 'isoCode',
         'name': 'name'

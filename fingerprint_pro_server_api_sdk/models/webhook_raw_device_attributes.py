@@ -33,6 +33,9 @@ class WebhookRawDeviceAttributes(dict):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

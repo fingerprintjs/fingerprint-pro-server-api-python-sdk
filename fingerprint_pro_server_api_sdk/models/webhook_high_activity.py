@@ -32,6 +32,11 @@ class WebhookHighActivity(BaseModel):
         'daily_requests': 'int'
     }
 
+    nullable_map = {
+        'result': False,
+        'daily_requests': False
+    }
+
     attribute_map = {
         'result': 'result',
         'daily_requests': 'dailyRequests'

@@ -32,6 +32,11 @@ class IPInfoDataCenter(BaseModel):
         'name': 'str'
     }
 
+    nullable_map = {
+        'result': False,
+        'name': False
+    }
+
     attribute_map = {
         'result': 'result',
         'name': 'name'

@@ -38,6 +38,13 @@ class VisitorsGetResponse(BaseModel):
         'pagination_key': 'str'
     }
 
+    nullable_map = {
+        'visitor_id': False,
+        'visits': False,
+        'last_timestamp': False,
+        'pagination_key': False
+    }
+
     attribute_map = {
         'visitor_id': 'visitorId',
         'visits': 'visits',

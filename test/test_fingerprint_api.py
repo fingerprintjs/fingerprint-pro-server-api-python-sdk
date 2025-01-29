@@ -11,8 +11,10 @@
 """
 
 import io
+import json
 import os
 import unittest
+from datetime import datetime
 
 import urllib3
 
@@ -246,6 +248,9 @@ class TestFingerprintApi(unittest.TestCase):
                                  preload_content=True, timeout=None)
 
         event_response = self.api.get_event(MOCK_GET_EVENT_200)
+        event_response_dict = event_response.to_dict()
+        self.assertIsNone(event_response_dict["products"]["identification"]["data"]["last_seen_at"]["_global"])
+        self.assertIsNone(event_response_dict["products"]["identification"]["data"]["last_seen_at"]["subscription"])
         self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributes)
 
     def test_get_event_errors_200(self):

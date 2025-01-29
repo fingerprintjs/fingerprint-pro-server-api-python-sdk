@@ -34,6 +34,11 @@ class ProductVelocity(BaseModel):
         'error': 'Error'
     }
 
+    nullable_map = {
+        'data': False,
+        'error': False
+    }
+
     attribute_map = {
         'data': 'data',
         'error': 'error'

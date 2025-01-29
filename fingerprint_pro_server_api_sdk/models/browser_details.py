@@ -37,6 +37,16 @@ class BrowserDetails(BaseModel):
         'user_agent': 'str'
     }
 
+    nullable_map = {
+        'browser_name': False,
+        'browser_major_version': False,
+        'browser_full_version': False,
+        'os': False,
+        'os_version': False,
+        'device': False,
+        'user_agent': False
+    }
+
     attribute_map = {
         'browser_name': 'browserName',
         'browser_major_version': 'browserMajorVersion',

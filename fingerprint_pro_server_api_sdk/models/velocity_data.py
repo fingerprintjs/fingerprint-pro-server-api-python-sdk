@@ -32,6 +32,10 @@ class VelocityData(BaseModel):
         'intervals': 'VelocityIntervals'
     }
 
+    nullable_map = {
+        'intervals': False
+    }
+
     attribute_map = {
         'intervals': 'intervals'
     }

@@ -40,6 +40,9 @@ class VPNConfidence(BaseModel):
     swagger_types = {
     }
 
+    nullable_map = {
+    }
+
     attribute_map = {
     }
 

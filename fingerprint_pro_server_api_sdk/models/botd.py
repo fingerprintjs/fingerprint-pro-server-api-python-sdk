@@ -44,6 +44,17 @@ class Botd(BaseModel):
         'request_id': 'str'
     }
 
+    nullable_map = {
+        'bot': False,
+        'meta': False,
+        'linked_id': False,
+        'url': False,
+        'ip': False,
+        'time': False,
+        'user_agent': False,
+        'request_id': False
+    }
+
     attribute_map = {
         'bot': 'bot',
         'meta': 'meta',

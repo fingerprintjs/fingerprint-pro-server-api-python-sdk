@@ -47,6 +47,12 @@ class {{classname}}({{#parent}}{{parent}}{{/parent}}{{^parent}}BaseModel{{/paren
 {{/vars}}
     }
 
+    nullable_map = {
+{{#vars}}
+        '{{name}}': {{#nullable}}True{{/nullable}}{{^nullable}}False{{/nullable}}{{#hasMore}},{{/hasMore}}
+{{/vars}}
+    }
+
     attribute_map = {
 {{#vars}}
         '{{name}}': '{{baseName}}'{{#hasMore}},{{/hasMore}}

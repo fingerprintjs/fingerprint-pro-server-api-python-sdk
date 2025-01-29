@@ -31,6 +31,10 @@ class RelatedVisitor(BaseModel):
         'visitor_id': 'str'
     }
 
+    nullable_map = {
+        'visitor_id': False
+    }
+
     attribute_map = {
         'visitor_id': 'visitorId'
     }

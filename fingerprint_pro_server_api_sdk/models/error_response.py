@@ -32,6 +32,10 @@ class ErrorResponse(BaseModel):
         'error': 'Error'
     }
 
+    nullable_map = {
+        'error': False
+    }
+
     attribute_map = {
         'error': 'error'
     }

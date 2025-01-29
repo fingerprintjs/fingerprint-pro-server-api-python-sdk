@@ -33,6 +33,11 @@ class Error(BaseModel):
         'message': 'str'
     }
 
+    nullable_map = {
+        'code': False,
+        'message': False
+    }
+
     attribute_map = {
         'code': 'code',
         'message': 'message'

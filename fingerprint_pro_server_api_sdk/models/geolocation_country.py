@@ -32,6 +32,11 @@ class GeolocationCountry(BaseModel):
         'name': 'str'
     }
 
+    nullable_map = {
+        'code': False,
+        'name': False
+    }
+
     attribute_map = {
         'code': 'code',
         'name': 'name'

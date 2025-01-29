@@ -37,6 +37,11 @@ class WebhookIPInfo(BaseModel):
         'v6': 'IPInfoV6'
     }
 
+    nullable_map = {
+        'v4': False,
+        'v6': False
+    }
+
     attribute_map = {
         'v4': 'v4',
         'v6': 'v6'

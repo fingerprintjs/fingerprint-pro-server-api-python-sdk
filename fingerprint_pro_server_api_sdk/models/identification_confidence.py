@@ -33,6 +33,12 @@ class IdentificationConfidence(BaseModel):
         'comment': 'str'
     }
 
+    nullable_map = {
+        'score': False,
+        'revision': False,
+        'comment': False
+    }
+
     attribute_map = {
         'score': 'score',
         'revision': 'revision',

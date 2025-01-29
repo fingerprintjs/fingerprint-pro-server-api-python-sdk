@@ -33,6 +33,11 @@ class RawDeviceAttribute(BaseModel):
         'error': 'RawDeviceAttributeError'
     }
 
+    nullable_map = {
+        'value': False,
+        'error': False
+    }
+
     attribute_map = {
         'value': 'value',
         'error': 'error'

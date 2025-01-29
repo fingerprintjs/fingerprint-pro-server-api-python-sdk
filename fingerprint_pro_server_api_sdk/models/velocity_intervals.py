@@ -36,6 +36,12 @@ class VelocityIntervals(BaseModel):
         '_24h': 'int'
     }
 
+    nullable_map = {
+        '_5m': False,
+        '_1h': False,
+        '_24h': False
+    }
+
     attribute_map = {
         '_5m': '5m',
         '_1h': '1h',

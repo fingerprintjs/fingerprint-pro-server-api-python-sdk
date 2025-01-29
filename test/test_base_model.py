@@ -21,6 +21,13 @@ class ExampleModel(BaseModel):
         'sub_model': 'sub_model'
     }
 
+    nullable_map: Dict[str, str] = {
+        'name': False,
+        'details': False,
+        'items': False,
+        'sub_model': False
+    }
+
     def __init__(self, name=None, details=None, items=None, sub_model=None):
         self.name = name
         self.details = details
@@ -38,6 +45,11 @@ class SubModel(BaseModel):
     attribute_map: Dict[str, str] = {
         'id': 'id',
         'value': 'value'
+    }
+
+    nullable_map: Dict[str, str] = {
+        'id': False,
+        'value': False
     }
 
     def __init__(self, id=None, value=None):

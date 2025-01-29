@@ -7,6 +7,7 @@ class BaseModel:
 
     swagger_types: Dict[str, str] = {}
     attribute_map: Dict[str, str] = {}
+    nullable_map: Dict[str, bool] = {}
 
     def to_dict(self) -> Dict[str, Union[list, dict]]:
         """Returns the model properties as a dict"""
@@ -28,6 +29,9 @@ class BaseModel:
                     value.items()
                 ))
             elif value is None:
+                if self.nullable_map[attr]:
+                    result[attr] = None
+
                 continue
             else:
                 result[attr] = value

@@ -32,6 +32,11 @@ class IPBlocklistDetails(BaseModel):
         'attack_source': 'bool'
     }
 
+    nullable_map = {
+        'email_spam': False,
+        'attack_source': False
+    }
+
     attribute_map = {
         'email_spam': 'emailSpam',
         'attack_source': 'attackSource'

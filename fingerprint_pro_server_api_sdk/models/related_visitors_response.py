@@ -32,6 +32,10 @@ class RelatedVisitorsResponse(BaseModel):
         'related_visitors': 'list[RelatedVisitor]'
     }
 
+    nullable_map = {
+        'related_visitors': False
+    }
+
     attribute_map = {
         'related_visitors': 'relatedVisitors'
     }

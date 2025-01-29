@@ -34,6 +34,12 @@ class EventsUpdateRequest(BaseModel):
         'suspect': 'bool'
     }
 
+    nullable_map = {
+        'linked_id': False,
+        'tag': False,
+        'suspect': False
+    }
+
     attribute_map = {
         'linked_id': 'linkedId',
         'tag': 'tag',

@@ -37,6 +37,13 @@ class IPInfoV6(BaseModel):
         'datacenter': 'IPInfoDataCenter'
     }
 
+    nullable_map = {
+        'address': False,
+        'geolocation': False,
+        'asn': False,
+        'datacenter': False
+    }
+
     attribute_map = {
         'address': 'address',
         'geolocation': 'geolocation',

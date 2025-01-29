@@ -31,6 +31,10 @@ class WebhookRemoteControl(BaseModel):
         'result': 'bool'
     }
 
+    nullable_map = {
+        'result': False
+    }
+
     attribute_map = {
         'result': 'result'
     }

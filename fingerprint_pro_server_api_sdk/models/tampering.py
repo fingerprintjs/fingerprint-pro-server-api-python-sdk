@@ -33,6 +33,12 @@ class Tampering(BaseModel):
         'anti_detect_browser': 'bool'
     }
 
+    nullable_map = {
+        'result': False,
+        'anomaly_score': False,
+        'anti_detect_browser': False
+    }
+
     attribute_map = {
         'result': 'result',
         'anomaly_score': 'anomalyScore',
