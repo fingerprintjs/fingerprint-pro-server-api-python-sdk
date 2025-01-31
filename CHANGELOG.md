@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.2.1
+
+### Patch Changes
+
+- Correctly serialize nullable fields to `null` ([5c21ca0](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/5c21ca0acaec7d48c2db1292c126bef2fbbbca0e))
+
 ## 8.2.1-dev.0
 
 ### Patch Changes

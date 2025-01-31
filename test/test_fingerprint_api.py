@@ -26,7 +26,7 @@ from urllib.parse import urlencode
 
 API_KEY = 'private_key'
 
-VERSION = '8.2.1-dev.0'
+VERSION = '8.2.1'
 
 MOCK_GET_VISITORS_200_LIMIT_1 = 'get_visitors_200_limit_1.json'
 MOCK_GET_VISITORS_200_LIMIT_500 = 'get_visitors_200_limit_500.json'
