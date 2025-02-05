@@ -11,15 +11,14 @@
 """
 
 import io
-import json
 import os
 import unittest
-from datetime import datetime
 
 import urllib3
 
 from fingerprint_pro_server_api_sdk import (Configuration, ErrorResponse, ErrorPlainResponse, ErrorCode,
-                                            RawDeviceAttributes, EventsUpdateRequest, RelatedVisitorsResponse)
+                                            RawDeviceAttributes, EventsUpdateRequest, RelatedVisitorsResponse,
+                                            SearchEventsResponse, SearchEventsResponseEvents, Products)
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from urllib.parse import urlencode
@@ -69,6 +68,9 @@ MOCK_GET_RELATED_VISITORS_403 = '403_feature_not_enabled.json'  # errors/
 MOCK_GET_RELATED_VISITORS_404 = '404_visitor_not_found.json'  # errors/
 MOCK_GET_RELATED_VISITORS_429 = '429_too_many_requests.json'  # errors/
 
+MOCK_SEARCH_EVENTS_200 = 'get_event_search_200.json'
+MOCK_SEARCH_EVENTS_400 = '400_ip_address_invalid.json' # errors/
+MOCK_SEARCH_EVENTS_403 = '403_feature_not_enabled.json' # errors/
 
 class MockPoolManager(object):
 
@@ -120,6 +122,11 @@ class MockPoolManager(object):
             if mock_file_by_first_argument == 'related-visitors':
                 # Extract file name from visitor_id param
                 mock_file_by_first_argument = r[1]['fields'][1][1]
+            if mock_file_by_first_argument == 'search':
+                if status == 200:
+                    mock_file_by_first_argument = MOCK_SEARCH_EVENTS_200
+                else:
+                    mock_file_by_first_argument = r[1]['fields'][2][1]
 
             path = './test/mocks/' + mock_file_by_first_argument
 
@@ -181,6 +188,15 @@ class TestFingerprintApi(unittest.TestCase):
             "ap": "ap.api.fpjs.io",
         }.get(region, "api.fpjs.io")
         return 'https://%s/related-visitors' % domain
+
+    @staticmethod
+    def get_search_events_path(region='us'):
+        domain = {
+            "us": "api.fpjs.io",
+            "eu": "eu.api.fpjs.io",
+            "ap": "ap.api.fpjs.io",
+        }.get(region, "api.fpjs.io")
+        return 'https://%s/events/search' % domain
 
     def test_get_visits_correct_data(self):
         """Test checks correct code run result in default scenario"""
@@ -663,6 +679,75 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertEqual(context.exception.structured_error.error.code, ErrorCode.TOOMANYREQUESTS)
         self.assertEqual(context.exception.structured_error.retry_after, 4)
 
+    def test_search_events_only_limit(self):
+        """Test that search events returns 200 with only limit param"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
+                                 fields=[self.integration_info, ('limit', 1)],
+                                 headers=self.request_headers, preload_content=True, timeout=None)
+
+        response = self.api.search_events(1)
+        self.assertIsInstance(response, SearchEventsResponse)
+        event_response = response.events[0]
+        self.assertIsInstance(event_response, SearchEventsResponseEvents)
+        self.assertIsInstance(event_response.products, Products)
+        self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributes)
+
+    def test_search_events_all_params(self):
+        """Test that search events returns 200 with all params"""
+        LIMIT = 100
+        BOT = 'good'
+        IP_ADDRESS = '10.0.0.0/24'
+        LINKED_ID = 'some_linked_id'
+        START = 1582299576511
+        END = 1582299576513
+        REVERSE = True
+        SUSPECT = False
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
+                                 fields=[self.integration_info, ('limit', LIMIT),
+                                         ('visitor_id', MOCK_SEARCH_EVENTS_200), ('bot', BOT),
+                                         ('ip_address', IP_ADDRESS), ('linked_id', LINKED_ID), ('start', START),
+                                         ('end', END), ('reverse', REVERSE), ('suspect', SUSPECT)],
+                                 headers=self.request_headers, preload_content=True, timeout=None)
+
+        response = self.api.search_events(LIMIT, visitor_id=MOCK_SEARCH_EVENTS_200, bot=BOT, ip_address=IP_ADDRESS,
+                                          linked_id=LINKED_ID, start=START, end=END, reverse=REVERSE, suspect=SUSPECT)
+        self.assertIsInstance(response, SearchEventsResponse)
+        event_response = response.events[0]
+        self.assertIsInstance(event_response, SearchEventsResponseEvents)
+        self.assertIsInstance(event_response.products, Products)
+        self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributes)
+
+    def test_search_events_400(self):
+        """Test that search events returns 400 invalid ip address"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
+                                 fields=[self.integration_info, ('limit', 1), ('visitor_id', MOCK_SEARCH_EVENTS_400)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=400)
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.search_events(1, visitor_id=MOCK_SEARCH_EVENTS_400)
+        self.assertEqual(context.exception.status, 400)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.REQUESTCANNOTBEPARSED)
+
+    def test_search_events_403(self):
+        """Test that search events returns 403 feature not enabled"""
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
+                                 fields=[self.integration_info, ('limit', 1), ('visitor_id', MOCK_SEARCH_EVENTS_403)],
+                                 headers=self.request_headers, preload_content=True, timeout=None, status=403)
+
+        with self.assertRaises(KnownApiException) as context:
+            self.api.search_events(1, visitor_id=MOCK_SEARCH_EVENTS_403)
+        self.assertEqual(context.exception.status, 403)
+        self.assertIsInstance(context.exception.structured_error, ErrorResponse)
+        self.assertEqual(context.exception.structured_error.error.code, ErrorCode.FEATURENOTENABLED)
 
 if __name__ == '__main__':
     unittest.main()
