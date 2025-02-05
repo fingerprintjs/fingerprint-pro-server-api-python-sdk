@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_event**](FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 [**get_related_visitors**](FingerprintApi.md#get_related_visitors) | **GET** /related-visitors | Get Related Visitors
 [**get_visits**](FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+[**search_events**](FingerprintApi.md#search_events) | **GET** /events/search | Get events via search
 [**update_event**](FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
 # **delete_visitor_data**
@@ -207,6 +208,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**VisitorsGetResponse**](VisitorsGetResponse.md)
+
+### Authorization
+
+[ApiKeyHeader](../README.md#ApiKeyHeader), [ApiKeyQuery](../README.md#ApiKeyQuery)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_events**
+> SearchEventsResponse search_events(limit, visitor_id=visitor_id, bot=bot, ip_address=ip_address, linked_id=linked_id, start=start, end=end, reverse=reverse, suspect=suspect)
+
+Get events via search
+
+Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests. 
+
+### Example
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk.rest import ApiException
+
+# Configure API key authorization and region
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+# configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY", region="eu")
+
+# create an instance of the API class
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+limit = 56 # int | Limit the number of events returned. 
+visitor_id = 'visitor_id_example' # str | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  (optional)
+bot = 'bot_example' # str | Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected.  (optional)
+ip_address = 'ip_address_example' # str | Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  (optional)
+linked_id = 'linked_id_example' # str | Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+start = 789 # int | Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  (optional)
+end = 789 # int | Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  (optional)
+reverse = true # bool | Sort events in reverse timestamp order.  (optional)
+suspect = true # bool | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  (optional)
+
+try:
+    # Get events via search
+    api_response = api_instance.search_events(limit, visitor_id=visitor_id, bot=bot, ip_address=ip_address, linked_id=linked_id, start=start, end=end, reverse=reverse, suspect=suspect)
+    print(api_response)
+except ApiException as e:
+    print("Exception when calling FingerprintApi->search_events: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| Limit the number of events returned.  | 
+ **visitor_id** | **str**| Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  | [optional] 
+ **bot** | **str**| Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected.  | [optional] 
+ **ip_address** | **str**| Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  | [optional] 
+ **linked_id** | **str**| Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  | [optional] 
+ **start** | **int**| Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  | [optional] 
+ **end** | **int**| Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  | [optional] 
+ **reverse** | **bool**| Sort events in reverse timestamp order.  | [optional] 
+ **suspect** | **bool**| Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  | [optional] 
+
+### Return type
+
+[**SearchEventsResponse**](SearchEventsResponse.md)
 
 ### Authorization
 

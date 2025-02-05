@@ -24,6 +24,7 @@ from fingerprint_pro_server_api_sdk.models.error_response import ErrorResponse  
 from fingerprint_pro_server_api_sdk.models.events_get_response import EventsGetResponse  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.events_update_request import EventsUpdateRequest  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.related_visitors_response import RelatedVisitorsResponse  # noqa: F401
+from fingerprint_pro_server_api_sdk.models.search_events_response import SearchEventsResponse  # noqa: F401
 from fingerprint_pro_server_api_sdk.models.visitors_get_response import VisitorsGetResponse  # noqa: F401
 
 
@@ -492,6 +493,150 @@ class FingerprintApi:
                 raise extend_exception(e, error)
             if e.status == 429:
                 error = self.api_client.deserialize(e, 'ErrorPlainResponse', True)
+                raise extend_exception(e, error)
+            raise e
+
+    def search_events(self, limit: int, **kwargs) -> Union[SearchEventsResponse, AsyncResult[SearchEventsResponse]]:  # noqa: E501
+        """Get events via search  # noqa: E501
+
+        Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.search_events(limit, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param limit: Limit the number of events returned.  (required)
+        :param visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
+        :param bot: Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected. 
+        :param ip_address: Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
+        :param linked_id: Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+        :param start: Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
+        :param end: Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
+        :param reverse: Sort events in reverse timestamp order. 
+        :param suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). 
+        :return: SearchEventsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.search_events_with_http_info(limit, **kwargs)  # noqa: E501
+        else:
+            (data) = self.search_events_with_http_info(limit, **kwargs)  # noqa: E501
+            return data
+
+    def search_events_with_http_info(self, limit: int, **kwargs):  # noqa: E501
+        """Get events via search  # noqa: E501
+
+        Search for identification events, including Smart Signals, using multiple filtering criteria. If you don't provide `start` or `end` parameters, the default search range is the last 7 days.  Please note that events include mobile signals (e.g. `rootApps`) even if the request originated from a non-mobile platform. We recommend you **ignore** mobile signals for such requests.   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.search_events_with_http_info(limit, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int limit: Limit the number of events returned.  (required)
+        :param str visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
+        :param str bot: Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected. 
+        :param str ip_address: Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
+        :param str linked_id: Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
+        :param int start: Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
+        :param int end: Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
+        :param bool reverse: Sort events in reverse timestamp order. 
+        :param bool suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). 
+        :return: SearchEventsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = [
+            'limit',
+            'visitor_id',
+            'bot',
+            'ip_address',
+            'linked_id',
+            'start',
+            'end',
+            'reverse',
+            'suspect',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout']
+
+        params = locals()
+        for key, val in params['kwargs'].items():
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method search_events" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'limit' is set
+        if 'limit' not in params or params['limit'] is None:
+            raise ValueError("Missing the required parameter `limit` when calling `search_events`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = [('ii', 'fingerprint-pro-server-python-sdk/8.2.1')]
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'visitor_id' in params:
+            query_params.append(('visitor_id', params['visitor_id']))  # noqa: E501
+        if 'bot' in params:
+            query_params.append(('bot', params['bot']))  # noqa: E501
+        if 'ip_address' in params:
+            query_params.append(('ip_address', params['ip_address']))  # noqa: E501
+        if 'linked_id' in params:
+            query_params.append(('linked_id', params['linked_id']))  # noqa: E501
+        if 'start' in params:
+            query_params.append(('start', params['start']))  # noqa: E501
+        if 'end' in params:
+            query_params.append(('end', params['end']))  # noqa: E501
+        if 'reverse' in params:
+            query_params.append(('reverse', params['reverse']))  # noqa: E501
+        if 'suspect' in params:
+            query_params.append(('suspect', params['suspect']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyHeader', 'ApiKeyQuery']  # noqa: E501
+
+        try:
+            return self.api_client.call_api(
+                '/events/search', 'GET',
+                path_params,
+                query_params,
+                header_params,
+                body=body_params,
+                post_params=form_params,
+                files=local_var_files,
+                response_type='SearchEventsResponse',  # noqa: E501
+                auth_settings=auth_settings,
+                async_req=params.get('async_req'),
+                _return_http_data_only=params.get('_return_http_data_only'),
+                _preload_content=params.get('_preload_content', True),
+                _request_timeout=params.get('_request_timeout'),
+                collection_formats=collection_formats)
+        except ApiException as e:
+            if e.status == 400:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
+                raise extend_exception(e, error)
+            if e.status == 403:
+                error = self.api_client.deserialize(e, 'ErrorResponse', True)
                 raise extend_exception(e, error)
             raise e
 
