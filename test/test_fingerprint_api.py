@@ -721,6 +721,29 @@ class TestFingerprintApi(unittest.TestCase):
         self.assertIsInstance(event_response.products, Products)
         self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributes)
 
+    def test_search_events_partial_params(self):
+        """Test that search events returns 200 with partial params provided"""
+        LIMIT = 100
+        BOT = 'good'
+        LINKED_ID = 'some_linked_id'
+        START = 1582299576511
+        REVERSE = True
+        mock_pool = MockPoolManager(self)
+        self.api.api_client.rest_client.pool_manager = mock_pool
+        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
+                                 fields=[self.integration_info, ('limit', LIMIT),
+                                         ('visitor_id', MOCK_SEARCH_EVENTS_200), ('bot', BOT),
+                                         ('linked_id', LINKED_ID), ('start', START), ('reverse', REVERSE)],
+                                 headers=self.request_headers, preload_content=True, timeout=None)
+
+        response = self.api.search_events(LIMIT, visitor_id=MOCK_SEARCH_EVENTS_200, bot=BOT, linked_id=LINKED_ID,
+                                          start=START, reverse=REVERSE)
+        self.assertIsInstance(response, SearchEventsResponse)
+        event_response = response.events[0]
+        self.assertIsInstance(event_response, SearchEventsResponseEvents)
+        self.assertIsInstance(event_response.products, Products)
+        self.assertIsInstance(event_response.products.raw_device_attributes.data, RawDeviceAttributes)
+
     def test_search_events_400(self):
         """Test that search events returns 400 invalid ip address"""
         mock_pool = MockPoolManager(self)
