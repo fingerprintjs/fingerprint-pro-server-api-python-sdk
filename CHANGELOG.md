@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.3.0-rc.0
+
+### Minor Changes
+
+- **events-search**: Add a new `events/search` API endpoint. Allow users to search for identification events matching one or more search criteria, for example, visitor ID, IP address, bot detection result, etc. ([2ce9734](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/2ce97343ee676a163b383b8040737ac481dfbb03))
+
 ## 8.2.1
 
 ### Patch Changes
