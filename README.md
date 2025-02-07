@@ -149,6 +149,36 @@ except ApiException as e:
     print("Exception when calling FingerprintApi->get_event: %s\n" % e)
 ```
 
+Search events with custom filters:
+```python
+import fingerprint_pro_server_api_sdk
+from fingerprint_pro_server_api_sdk.rest import ApiException, KnownApiException
+
+configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API_KEY")
+api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
+
+limit = 20                      # int | Limit the number of events returned.
+visitor_id = 'VISITOR_ID'       # str | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  (optional)
+bot = 'good'                    # str | Filter events by the bot detection result, specifically: events where <'any'|'good'|'bad'|'none'> kind of bot was detected.  (optional)
+ip_address = '192.168.0.1/32'   # str | Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  (optional)
+linked_id = 'linked_id_example' # str | Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier.  (optional)
+start = 1738687200000           # int | Filter events with a timestamp greater than the start time, in Unix time (milliseconds).  (optional)
+end = 1738773600000             # int | Filter events with a timestamp smaller than the end time, in Unix time (milliseconds).  (optional)
+reverse = True                 # bool | Sort events in reverse timestamp order.  (optional)
+suspect = False                # bool | Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  (optional)
+
+try:
+    # Get events via search
+    api_response = api_instance.search_events(limit, visitor_id=visitor_id, bot=bot, ip_address=ip_address, linked_id=linked_id, start=start, end=end, reverse=reverse, suspect=suspect)
+    print(api_response)
+
+except KnownApiException as e:
+    structured_error = e.structured_error
+    print("Error code: %s. Error message: %s\n" % (structured_error.error.code, structured_error.error.message))
+except ApiException as e:
+    print("Exception when calling FingerprintApi->get_event: %s\n" % e)
+```
+
 Update event for requestId:
 ```python
 import fingerprint_pro_server_api_sdk
@@ -256,6 +286,7 @@ Class | Method | HTTP request | Description
 *FingerprintApi* | [**get_event**](docs/FingerprintApi.md#get_event) | **GET** /events/{request_id} | Get event by request ID
 *FingerprintApi* | [**get_related_visitors**](docs/FingerprintApi.md#get_related_visitors) | **GET** /related-visitors | Get Related Visitors
 *FingerprintApi* | [**get_visits**](docs/FingerprintApi.md#get_visits) | **GET** /visitors/{visitor_id} | Get visits by visitor ID
+*FingerprintApi* | [**search_events**](docs/FingerprintApi.md#search_events) | **GET** /events/search | Get events via search
 *FingerprintApi* | [**update_event**](docs/FingerprintApi.md#update_event) | **PUT** /events/{request_id} | Update an event with a given request ID
 
 ## Documentation For Models
@@ -330,6 +361,8 @@ Class | Method | HTTP request | Description
  - [RelatedVisitorsResponse](docs/RelatedVisitorsResponse.md)
  - [RemoteControl](docs/RemoteControl.md)
  - [RootApps](docs/RootApps.md)
+ - [SearchEventsResponse](docs/SearchEventsResponse.md)
+ - [SearchEventsResponseEvents](docs/SearchEventsResponseEvents.md)
  - [SuspectScore](docs/SuspectScore.md)
  - [Tag](docs/Tag.md)
  - [Tampering](docs/Tampering.md)

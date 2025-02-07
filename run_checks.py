@@ -31,9 +31,16 @@ try:
     events_response = api_instance.get_event(request_id)
     print("\n\n\nEvent response: \n", events_response.products)
 
-
 except ApiException as e:
     print("Exception when calling DefaultApi->get_event: %s\n" % e)
+    exit(1)
+
+try:
+    search_events_response = api_instance.search_events(2, bot="bad")
+    print("\n\n\nSearch events response: \n", search_events_response)
+
+except ApiException as e:
+    print("Exception when calling DefaultApi->search_events: %s\n" % e)
     exit(1)
 
 # Async methods examples
