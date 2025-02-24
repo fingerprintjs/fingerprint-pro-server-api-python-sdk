@@ -508,13 +508,13 @@ class FingerprintApi:
         :param async_req bool
         :param limit: Limit the number of events returned.  (required)
         :param visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
-        :param bot: Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected. 
+        :param bot: Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
         :param ip_address: Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
         :param linked_id: Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         :param start: Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
         :param end: Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
         :param reverse: Sort events in reverse timestamp order. 
-        :param suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). 
+        :param suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -538,13 +538,13 @@ class FingerprintApi:
         :param async_req bool
         :param int limit: Limit the number of events returned.  (required)
         :param str visitor_id: Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`. 
-        :param str bot: Filter events by the bot detection result, specifically:    - events where any kind of bot was detected.   - events where a good bot was detected.   - events where a bad bot was detected.   - events where no bot was detected. 
+        :param str bot: Filter events by the bot detection result, specifically:    `all` - events where any kind of bot was detected.   `good` - events where a good bot was detected.   `bad` - events where a bad bot was detected.   `none` - events where no bot was detected. 
         :param str ip_address: Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32 
         :param str linked_id: Filter events by your custom identifier.   You can use [linked IDs](https://dev.fingerprint.com/reference/get-function#linkedid) to associate identification requests with your own identifier, for example, session ID, purchase ID, or transaction ID. You can then use this `linked_id` parameter to retrieve all events associated with your custom identifier. 
         :param int start: Filter events with a timestamp greater than the start time, in Unix time (milliseconds). 
         :param int end: Filter events with a timestamp smaller than the end time, in Unix time (milliseconds). 
         :param bool reverse: Sort events in reverse timestamp order. 
-        :param bool suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent). 
+        :param bool suspect: Filter events previously tagged as suspicious via the [Update API](https://dev.fingerprint.com/reference/updateevent).  > Note: When using this parameter, only events with the `suspect` property explicitly set to `true` or `false` are returned. Events with undefined `suspect` property are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
