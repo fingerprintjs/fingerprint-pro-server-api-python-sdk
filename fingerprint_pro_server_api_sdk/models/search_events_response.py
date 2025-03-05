@@ -79,6 +79,7 @@ class SearchEventsResponse(BaseModel):
     def pagination_key(self) -> Optional[str]:
         """Gets the pagination_key of this SearchEventsResponse.  # noqa: E501
 
+        Use this value in the `pagination_key` parameter to request the next page of search results.  # noqa: E501
 
         :return: The pagination_key of this SearchEventsResponse.  # noqa: E501
         """
@@ -88,6 +89,7 @@ class SearchEventsResponse(BaseModel):
     def pagination_key(self, pagination_key: Optional[str]):
         """Sets the pagination_key of this SearchEventsResponse.
 
+        Use this value in the `pagination_key` parameter to request the next page of search results.  # noqa: E501
 
         :param pagination_key: The pagination_key of this SearchEventsResponse.  # noqa: E501
         """
