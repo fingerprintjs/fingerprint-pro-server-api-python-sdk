@@ -158,6 +158,7 @@ configuration = fingerprint_pro_server_api_sdk.Configuration(api_key="SECRET_API
 api_instance = fingerprint_pro_server_api_sdk.FingerprintApi(configuration)
 
 limit = 20                      # int | Limit the number of events returned.
+pagination_key = 'key_example'  # str | Use `pagination_key` to get the next page of results.   When more results are available (e.g., you requested up to 200 results for your search using `limit`, but there are more than 200 events total matching your request), the `paginationKey` top-level attribute is added to the response. The key corresponds to the `timestamp` of the last returned event. In the following request, use that value in the `pagination_key` parameter to get the next page of results:  1. First request, returning most recent 200 events: `GET api-base-url/events/search?limit=200` 2. Use `response.paginationKey` to get the next page of results: `GET api-base-url/events/search?limit=200&pagination_key=1740815825085`  (optional)
 visitor_id = 'VISITOR_ID'       # str | Unique [visitor identifier](https://dev.fingerprint.com/reference/get-function#visitorid) issued by Fingerprint Pro. Filter for events matching this `visitor_id`.  (optional)
 bot = 'good'                    # str | Filter events by the bot detection result, specifically: events where <'any'|'good'|'bad'|'none'> kind of bot was detected.  (optional)
 ip_address = '192.168.0.1/32'   # str | Filter events by IP address range. The range can be as specific as a single IP (/32 for IPv4 or /128 for IPv6)  All ip_address filters must use CIDR notation, for example, 10.0.0.0/24, 192.168.0.1/32  (optional)
@@ -169,7 +170,7 @@ suspect = False                # bool | Filter events previously tagged as suspi
 
 try:
     # Get events via search
-    api_response = api_instance.search_events(limit, visitor_id=visitor_id, bot=bot, ip_address=ip_address, linked_id=linked_id, start=start, end=end, reverse=reverse, suspect=suspect)
+    api_response = api_instance.search_events(limit, pagination_key=pagination_key, visitor_id=visitor_id, bot=bot, ip_address=ip_address, linked_id=linked_id, start=start, end=end, reverse=reverse, suspect=suspect)
     print(api_response)
 
 except KnownApiException as e:
