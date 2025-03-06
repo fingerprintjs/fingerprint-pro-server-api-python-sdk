@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.4.0-rc.0
+
+### Minor Changes
+
+- **events-search**: Add `pagination_key` parameter ([0410a74](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/0410a746d8246bfdad7b754ae4edebfe3ceb7295))
+
 ## 8.3.0
 
 ### Minor Changes
