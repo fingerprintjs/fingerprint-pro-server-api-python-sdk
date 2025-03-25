@@ -43,6 +43,7 @@ from fingerprint_pro_server_api_sdk.models.webhook_suspect_score import WebhookS
 from fingerprint_pro_server_api_sdk.models.webhook_remote_control import WebhookRemoteControl
 from fingerprint_pro_server_api_sdk.models.webhook_velocity import WebhookVelocity
 from fingerprint_pro_server_api_sdk.models.webhook_developer_tools import WebhookDeveloperTools
+from fingerprint_pro_server_api_sdk.models.webhook_mit_m_attack import WebhookMitMAttack
 
 
 class Webhook(BaseModel):
@@ -97,7 +98,8 @@ class Webhook(BaseModel):
         'suspect_score': 'WebhookSuspectScore',
         'remote_control': 'WebhookRemoteControl',
         'velocity': 'WebhookVelocity',
-        'developer_tools': 'WebhookDeveloperTools'
+        'developer_tools': 'WebhookDeveloperTools',
+        'mitm_attack': 'WebhookMitMAttack'
     }
 
     nullable_map = {
@@ -140,7 +142,8 @@ class Webhook(BaseModel):
         'suspect_score': False,
         'remote_control': False,
         'velocity': False,
-        'developer_tools': False
+        'developer_tools': False,
+        'mitm_attack': False
     }
 
     attribute_map = {
@@ -183,10 +186,11 @@ class Webhook(BaseModel):
         'suspect_score': 'suspectScore',
         'remote_control': 'remoteControl',
         'velocity': 'velocity',
-        'developer_tools': 'developerTools'
+        'developer_tools': 'developerTools',
+        'mitm_attack': 'mitmAttack'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
@@ -228,6 +232,7 @@ class Webhook(BaseModel):
         self._remote_control = None
         self._velocity = None
         self._developer_tools = None
+        self._mitm_attack = None
         self.discriminator = None
         self.request_id = request_id
         self.url = url
@@ -304,6 +309,8 @@ class Webhook(BaseModel):
             self.velocity = velocity
         if developer_tools is not None:
             self.developer_tools = developer_tools
+        if mitm_attack is not None:
+            self.mitm_attack = mitm_attack
 
     @property
     def request_id(self) -> str:
@@ -1092,4 +1099,23 @@ class Webhook(BaseModel):
         """
 
         self._developer_tools = developer_tools
+
+    @property
+    def mitm_attack(self) -> Optional[WebhookMitMAttack]:
+        """Gets the mitm_attack of this Webhook.  # noqa: E501
+
+
+        :return: The mitm_attack of this Webhook.  # noqa: E501
+        """
+        return self._mitm_attack
+
+    @mitm_attack.setter
+    def mitm_attack(self, mitm_attack: Optional[WebhookMitMAttack]):
+        """Sets the mitm_attack of this Webhook.
+
+
+        :param mitm_attack: The mitm_attack of this Webhook.  # noqa: E501
+        """
+
+        self._mitm_attack = mitm_attack
 

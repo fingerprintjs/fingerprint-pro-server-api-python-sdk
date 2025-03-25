@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **remote_control** | [**WebhookRemoteControl**](WebhookRemoteControl.md) |  | [optional] 
 **velocity** | [**WebhookVelocity**](WebhookVelocity.md) |  | [optional] 
 **developer_tools** | [**WebhookDeveloperTools**](WebhookDeveloperTools.md) |  | [optional] 
+**mitm_attack** | [**WebhookMitMAttack**](WebhookMitMAttack.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
