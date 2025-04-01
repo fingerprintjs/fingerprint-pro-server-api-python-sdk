@@ -33,8 +33,6 @@ jobs:
         run: "python ./run_checks.py"
         env:
           PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
-          VISITOR_ID: "${{ secrets.VISITOR_ID }}"
-          REQUEST_ID: "${{ secrets.REQUEST_ID }}"
 
   report-status:
     needs: functional_tests
