@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.5.0
+
+### Minor Changes
+
+- Add `mitmAttack` (man-in-the-middle attack) Smart Signal. ([7a25214](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/7a252141e24af42aed0a99051dc0bcfd83ce0ef8))
+
 ## 8.4.0
 
 ### Minor Changes
