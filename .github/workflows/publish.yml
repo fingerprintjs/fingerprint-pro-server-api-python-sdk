@@ -46,7 +46,7 @@ jobs:
           python setup.py sdist bdist_wheel
 
       - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@897895f1e160c830e369f9779632ebc134688e1b
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc
 
   e2e-tests:
     needs: publish
