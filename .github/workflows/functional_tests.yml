@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12", "pypy3.9", "pypy3.10" ]
+        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13", "pypy3.9", "pypy3.10" ]
 
     steps:
       - uses: actions/checkout@v4
@@ -33,8 +33,6 @@ jobs:
         run: "python ./run_checks.py"
         env:
           PRIVATE_KEY: "${{ secrets.PRIVATE_KEY }}"
-          VISITOR_ID: "${{ secrets.VISITOR_ID }}"
-          REQUEST_ID: "${{ secrets.REQUEST_ID }}"
 
   report-status:
     needs: functional_tests
