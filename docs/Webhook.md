@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **request_id** | **str** | Unique identifier of the user's request. | 
 **url** | **str** | Page URL from which the request was sent. | 
 **ip** | **str** | IP address of the requesting browser or bot. | 
+**environment_id** | **str** | Environment ID of the event. | [optional] 
 **tag** | [**Tag**](Tag.md) |  | [optional] 
 **time** | **datetime** | Time expressed according to ISO 8601 in UTC format, when the request from the JS agent was made. We recommend to treat requests that are older than 2 minutes as malicious. Otherwise, request replay attacks are possible. | 
 **timestamp** | **int** | Timestamp of the event with millisecond precision in Unix time. | 

@@ -62,6 +62,7 @@ class Webhook(BaseModel):
         'request_id': 'str',
         'url': 'str',
         'ip': 'str',
+        'environment_id': 'str',
         'tag': 'Tag',
         'time': 'datetime',
         'timestamp': 'int',
@@ -106,6 +107,7 @@ class Webhook(BaseModel):
         'request_id': False,
         'url': False,
         'ip': False,
+        'environment_id': False,
         'tag': False,
         'time': False,
         'timestamp': False,
@@ -150,6 +152,7 @@ class Webhook(BaseModel):
         'request_id': 'requestId',
         'url': 'url',
         'ip': 'ip',
+        'environment_id': 'environmentId',
         'tag': 'tag',
         'time': 'time',
         'timestamp': 'timestamp',
@@ -190,11 +193,12 @@ class Webhook(BaseModel):
         'mitm_attack': 'mitmAttack'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
         self._ip = None
+        self._environment_id = None
         self._tag = None
         self._time = None
         self._timestamp = None
@@ -237,6 +241,8 @@ class Webhook(BaseModel):
         self.request_id = request_id
         self.url = url
         self.ip = ip
+        if environment_id is not None:
+            self.environment_id = environment_id
         if tag is not None:
             self.tag = tag
         self.time = time
@@ -380,6 +386,27 @@ class Webhook(BaseModel):
             raise ValueError("Invalid value for `ip`, must not be `None`")  # noqa: E501
 
         self._ip = ip
+
+    @property
+    def environment_id(self) -> Optional[str]:
+        """Gets the environment_id of this Webhook.  # noqa: E501
+
+        Environment ID of the event.  # noqa: E501
+
+        :return: The environment_id of this Webhook.  # noqa: E501
+        """
+        return self._environment_id
+
+    @environment_id.setter
+    def environment_id(self, environment_id: Optional[str]):
+        """Sets the environment_id of this Webhook.
+
+        Environment ID of the event.  # noqa: E501
+
+        :param environment_id: The environment_id of this Webhook.  # noqa: E501
+        """
+
+        self._environment_id = environment_id
 
     @property
     def tag(self) -> Optional[Tag]:
