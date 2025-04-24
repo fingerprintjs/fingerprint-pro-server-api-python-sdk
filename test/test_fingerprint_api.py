@@ -720,6 +720,8 @@ class TestFingerprintApi(unittest.TestCase):
             'vpn_confidence': 'medium',
             'emulator': True,
             'incognito': True,
+            'ip_blocklist': True,
+            'datacenter': True,
         }
 
         expected_fields = [self.integration_info] + list(params.items())
