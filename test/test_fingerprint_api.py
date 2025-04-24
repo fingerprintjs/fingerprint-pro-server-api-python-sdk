@@ -704,17 +704,44 @@ class TestFingerprintApi(unittest.TestCase):
         END = 1582299576513
         REVERSE = True
         SUSPECT = False
+        ANTI_DETECT_BROWSER = True
+        CLONED_APP = True
+        FACTORY_RESET = True
+        FRIDA = True
+        JAILBROKEN = True
+        MIN_SUSPECT_SCORE = .5
+        PRIVACY_SETTINGS = True
+        ROOT_APPS = True
+        TAMPERING = True
+        VIRTUAL_MACHINE = True
+        VPN = True
+        VPN_CONFIDENCE = 'medium'
+        EMULATOR = True
+        INCOGNITO = True
+
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
         mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
                                  fields=[self.integration_info, ('limit', LIMIT),
                                          ('visitor_id', MOCK_SEARCH_EVENTS_200), ('bot', BOT),
                                          ('ip_address', IP_ADDRESS), ('linked_id', LINKED_ID), ('start', START),
-                                         ('end', END), ('reverse', REVERSE), ('suspect', SUSPECT)],
+                                         ('end', END), ('reverse', REVERSE), ('suspect', SUSPECT), ('vpn', VPN),
+                                         ('virtual_machine', VIRTUAL_MACHINE), ('tampering', TAMPERING),
+                                         ('anti_detect_browser', ANTI_DETECT_BROWSER), ('incognito', INCOGNITO),
+                                         ('privacy_settings', PRIVACY_SETTINGS), ('jailbroken', JAILBROKEN),
+                                         ('frida', FRIDA), ('factory_reset', FACTORY_RESET), ('cloned_app', CLONED_APP),
+                                         ('emulator', EMULATOR), ('root_apps', ROOT_APPS),
+                                         ('vpn_confidence', VPN_CONFIDENCE), ('min_suspect_score', MIN_SUSPECT_SCORE)],
                                  headers=self.request_headers, preload_content=True, timeout=None)
 
         response = self.api.search_events(LIMIT, visitor_id=MOCK_SEARCH_EVENTS_200, bot=BOT, ip_address=IP_ADDRESS,
-                                          linked_id=LINKED_ID, start=START, end=END, reverse=REVERSE, suspect=SUSPECT)
+                                          linked_id=LINKED_ID, start=START, end=END, reverse=REVERSE, suspect=SUSPECT,
+                                          anti_detect_browser=ANTI_DETECT_BROWSER, cloned_app=CLONED_APP,
+                                          factory_reset=FACTORY_RESET, frida=FRIDA, jailbroken=JAILBROKEN,
+                                          min_suspect_score=MIN_SUSPECT_SCORE, privacy_settings=PRIVACY_SETTINGS,
+                                          root_apps=ROOT_APPS, tampering=TAMPERING, virtual_machine=VIRTUAL_MACHINE,
+                                          vpn=VPN, vpn_confidence=VPN_CONFIDENCE, emulator=EMULATOR,
+                                          incognito=INCOGNITO)
         self.assertIsInstance(response, SearchEventsResponse)
         event_response = response.events[0]
         self.assertIsInstance(event_response, SearchEventsResponseEvents)
