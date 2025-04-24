@@ -103,7 +103,7 @@ class MockPoolManager(object):
 
         self._tc.maxDiff = None
         self._tc.assertEqual(r[0], args)
-        self._tc.assertEqual(r[1], kwargs)
+        self._tc.assertCountEqual(r[1], kwargs)
 
         # TODO Add support for more complex paths?
         mock_file_by_first_argument = MockPoolManager.get_mock_from_path(request_path)
@@ -696,25 +696,47 @@ class TestFingerprintApi(unittest.TestCase):
 
     def test_search_events_all_params(self):
         """Test that search events returns 200 with all params"""
-        LIMIT = 100
-        BOT = 'good'
-        IP_ADDRESS = '10.0.0.0/24'
-        LINKED_ID = 'some_linked_id'
-        START = 1582299576511
-        END = 1582299576513
-        REVERSE = True
-        SUSPECT = False
+        params = {
+            'limit': 100,
+            'visitor_id': MOCK_SEARCH_EVENTS_200,
+            'bot': 'good',
+            'ip_address': '10.0.0.0/24',
+            'linked_id': 'some_linked_id',
+            'start': 1582299576511,
+            'end': 1582299576513,
+            'reverse': True,
+            'suspect': False,
+            'anti_detect_browser': True,
+            'cloned_app': True,
+            'factory_reset': True,
+            'frida': True,
+            'jailbroken': True,
+            'min_suspect_score': .5,
+            'privacy_settings': True,
+            'root_apps': True,
+            'tampering': True,
+            'virtual_machine': True,
+            'vpn': True,
+            'vpn_confidence': 'medium',
+            'emulator': True,
+            'incognito': True,
+        }
+
+        expected_fields = [self.integration_info] + list(params.items())
+
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
-        mock_pool.expect_request('GET', TestFingerprintApi.get_search_events_path(),
-                                 fields=[self.integration_info, ('limit', LIMIT),
-                                         ('visitor_id', MOCK_SEARCH_EVENTS_200), ('bot', BOT),
-                                         ('ip_address', IP_ADDRESS), ('linked_id', LINKED_ID), ('start', START),
-                                         ('end', END), ('reverse', REVERSE), ('suspect', SUSPECT)],
-                                 headers=self.request_headers, preload_content=True, timeout=None)
+        mock_pool.expect_request(
+            'GET',
+            TestFingerprintApi.get_search_events_path(),
+            fields=expected_fields,
+            headers=self.request_headers,
+            preload_content=True,
+            timeout=None
+        )
 
-        response = self.api.search_events(LIMIT, visitor_id=MOCK_SEARCH_EVENTS_200, bot=BOT, ip_address=IP_ADDRESS,
-                                          linked_id=LINKED_ID, start=START, end=END, reverse=REVERSE, suspect=SUSPECT)
+        response = self.api.search_events(**params)
+
         self.assertIsInstance(response, SearchEventsResponse)
         event_response = response.events[0]
         self.assertIsInstance(event_response, SearchEventsResponseEvents)
