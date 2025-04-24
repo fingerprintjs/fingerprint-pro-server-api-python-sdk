@@ -530,6 +530,8 @@ class FingerprintApi:
         :param root_apps: Filter events by Rooted Device Detection result.   > Note: When using this parameter, only events with the `products.rootApps.data.result` property set to `true` or `false` are returned. Events without a `products.rootApps` Smart Signal result are left out of the response. 
         :param vpn_confidence: Filter events by VPN Detection result confidence level.   `high` - events with high VPN Detection confidence. `medium` - events with medium VPN Detection confidence. `low` - events with low VPN Detection confidence. > Note: When using this parameter, only events with the `products.vpn.data.confidence` property set to a valid value are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
         :param min_suspect_score: Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
+        :param ip_blocklist: Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
+        :param datacenter: Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -575,6 +577,8 @@ class FingerprintApi:
         :param bool root_apps: Filter events by Rooted Device Detection result.   > Note: When using this parameter, only events with the `products.rootApps.data.result` property set to `true` or `false` are returned. Events without a `products.rootApps` Smart Signal result are left out of the response. 
         :param str vpn_confidence: Filter events by VPN Detection result confidence level.   `high` - events with high VPN Detection confidence. `medium` - events with medium VPN Detection confidence. `low` - events with low VPN Detection confidence. > Note: When using this parameter, only events with the `products.vpn.data.confidence` property set to a valid value are returned. Events without a `products.vpn` Smart Signal result are left out of the response. 
         :param float min_suspect_score: Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
+        :param bool ip_blocklist: Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
+        :param bool datacenter: Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -605,6 +609,8 @@ class FingerprintApi:
             'root_apps',
             'vpn_confidence',
             'min_suspect_score',
+            'ip_blocklist',
+            'datacenter',
             'async_req',
             '_return_http_data_only',
             '_preload_content',
@@ -676,6 +682,10 @@ class FingerprintApi:
             query_params.append(('vpn_confidence', params['vpn_confidence']))  # noqa: E501
         if 'min_suspect_score' in params:
             query_params.append(('min_suspect_score', params['min_suspect_score']))  # noqa: E501
+        if 'ip_blocklist' in params:
+            query_params.append(('ip_blocklist', params['ip_blocklist']))  # noqa: E501
+        if 'datacenter' in params:
+            query_params.append(('datacenter', params['datacenter']))  # noqa: E501
 
         header_params = {}
 
