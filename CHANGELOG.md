@@ -1,5 +1,16 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.6.0-rc.0
+
+### Minor Changes
+
+- **events-search**: Event search now supports a new set of filter parameters: `vpn`, `virtual_machine`, `tampering`, `anti_detect_browser`, `incognito`, `privacy_settings`, `jailbroken`, `frida`, `factory_reset`, `cloned_app`, `emulator`, `root_apps`, `vpn_confidence`, `min_suspect_score`. ([9354da9](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9354da95724f407566a5190d1a24f571c3ca4f3f))
+- **events-search**: Event search now supports two new filter parameters: `ip_blocklist`, `datacenter` ([826cb8e](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/826cb8e1a939994240a2cb5e048451f4aaf02cde))
+
+### Patch Changes
+
+- **webhook**: Add `environmentId` property ([9354da9](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/9354da95724f407566a5190d1a24f571c3ca4f3f))
+
 ## 8.5.0
 
 ### Minor Changes
