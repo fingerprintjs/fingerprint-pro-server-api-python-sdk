@@ -4,5 +4,9 @@
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "8.5.0"
   },
-  "changesets": []
+  "changesets": [
+    "fuzzy-pumas-end",
+    "shiny-ghosts-sin",
+    "thick-clouds-ring"
+  ]
 }
