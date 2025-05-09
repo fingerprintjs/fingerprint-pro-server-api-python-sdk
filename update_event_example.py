@@ -8,7 +8,7 @@ from fingerprint_pro_server_api_sdk.models import EventsUpdateRequest
 from dotenv import load_dotenv
 
 load_dotenv()
-parser = argparse.ArgumentParser(description='Update an event in the Fingerprint Pro Server API')
+parser = argparse.ArgumentParser(description='Update an event in the Fingerprint Server API')
 parser.add_argument('--linked_id', type=str)
 parser.add_argument('--tag', type=str)
 parser.add_argument('--suspect', type=bool)
