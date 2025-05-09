@@ -17,7 +17,7 @@
   <a href="https://discord.gg/39EpE2neBg"><img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server"></a>
 </p>
 
-# Fingerprint Pro Server Python SDK
+# Fingerprint Server Python SDK
 
 [Fingerprint](https://fingerprint.com) is a device intelligence platform offering industry-leading accuracy.
 The Fingerprint Server Python SDK is an easy way to interact with the Fingerprint [Server API](https://dev.fingerprint.com/reference/pro-server-api) from your Python application. You can retrieve visitor history or individual identification events.

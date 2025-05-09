@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Fingerprint Pro Server API
+    Fingerprint Server API
 
-    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
+    Fingerprint Server API allows you to get information about visitors and about individual events in a server environment. This API can be used for data exports, decision-making, and data analysis scenarios.  # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
