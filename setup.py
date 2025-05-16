@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    Fingerprint Pro Server API
+    Fingerprint Server API
 
-    Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device.   # noqa: E501
+    Fingerprint Server API allows you to search, update, and delete identification events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device.   # noqa: E501
 
     OpenAPI spec version: 3
     Contact: support@fingerprint.com
@@ -38,7 +38,7 @@ long_description = re.sub(r"(?P<prefix>\[[^]]*]\()(?P<postfix>docs/[^)]*\))", '\
 
 setup(
     name=NAME,
-    description="Fingerprint Pro Server API allows you to get information about visitors and about individual events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. ",
+    description="Fingerprint Server API allows you to search, update, and delete identification events in a server environment. It can be used for data exports, decision-making, and data analysis scenarios. Server API is intended for server-side usage, it's not intended to be used from the client side, whether it's a browser or a mobile device. ",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT",
@@ -50,7 +50,7 @@ setup(
         "Code": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk",
         "Issue Tracker": "https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/issues",
     },
-    keywords=["Swagger", "Fingerprint Pro Server API", "browser", "detection", "fingerprint", "identification",
+    keywords=["Swagger", "Fingerprint Server API", "browser", "detection", "fingerprint", "identification",
               "fingerprinting", "browser-fingerprinting", "browser-fingerprint", "fraud-detection", "fraud",
               "audio-fingerprinting", "fingerprintjs", "fingerprintjs-pro", "visitor-identifier"],
     install_requires=REQUIRES,
