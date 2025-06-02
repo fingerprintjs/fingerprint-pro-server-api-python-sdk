@@ -13,6 +13,7 @@
 import re  # noqa: F401
 from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.proxy_confidence import ProxyConfidence
 
 
 class Proxy(BaseModel):
@@ -28,28 +29,33 @@ class Proxy(BaseModel):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'bool'
+        'result': 'bool',
+        'confidence': 'ProxyConfidence'
     }
 
     nullable_map = {
-        'result': False
+        'result': False,
+        'confidence': False
     }
 
     attribute_map = {
-        'result': 'result'
+        'result': 'result',
+        'confidence': 'confidence'
     }
 
-    def __init__(self, result=None):  # noqa: E501
+    def __init__(self, result=None, confidence=None):  # noqa: E501
         """Proxy - a model defined in Swagger"""  # noqa: E501
         self._result = None
+        self._confidence = None
         self.discriminator = None
         self.result = result
+        self.confidence = confidence
 
     @property
     def result(self) -> bool:
         """Gets the result of this Proxy.  # noqa: E501
 
-        `true` if the request IP address is used by a public proxy provider, `false` otherwise.   # noqa: E501
+        IP address was used by a public proxy provider or belonged to a known recent residential proxy   # noqa: E501
 
         :return: The result of this Proxy.  # noqa: E501
         """
@@ -59,7 +65,7 @@ class Proxy(BaseModel):
     def result(self, result: bool):
         """Sets the result of this Proxy.
 
-        `true` if the request IP address is used by a public proxy provider, `false` otherwise.   # noqa: E501
+        IP address was used by a public proxy provider or belonged to a known recent residential proxy   # noqa: E501
 
         :param result: The result of this Proxy.  # noqa: E501
         """
@@ -67,4 +73,25 @@ class Proxy(BaseModel):
             raise ValueError("Invalid value for `result`, must not be `None`")  # noqa: E501
 
         self._result = result
+
+    @property
+    def confidence(self) -> ProxyConfidence:
+        """Gets the confidence of this Proxy.  # noqa: E501
+
+
+        :return: The confidence of this Proxy.  # noqa: E501
+        """
+        return self._confidence
+
+    @confidence.setter
+    def confidence(self, confidence: ProxyConfidence):
+        """Sets the confidence of this Proxy.
+
+
+        :param confidence: The confidence of this Proxy.  # noqa: E501
+        """
+        if confidence is None:
+            raise ValueError("Invalid value for `confidence`, must not be `None`")  # noqa: E501
+
+        self._confidence = confidence
 

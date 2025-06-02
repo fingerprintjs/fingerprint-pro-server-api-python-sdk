@@ -357,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ProductVirtualMachine](docs/ProductVirtualMachine.md)
  - [Products](docs/Products.md)
  - [Proxy](docs/Proxy.md)
+ - [ProxyConfidence](docs/ProxyConfidence.md)
  - [RawDeviceAttribute](docs/RawDeviceAttribute.md)
  - [RawDeviceAttributeError](docs/RawDeviceAttributeError.md)
  - [RawDeviceAttributes](docs/RawDeviceAttributes.md)

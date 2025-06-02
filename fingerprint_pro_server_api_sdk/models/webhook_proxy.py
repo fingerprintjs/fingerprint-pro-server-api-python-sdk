@@ -13,6 +13,7 @@
 import re  # noqa: F401
 from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from fingerprint_pro_server_api_sdk.models.proxy_confidence import ProxyConfidence
 
 
 class WebhookProxy(BaseModel):
@@ -28,29 +29,35 @@ class WebhookProxy(BaseModel):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'result': 'bool'
+        'result': 'bool',
+        'confidence': 'ProxyConfidence'
     }
 
     nullable_map = {
-        'result': False
+        'result': False,
+        'confidence': False
     }
 
     attribute_map = {
-        'result': 'result'
+        'result': 'result',
+        'confidence': 'confidence'
     }
 
-    def __init__(self, result=None):  # noqa: E501
+    def __init__(self, result=None, confidence=None):  # noqa: E501
         """WebhookProxy - a model defined in Swagger"""  # noqa: E501
         self._result = None
+        self._confidence = None
         self.discriminator = None
         if result is not None:
             self.result = result
+        if confidence is not None:
+            self.confidence = confidence
 
     @property
     def result(self) -> Optional[bool]:
         """Gets the result of this WebhookProxy.  # noqa: E501
 
-        `true` if the request IP address is used by a public proxy provider, `false` otherwise.   # noqa: E501
+        IP address was used by a public proxy provider or belonged to a known recent residential proxy   # noqa: E501
 
         :return: The result of this WebhookProxy.  # noqa: E501
         """
@@ -60,10 +67,29 @@ class WebhookProxy(BaseModel):
     def result(self, result: Optional[bool]):
         """Sets the result of this WebhookProxy.
 
-        `true` if the request IP address is used by a public proxy provider, `false` otherwise.   # noqa: E501
+        IP address was used by a public proxy provider or belonged to a known recent residential proxy   # noqa: E501
 
         :param result: The result of this WebhookProxy.  # noqa: E501
         """
 
         self._result = result
+
+    @property
+    def confidence(self) -> Optional[ProxyConfidence]:
+        """Gets the confidence of this WebhookProxy.  # noqa: E501
+
+
+        :return: The confidence of this WebhookProxy.  # noqa: E501
+        """
+        return self._confidence
+
+    @confidence.setter
+    def confidence(self, confidence: Optional[ProxyConfidence]):
+        """Sets the confidence of this WebhookProxy.
+
+
+        :param confidence: The confidence of this WebhookProxy.  # noqa: E501
+        """
+
+        self._confidence = confidence
 
