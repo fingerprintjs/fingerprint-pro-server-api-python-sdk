@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.7.0-rc.1
+
+### Minor Changes
+
+- Add `confidence` property to the Proxy detection Smart Signal, which now supports both residential and public web proxies. ([b7d40f1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/b7d40f12269ad9435246bb07aaff559034c34838))
+
 ## 8.6.1-rc.0
 
 ### Patch Changes
