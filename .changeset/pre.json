@@ -4,5 +4,7 @@
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "8.6.0"
   },
-  "changesets": []
+  "changesets": [
+    "modern-moons-pick"
+  ]
 }
