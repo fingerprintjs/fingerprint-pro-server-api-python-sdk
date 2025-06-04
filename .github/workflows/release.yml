@@ -8,7 +8,7 @@ on:
 jobs:
   release:
     name: 'Release project'
-    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-sdk-changesets.yml@934946a72ff252e83a28468a094a90ae94ad7b1e
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-sdk-changesets.yml@e30d3a9938e5398ede80e1ea7651c0f2b477a7de
     with:
       appId: ${{ vars.APP_ID }}
       runnerAppId: ${{ vars.RUNNER_APP_ID }}
