@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.6.1-rc.1
+
+### Patch Changes
+
+- Another attempt to make a pre-release ([08b7fd1](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/08b7fd199588222beed8bcdab037b0e280c21bd7))
+
 ## 8.6.1-rc.0
 
 ### Patch Changes

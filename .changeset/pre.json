@@ -5,6 +5,7 @@
     "fingerprint-pro-server-api-python-sdk": "8.6.0"
   },
   "changesets": [
-    "nice-poems-invite"
+    "nice-poems-invite",
+    "small-turtles-rest"
   ]
 }
