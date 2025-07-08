@@ -52,7 +52,8 @@ class Identification(BaseModel):
         'visitor_found': 'bool',
         'first_seen_at': 'IdentificationSeenAt',
         'last_seen_at': 'IdentificationSeenAt',
-        'components': 'RawDeviceAttributes'
+        'components': 'RawDeviceAttributes',
+        'replayed': 'bool'
     }
 
     nullable_map = {
@@ -72,7 +73,8 @@ class Identification(BaseModel):
         'visitor_found': False,
         'first_seen_at': False,
         'last_seen_at': False,
-        'components': False
+        'components': False,
+        'replayed': False
     }
 
     attribute_map = {
@@ -92,10 +94,11 @@ class Identification(BaseModel):
         'visitor_found': 'visitorFound',
         'first_seen_at': 'firstSeenAt',
         'last_seen_at': 'lastSeenAt',
-        'components': 'components'
+        'components': 'components',
+        'replayed': 'replayed'
     }
 
-    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, suspect=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None):  # noqa: E501
+    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, suspect=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None, replayed=None):  # noqa: E501
         """Identification - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._request_id = None
@@ -114,6 +117,7 @@ class Identification(BaseModel):
         self._first_seen_at = None
         self._last_seen_at = None
         self._components = None
+        self._replayed = None
         self.discriminator = None
         self.visitor_id = visitor_id
         self.request_id = request_id
@@ -137,6 +141,8 @@ class Identification(BaseModel):
         self.last_seen_at = last_seen_at
         if components is not None:
             self.components = components
+        if replayed is not None:
+            self.replayed = replayed
 
     @property
     def visitor_id(self) -> str:
@@ -504,4 +510,25 @@ class Identification(BaseModel):
         """
 
         self._components = components
+
+    @property
+    def replayed(self) -> Optional[bool]:
+        """Gets the replayed of this Identification.  # noqa: E501
+
+        `true` if we determined that this payload was replayed, `false` otherwise.   # noqa: E501
+
+        :return: The replayed of this Identification.  # noqa: E501
+        """
+        return self._replayed
+
+    @replayed.setter
+    def replayed(self, replayed: Optional[bool]):
+        """Sets the replayed of this Identification.
+
+        `true` if we determined that this payload was replayed, `false` otherwise.   # noqa: E501
+
+        :param replayed: The replayed of this Identification.  # noqa: E501
+        """
+
+        self._replayed = replayed
 
