@@ -100,7 +100,8 @@ class Webhook(BaseModel):
         'remote_control': 'WebhookRemoteControl',
         'velocity': 'WebhookVelocity',
         'developer_tools': 'WebhookDeveloperTools',
-        'mitm_attack': 'WebhookMitMAttack'
+        'mitm_attack': 'WebhookMitMAttack',
+        'replayed': 'bool'
     }
 
     nullable_map = {
@@ -145,7 +146,8 @@ class Webhook(BaseModel):
         'remote_control': False,
         'velocity': False,
         'developer_tools': False,
-        'mitm_attack': False
+        'mitm_attack': False,
+        'replayed': False
     }
 
     attribute_map = {
@@ -190,10 +192,11 @@ class Webhook(BaseModel):
         'remote_control': 'remoteControl',
         'velocity': 'velocity',
         'developer_tools': 'developerTools',
-        'mitm_attack': 'mitmAttack'
+        'mitm_attack': 'mitmAttack',
+        'replayed': 'replayed'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
@@ -237,6 +240,7 @@ class Webhook(BaseModel):
         self._velocity = None
         self._developer_tools = None
         self._mitm_attack = None
+        self._replayed = None
         self.discriminator = None
         self.request_id = request_id
         self.url = url
@@ -317,6 +321,8 @@ class Webhook(BaseModel):
             self.developer_tools = developer_tools
         if mitm_attack is not None:
             self.mitm_attack = mitm_attack
+        if replayed is not None:
+            self.replayed = replayed
 
     @property
     def request_id(self) -> str:
@@ -1145,4 +1151,25 @@ class Webhook(BaseModel):
         """
 
         self._mitm_attack = mitm_attack
+
+    @property
+    def replayed(self) -> Optional[bool]:
+        """Gets the replayed of this Webhook.  # noqa: E501
+
+        `true` if we determined that this payload was replayed, `false` otherwise.   # noqa: E501
+
+        :return: The replayed of this Webhook.  # noqa: E501
+        """
+        return self._replayed
+
+    @replayed.setter
+    def replayed(self, replayed: Optional[bool]):
+        """Sets the replayed of this Webhook.
+
+        `true` if we determined that this payload was replayed, `false` otherwise.   # noqa: E501
+
+        :param replayed: The replayed of this Webhook.  # noqa: E501
+        """
+
+        self._replayed = replayed
 
