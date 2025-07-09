@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.8.0
+
+### Minor Changes
+
+- add `replayed` field to `identification` in Events and Webhooks ([c25383b](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/c25383b7a7621c2b4d49c2072e24cbdccd43eca7))
+
 ## 8.7.0
 
 ### Minor Changes
