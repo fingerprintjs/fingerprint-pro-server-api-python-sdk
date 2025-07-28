@@ -44,6 +44,7 @@ from fingerprint_pro_server_api_sdk.models.webhook_remote_control import Webhook
 from fingerprint_pro_server_api_sdk.models.webhook_velocity import WebhookVelocity
 from fingerprint_pro_server_api_sdk.models.webhook_developer_tools import WebhookDeveloperTools
 from fingerprint_pro_server_api_sdk.models.webhook_mit_m_attack import WebhookMitMAttack
+from fingerprint_pro_server_api_sdk.models.sdk import SDK
 
 
 class Webhook(BaseModel):
@@ -101,7 +102,8 @@ class Webhook(BaseModel):
         'velocity': 'WebhookVelocity',
         'developer_tools': 'WebhookDeveloperTools',
         'mitm_attack': 'WebhookMitMAttack',
-        'replayed': 'bool'
+        'replayed': 'bool',
+        'sdk': 'SDK'
     }
 
     nullable_map = {
@@ -147,7 +149,8 @@ class Webhook(BaseModel):
         'velocity': False,
         'developer_tools': False,
         'mitm_attack': False,
-        'replayed': False
+        'replayed': False,
+        'sdk': False
     }
 
     attribute_map = {
@@ -193,10 +196,11 @@ class Webhook(BaseModel):
         'velocity': 'velocity',
         'developer_tools': 'developerTools',
         'mitm_attack': 'mitmAttack',
-        'replayed': 'replayed'
+        'replayed': 'replayed',
+        'sdk': 'sdk'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None, sdk=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
@@ -241,6 +245,7 @@ class Webhook(BaseModel):
         self._developer_tools = None
         self._mitm_attack = None
         self._replayed = None
+        self._sdk = None
         self.discriminator = None
         self.request_id = request_id
         self.url = url
@@ -323,6 +328,7 @@ class Webhook(BaseModel):
             self.mitm_attack = mitm_attack
         if replayed is not None:
             self.replayed = replayed
+        self.sdk = sdk
 
     @property
     def request_id(self) -> str:
@@ -1172,4 +1178,25 @@ class Webhook(BaseModel):
         """
 
         self._replayed = replayed
+
+    @property
+    def sdk(self) -> SDK:
+        """Gets the sdk of this Webhook.  # noqa: E501
+
+
+        :return: The sdk of this Webhook.  # noqa: E501
+        """
+        return self._sdk
+
+    @sdk.setter
+    def sdk(self, sdk: SDK):
+        """Sets the sdk of this Webhook.
+
+
+        :param sdk: The sdk of this Webhook.  # noqa: E501
+        """
+        if sdk is None:
+            raise ValueError("Invalid value for `sdk`, must not be `None`")  # noqa: E501
+
+        self._sdk = sdk
 
