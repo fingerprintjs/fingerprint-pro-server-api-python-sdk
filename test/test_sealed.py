@@ -71,7 +71,8 @@ class TestSealed(unittest.TestCase):
         "lastSeenAt": {
           "global": "2023-12-19T11:39:51.52Z",
           "subscription": "2023-12-19T11:39:51.52Z"
-        }
+        },
+        "replayed": false
       }
     },
     "botd": {
@@ -94,7 +95,7 @@ class TestSealed(unittest.TestCase):
         expected_result = ApiClientDeserializer.deserialize(json.loads(sealed_result), 'EventsGetResponse')
 
         sealed_data = base64.b64decode(
-            'noXc7SXO+mqeAGrvBMgObi/S0fXTpP3zupk8qFqsO/1zdtWCD169iLA3VkkZh9ICHpZ0oWRzqG0M9/TnCeKFohgBLqDp6O0zEfXOv6i5q++aucItznQdLwrKLP+O0blfb4dWVI8/aSbd4ELAZuJJxj9bCoVZ1vk+ShbUXCRZTD30OIEAr3eiG9aw00y1UZIqMgX6CkFlU9L9OnKLsNsyomPIaRHTmgVTI5kNhrnVNyNsnzt9rY7fUD52DQxJILVPrUJ1Q+qW7VyNslzGYBPG0DyYlKbRAomKJDQIkdj/Uwa6bhSTq4XYNVvbk5AJ/dGwvsVdOnkMT2Ipd67KwbKfw5bqQj/cw6bj8Cp2FD4Dy4Ud4daBpPRsCyxBM2jOjVz1B/lAyrOp8BweXOXYugwdPyEn38MBZ5oL4D38jIwR/QiVnMHpERh93jtgwh9Abza6i4/zZaDAbPhtZLXSM5ztdctv8bAb63CppLU541Kf4OaLO3QLvfLRXK2n8bwEwzVAqQ22dyzt6/vPiRbZ5akh8JB6QFXG0QJF9DejsIspKF3JvOKjG2edmC9o+GfL3hwDBiihYXCGY9lElZICAdt+7rZm5UxMx7STrVKy81xcvfaIp1BwGh/HyMsJnkE8IczzRFpLlHGYuNDxdLoBjiifrmHvOCUDcV8UvhSV+UAZtAVejdNGo5G/bz0NF21HUO4pVRPu6RqZIs/aX4hlm6iO/0Ru00ct8pfadUIgRcephTuFC2fHyZxNBC6NApRtLSNLfzYTTo/uSjgcu6rLWiNo5G7yfrM45RXjalFEFzk75Z/fu9lCJJa5uLFgDNKlU+IaFjArfXJCll3apbZp4/LNKiU35ZlB7ZmjDTrji1wLep8iRVVEGht/DW00MTok7Zn7Fv+MlxgWmbZB3BuezwTmXb/fNw==')
+            'noXc7etL3WJZn6BSZLV4tcjBr0uFr4+qvDrSdcZ9M1bb1MB+/le7UKY+6FJNFQHBm64X1/GVE3xkjBuW4mveH3jEK8cOSWBhl71tgYegxm+MkRHRAYM7vDPOS4sw1rb6xqdVZ/sovFP6yIqNRhrKWdO/B99vtext6l/NWlmXfTCoX3LHXYK94yr0O4eptZBwBK70fMB0YBR6iw1/zJOs9W6LZ50d2ml4wl/Ah1qJKmQueraKJaIIAQEUNbOm8ReoRsDrAWsVbIv2IscKEGNwZEjd5V1nZFkHLzOUQGKLjFQqGxFFmxV/PuDZve/lHyjmn9q3+UFJzJKXVOLyPTjhwQdjouvdJn5k9FEpH0hua+/KgSrcIKnKXtk7zPXAFEo9FeQJA3XJH8+dHcDgadl6/FIrAxtqrMRbngp7wKpltIySaCMi9P0qYoWnVvQC3gyc5xoW00UxcdPfXnQR9F21QfZ3EzULIbJQ5sUjwcg31h/IszlBXueHnGEiszhdXAIOHU865FLJsvLAqZD1A+R9/gurAG3kck1A/t8Vf8znmd8WeMezj0KObenNhHeDpjAFcAZS6evr8gDb/IZ6Ge3CUzBvfXUZNNlhEujS6yo/eK/plFACtbbIMiosQq1zRIMlLmAvlb42jNAwPtjb2JQhO+AP+EUUEe8nTDjyytZIHThzuipfVIRpxEbV9MdYt0Ri5EqI4LA2YiAMmphdaio4grw51oD63GgSeKXEUi1YoLUGmXCNbn5Q1vcQiGd5O+TJ3WzacMcBcPDFd9ZxVxe8qmn3gXWXlod4NmS5nhksiiYY0UUWqMMqEEZou5LhwV8FrQdebBNDQ9GKoGkaadJoJzkKZWYlO0ju5EYTlQCUTvHenefVmrHUccteVuwz6Fsp3d5p3SBGumpbdECjUMnO2OWkOzf4S0TArorl8KnB3TidzsM94eTr0M+/uz910HmnOqIYms80IBV3yFS0CEvcvuyjnEpW/vfOIbs0qFycNx34Hltqa0PdSSzcrFfMJjR5h9g/hORaO4MNXu9ORw==')
 
         result = unseal_event_response(sealed_data, [
             DecryptionKey(self.invalid_key, DecryptionAlgorithm['Aes256Gcm']),

@@ -17,8 +17,10 @@ from fingerprint_pro_server_api_sdk.models.geolocation_city import GeolocationCi
 from fingerprint_pro_server_api_sdk.models.geolocation_country import GeolocationCountry
 from fingerprint_pro_server_api_sdk.models.geolocation_continent import GeolocationContinent
 from fingerprint_pro_server_api_sdk.models.geolocation_subdivisions import GeolocationSubdivisions
+from typing_extensions import deprecated
 
 
+@deprecated("This class is deprecated. Please avoid using it in new code.")
 class DeprecatedGeolocation(BaseModel):
     """
     This field is **deprecated** and will not return a result for **applications created after January 23rd, 2024**.  Please use the [IP Geolocation Smart signal](https://dev.fingerprint.com/docs/smart-signals-overview#ip-geolocation) for geolocation information.

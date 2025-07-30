@@ -1,12 +1,12 @@
-# WebhookRemoteControl
-This signal is deprecated.
-
+# SDK
+Contains information about the SDK used to perform the request.
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | **bool** | `true` if the request came from a machine being remotely controlled (e.g. TeamViewer), `false` otherwise.  | [optional] 
+**platform** | **str** | Platform of the SDK. | 
+**version** | **str** | SDK version string. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
