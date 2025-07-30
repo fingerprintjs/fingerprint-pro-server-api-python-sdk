@@ -4,5 +4,9 @@
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "8.8.0"
   },
-  "changesets": []
+  "changesets": [
+    "dark-dogs-play",
+    "sharp-facts-boil",
+    "ten-plums-tickle"
+  ]
 }
