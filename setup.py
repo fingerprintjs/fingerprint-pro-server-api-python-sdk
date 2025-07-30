@@ -27,7 +27,8 @@ REQUIRES = [
     "certifi>=2023.7.22",
     "python-dateutil>=2.5.3",
     "urllib3>=1.23",
-    "cryptography"
+    "cryptography",
+    "typing_extensions>=4.5"
 ]
 
 
