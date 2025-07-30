@@ -13,8 +13,10 @@
 import re  # noqa: F401
 from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
+from typing_extensions import deprecated
 
 
+@deprecated("This class is deprecated. Please avoid using it in new code.")
 class WebhookRemoteControl(BaseModel):
     """
     This signal is deprecated. 

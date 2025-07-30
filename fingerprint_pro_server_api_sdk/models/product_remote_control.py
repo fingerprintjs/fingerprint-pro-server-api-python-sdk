@@ -15,8 +15,10 @@ from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.remote_control import RemoteControl
 from fingerprint_pro_server_api_sdk.models.error import Error
+from typing_extensions import deprecated
 
 
+@deprecated("This class is deprecated. Please avoid using it in new code.")
 class ProductRemoteControl(BaseModel):
     """
     This product is deprecated. 

@@ -4,3 +4,4 @@ setuptools >= 65.5.1
 urllib3>=1.23
 python-dotenv
 cryptography
+typing_extensions >= 4.5

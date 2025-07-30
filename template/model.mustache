@@ -15,8 +15,14 @@ from {{packageName}}.models.__to__snake__case({{complexType}}) import {{complexT
 from datetime import datetime
 {{/isDateTime}}
 {{/vars}}
+{{#schema.deprecated}}
+from typing_extensions import deprecated
+{{/schema.deprecated}}
 
 
+{{#schema.deprecated}}
+@deprecated("This class is deprecated. Please avoid using it in new code.")
+{{/schema.deprecated}}
 class {{classname}}({{#parent}}{{parent}}{{/parent}}{{^parent}}BaseModel{{/parent}}):
     """{{#description}}
     {{{.}}}
