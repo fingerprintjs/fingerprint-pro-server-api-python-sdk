@@ -1,5 +1,16 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.9.0
+
+### Minor Changes
+
+- Mark `replayed` field required in the `identification` product schema. This field will always be present. ([05e1540](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/05e154067f2508294bde4cf4614ea72d0266aa1f))
+- Add `sdk` field with platform metadata to `identification` ([05e1540](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/05e154067f2508294bde4cf4614ea72d0266aa1f))
+
+### Patch Changes
+
+- Deprecate the Remote Control Detection Smart Signal. This signal is no longer available. ([05e1540](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/05e154067f2508294bde4cf4614ea72d0266aa1f))
+
 ## 8.9.0-rc.0
 
 ### Minor Changes
