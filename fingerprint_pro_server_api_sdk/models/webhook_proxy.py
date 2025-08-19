@@ -14,6 +14,7 @@ import re  # noqa: F401
 from typing import Dict, List, Optional  # noqa: F401
 from fingerprint_pro_server_api_sdk.base_model import BaseModel
 from fingerprint_pro_server_api_sdk.models.proxy_confidence import ProxyConfidence
+from fingerprint_pro_server_api_sdk.models.proxy_details import ProxyDetails
 
 
 class WebhookProxy(BaseModel):
@@ -30,28 +31,34 @@ class WebhookProxy(BaseModel):
     """
     swagger_types = {
         'result': 'bool',
-        'confidence': 'ProxyConfidence'
+        'confidence': 'ProxyConfidence',
+        'details': 'ProxyDetails'
     }
 
     nullable_map = {
         'result': False,
-        'confidence': False
+        'confidence': False,
+        'details': False
     }
 
     attribute_map = {
         'result': 'result',
-        'confidence': 'confidence'
+        'confidence': 'confidence',
+        'details': 'details'
     }
 
-    def __init__(self, result=None, confidence=None):  # noqa: E501
+    def __init__(self, result=None, confidence=None, details=None):  # noqa: E501
         """WebhookProxy - a model defined in Swagger"""  # noqa: E501
         self._result = None
         self._confidence = None
+        self._details = None
         self.discriminator = None
         if result is not None:
             self.result = result
         if confidence is not None:
             self.confidence = confidence
+        if details is not None:
+            self.details = details
 
     @property
     def result(self) -> Optional[bool]:
@@ -92,4 +99,23 @@ class WebhookProxy(BaseModel):
         """
 
         self._confidence = confidence
+
+    @property
+    def details(self) -> Optional[ProxyDetails]:
+        """Gets the details of this WebhookProxy.  # noqa: E501
+
+
+        :return: The details of this WebhookProxy.  # noqa: E501
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details: Optional[ProxyDetails]):
+        """Sets the details of this WebhookProxy.
+
+
+        :param details: The details of this WebhookProxy.  # noqa: E501
+        """
+
+        self._details = details
 
