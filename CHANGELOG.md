@@ -1,5 +1,11 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.10.0
+
+### Minor Changes
+
+- Add `details` object to the `proxy` signal. This field includes the `type` of the detected proxy (`residential` or `data_center`) and the `lastSeenAt` timestamp of when an IP was last observed to show proxy-like behavior. ([32ae9b2](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/32ae9b2fe9ec37519876e21555fb3c508605f03d))
+
 ## 8.9.0
 
 ### Minor Changes
