@@ -45,6 +45,7 @@ from fingerprint_pro_server_api_sdk.models.webhook_velocity import WebhookVeloci
 from fingerprint_pro_server_api_sdk.models.webhook_developer_tools import WebhookDeveloperTools
 from fingerprint_pro_server_api_sdk.models.webhook_mit_m_attack import WebhookMitMAttack
 from fingerprint_pro_server_api_sdk.models.sdk import SDK
+from fingerprint_pro_server_api_sdk.models.webhook_supplementary_i_ds import WebhookSupplementaryIDs
 
 
 class Webhook(BaseModel):
@@ -103,7 +104,8 @@ class Webhook(BaseModel):
         'developer_tools': 'WebhookDeveloperTools',
         'mitm_attack': 'WebhookMitMAttack',
         'replayed': 'bool',
-        'sdk': 'SDK'
+        'sdk': 'SDK',
+        'supplementary_ids': 'WebhookSupplementaryIDs'
     }
 
     nullable_map = {
@@ -150,7 +152,8 @@ class Webhook(BaseModel):
         'developer_tools': False,
         'mitm_attack': False,
         'replayed': False,
-        'sdk': False
+        'sdk': False,
+        'supplementary_ids': False
     }
 
     attribute_map = {
@@ -197,10 +200,11 @@ class Webhook(BaseModel):
         'developer_tools': 'developerTools',
         'mitm_attack': 'mitmAttack',
         'replayed': 'replayed',
-        'sdk': 'sdk'
+        'sdk': 'sdk',
+        'supplementary_ids': 'supplementaryIds'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None, sdk=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None, sdk=None, supplementary_ids=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
@@ -246,6 +250,7 @@ class Webhook(BaseModel):
         self._mitm_attack = None
         self._replayed = None
         self._sdk = None
+        self._supplementary_ids = None
         self.discriminator = None
         self.request_id = request_id
         self.url = url
@@ -329,6 +334,8 @@ class Webhook(BaseModel):
         if replayed is not None:
             self.replayed = replayed
         self.sdk = sdk
+        if supplementary_ids is not None:
+            self.supplementary_ids = supplementary_ids
 
     @property
     def request_id(self) -> str:
@@ -529,7 +536,7 @@ class Webhook(BaseModel):
     def visitor_id(self) -> Optional[str]:
         """Gets the visitor_id of this Webhook.  # noqa: E501
 
-        String of 20 characters that uniquely identifies the visitor's browser.  # noqa: E501
+        String of 20 characters that uniquely identifies the visitor's browser or mobile device.  # noqa: E501
 
         :return: The visitor_id of this Webhook.  # noqa: E501
         """
@@ -539,7 +546,7 @@ class Webhook(BaseModel):
     def visitor_id(self, visitor_id: Optional[str]):
         """Sets the visitor_id of this Webhook.
 
-        String of 20 characters that uniquely identifies the visitor's browser.  # noqa: E501
+        String of 20 characters that uniquely identifies the visitor's browser or mobile device.  # noqa: E501
 
         :param visitor_id: The visitor_id of this Webhook.  # noqa: E501
         """
@@ -1199,4 +1206,23 @@ class Webhook(BaseModel):
             raise ValueError("Invalid value for `sdk`, must not be `None`")  # noqa: E501
 
         self._sdk = sdk
+
+    @property
+    def supplementary_ids(self) -> Optional[WebhookSupplementaryIDs]:
+        """Gets the supplementary_ids of this Webhook.  # noqa: E501
+
+
+        :return: The supplementary_ids of this Webhook.  # noqa: E501
+        """
+        return self._supplementary_ids
+
+    @supplementary_ids.setter
+    def supplementary_ids(self, supplementary_ids: Optional[WebhookSupplementaryIDs]):
+        """Sets the supplementary_ids of this Webhook.
+
+
+        :param supplementary_ids: The supplementary_ids of this Webhook.  # noqa: E501
+        """
+
+        self._supplementary_ids = supplementary_ids
 

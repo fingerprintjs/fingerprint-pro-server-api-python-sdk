@@ -532,6 +532,13 @@ class FingerprintApi:
         :param min_suspect_score: Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
         :param ip_blocklist: Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
         :param datacenter: Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
+        :param developer_tools: Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response. 
+        :param location_spoofing: Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response. 
+        :param mitm_attack: Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response. 
+        :param proxy: Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
+        :param sdk_version: Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
+        :param sdk_platform: Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
+        :param environment: Filter for events by providing one or more environment IDs. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -579,6 +586,13 @@ class FingerprintApi:
         :param float min_suspect_score: Filter events with Suspect Score result above a provided minimum threshold. > Note: When using this parameter, only events where the `products.suspectScore.data.result` property set to a value exceeding your threshold are returned. Events without a `products.suspectScore` Smart Signal result are left out of the response. 
         :param bool ip_blocklist: Filter events by IP Blocklist Detection result.   > Note: When using this parameter, only events with the `products.ipBlocklist.data.result` property set to `true` or `false` are returned. Events without a `products.ipBlocklist` Smart Signal result are left out of the response. 
         :param bool datacenter: Filter events by Datacenter Detection result.   > Note: When using this parameter, only events with the `products.ipInfo.data.v4.datacenter.result` or `products.ipInfo.data.v6.datacenter.result` property set to `true` or `false` are returned. Events without a `products.ipInfo` Smart Signal result are left out of the response. 
+        :param bool developer_tools: Filter events by Developer Tools detection result. > Note: When using this parameter, only events with the `products.developerTools.data.result` property set to `true` or `false` are returned. Events without a `products.developerTools` Smart Signal result are left out of the response. 
+        :param bool location_spoofing: Filter events by Location Spoofing detection result. > Note: When using this parameter, only events with the `products.locationSpoofing.data.result` property set to `true` or `false` are returned. Events without a `products.locationSpoofing` Smart Signal result are left out of the response. 
+        :param bool mitm_attack: Filter events by MITM (Man-in-the-Middle) Attack detection result. > Note: When using this parameter, only events with the `products.mitmAttack.data.result` property set to `true` or `false` are returned. Events without a `products.mitmAttack` Smart Signal result are left out of the response. 
+        :param bool proxy: Filter events by Proxy detection result. > Note: When using this parameter, only events with the `products.proxy.data.result` property set to `true` or `false` are returned. Events without a `products.proxy` Smart Signal result are left out of the response. 
+        :param str sdk_version: Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
+        :param str sdk_platform: Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
+        :param list[str] environment: Filter for events by providing one or more environment IDs. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -611,6 +625,13 @@ class FingerprintApi:
             'min_suspect_score',
             'ip_blocklist',
             'datacenter',
+            'developer_tools',
+            'location_spoofing',
+            'mitm_attack',
+            'proxy',
+            'sdk_version',
+            'sdk_platform',
+            'environment',
             'async_req',
             '_return_http_data_only',
             '_preload_content',
@@ -686,6 +707,21 @@ class FingerprintApi:
             query_params.append(('ip_blocklist', params['ip_blocklist']))  # noqa: E501
         if 'datacenter' in params:
             query_params.append(('datacenter', params['datacenter']))  # noqa: E501
+        if 'developer_tools' in params:
+            query_params.append(('developer_tools', params['developer_tools']))  # noqa: E501
+        if 'location_spoofing' in params:
+            query_params.append(('location_spoofing', params['location_spoofing']))  # noqa: E501
+        if 'mitm_attack' in params:
+            query_params.append(('mitm_attack', params['mitm_attack']))  # noqa: E501
+        if 'proxy' in params:
+            query_params.append(('proxy', params['proxy']))  # noqa: E501
+        if 'sdk_version' in params:
+            query_params.append(('sdk_version', params['sdk_version']))  # noqa: E501
+        if 'sdk_platform' in params:
+            query_params.append(('sdk_platform', params['sdk_platform']))  # noqa: E501
+        if 'environment' in params:
+            query_params.append(('environment', params['environment']))  # noqa: E501
+            collection_formats['environment'] = 'multi'  # noqa: E501
 
         header_params = {}
 
