@@ -29,7 +29,7 @@ configuration = {{{packageName}}}.Configuration(api_key="SECRET_API_KEY")
 # create an instance of the API class
 api_instance = {{{packageName}}}.FingerprintApi(configuration)
 
-{{#allParams}}{{paramName}} = {{{example}}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+{{#allParams}}{{paramName}} = {{#isBoolean}}{{#example}}True{{/example}}{{^example}}False{{/example}}{{/isBoolean}}{{^isBoolean}}{{{example}}}{{/isBoolean}} # {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
 {{/allParams}}
 
 try:
