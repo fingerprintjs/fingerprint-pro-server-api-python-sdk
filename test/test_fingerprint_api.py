@@ -722,6 +722,13 @@ class TestFingerprintApi(unittest.TestCase):
             'incognito': True,
             'ip_blocklist': True,
             'datacenter': True,
+            'developer_tools': True,
+            'location_spoofing': True,
+            'mitm_attack': True,
+            'proxy': True,
+            'sdk_version': 'testSdkVersion',
+            'sdk_platform': 'testSdkPlatform',
+            'environment': ["env1", "env2"]
         }
 
         expected_fields = [self.integration_info] + list(params.items())
