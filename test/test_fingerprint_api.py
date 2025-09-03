@@ -140,12 +140,12 @@ class MockPoolManager(object):
         try:
             if mock_file_by_first_argument == 'related-visitors':
                 # Extract file name from visitor_id param
-                mock_file_by_first_argument = r[1]['fields'][1][1]
+                mock_file_by_first_argument = request_config['fields'][1][1]
             if mock_file_by_first_argument == 'search':
                 if status == 200:
                     mock_file_by_first_argument = MOCK_SEARCH_EVENTS_200
                 else:
-                    mock_file_by_first_argument = r[1]['fields'][2][1]
+                    mock_file_by_first_argument = request_config['fields'][2][1]
 
             path = './test/mocks/' + mock_file_by_first_argument
 
