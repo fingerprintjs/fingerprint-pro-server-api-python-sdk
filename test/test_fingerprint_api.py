@@ -22,6 +22,7 @@ from fingerprint_pro_server_api_sdk import (Configuration, ErrorResponse, ErrorP
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from urllib.parse import urlencode
+from collections import Counter
 
 API_KEY = 'private_key'
 
@@ -88,22 +89,40 @@ class MockPoolManager(object):
     def get_mock_from_path(path):
         return path.split('/')[-1]
 
+    @staticmethod
+    def _flatten(fields):
+        flatten = []
+        for k, obj in fields:
+            if isinstance(obj, list):
+                flatten.extend((k, v) for v in obj)
+            else:
+                flatten.append((k, obj))
+        return flatten
+
     def request(self, *args, **kwargs):
         self._tc.assertTrue(len(self._reqs) > 0)
-        r = self._reqs.pop(0)
+        (request_method, request_url), request_config = self._reqs.pop(0)
         status = 200
-        if r[1].get('status') is not None:
-            status = r[1].get('status')
-            r[1].pop('status')
+        if request_config.get('status') is not None:
+            status = request_config.get('status')
+            request_config.pop('status')
 
-        if r[1].get('method') != 'GET':
-            request_path = r[0][1].split('?')[0]
+        if request_config.get('method') != 'GET':
+            request_path = request_url.split('?')[0]
         else:
-            request_path = r[0][1]
+            request_path = request_url
 
         self._tc.maxDiff = None
-        self._tc.assertEqual(r[0], args)
-        self._tc.assertCountEqual(r[1], kwargs)
+        self._tc.assertEqual(request_method, args[0])
+        self._tc.assertEqual(request_url, args[1])
+
+        self._tc.assertEqual(set(request_config.keys()), set(kwargs.keys()))
+        for k in request_config.keys() - { 'fields' }:
+            self._tc.assertEqual(request_config[k], kwargs[k], msg=f"Mismatch on request key: '{k}'")
+
+        expected_fields = MockPoolManager._flatten(request_config.get('fields'))
+        actual_fields = MockPoolManager._flatten(kwargs.get('fields'))
+        self._tc.assertEqual(Counter(expected_fields), Counter(actual_fields), msg="fields on request do not match")
 
         # TODO Add support for more complex paths?
         mock_file_by_first_argument = MockPoolManager.get_mock_from_path(request_path)
