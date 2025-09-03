@@ -120,8 +120,8 @@ class MockPoolManager(object):
         for k in request_config.keys() - { 'fields' }:
             self._tc.assertEqual(request_config[k], kwargs[k], msg=f"Mismatch on request key: '{k}'")
 
-        expected_fields = MockPoolManager._flatten(request_config.get('fields'))
-        actual_fields = MockPoolManager._flatten(kwargs.get('fields'))
+        expected_fields = MockPoolManager._flatten(request_config.get('fields', []))
+        actual_fields = MockPoolManager._flatten(kwargs.get('fields', []))
         self._tc.assertEqual(Counter(expected_fields), Counter(actual_fields), msg="fields on request do not match")
 
         # TODO Add support for more complex paths?
