@@ -734,12 +734,16 @@ class TestFingerprintApi(unittest.TestCase):
             'sdk_version': 'testSdkVersion',
             'sdk_platform': 'testSdkPlatform',
         }
-        multivalue_params = [
+
+        params = base_params.copy()
+        params.update({'environment': ['env1', 'env2']})
+
+        multivalue_expected_params = [
             ('environment', 'env1'),
             ('environment', 'env2'),
         ]
 
-        expected_fields = [self.integration_info] + list(base_params.items()) + multivalue_params
+        expected_fields = [self.integration_info] + list(base_params.items()) + multivalue_expected_params
 
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
@@ -752,10 +756,7 @@ class TestFingerprintApi(unittest.TestCase):
             timeout=None
         )
 
-        for k, v in multivalue_params:
-            base_params.setdefault(k, []).append(v)
-
-        response = self.api.search_events(**base_params)
+        response = self.api.search_events(**params)
 
         self.assertIsInstance(response, SearchEventsResponse)
         event_response = response.events[0]
