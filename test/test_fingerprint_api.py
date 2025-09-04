@@ -752,11 +752,10 @@ class TestFingerprintApi(unittest.TestCase):
             timeout=None
         )
 
-        multi = {}
         for k, v in multivalue_params:
-            multi.setdefault(k, []).append(v)
+            base_params.setdefault(k, []).append(v)
 
-        response = self.api.search_events(**base_params, **multi)
+        response = self.api.search_events(**base_params)
 
         self.assertIsInstance(response, SearchEventsResponse)
         event_response = response.events[0]
