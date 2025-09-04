@@ -55,7 +55,8 @@ class Identification(BaseModel):
         'last_seen_at': 'IdentificationSeenAt',
         'components': 'RawDeviceAttributes',
         'replayed': 'bool',
-        'sdk': 'SDK'
+        'sdk': 'SDK',
+        'environment_id': 'str'
     }
 
     nullable_map = {
@@ -77,7 +78,8 @@ class Identification(BaseModel):
         'last_seen_at': False,
         'components': False,
         'replayed': False,
-        'sdk': False
+        'sdk': False,
+        'environment_id': False
     }
 
     attribute_map = {
@@ -99,10 +101,11 @@ class Identification(BaseModel):
         'last_seen_at': 'lastSeenAt',
         'components': 'components',
         'replayed': 'replayed',
-        'sdk': 'sdk'
+        'sdk': 'sdk',
+        'environment_id': 'environmentId'
     }
 
-    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, suspect=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None, replayed=None, sdk=None):  # noqa: E501
+    def __init__(self, visitor_id=None, request_id=None, browser_details=None, incognito=None, ip=None, ip_location=None, linked_id=None, suspect=None, timestamp=None, time=None, url=None, tag=None, confidence=None, visitor_found=None, first_seen_at=None, last_seen_at=None, components=None, replayed=None, sdk=None, environment_id=None):  # noqa: E501
         """Identification - a model defined in Swagger"""  # noqa: E501
         self._visitor_id = None
         self._request_id = None
@@ -123,6 +126,7 @@ class Identification(BaseModel):
         self._components = None
         self._replayed = None
         self._sdk = None
+        self._environment_id = None
         self.discriminator = None
         self.visitor_id = visitor_id
         self.request_id = request_id
@@ -149,12 +153,14 @@ class Identification(BaseModel):
         self.replayed = replayed
         if sdk is not None:
             self.sdk = sdk
+        if environment_id is not None:
+            self.environment_id = environment_id
 
     @property
     def visitor_id(self) -> str:
         """Gets the visitor_id of this Identification.  # noqa: E501
 
-        String of 20 characters that uniquely identifies the visitor's browser.  # noqa: E501
+        String of 20 characters that uniquely identifies the visitor's browser or mobile device.  # noqa: E501
 
         :return: The visitor_id of this Identification.  # noqa: E501
         """
@@ -164,7 +170,7 @@ class Identification(BaseModel):
     def visitor_id(self, visitor_id: str):
         """Sets the visitor_id of this Identification.
 
-        String of 20 characters that uniquely identifies the visitor's browser.  # noqa: E501
+        String of 20 characters that uniquely identifies the visitor's browser or mobile device.  # noqa: E501
 
         :param visitor_id: The visitor_id of this Identification.  # noqa: E501
         """
@@ -558,4 +564,25 @@ class Identification(BaseModel):
         """
 
         self._sdk = sdk
+
+    @property
+    def environment_id(self) -> Optional[str]:
+        """Gets the environment_id of this Identification.  # noqa: E501
+
+        Environment ID associated with the event  # noqa: E501
+
+        :return: The environment_id of this Identification.  # noqa: E501
+        """
+        return self._environment_id
+
+    @environment_id.setter
+    def environment_id(self, environment_id: Optional[str]):
+        """Sets the environment_id of this Identification.
+
+        Environment ID associated with the event  # noqa: E501
+
+        :param environment_id: The environment_id of this Identification.  # noqa: E501
+        """
+
+        self._environment_id = environment_id
 

@@ -22,6 +22,7 @@ from fingerprint_pro_server_api_sdk import (Configuration, ErrorResponse, ErrorP
 from fingerprint_pro_server_api_sdk.api.fingerprint_api import FingerprintApi  # noqa: E501
 from fingerprint_pro_server_api_sdk.rest import KnownApiException, ApiException
 from urllib.parse import urlencode
+from collections import Counter
 
 API_KEY = 'private_key'
 
@@ -90,20 +91,24 @@ class MockPoolManager(object):
 
     def request(self, *args, **kwargs):
         self._tc.assertTrue(len(self._reqs) > 0)
-        r = self._reqs.pop(0)
+        (request_method, request_url), request_config = self._reqs.pop(0)
         status = 200
-        if r[1].get('status') is not None:
-            status = r[1].get('status')
-            r[1].pop('status')
+        if request_config.get('status') is not None:
+            status = request_config.get('status')
+            request_config.pop('status')
 
-        if r[1].get('method') != 'GET':
-            request_path = r[0][1].split('?')[0]
+        if request_config.get('method') != 'GET':
+            request_path = request_url.split('?')[0]
         else:
-            request_path = r[0][1]
+            request_path = request_url
 
         self._tc.maxDiff = None
-        self._tc.assertEqual(r[0], args)
-        self._tc.assertCountEqual(r[1], kwargs)
+        self._tc.assertEqual(request_method, args[0])
+        self._tc.assertEqual(request_url, args[1])
+
+        self._tc.assertEqual(set(request_config.keys()), set(kwargs.keys()))
+        if 'fields' in kwargs and 'fields' in request_config:
+            self._tc.assertEqual(Counter(kwargs['fields']), Counter(request_config['fields']))
 
         # TODO Add support for more complex paths?
         mock_file_by_first_argument = MockPoolManager.get_mock_from_path(request_path)
@@ -121,12 +126,12 @@ class MockPoolManager(object):
         try:
             if mock_file_by_first_argument == 'related-visitors':
                 # Extract file name from visitor_id param
-                mock_file_by_first_argument = r[1]['fields'][1][1]
+                mock_file_by_first_argument = request_config['fields'][1][1]
             if mock_file_by_first_argument == 'search':
                 if status == 200:
                     mock_file_by_first_argument = MOCK_SEARCH_EVENTS_200
                 else:
-                    mock_file_by_first_argument = r[1]['fields'][2][1]
+                    mock_file_by_first_argument = request_config['fields'][2][1]
 
             path = './test/mocks/' + mock_file_by_first_argument
 
@@ -696,7 +701,7 @@ class TestFingerprintApi(unittest.TestCase):
 
     def test_search_events_all_params(self):
         """Test that search events returns 200 with all params"""
-        params = {
+        base_params = {
             'limit': 100,
             'visitor_id': MOCK_SEARCH_EVENTS_200,
             'bot': 'good',
@@ -722,9 +727,23 @@ class TestFingerprintApi(unittest.TestCase):
             'incognito': True,
             'ip_blocklist': True,
             'datacenter': True,
+            'developer_tools': True,
+            'location_spoofing': True,
+            'mitm_attack': True,
+            'proxy': True,
+            'sdk_version': 'testSdkVersion',
+            'sdk_platform': 'testSdkPlatform',
         }
 
-        expected_fields = [self.integration_info] + list(params.items())
+        params = base_params.copy()
+        params.update({'environment': ['env1', 'env2']})
+
+        multivalue_expected_params = [
+            ('environment', 'env1'),
+            ('environment', 'env2'),
+        ]
+
+        expected_fields = [self.integration_info] + list(base_params.items()) + multivalue_expected_params
 
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
