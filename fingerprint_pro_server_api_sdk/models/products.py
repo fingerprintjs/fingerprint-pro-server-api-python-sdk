@@ -38,6 +38,7 @@ from fingerprint_pro_server_api_sdk.models.product_remote_control import Product
 from fingerprint_pro_server_api_sdk.models.product_velocity import ProductVelocity
 from fingerprint_pro_server_api_sdk.models.product_developer_tools import ProductDeveloperTools
 from fingerprint_pro_server_api_sdk.models.product_mit_m_attack import ProductMitMAttack
+from fingerprint_pro_server_api_sdk.models.product_proximity import ProductProximity
 
 
 class Products(BaseModel):
@@ -80,7 +81,8 @@ class Products(BaseModel):
         'remote_control': 'ProductRemoteControl',
         'velocity': 'ProductVelocity',
         'developer_tools': 'ProductDeveloperTools',
-        'mitm_attack': 'ProductMitMAttack'
+        'mitm_attack': 'ProductMitMAttack',
+        'proximity': 'ProductProximity'
     }
 
     nullable_map = {
@@ -108,7 +110,8 @@ class Products(BaseModel):
         'remote_control': False,
         'velocity': False,
         'developer_tools': False,
-        'mitm_attack': False
+        'mitm_attack': False,
+        'proximity': False
     }
 
     attribute_map = {
@@ -136,10 +139,11 @@ class Products(BaseModel):
         'remote_control': 'remoteControl',
         'velocity': 'velocity',
         'developer_tools': 'developerTools',
-        'mitm_attack': 'mitmAttack'
+        'mitm_attack': 'mitmAttack',
+        'proximity': 'proximity'
     }
 
-    def __init__(self, identification=None, botd=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, incognito=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None):  # noqa: E501
+    def __init__(self, identification=None, botd=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, incognito=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, proximity=None):  # noqa: E501
         """Products - a model defined in Swagger"""  # noqa: E501
         self._identification = None
         self._botd = None
@@ -166,6 +170,7 @@ class Products(BaseModel):
         self._velocity = None
         self._developer_tools = None
         self._mitm_attack = None
+        self._proximity = None
         self.discriminator = None
         if identification is not None:
             self.identification = identification
@@ -217,6 +222,8 @@ class Products(BaseModel):
             self.developer_tools = developer_tools
         if mitm_attack is not None:
             self.mitm_attack = mitm_attack
+        if proximity is not None:
+            self.proximity = proximity
 
     @property
     def identification(self) -> Optional[ProductIdentification]:
@@ -692,4 +699,23 @@ class Products(BaseModel):
         """
 
         self._mitm_attack = mitm_attack
+
+    @property
+    def proximity(self) -> Optional[ProductProximity]:
+        """Gets the proximity of this Products.  # noqa: E501
+
+
+        :return: The proximity of this Products.  # noqa: E501
+        """
+        return self._proximity
+
+    @proximity.setter
+    def proximity(self, proximity: Optional[ProductProximity]):
+        """Sets the proximity of this Products.
+
+
+        :param proximity: The proximity of this Products.  # noqa: E501
+        """
+
+        self._proximity = proximity
 

@@ -539,6 +539,8 @@ class FingerprintApi:
         :param sdk_version: Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
         :param sdk_platform: Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
         :param environment: Filter for events by providing one or more environment IDs. 
+        :param proximity_id: Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response. 
+        :param proximity_precision_radius: Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -593,6 +595,8 @@ class FingerprintApi:
         :param str sdk_version: Filter events by a specific SDK version associated with the identification event. Example: `3.11.14` 
         :param str sdk_platform: Filter events by the SDK Platform associated with the identification event. `js` - JavaScript agent (Web). `ios` - Apple iOS based devices. `android` - Android based devices. 
         :param list[str] environment: Filter for events by providing one or more environment IDs. 
+        :param str proximity_id: Filter events by the most precise Proximity ID provided by default. > Note: When using this parameter, only events with the `products.proximity.id` property matching the provided ID are returned. Events without a `products.proximity` result are left out of the response. 
+        :param int proximity_precision_radius: Filter events by Proximity Radius. > Note: When using this parameter, only events with the `products.proximity.precisionRadius` property set to a valid value are returned. Events without a `products.proximity` result are left out of the response. 
         :return: SearchEventsResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -632,6 +636,8 @@ class FingerprintApi:
             'sdk_version',
             'sdk_platform',
             'environment',
+            'proximity_id',
+            'proximity_precision_radius',
             'async_req',
             '_return_http_data_only',
             '_preload_content',
@@ -722,6 +728,10 @@ class FingerprintApi:
         if 'environment' in params:
             query_params.append(('environment', params['environment']))  # noqa: E501
             collection_formats['environment'] = 'multi'  # noqa: E501
+        if 'proximity_id' in params:
+            query_params.append(('proximity_id', params['proximity_id']))  # noqa: E501
+        if 'proximity_precision_radius' in params:
+            query_params.append(('proximity_precision_radius', params['proximity_precision_radius']))  # noqa: E501
 
         header_params = {}
 

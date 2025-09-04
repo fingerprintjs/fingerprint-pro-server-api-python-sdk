@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **velocity** | [**ProductVelocity**](ProductVelocity.md) |  | [optional] 
 **developer_tools** | [**ProductDeveloperTools**](ProductDeveloperTools.md) |  | [optional] 
 **mitm_attack** | [**ProductMitMAttack**](ProductMitMAttack.md) |  | [optional] 
+**proximity** | [**ProductProximity**](ProductProximity.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
