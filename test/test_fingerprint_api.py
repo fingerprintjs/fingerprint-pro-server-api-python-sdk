@@ -89,16 +89,6 @@ class MockPoolManager(object):
     def get_mock_from_path(path):
         return path.split('/')[-1]
 
-    @staticmethod
-    def _flatten(fields):
-        flatten = []
-        for k, obj in fields:
-            if isinstance(obj, list):
-                flatten.extend((k, v) for v in obj)
-            else:
-                flatten.append((k, obj))
-        return flatten
-
     def request(self, *args, **kwargs):
         self._tc.assertTrue(len(self._reqs) > 0)
         (request_method, request_url), request_config = self._reqs.pop(0)
@@ -117,12 +107,7 @@ class MockPoolManager(object):
         self._tc.assertEqual(request_url, args[1])
 
         self._tc.assertEqual(set(request_config.keys()), set(kwargs.keys()))
-        for k in request_config.keys() - { 'fields' }:
-            self._tc.assertEqual(request_config[k], kwargs[k], msg=f"Mismatch on request key: '{k}'")
-
-        expected_fields = MockPoolManager._flatten(request_config.get('fields', []))
-        actual_fields = MockPoolManager._flatten(kwargs.get('fields', []))
-        self._tc.assertEqual(Counter(expected_fields), Counter(actual_fields), msg="fields on request do not match")
+        self._tc.assertEqual(Counter(kwargs['fields']), Counter(request_config['fields']))
 
         # TODO Add support for more complex paths?
         mock_file_by_first_argument = MockPoolManager.get_mock_from_path(request_path)
@@ -715,7 +700,7 @@ class TestFingerprintApi(unittest.TestCase):
 
     def test_search_events_all_params(self):
         """Test that search events returns 200 with all params"""
-        params = {
+        base_params = {
             'limit': 100,
             'visitor_id': MOCK_SEARCH_EVENTS_200,
             'bot': 'good',
@@ -747,10 +732,13 @@ class TestFingerprintApi(unittest.TestCase):
             'proxy': True,
             'sdk_version': 'testSdkVersion',
             'sdk_platform': 'testSdkPlatform',
-            'environment': ["env1", "env2"]
         }
+        multivalue_params = [
+            ('environment', 'env1'),
+            ('environment', 'env2'),
+        ]
 
-        expected_fields = [self.integration_info] + list(params.items())
+        expected_fields = [self.integration_info] + list(base_params.items()) + multivalue_params
 
         mock_pool = MockPoolManager(self)
         self.api.api_client.rest_client.pool_manager = mock_pool
@@ -763,7 +751,11 @@ class TestFingerprintApi(unittest.TestCase):
             timeout=None
         )
 
-        response = self.api.search_events(**params)
+        multi = {}
+        for k, v in multivalue_params:
+            multi.setdefault(k, []).append(v)
+
+        response = self.api.search_events(**base_params, **multi)
 
         self.assertIsInstance(response, SearchEventsResponse)
         event_response = response.events[0]
