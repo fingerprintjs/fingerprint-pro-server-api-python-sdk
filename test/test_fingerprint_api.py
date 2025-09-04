@@ -107,7 +107,8 @@ class MockPoolManager(object):
         self._tc.assertEqual(request_url, args[1])
 
         self._tc.assertEqual(set(request_config.keys()), set(kwargs.keys()))
-        self._tc.assertEqual(Counter(kwargs['fields']), Counter(request_config['fields']))
+        if 'fields' in kwargs and 'fields' in request_config:
+            self._tc.assertEqual(Counter(kwargs['fields']), Counter(request_config['fields']))
 
         # TODO Add support for more complex paths?
         mock_file_by_first_argument = MockPoolManager.get_mock_from_path(request_path)
