@@ -733,6 +733,8 @@ class TestFingerprintApi(unittest.TestCase):
             'proxy': True,
             'sdk_version': 'testSdkVersion',
             'sdk_platform': 'testSdkPlatform',
+            'proximity_id': 'testProximityId',
+            'proximity_precision_radius': 10,
         }
 
         params = base_params.copy()
