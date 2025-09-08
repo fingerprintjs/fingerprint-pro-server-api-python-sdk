@@ -4,5 +4,10 @@
   "initialVersions": {
     "fingerprint-pro-server-api-python-sdk": "8.10.0"
   },
-  "changesets": []
+  "changesets": [
+    "cute-buses-attend",
+    "fast-hotels-hunt",
+    "proud-feet-attack",
+    "quick-kiwis-visit"
+  ]
 }

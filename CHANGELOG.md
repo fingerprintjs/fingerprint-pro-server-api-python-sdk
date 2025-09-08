@@ -1,5 +1,14 @@
 # Fingerprint Pro Server Python SDK
 
+## 8.11.0-rc.0
+
+### Minor Changes
+
+- **events-search**: Event search now supports a new set of filter parameters: `developer_tools`, `location_spoofing`, `mitm_attack`, `proxy`, `sdk_version`, `sdk_platform`, `environment` ([4e2baaf](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4e2baafe8cbaad13bb72d46ab9f227053eba28ed))
+- **webhook**: Add `supplementaryIds` property to the Webhooks schema. ([4e2baaf](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4e2baafe8cbaad13bb72d46ab9f227053eba28ed))
+- Add `proximity` signal that represents a fixed geographical zone in a discrete global grid within which the device is observed. ([8b24e3b](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/8b24e3b39b28d4c774e50f42e1648f5bfd804f11))
+- Add `environmentId` property to `identification` ([4e2baaf](https://github.com/fingerprintjs/fingerprint-pro-server-api-python-sdk/commit/4e2baafe8cbaad13bb72d46ab9f227053eba28ed))
+
 ## 8.10.0
 
 ### Minor Changes
