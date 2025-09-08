@@ -46,6 +46,7 @@ from fingerprint_pro_server_api_sdk.models.webhook_developer_tools import Webhoo
 from fingerprint_pro_server_api_sdk.models.webhook_mit_m_attack import WebhookMitMAttack
 from fingerprint_pro_server_api_sdk.models.sdk import SDK
 from fingerprint_pro_server_api_sdk.models.webhook_supplementary_i_ds import WebhookSupplementaryIDs
+from fingerprint_pro_server_api_sdk.models.webhook_proximity import WebhookProximity
 
 
 class Webhook(BaseModel):
@@ -105,7 +106,8 @@ class Webhook(BaseModel):
         'mitm_attack': 'WebhookMitMAttack',
         'replayed': 'bool',
         'sdk': 'SDK',
-        'supplementary_ids': 'WebhookSupplementaryIDs'
+        'supplementary_ids': 'WebhookSupplementaryIDs',
+        'proximity': 'WebhookProximity'
     }
 
     nullable_map = {
@@ -153,7 +155,8 @@ class Webhook(BaseModel):
         'mitm_attack': False,
         'replayed': False,
         'sdk': False,
-        'supplementary_ids': False
+        'supplementary_ids': False,
+        'proximity': False
     }
 
     attribute_map = {
@@ -201,10 +204,11 @@ class Webhook(BaseModel):
         'mitm_attack': 'mitmAttack',
         'replayed': 'replayed',
         'sdk': 'sdk',
-        'supplementary_ids': 'supplementaryIds'
+        'supplementary_ids': 'supplementaryIds',
+        'proximity': 'proximity'
     }
 
-    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None, sdk=None, supplementary_ids=None):  # noqa: E501
+    def __init__(self, request_id=None, url=None, ip=None, environment_id=None, tag=None, time=None, timestamp=None, ip_location=None, linked_id=None, visitor_id=None, visitor_found=None, confidence=None, first_seen_at=None, last_seen_at=None, browser_details=None, incognito=None, client_referrer=None, components=None, bot=None, user_agent=None, root_apps=None, emulator=None, ip_info=None, ip_blocklist=None, tor=None, vpn=None, proxy=None, tampering=None, cloned_app=None, factory_reset=None, jailbroken=None, frida=None, privacy_settings=None, virtual_machine=None, raw_device_attributes=None, high_activity=None, location_spoofing=None, suspect_score=None, remote_control=None, velocity=None, developer_tools=None, mitm_attack=None, replayed=None, sdk=None, supplementary_ids=None, proximity=None):  # noqa: E501
         """Webhook - a model defined in Swagger"""  # noqa: E501
         self._request_id = None
         self._url = None
@@ -251,6 +255,7 @@ class Webhook(BaseModel):
         self._replayed = None
         self._sdk = None
         self._supplementary_ids = None
+        self._proximity = None
         self.discriminator = None
         self.request_id = request_id
         self.url = url
@@ -336,6 +341,8 @@ class Webhook(BaseModel):
         self.sdk = sdk
         if supplementary_ids is not None:
             self.supplementary_ids = supplementary_ids
+        if proximity is not None:
+            self.proximity = proximity
 
     @property
     def request_id(self) -> str:
@@ -1225,4 +1232,23 @@ class Webhook(BaseModel):
         """
 
         self._supplementary_ids = supplementary_ids
+
+    @property
+    def proximity(self) -> Optional[WebhookProximity]:
+        """Gets the proximity of this Webhook.  # noqa: E501
+
+
+        :return: The proximity of this Webhook.  # noqa: E501
+        """
+        return self._proximity
+
+    @proximity.setter
+    def proximity(self, proximity: Optional[WebhookProximity]):
+        """Sets the proximity of this Webhook.
+
+
+        :param proximity: The proximity of this Webhook.  # noqa: E501
+        """
+
+        self._proximity = proximity
 
