@@ -24,4 +24,3 @@ jobs:
       commitSha: ${{ github.event.pull_request.head.sha || github.sha }}
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.RUNNER_APP_PRIVATE_KEY }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
