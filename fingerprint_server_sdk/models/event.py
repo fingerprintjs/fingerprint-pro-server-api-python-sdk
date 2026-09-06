@@ -93,13 +93,14 @@ class Event(BaseModel):
         match = 0
 
         # SPIKE INTER-2457 — RUNTIME BREAK.
-        # Existing events (and sealed payloads) without `source` raise ValueError here.
-        # Even with `source`, callers must use `event.actual_instance.identification`,
-        # not `event.identification`.
-        # use oneOf discriminator to lookup the data type
-        _data_type = json.loads(json_str).get("source")
+        # Callers must use `event.actual_instance.identification`, not `event.identification`.
+        # Omit `source` hydrates to device (existing / sealed payloads). Never rewrite edge.
+        payload = json.loads(json_str)
+        _data_type = payload.get("source")
         if not _data_type:
-            raise ValueError("Failed to lookup data type from the field `source` in the input.")
+            payload["source"] = "device"
+            json_str = json.dumps(payload)
+            _data_type = "device"
 
         # check if data type is `EventDevice`
         if _data_type == "device":
