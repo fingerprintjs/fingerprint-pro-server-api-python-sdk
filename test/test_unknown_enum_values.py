@@ -5,6 +5,8 @@ from typing import Any
 
 from fingerprint_server_sdk import Event
 from fingerprint_server_sdk.models.bot_info import BotInfo
+from fingerprint_server_sdk.models.event_device import EventDevice
+from fingerprint_server_sdk.models.event_edge import EventEdge
 from fingerprint_server_sdk.models.event_source import EventSource
 from fingerprint_server_sdk.models.proxy_details import ProxyDetails
 from fingerprint_server_sdk.models.sdk import SDK
@@ -25,8 +27,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['proxy_details']['proxy_type'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.proxy_details.proxy_type, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.proxy_details.proxy_type, 'unknown-value')
 
     def test_event_with_unknown_sdk_platform(self) -> None:
         """Unknown SDK platform value should be accepted and preserved."""
@@ -34,8 +36,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['sdk']['platform'] = 'new-platform'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.sdk.platform, 'new-platform')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.sdk.platform, 'new-platform')
 
     def test_event_with_unknown_bot_result(self) -> None:
         """Unknown bot result value should be accepted and preserved."""
@@ -43,8 +45,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['bot'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.bot, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.bot, 'unknown-value')
 
     def test_event_with_unknown_vpn_confidence(self) -> None:
         """Unknown vpn_confidence value should be accepted and preserved."""
@@ -53,8 +55,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['vpn_confidence'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.vpn_confidence, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.vpn_confidence, 'unknown-value')
 
     def test_event_with_unknown_proxy_confidence(self) -> None:
         """Unknown proxy_confidence value should be accepted and preserved."""
@@ -62,8 +64,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['proxy_confidence'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.proxy_confidence, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.proxy_confidence, 'unknown-value')
 
     def test_event_with_unknown_tampering_confidence(self) -> None:
         """Unknown tampering_confidence value should be accepted and preserved."""
@@ -71,8 +73,8 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['tampering_confidence'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.tampering_confidence, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.tampering_confidence, 'unknown-value')
 
     def test_event_with_unknown_rare_device_percentile_bucket(self) -> None:
         """Unknown rare_device_percentile_bucket value should be accepted and preserved."""
@@ -80,26 +82,25 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['rare_device_percentile_bucket'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.rare_device_percentile_bucket, 'unknown-value')
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.rare_device_percentile_bucket, 'unknown-value')
 
     def test_event_with_unknown_source(self) -> None:
-        """Unknown source value should be accepted and preserved."""
+        """Unknown non-empty source cannot pick an Event oneOf variant."""
         data = self._load_event_json()
         data['source'] = 'unknown-value'
 
-        event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.source, 'unknown-value')
+        with self.assertRaisesRegex(ValueError, "unknown Event source"):
+            Event.from_json(json.dumps(data))
 
     def test_event_without_source(self) -> None:
-        """Event should deserialize when the optional source field is absent."""
+        """Omit source hydrates to EventDevice."""
         data = self._load_event_json()
         data.pop('source', None)
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertIsNone(event.source)
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.source, EventSource.DEVICE)
 
     def test_proxy_details_with_unknown_proxy_type(self) -> None:
         """ProxyDetails model should accept unknown proxy_type directly."""
@@ -139,37 +140,42 @@ class TestUnknownEnumValues(unittest.TestCase):
         data['proxy_confidence'] = 'unknown-value'
         data['tampering_confidence'] = 'unknown-value'
         data['rare_device_percentile_bucket'] = 'unknown-value'
-        data['source'] = 'unknown-value'
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.proxy_details.proxy_type, 'unknown-value')
-        self.assertEqual(event.sdk.platform, 'unknown-value')
-        self.assertEqual(event.bot, 'unknown-value')
-        self.assertEqual(event.vpn_confidence, 'unknown-value')
-        self.assertEqual(event.proxy_confidence, 'unknown-value')
-        self.assertEqual(event.tampering_confidence, 'unknown-value')
-        self.assertEqual(event.rare_device_percentile_bucket, 'unknown-value')
-        self.assertEqual(event.source, 'unknown-value')
+        actual = event.actual_instance
+        self.assertIsInstance(actual, EventDevice)
+        self.assertEqual(actual.proxy_details.proxy_type, 'unknown-value')
+        self.assertEqual(actual.sdk.platform, 'unknown-value')
+        self.assertEqual(actual.bot, 'unknown-value')
+        self.assertEqual(actual.vpn_confidence, 'unknown-value')
+        self.assertEqual(actual.proxy_confidence, 'unknown-value')
+        self.assertEqual(actual.tampering_confidence, 'unknown-value')
+        self.assertEqual(actual.rare_device_percentile_bucket, 'unknown-value')
 
     def test_known_enum_values_still_work(self) -> None:
         """Known enum values should continue to work as before."""
         data = self._load_event_json()
 
         event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.proxy_details.proxy_type, 'residential')
-        self.assertEqual(event.sdk.platform, 'js')
-        self.assertEqual(event.source, EventSource.DEVICE)
+        actual = event.actual_instance
+        self.assertIsInstance(actual, EventDevice)
+        self.assertEqual(actual.proxy_details.proxy_type, 'residential')
+        self.assertEqual(actual.sdk.platform, 'js')
+        self.assertEqual(actual.source, EventSource.DEVICE)
 
     def test_event_with_edge_source(self) -> None:
         """The edge source value should be deserialized into the enum member."""
         data = self._load_event_json()
-        data['source'] = 'edge'
+        edge_payload = {
+            'event_id': data['event_id'],
+            'timestamp': data['timestamp'],
+            'ip_info': data['ip_info'],
+            'source': 'edge',
+        }
 
-        event = Event.from_json(json.dumps(data))
-        self.assertIsInstance(event, Event)
-        self.assertEqual(event.source, EventSource.EDGE)
+        event = Event.from_json(json.dumps(edge_payload))
+        self.assertIsInstance(event.actual_instance, EventEdge)
+        self.assertEqual(event.actual_instance.source, EventSource.EDGE)
 
 
 if __name__ == '__main__':

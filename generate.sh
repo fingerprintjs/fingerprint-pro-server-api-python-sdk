@@ -41,6 +41,10 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Event source hydrate lives outside generated models so generate can wipe
+# fingerprint_server_sdk without losing the oneOf omit→device step.
+cp ./scripts/event_source.py ./fingerprint_server_sdk/event_source.py
+
 # Linting and formatting
 uv run ruff format .
 uv run ruff check --fix --unsafe-fixes .
