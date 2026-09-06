@@ -20,6 +20,7 @@ from typing import Any, List, Optional
 from fingerprint_server_sdk.models.event_device import EventDevice
 from fingerprint_server_sdk.models.event_edge import EventEdge
 from typing_extensions import Self
+from fingerprint_server_sdk.event_source import hydrate_event_discriminator
 
 EVENT_ONE_OF_SCHEMAS = ["EventDevice", "EventEdge"]
 
@@ -92,15 +93,10 @@ class Event(BaseModel):
         error_messages = []
         match = 0
 
-        # SPIKE INTER-2457 — RUNTIME BREAK.
-        # Callers must use `event.actual_instance.identification`, not `event.identification`.
-        # Omit `source` hydrates to device (existing / sealed payloads). Never rewrite edge.
-        payload = json.loads(json_str)
-        _data_type = payload.get("source")
-        if not _data_type:
-            payload["source"] = "device"
-            json_str = json.dumps(payload)
-            _data_type = "device"
+        # use oneOf discriminator to lookup the data type
+        json_str, _data_type = hydrate_event_discriminator("Event", json_str, "source")
+        if "Event" != "Event" and not _data_type:
+            raise ValueError("Failed to lookup data type from the field `source` in the input.")
 
         # check if data type is `EventDevice`
         if _data_type == "device":

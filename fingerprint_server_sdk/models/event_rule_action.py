@@ -20,6 +20,7 @@ from typing import Any, List, Optional
 from fingerprint_server_sdk.models.event_rule_action_allow import EventRuleActionAllow
 from fingerprint_server_sdk.models.event_rule_action_block import EventRuleActionBlock
 from typing_extensions import Self
+from fingerprint_server_sdk.event_source import hydrate_event_discriminator
 
 EVENTRULEACTION_ONE_OF_SCHEMAS = ["EventRuleActionAllow", "EventRuleActionBlock"]
 
@@ -89,8 +90,8 @@ class EventRuleAction(BaseModel):
         match = 0
 
         # use oneOf discriminator to lookup the data type
-        _data_type = json.loads(json_str).get("type")
-        if not _data_type:
+        json_str, _data_type = hydrate_event_discriminator("EventRuleAction", json_str, "type")
+        if "EventRuleAction" != "Event" and not _data_type:
             raise ValueError("Failed to lookup data type from the field `type` in the input.")
 
         # check if data type is `EventRuleActionAllow`

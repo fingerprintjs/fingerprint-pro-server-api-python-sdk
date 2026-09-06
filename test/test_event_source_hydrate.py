@@ -42,6 +42,22 @@ class TestEventSourceHydrate(unittest.TestCase):
         self.assertEqual(event.actual_instance.source, EventSource.EDGE)
         self.assertNotEqual(event.actual_instance.source, EventSource.DEVICE)
 
+    def test_empty_source_deserializes_event_device(self) -> None:
+        data = self._load_event_json()
+        data['source'] = ''
+
+        event = Event.from_json(json.dumps(data))
+
+        self.assertIsInstance(event.actual_instance, EventDevice)
+        self.assertEqual(event.actual_instance.source, EventSource.DEVICE)
+
+    def test_unknown_source_fails(self) -> None:
+        data = self._load_event_json()
+        data['source'] = 'webhook'
+
+        with self.assertRaisesRegex(ValueError, 'unknown Event source'):
+            Event.from_json(json.dumps(data))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -10,6 +10,7 @@ from typing import Any, Optional, Union
 {{{.}}}
 {{/vendorExtensions.x-py-model-imports}}
 from typing_extensions import Self
+from fingerprint_server_sdk.event_source import hydrate_event_discriminator
 
 {{#lambda.uppercase}}{{{classname}}}{{/lambda.uppercase}}_ONE_OF_SCHEMAS = [{{#oneOf}}"{{.}}"{{^-last}}, {{/-last}}{{/oneOf}}]
 
@@ -118,8 +119,8 @@ class {{classname}}({{#parent}}{{{.}}}{{/parent}}{{^parent}}BaseModel{{/parent}}
         {{#mappedModels}}
         {{#-first}}
         # use oneOf discriminator to lookup the data type
-        _data_type = json.loads(json_str).get("{{{propertyBaseName}}}")
-        if not _data_type:
+        json_str, _data_type = hydrate_event_discriminator("{{classname}}", json_str, "{{{propertyBaseName}}}")
+        if "{{classname}}" != "Event" and not _data_type:
             raise ValueError("Failed to lookup data type from the field `{{{propertyBaseName}}}` in the input.")
 
         {{/-first}}
