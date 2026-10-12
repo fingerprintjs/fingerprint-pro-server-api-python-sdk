@@ -363,6 +363,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
@@ -438,6 +439,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
@@ -513,6 +515,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
@@ -1082,6 +1085,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
@@ -1605,6 +1609,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
@@ -2128,6 +2133,7 @@ class FingerprintApi:
             '404': 'ErrorResponse',
             '429': 'ErrorResponse',
             '500': 'ErrorResponse',
+            '503': 'ErrorResponse',
             '504': 'ErrorResponse',
         }
 
