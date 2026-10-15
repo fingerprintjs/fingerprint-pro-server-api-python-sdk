@@ -295,7 +295,7 @@ To learn more, refer to example located in [examples/webhook_signature_example.p
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.fpjs.io/v4*
+All URIs are relative to `https://api.fpjs.io/v4`
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
